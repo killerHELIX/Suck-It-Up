@@ -181,8 +181,8 @@
       "IncludedBodies": ""
     }
   },
-  "Title": null,
-  "Description": null,
+  "Title": "fps_scene",
+  "Description": "",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1

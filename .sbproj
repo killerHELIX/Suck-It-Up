@@ -213,6 +213,30 @@
           "KeyboardCode": "MOUSE3",
           "GamepadCode": "None",
           "GroupName": "Actions"
+        },
+        {
+          "Name": "Jump",
+          "KeyboardCode": "SPACE",
+          "GamepadCode": "None",
+          "GroupName": "Other"
+        },
+        {
+          "Name": "Crouch",
+          "KeyboardCode": "CTRL",
+          "GamepadCode": "None",
+          "GroupName": "Other"
+        },
+        {
+          "Name": "Run",
+          "KeyboardCode": "SHIFT",
+          "GamepadCode": "None",
+          "GroupName": "Other"
+        },
+        {
+          "Name": "Walk",
+          "KeyboardCode": "ALT",
+          "GamepadCode": "None",
+          "GroupName": "Other"
         }
       ],
       "__guid": "1195d4ab-6850-4341-beb4-37dc0db83b19"

@@ -4,12 +4,12 @@ using System;
 using System.Drawing;
 using System.Runtime;
 
-public class FPSPlayerController : Component
+public sealed class FPSPlayerController : Component
 {
 	[Property] CameraComponent Head;
 	[Property] GameObject Body;
 
-	[Property] float MovementSpeed { get; set; } = 100f;
+	[Property] float RunMoveSpeed { get; set; } = 100.0f;
 
 	public Angles EyeAngles { get; set; }
 
@@ -28,11 +28,9 @@ public class FPSPlayerController : Component
     protected override void OnUpdate()
 	{
 
-		// Player Position moves based on AnalogMove input.
-		Transform.Position += Input.AnalogMove * MovementSpeed * Time.Delta;
 
 		// Starting from EyeAngles, rotate the Head and Body. 
-		// Head Pitch Clamped, 0 Roll.
+		// Head Pitch Clamped [-90, 90], 0 Roll.
 		// Body 0 Pitch, 0 Roll (Only Yaw).
 		var ee = EyeAngles;
 		ee += Input.AnalogLook;
@@ -43,6 +41,9 @@ public class FPSPlayerController : Component
 
 		Head.Transform.Rotation = EyeAngles.ToRotation();
 		Body.Transform.Rotation = bodyAngles.ToRotation();
+
+		// Player Position moves based on AnalogMove input, rotated by Head's Rotation.
+		Transform.Position += (Input.AnalogMove * Head.Transform.Rotation) * RunMoveSpeed * Time.Delta;
 	}
 
     private void UpdateHeadRotation()

@@ -75,33 +75,11 @@
       "Enabled": true,
       "Components": [
         {
-          "__type": "Sandbox.Citizen.CitizenAnimationHelper",
-          "__guid": "5adaaf54-bf59-493c-a45b-9aa43440edbb",
-          "BodyWeight": 1,
-          "EyeSource": {
-            "_type": "gameobject",
-            "go": "d8c46b2b-6ebd-463a-94ba-fe08a1a7fa2f"
-          },
-          "EyesWeight": 1,
-          "HeadWeight": 1,
-          "LookAt": {
-            "_type": "gameobject",
-            "go": "7cde79bf-fd6d-408a-b481-1587a71115ac"
-          },
-          "LookAtEnabled": false,
-          "Target": {
-            "_type": "component",
-            "component_id": "10aaba91-986a-4e3e-8d7f-1f90eba451a7",
-            "go": "335c2a91-3158-4479-98d3-2984fe7dc63c",
-            "component_type": "SkinnedModelRenderer"
-          }
-        },
-        {
-          "__type": "FPSPlayerController",
-          "__guid": "7dd9ad31-1667-45d6-b90d-5f6da44cc7e0",
+          "__type": "FPSPlayerMover",
+          "__guid": "7d1c208e-c5f0-4168-b1bb-3b44369e6cd9",
           "AnimationHelper": {
             "_type": "component",
-            "component_id": "5adaaf54-bf59-493c-a45b-9aa43440edbb",
+            "component_id": "39f60558-5899-4db1-8a22-5c4b5967880b",
             "go": "efc693fb-5bfa-4989-8a6a-08bc87d5abde",
             "component_type": "CitizenAnimationHelper"
           },
@@ -111,10 +89,26 @@
             "go": "efc693fb-5bfa-4989-8a6a-08bc87d5abde",
             "component_type": "CharacterController"
           },
-          "CrouchMoveSpeed": 100,
-          "RunMoveSpeed": 200,
-          "SprintMoveSpeed": 300,
-          "WalkMoveSpeed": 100
+          "CrouchMoveSpeed": 64,
+          "Head": {
+            "_type": "component",
+            "component_id": "ad8755ce-4bda-4e12-8952-a6bc950f4d96",
+            "go": "d8c46b2b-6ebd-463a-94ba-fe08a1a7fa2f",
+            "component_type": "CameraComponent"
+          },
+          "RunMoveSpeed": 190,
+          "SprintMoveSpeed": 320,
+          "WalkMoveSpeed": 190
+        },
+        {
+          "__type": "FPSWeaponController",
+          "__guid": "4dd27e63-756e-4df7-bf49-1bee6c0db05f",
+          "Head": {
+            "_type": "component",
+            "component_id": "ad8755ce-4bda-4e12-8952-a6bc950f4d96",
+            "go": "d8c46b2b-6ebd-463a-94ba-fe08a1a7fa2f",
+            "component_type": "CameraComponent"
+          }
         },
         {
           "__type": "Sandbox.CharacterController",
@@ -127,6 +121,24 @@
           "Radius": 16,
           "StepHeight": 18,
           "UseCollisionRules": false
+        },
+        {
+          "__type": "Sandbox.Citizen.CitizenAnimationHelper",
+          "__guid": "39f60558-5899-4db1-8a22-5c4b5967880b",
+          "BodyWeight": 1,
+          "EyeSource": {
+            "_type": "gameobject",
+            "go": "d8c46b2b-6ebd-463a-94ba-fe08a1a7fa2f"
+          },
+          "EyesWeight": 1,
+          "HeadWeight": 1,
+          "LookAtEnabled": false,
+          "Target": {
+            "_type": "component",
+            "component_id": "10aaba91-986a-4e3e-8d7f-1f90eba451a7",
+            "go": "335c2a91-3158-4479-98d3-2984fe7dc63c",
+            "component_type": "SkinnedModelRenderer"
+          }
         }
       ],
       "Children": [
@@ -183,7 +195,7 @@
       "__guid": "7cde79bf-fd6d-408a-b481-1587a71115ac",
       "Flags": 0,
       "Name": "Cube (2)",
-      "Position": "186.8084,-9.017117,127.6047",
+      "Position": "186.8084,-9.017117,98.56784",
       "Enabled": true,
       "Components": [
         {
@@ -220,7 +232,7 @@
       "__guid": "aa155f86-ccb2-4f4c-aaa4-26221505ab40",
       "Flags": 0,
       "Name": "Cube (1)",
-      "Position": "186.8084,-38.21694,69.53659",
+      "Position": "186.8084,-38.21694,47.88713",
       "Enabled": true,
       "Components": [
         {
@@ -257,7 +269,7 @@
       "__guid": "25953437-7abf-4f29-9a1c-61c91ad6b7b9",
       "Flags": 0,
       "Name": "Cube",
-      "Position": "189.1524,29.98628,67.07156",
+      "Position": "186.6595,29.98628,47.84131",
       "Enabled": true,
       "Components": [
         {

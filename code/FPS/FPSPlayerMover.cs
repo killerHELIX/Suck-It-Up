@@ -1,6 +1,6 @@
 using Sandbox.Citizen;
 
-public sealed class FPSPlayerController : Component
+public sealed class FPSPlayerMover : Component
 {
 	[Property] public CharacterController CharacterController { get; set; }
 	[Property] public float CrouchMoveSpeed { get; set; } = 64.0f;
@@ -9,6 +9,7 @@ public sealed class FPSPlayerController : Component
 	[Property] public float SprintMoveSpeed { get; set; } = 320.0f;
 
 	[Property] public CitizenAnimationHelper AnimationHelper { get; set; }
+	[Property] public CameraComponent Head { get; set; }
 
 	[Sync] public bool Crouching { get; set; }
 	[Sync] public Angles EyeAngles { get; set; }
@@ -202,7 +203,7 @@ public sealed class FPSPlayerController : Component
 
 	private void UpdateCamera()
 	{
-		var camera = Scene.GetAllComponents<CameraComponent>().Where( x => x.IsMainCamera ).FirstOrDefault();
+		var camera = Head;
 		if ( camera is null ) return;
 
 		var targetEyeHeight = Crouching ? 28 : 64;

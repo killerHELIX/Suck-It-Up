@@ -108,7 +108,18 @@
             "component_id": "ad8755ce-4bda-4e12-8952-a6bc950f4d96",
             "go": "d8c46b2b-6ebd-463a-94ba-fe08a1a7fa2f",
             "component_type": "CameraComponent"
-          }
+          },
+          "Weapons": [
+            {
+              "_type": "component",
+              "component_id": "886e26ca-3119-49f5-b8ae-5be314128354",
+              "go": "b0bacc6c-ede5-44d4-926b-8966d3a1bf37",
+              "component_type": "Pistol"
+            }
+          ],
+          "WeaponX": 20,
+          "WeaponY": 8,
+          "WeaponZ": -6
         },
         {
           "__type": "Sandbox.CharacterController",
@@ -139,6 +150,10 @@
             "go": "335c2a91-3158-4479-98d3-2984fe7dc63c",
             "component_type": "SkinnedModelRenderer"
           }
+        },
+        {
+          "__type": "Pistol",
+          "__guid": "d864effd-390c-4111-bb2e-61a9eba03528"
         }
       ],
       "Children": [
@@ -299,6 +314,57 @@
           "MotionEnabled": true,
           "RigidbodyFlags": 0,
           "StartAsleep": false
+        }
+      ]
+    },
+    {
+      "__guid": "b0bacc6c-ede5-44d4-926b-8966d3a1bf37",
+      "Flags": 0,
+      "Name": "Pistol",
+      "Position": "59.8032,0,-65.91959",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Pistol",
+          "__guid": "886e26ca-3119-49f5-b8ae-5be314128354"
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "c401d3b9-5e00-4ebd-a62a-bbc8db2b1c75",
+          "Flags": 0,
+          "Name": "Cube (1)",
+          "Position": "0,0,0",
+          "Scale": "0.2,0.05,0.05",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "876381f4-fbf8-408f-921d-bb4a1a6aaf53",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/dev/box.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "81736ffe-9fe8-44fa-9794-a8d14598894f",
+          "Flags": 0,
+          "Name": "Cube",
+          "Position": "-4,0,-1",
+          "Scale": "0.05,0.05,0.1",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "0efc4071-203e-4836-80d1-6c955d10d0fb",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/dev/box.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
         }
       ]
     }

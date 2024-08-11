@@ -1,0 +1,30 @@
+{
+  "RootObject": {
+    "__guid": "b0bacc6c-ede5-44d4-926b-8966d3a1bf37",
+    "Flags": 0,
+    "Name": "pistol",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "5a639f48-eddc-447e-a542-f857176956eb",
+        "BodyGroups": 18446744073709551615,
+        "Model": "models/cardboardpistol.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "Pistol",
+        "__guid": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2"
+      }
+    ],
+    "Children": [],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

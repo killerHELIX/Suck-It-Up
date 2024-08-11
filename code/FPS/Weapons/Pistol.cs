@@ -1,5 +1,5 @@
 
-public class Pistol : Component, IWeapon
+public class Pistol : IWeapon
 {
     public int MaxReserves = 16;
     public int Reserves;
@@ -22,7 +22,7 @@ public class Pistol : Component, IWeapon
 		}
 	}
 
-    public void Fire()
+    public new void Fire()
     {
         if (CurrentAmmo <= 0) 
         {
@@ -44,7 +44,7 @@ public class Pistol : Component, IWeapon
     }
 
     // HL2 Style reloading. Pool of reserve bullets that refill a fixed magazine size. 
-    public void Reload()
+    public new void Reload()
     {
         if (CurrentAmmo == MaxAmmo) 
         {

@@ -1,6 +1,12 @@
-﻿public interface IWeapon 
+﻿public class IWeapon : Component
 {
-	public void Fire();
-	public void Reload();
+	public void Fire()
+	{
+
+	}
+	public void Reload()
+	{
+
+	}
 
 }

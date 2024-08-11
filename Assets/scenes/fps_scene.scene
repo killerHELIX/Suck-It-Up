@@ -109,17 +109,11 @@
             "go": "d8c46b2b-6ebd-463a-94ba-fe08a1a7fa2f",
             "component_type": "CameraComponent"
           },
-          "Weapons": [
-            {
-              "_type": "component",
-              "component_id": "09bbdc93-d024-4d94-b5bc-d7683f141a53",
-              "go": "b0bacc6c-ede5-44d4-926b-8966d3a1bf37",
-              "component_type": "Pistol"
-            }
-          ],
-          "WeaponX": 20,
+          "Weapons": [],
+          "WeaponSwaySpeed": 50,
+          "WeaponX": 25,
           "WeaponY": 8,
-          "WeaponZ": -6
+          "WeaponZ": -10
         },
         {
           "__type": "Sandbox.CharacterController",
@@ -128,7 +122,7 @@
           "Bounciness": 0.3,
           "GroundAngle": 45,
           "Height": 64,
-          "IgnoreLayers": "",
+          "IgnoreLayers": "wep",
           "Radius": 16,
           "StepHeight": 18,
           "UseCollisionRules": false
@@ -232,8 +226,10 @@
           "Gravity": true,
           "LinearDamping": 0,
           "Locking": {},
+          "MassCenterOverride": "0,0,0",
           "MassOverride": 0,
           "MotionEnabled": true,
+          "OverrideMassCenter": false,
           "RigidbodyFlags": 0,
           "StartAsleep": false
         }
@@ -269,8 +265,10 @@
           "Gravity": true,
           "LinearDamping": 0,
           "Locking": {},
+          "MassCenterOverride": "0,0,0",
           "MassOverride": 0,
           "MotionEnabled": true,
+          "OverrideMassCenter": false,
           "RigidbodyFlags": 0,
           "StartAsleep": false
         }
@@ -306,32 +304,31 @@
           "Gravity": true,
           "LinearDamping": 0,
           "Locking": {},
+          "MassCenterOverride": "0,0,0",
           "MassOverride": 0,
           "MotionEnabled": true,
+          "OverrideMassCenter": false,
           "RigidbodyFlags": 0,
           "StartAsleep": false
         }
       ]
     },
     {
-      "__guid": "b0bacc6c-ede5-44d4-926b-8966d3a1bf37",
+      "__guid": "7598e7b4-d52c-4c46-8e77-8916becb6a18",
       "Flags": 0,
-      "Name": "Pistol",
-      "Position": "59.8032,0,78.71755",
-      "Scale": "0.5,0.5,0.5",
+      "Name": "PlayerWeapons",
+      "Position": "-67.22284,253.7683,121.4972",
+      "Tags": "wep",
       "Enabled": true,
-      "Components": [
+      "Children": [
         {
-          "__type": "Pistol",
-          "__guid": "09bbdc93-d024-4d94-b5bc-d7683f141a53"
-        },
-        {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "5a639f48-eddc-447e-a542-f857176956eb",
-          "BodyGroups": 18446744073709551615,
-          "Model": "models/cardboardpistol.vmdl",
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
+          "__guid": "b0bacc6c-ede5-44d4-926b-8966d3a1bf37",
+          "Flags": 0,
+          "Name": "Pistol",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "__Prefab": "prefabs/fps/pistol.prefab",
+          "__PrefabVariables": {}
         }
       ]
     }

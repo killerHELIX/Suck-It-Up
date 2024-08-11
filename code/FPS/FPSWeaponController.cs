@@ -35,7 +35,7 @@ public sealed class FPSWeaponController : Component
 	{
 		var weapon = Weapons[0];
 
-		if ( Input.Pressed( "select" )) weapon.fire();
-		if ( Input.Pressed( "reload" )) weapon.reload();
+		if ( Input.Pressed( "select" )) weapon.Fire();
+		if ( Input.Pressed( "reload" )) weapon.Reload();
 	}
 }

@@ -1,14 +1,16 @@
 
 public class Pistol : Component, IWeapon
 {
-    public int Mags = 5;
-    public int MagCap = 8;
+    public int MaxReserves = 16;
+    public int Reserves;
 
-    public int CurrentMagCap;
+    public int MaxAmmo = 8;
+    public int CurrentAmmo;
 	private SceneTraceResult lastTraceResult;
     public Pistol(){
         Log.Info("Instantiated Pistol");
-        CurrentMagCap = MagCap;
+        CurrentAmmo = MaxAmmo;
+        Reserves = MaxReserves;
     }
     
 	protected override void OnUpdate()
@@ -20,16 +22,16 @@ public class Pistol : Component, IWeapon
 		}
 	}
 
-    public void fire()
+    public void Fire()
     {
-        if (CurrentMagCap <= 0) 
+        if (CurrentAmmo <= 0) 
         {
-            Log.Info($"Empty! [{CurrentMagCap} / {MagCap} || {Mags} ]");
+            Info("Empty!");
         }
         else 
         {
-            CurrentMagCap--;
-            Log.Info($"Fired! [{CurrentMagCap} / {MagCap} || {Mags} ]");
+            CurrentAmmo--;
+            Info("Fired!");
 
 			float dist = 10000.0f;
 			lastTraceResult = Scene.Trace.Ray( new Ray(Transform.Position, Transform.Rotation.Forward * dist), dist ).Run();
@@ -41,22 +43,41 @@ public class Pistol : Component, IWeapon
         }
     }
 
-    public void reload()
+    // HL2 Style reloading. Pool of reserve bullets that refill a fixed magazine size. 
+    public void Reload()
     {
-        if (CurrentMagCap == MagCap) 
+        if (CurrentAmmo == MaxAmmo) 
         {
-            Log.Info($"Already reloaded! [{CurrentMagCap} / {MagCap} || {Mags} ]");
+            Info("Already reloaded!");
         }
-        else if (Mags <= 0) 
+        else if (Reserves <= 0) 
         {
-            Log.Info($"Out of mags! [{CurrentMagCap} / {MagCap} || {Mags} ]");
+            Info("Out of reserves!");
         } 
         else
         {
-            Mags--;
-            CurrentMagCap = MagCap;
-            Log.Info($"Reloaded! [{CurrentMagCap} / {MagCap} || {Mags} ]");
+            var ammoDiff = MaxAmmo - CurrentAmmo;
+
+            // If ammoDiff is less than reserves, reload full mag.
+            if (ammoDiff <= Reserves)
+            {
+                Reserves -= ammoDiff;
+                CurrentAmmo = MaxAmmo;
+            } 
+            // Else, ammoDiff is greater than reserves, so load mag with whatever is left in reserves.
+            else
+            {
+                CurrentAmmo += Reserves;
+                Reserves -= Reserves;
+            }
+
+            Info("Reloaded!");
         }
+    }
+
+    private void Info(string str)
+    {
+        Log.Info($"{str} [{CurrentAmmo} / {Reserves} ]");
     }
 
 }

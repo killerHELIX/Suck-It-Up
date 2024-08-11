@@ -1,6 +1,6 @@
 ﻿public interface IWeapon 
 {
-	public void fire();
-	public void reload();
+	public void Fire();
+	public void Reload();
 
 }

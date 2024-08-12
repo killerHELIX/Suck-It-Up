@@ -1,11 +1,8 @@
-
-using System.Numerics;
-
 public sealed class FPSWeaponController : Component
 {
 	[Property] public CameraComponent Head { get; set; }
 
-	[Property] public List<Pistol> Weapons { get; set; }
+	[Property] public List<Weapon> Weapons { get; set; }
 
 	[Property] public float WeaponX { get; set; } = 25f;
 	[Property] public float WeaponY { get; set; } = 8f;
@@ -15,46 +12,62 @@ public sealed class FPSWeaponController : Component
 
 	protected override void OnStart()
 	{
-		if ( !IsProxy )
+		if (!IsProxy)
 		{
 			// pass
 		}
 
-		Log.Info("All IWeapon Components in Scene:");
-		var weapons = Scene.GetAllComponents<IWeapon>();
-		foreach (IWeapon weapon in weapons)
+		var weapons = Scene.GetAllComponents<Weapon>();
+		Log.Info($"All Weapon Components in Scene: {weapons}");
+		foreach (Weapon weapon in weapons)
 		{
-			Log.Info($"Simulating pickup of weapon: {weapon}");
-			Weapons.Add(weapon.GameObject.Clone(weapon.Transform.Position + Vector3.Forward * 10).Components.Get<Pistol>());
-			break;
+			if (weapon.Tags.Contains("weapon_template"))
+			{
+				Log.Info($"Simulating pickup of weapon: {weapon}");
+				var clonedWep = weapon.GameObject.Clone(GameObject, Transform.Position, Transform.Rotation, Transform.Scale);
+				clonedWep.Tags.Add("weapon");
+				// Component clonedWepComponent;
+				foreach (Component clonedWeaponComponent in clonedWep.Components.GetAll())
+				{
+					if (clonedWeaponComponent.GetType().IsSubclassOf(typeof(Weapon)))
+					{
+						Log.Info($"Found Weapon extender: {clonedWeaponComponent}");
+						Weapons.Add((Weapon) clonedWeaponComponent);
+					}
+
+				}
+				break;
+			}
 		}
 	}
 
 	protected override void OnUpdate()
 	{
-		if ( !IsProxy )
+		if (!IsProxy)
 		{
 			WeaponInput();
-
-			var weapon = Weapons[0];
-
-			var targetPos = Head.Transform.Position
-				+ (Head.Transform.Rotation.Forward * WeaponX) 
-				+ (Head.Transform.Rotation.Right * WeaponY) 
-				+ (Head.Transform.Rotation.Up * WeaponZ);
-
-
-			weapon.Transform.Position = Vector3.Lerp(weapon.Transform.Position, targetPos, Time.Delta * WeaponSwaySpeed);
-			weapon.Transform.Rotation = Head.Transform.Rotation;
 
 		}
 	}
 
 	private void WeaponInput()
 	{
-		var weapon = Weapons[0];
+		if (Weapons.Any())
+		{
 
-		if ( Input.Pressed( "select" )) weapon.Fire();
-		if ( Input.Pressed( "reload" )) weapon.Reload();
+			var weapon = Weapons[0];
+
+			if (Input.Pressed("select")) weapon.Fire();
+			if (Input.Pressed("reload")) weapon.Reload();
+
+			var targetPos = Head.Transform.Position
+				+ (Head.Transform.Rotation.Forward * WeaponX)
+				+ (Head.Transform.Rotation.Right * WeaponY)
+				+ (Head.Transform.Rotation.Up * WeaponZ);
+
+
+			weapon.Transform.Position = Vector3.Lerp(weapon.Transform.Position, targetPos, Time.Delta * WeaponSwaySpeed);
+			weapon.Transform.Rotation = Head.Transform.Rotation;
+		}
 	}
 }

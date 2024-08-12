@@ -1,5 +1,5 @@
 
-public class Pistol : Weapon
+public class Rifle : Weapon
 {
     public int MaxReserves = 15;
     public int Reserves;
@@ -7,8 +7,8 @@ public class Pistol : Weapon
     public int MaxAmmo = 8;
     public int CurrentAmmo;
 	private SceneTraceResult lastTraceResult;
-    public Pistol(){
-        Log.Info("Instantiated Pistol");
+    public Rifle(){
+        Log.Info("Instantiated Rifle");
         CurrentAmmo = MaxAmmo;
         Reserves = MaxReserves;
     }

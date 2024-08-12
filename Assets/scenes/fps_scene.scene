@@ -72,6 +72,7 @@
       "Flags": 0,
       "Name": "Player",
       "Position": "-3.627136,-30.62734,33.6586",
+      "Tags": "player",
       "Enabled": true,
       "Components": [
         {
@@ -125,7 +126,7 @@
           "IgnoreLayers": "wep",
           "Radius": 16,
           "StepHeight": 18,
-          "UseCollisionRules": false
+          "UseCollisionRules": true
         },
         {
           "__type": "Sandbox.Citizen.CitizenAnimationHelper",
@@ -153,6 +154,7 @@
           "Name": "Body",
           "Position": "0,0,0",
           "Rotation": "0,0,0.0000003894144,-1",
+          "Tags": "playerbody",
           "Enabled": true,
           "Components": [
             {
@@ -178,14 +180,14 @@
             {
               "__type": "Sandbox.CameraComponent",
               "__guid": "ad8755ce-4bda-4e12-8952-a6bc950f4d96",
-              "BackgroundColor": "0.33333,0.46275,0.52157,1",
+              "BackgroundColor": "0.25992,0.51138,0.62791,1",
               "ClearFlags": "All",
               "FieldOfView": 90,
               "IsMainCamera": true,
               "Orthographic": false,
               "OrthographicHeight": 1204,
               "Priority": 1,
-              "RenderExcludeTags": "",
+              "RenderExcludeTags": "playerbody",
               "RenderTags": "",
               "TargetEye": "None",
               "Viewport": "0,0,1,1",
@@ -314,20 +316,30 @@
       ]
     },
     {
+      "__guid": "1bd376df-d447-48dd-9e78-47bc49035a2a",
+      "Flags": 0,
+      "Name": "Pistol",
+      "Position": "-67.22284,112.8264,40.80105",
+      "Enabled": true,
+      "__Prefab": "prefabs/fps/pistol.prefab",
+      "__PrefabVariables": {}
+    },
+    {
       "__guid": "7598e7b4-d52c-4c46-8e77-8916becb6a18",
       "Flags": 0,
       "Name": "PlayerWeapons",
-      "Position": "-67.22284,253.7683,121.4972",
-      "Tags": "wep",
+      "Position": "-67.22284,349.9711,40.14374",
+      "Tags": "weapon_template",
       "Enabled": true,
       "Children": [
         {
-          "__guid": "b0bacc6c-ede5-44d4-926b-8966d3a1bf37",
+          "__guid": "29f4dcb9-bb57-41dc-8243-a73d5409e7f9",
           "Flags": 0,
-          "Name": "Pistol",
+          "Name": "Rifle",
           "Position": "0,0,0",
+          "Scale": "0.4,0.4,0.4",
           "Enabled": true,
-          "__Prefab": "prefabs/fps/pistol.prefab",
+          "__Prefab": "prefabs/fps/rifle.prefab",
           "__PrefabVariables": {}
         }
       ]

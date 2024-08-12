@@ -1,0 +1,30 @@
+{
+  "RootObject": {
+    "__guid": "29f4dcb9-bb57-41dc-8243-a73d5409e7f9",
+    "Flags": 0,
+    "Name": "Rifle",
+    "Position": "0,0,0",
+    "Scale": "0.4,0.4,0.4",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "de99d5ea-87a3-41d5-b20f-a529f1d05a4e",
+        "BodyGroups": 18446744073709551615,
+        "Model": "models/rifle_paperclip.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "Rifle",
+        "__guid": "0429e363-d855-494b-8ae4-dfbd161c20c7"
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

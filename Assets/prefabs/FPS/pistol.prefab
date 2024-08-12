@@ -16,6 +16,28 @@
       {
         "__type": "Pistol",
         "__guid": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2"
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "e486782c-6bbc-42cd-9166-61eb258ad6d7",
+        "Center": "3.499999,0,0.7",
+        "IsTrigger": false,
+        "Scale": "29.90006,2.800005,15.59999",
+        "Static": true
+      },
+      {
+        "__type": "Sandbox.Rigidbody",
+        "__guid": "c9f19364-d231-42e2-92c9-938c735f3c8c",
+        "AngularDamping": 0,
+        "Gravity": true,
+        "LinearDamping": 0,
+        "Locking": {},
+        "MassCenterOverride": "0,0,0",
+        "MassOverride": 0,
+        "MotionEnabled": true,
+        "OverrideMassCenter": false,
+        "RigidbodyFlags": 0,
+        "StartAsleep": false
       }
     ],
     "Children": [],

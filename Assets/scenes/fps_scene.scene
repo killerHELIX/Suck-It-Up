@@ -199,7 +199,8 @@
       "__guid": "7cde79bf-fd6d-408a-b481-1587a71115ac",
       "Flags": 0,
       "Name": "Cube (2)",
-      "Position": "186.8084,-9.017117,98.56784",
+      "Position": "186.8084,-9.017117,124.4092",
+      "Scale": "1,1,2",
       "Enabled": true,
       "Components": [
         {
@@ -313,16 +314,17 @@
       ]
     },
     {
-      "__guid": "1bd376df-d447-48dd-9e78-47bc49035a2a",
+      "__guid": "2d340131-4252-4131-8693-7241c1ec84ff",
       "Flags": 0,
-      "Name": "Pistol",
-      "Position": "-67.22284,112.8264,40.80105",
+      "Name": "Rifle",
+      "Position": "-67.22284,349.9711,40.14374",
+      "Scale": "0.4,0.4,0.4",
       "Enabled": true,
-      "__Prefab": "prefabs/fps/pistol.prefab",
+      "__Prefab": "prefabs/fps/rifle.prefab",
       "__PrefabVariables": {
-        "viewmodelxoffset": 30,
-        "viewmodelyoffset": 7,
-        "viewmodelzoffset": -10
+        "viewmodelxoffset": 25,
+        "viewmodelyoffset": 11,
+        "viewmodelzoffset": -17
       }
     },
     {
@@ -334,17 +336,16 @@
       "Enabled": true,
       "Children": [
         {
-          "__guid": "2d340131-4252-4131-8693-7241c1ec84ff",
+          "__guid": "1bd376df-d447-48dd-9e78-47bc49035a2a",
           "Flags": 0,
-          "Name": "Rifle",
-          "Position": "0,0,0",
-          "Scale": "0.4,0.4,0.4",
+          "Name": "Pistol",
+          "Position": "0,-237.1447,0.6573067",
           "Enabled": true,
-          "__Prefab": "prefabs/fps/rifle.prefab",
+          "__Prefab": "prefabs/fps/pistol.prefab",
           "__PrefabVariables": {
-            "viewmodelxoffset": 25,
-            "viewmodelyoffset": 8,
-            "viewmodelzoffset": -17
+            "viewmodelxoffset": 30,
+            "viewmodelyoffset": 9,
+            "viewmodelzoffset": -10
           }
         }
       ]

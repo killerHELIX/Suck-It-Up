@@ -54,8 +54,14 @@ public sealed class FPSWeaponController : Component
 
 			var weapon = Weapons[0];
 
+
 			if (Input.Pressed("select")) weapon.Fire();
-			if (Input.Pressed("reload")) weapon.Reload();
+
+			if (weapon.GetType().IsSubclassOf(typeof(Gun)))
+			{
+				Gun gun = (Gun) weapon;
+				if (Input.Pressed("reload")) gun.Reload();
+			}
 
 			var targetPos = Head.Transform.Position
 				+ (Head.Transform.Rotation.Forward * weapon.GetViewmodelXOffset())

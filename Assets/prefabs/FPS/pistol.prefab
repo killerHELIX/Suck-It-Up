@@ -15,7 +15,10 @@
       },
       {
         "__type": "Pistol",
-        "__guid": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2"
+        "__guid": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
+        "ViewmodelXOffset": 30,
+        "ViewmodelYOffset": 7,
+        "ViewmodelZOffset": -10
       },
       {
         "__type": "Sandbox.BoxCollider",
@@ -41,7 +44,38 @@
       }
     ],
     "Children": [],
-    "__variables": []
+    "__variables": [
+      {
+        "Id": "viewmodelxoffset",
+        "Title": "viewmodelxoffset",
+        "Targets": [
+          {
+            "Id": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
+            "Property": "ViewmodelXOffset"
+          }
+        ]
+      },
+      {
+        "Id": "viewmodelyoffset",
+        "Title": "viewmodelyoffset",
+        "Targets": [
+          {
+            "Id": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
+            "Property": "ViewmodelYOffset"
+          }
+        ]
+      },
+      {
+        "Id": "viewmodelzoffset",
+        "Title": "viewmodelzoffset",
+        "Targets": [
+          {
+            "Id": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
+            "Property": "ViewmodelZOffset"
+          }
+        ]
+      }
+    ]
   },
   "ShowInMenu": false,
   "MenuPath": null,

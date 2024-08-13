@@ -1,6 +1,9 @@
 
 public class Rifle : Weapon
 {
+	[Property] public float ViewmodelXOffset { get; set; } = 25f;
+	[Property] public float ViewmodelYOffset { get; set; } = 11f;
+	[Property] public float ViewmodelZOffset { get; set; } = -17f;
     public int MaxReserves = 15;
     public int Reserves;
 
@@ -78,5 +81,20 @@ public class Rifle : Weapon
     private void Info(string str)
     {
         Log.Info($"{str} [{CurrentAmmo} / {Reserves} ]");
+    }
+
+    public override float GetViewmodelXOffset()
+    {
+        return ViewmodelXOffset;
+    }
+
+    public override float GetViewmodelYOffset()
+    {
+        return ViewmodelYOffset;
+    }
+
+    public override float GetViewmodelZOffset()
+    {
+        return ViewmodelZOffset;
     }
 }

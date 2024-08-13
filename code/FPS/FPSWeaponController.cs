@@ -4,9 +4,6 @@ public sealed class FPSWeaponController : Component
 
 	[Property] public List<Weapon> Weapons { get; set; }
 
-	[Property] public float WeaponX { get; set; } = 25f;
-	[Property] public float WeaponY { get; set; } = 8f;
-	[Property] public float WeaponZ { get; set; } = -10f;
 	[Property] public float WeaponSwaySpeed { get; set; } = 50f;
 
 
@@ -61,9 +58,9 @@ public sealed class FPSWeaponController : Component
 			if (Input.Pressed("reload")) weapon.Reload();
 
 			var targetPos = Head.Transform.Position
-				+ (Head.Transform.Rotation.Forward * WeaponX)
-				+ (Head.Transform.Rotation.Right * WeaponY)
-				+ (Head.Transform.Rotation.Up * WeaponZ);
+				+ (Head.Transform.Rotation.Forward * weapon.GetViewmodelXOffset())
+				+ (Head.Transform.Rotation.Right * weapon.GetViewmodelYOffset())
+				+ (Head.Transform.Rotation.Up * weapon.GetViewmodelZOffset());
 
 
 			weapon.Transform.Position = Vector3.Lerp(weapon.Transform.Position, targetPos, Time.Delta * WeaponSwaySpeed);

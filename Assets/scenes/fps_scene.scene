@@ -111,10 +111,7 @@
             "component_type": "CameraComponent"
           },
           "Weapons": [],
-          "WeaponSwaySpeed": 50,
-          "WeaponX": 25,
-          "WeaponY": 8,
-          "WeaponZ": -10
+          "WeaponSwaySpeed": 50
         },
         {
           "__type": "Sandbox.CharacterController",
@@ -322,7 +319,11 @@
       "Position": "-67.22284,112.8264,40.80105",
       "Enabled": true,
       "__Prefab": "prefabs/fps/pistol.prefab",
-      "__PrefabVariables": {}
+      "__PrefabVariables": {
+        "viewmodelxoffset": 30,
+        "viewmodelyoffset": 7,
+        "viewmodelzoffset": -10
+      }
     },
     {
       "__guid": "7598e7b4-d52c-4c46-8e77-8916becb6a18",
@@ -333,14 +334,18 @@
       "Enabled": true,
       "Children": [
         {
-          "__guid": "29f4dcb9-bb57-41dc-8243-a73d5409e7f9",
+          "__guid": "2d340131-4252-4131-8693-7241c1ec84ff",
           "Flags": 0,
           "Name": "Rifle",
           "Position": "0,0,0",
           "Scale": "0.4,0.4,0.4",
           "Enabled": true,
           "__Prefab": "prefabs/fps/rifle.prefab",
-          "__PrefabVariables": {}
+          "__PrefabVariables": {
+            "viewmodelxoffset": 25,
+            "viewmodelyoffset": 8,
+            "viewmodelzoffset": -17
+          }
         }
       ]
     }

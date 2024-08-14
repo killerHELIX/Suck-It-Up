@@ -3,8 +3,8 @@ public class Pistol : Gun
     [Property] public float ViewmodelXOffset { get; set; } = 30f;
     [Property] public float ViewmodelYOffset { get; set; } = 9f;
     [Property] public float ViewmodelZOffset { get; set; } = -10f;
-    public static readonly int MAX_RESERVES = 15;
-    public static readonly int MAX_AMMO = 8;
+    public readonly int MAX_RESERVES = 33;
+    public readonly int MAX_AMMO = 8;
 
     public Pistol()
     {

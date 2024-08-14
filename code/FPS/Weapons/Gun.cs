@@ -1,10 +1,16 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Threading;
 
 public abstract class Gun : Weapon
 {
 
     private int CurrentAmmo;
     private int CurrentReserves;
+	private readonly int FIRE_TIME_MS = 500;
+	private readonly int RELOAD_TIME_MS = 5000;
+	private Stopwatch FiringStopwatch = new Stopwatch();
+	private Stopwatch ReloadingStopwatch = new Stopwatch();
 	private SceneTraceResult lastTraceResult;
     public Gun(){
         CurrentAmmo = GetMaxAmmo();
@@ -15,6 +21,7 @@ public abstract class Gun : Weapon
 	{
 		if ( !IsProxy )
 		{
+
             // Debug draw the last projectile fired.
             Gizmo.Draw.SolidSphere(lastTraceResult.EndPosition, 2.0f);
 		}
@@ -29,8 +36,9 @@ public abstract class Gun : Weapon
         {
             Info("Empty!");
         }
-        else
+        else if (CanFire())
         {
+
             CurrentAmmo--;
             Info("Fired!");
 
@@ -45,7 +53,34 @@ public abstract class Gun : Weapon
 			{
 				Log.Info($"Hit: {lastTraceResult.GameObject} at {lastTraceResult.EndPosition}");
 			}
+
+			StartFireCooldown();
         }
+    }
+
+    private void StartFireCooldown()
+    {
+		FiringStopwatch.Start();
+    }
+
+    private bool CanFire()
+    {
+		var firingMsElapsed = FiringStopwatch.ElapsedMilliseconds;
+		var reloadingMsElapsed = ReloadingStopwatch.ElapsedMilliseconds;
+		Log.Info($"Fire cooldown: {firingMsElapsed}ms / {FIRE_TIME_MS}ms");
+
+		var isFiring = firingMsElapsed != 0 && firingMsElapsed < FIRE_TIME_MS;
+		var isReloading = reloadingMsElapsed != 0 && reloadingMsElapsed < RELOAD_TIME_MS;
+
+        if (!isFiring && !isReloading)
+		{
+			FiringStopwatch.Reset();
+			Log.Info("Can Fire");
+			return true;
+		}
+
+		Log.Info("Cannot Fire");
+		return false;
     }
 
     // HL2 Style reloading. Pool of reserve bullets that refill a fixed magazine size. 
@@ -59,7 +94,7 @@ public abstract class Gun : Weapon
         {
             Info("Out of reserves!");
         }
-        else
+        else if (CanReload())
         {
             var ammoDiff = GetMaxAmmo() - CurrentAmmo;
 
@@ -77,7 +112,32 @@ public abstract class Gun : Weapon
             }
 
             Info("Reloaded!");
+			StartReloadCooldown();
         }
+    }
+
+    private bool CanReload()
+    {
+		var reloadingMsElapsed = ReloadingStopwatch.ElapsedMilliseconds;
+		Log.Info($"Reload cooldown: {reloadingMsElapsed}ms / {RELOAD_TIME_MS}ms");
+
+		var isReloading = reloadingMsElapsed != 0 && reloadingMsElapsed < RELOAD_TIME_MS;
+
+        if (!isReloading)
+		{
+			ReloadingStopwatch.Reset();
+			Log.Info("Can Reload");
+			return true;
+		}
+
+		Log.Info("Cannot Reload");
+		return false;
+    }
+
+
+    private void StartReloadCooldown()
+    {
+		ReloadingStopwatch.Start();
     }
 
     protected void Info(string str)

@@ -7,7 +7,6 @@ public abstract class Gun : Weapon
     private int CurrentReserves;
 	private SceneTraceResult lastTraceResult;
     public Gun(){
-        Log.Info("Instantiated Gun");
         CurrentAmmo = GetMaxAmmo();
         CurrentReserves = GetMaxReserves();
     }
@@ -36,20 +35,16 @@ public abstract class Gun : Weapon
             Info("Fired!");
 
             float dist = 10000.0f;
-            // Shoot bullets directly out of the eyes (camera) of the parent (player)
             var cam = GameObject.Parent.Components.GetInChildren<CameraComponent>();
-            Log.Info(cam);
-            if (cam != null)
-            {
-                Log.Info("xxxxxxxxxxx");
-                var origin = cam.Transform.Position;
-                lastTraceResult = Scene.Trace.Ray(new Ray(origin, Transform.Rotation.Forward * dist), dist).Run();
 
-                if (lastTraceResult.Hit)
-                {
-                    Log.Info($"Hit: {lastTraceResult.GameObject} at {lastTraceResult.EndPosition}");
-                }
-            }
+			// If the parent has a camera (e.g. a Player) shoot out of that. Otherwise shoot out of this gun directly.
+			var origin = (cam != null) ? cam.Transform.Position : cam.Transform.Position;
+			lastTraceResult = Scene.Trace.Ray(new Ray(origin, Transform.Rotation.Forward * dist), dist).Run();
+
+			if (lastTraceResult.Hit)
+			{
+				Log.Info($"Hit: {lastTraceResult.GameObject} at {lastTraceResult.EndPosition}");
+			}
         }
     }
 

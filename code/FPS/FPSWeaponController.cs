@@ -15,7 +15,6 @@ public sealed class FPSWeaponController : Component
 		}
 
 		var weapons = Scene.GetAllComponents<Weapon>();
-		Log.Info($"All Weapon Components in Scene: {weapons}");
 		foreach (Weapon weapon in weapons)
 		{
 			if (weapon.Tags.Contains("weapon_template"))
@@ -28,7 +27,6 @@ public sealed class FPSWeaponController : Component
 				{
 					if (clonedWeaponComponent.GetType().IsSubclassOf(typeof(Weapon)))
 					{
-						Log.Info($"Found Weapon extender: {clonedWeaponComponent}");
 						Weapons.Add((Weapon) clonedWeaponComponent);
 					}
 

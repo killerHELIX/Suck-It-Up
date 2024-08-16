@@ -3,7 +3,7 @@ using Sandbox.Citizen;
 public sealed class FPSPlayerMover : Component
 {
 	[Property] public CharacterController CharacterController { get; set; }
-	[Property] public float CrouchMoveSpeed { get; set; } = 64.0f;
+	[Property] public float CrouchMoveSpeed { get; set; } = 90.0f;
 	[Property] public float WalkMoveSpeed { get; set; } = 190.0f;
 	[Property] public float RunMoveSpeed { get; set; } = 190.0f;
 	[Property] public float SprintMoveSpeed { get; set; } = 320.0f;

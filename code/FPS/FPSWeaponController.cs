@@ -17,20 +17,22 @@ public sealed class FPSWeaponController : Component
 		var weapons = Scene.GetAllComponents<Weapon>();
 		foreach (Weapon weapon in weapons)
 		{
-			if (weapon.Tags.Contains("weapon_template"))
+			if (weapon.Tags.Contains("weapon"))
 			{
-				Log.Info($"Simulating pickup of weapon: {weapon}");
-				var clonedWep = weapon.GameObject.Clone(GameObject, Transform.Position, Transform.Rotation, Transform.Scale);
-				clonedWep.Tags.Add("weapon");
-				// Component clonedWepComponent;
-				foreach (Component clonedWeaponComponent in clonedWep.Components.GetAll())
-				{
-					if (clonedWeaponComponent.GetType().IsSubclassOf(typeof(Weapon)))
-					{
-						Weapons.Add((Weapon) clonedWeaponComponent);
-					}
+				// Log.Info($"Simulating pickup of weapon: {weapon}");
+				// var clonedWep = weapon.GameObject.Clone(GameObject, Transform.Position, Transform.Rotation, Transform.Scale);
+				// clonedWep.Tags.Add("playerweapon");
+				// foreach (Component clonedWeaponComponent in clonedWep.Components.GetAll())
+				// {
+				// 	if (clonedWeaponComponent.GetType().IsSubclassOf(typeof(Weapon)))
+				// 	{
+				// 		var wep = (Weapon) clonedWeaponComponent;
+				// 		wep.Components.Get<Rigidbody>().Enabled = false;
 
-				}
+				// 		Weapons.Add(wep);
+				// 	}
+
+				// }
 				break;
 			}
 		}

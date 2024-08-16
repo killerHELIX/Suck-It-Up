@@ -20,6 +20,28 @@
         "ViewmodelXOffset": 25,
         "ViewmodelYOffset": 11,
         "ViewmodelZOffset": -17
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "ce8c45fa-5fd1-43ab-a9df-a26d1071c877",
+        "Center": "26.20002,5.600001,5.799997",
+        "IsTrigger": false,
+        "Scale": "244.9998,16.49999,41.90004",
+        "Static": false
+      },
+      {
+        "__type": "Sandbox.Rigidbody",
+        "__guid": "7e94ff15-91c9-43ea-9514-90b7b052d408",
+        "AngularDamping": 0,
+        "Gravity": true,
+        "LinearDamping": 0,
+        "Locking": {},
+        "MassCenterOverride": "0,0,0",
+        "MassOverride": 0,
+        "MotionEnabled": true,
+        "OverrideMassCenter": false,
+        "RigidbodyFlags": 0,
+        "StartAsleep": false
       }
     ],
     "Children": [],

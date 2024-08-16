@@ -90,7 +90,7 @@
             "go": "efc693fb-5bfa-4989-8a6a-08bc87d5abde",
             "component_type": "CharacterController"
           },
-          "CrouchMoveSpeed": 64,
+          "CrouchMoveSpeed": 90,
           "Head": {
             "_type": "component",
             "component_id": "ad8755ce-4bda-4e12-8952-a6bc950f4d96",
@@ -142,6 +142,36 @@
             "go": "335c2a91-3158-4479-98d3-2984fe7dc63c",
             "component_type": "SkinnedModelRenderer"
           }
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "bb355d1a-075d-42a5-89e5-7cf0d8794811",
+          "Center": "0,0,31.79997",
+          "IsTrigger": false,
+          "Scale": "28.89997,38.09999,65.20006",
+          "Static": false
+        },
+        {
+          "__type": "Sandbox.Rigidbody",
+          "__guid": "4f34d16b-c790-47bf-b49f-97adaf926b35",
+          "__enabled": false,
+          "AngularDamping": 0,
+          "Gravity": false,
+          "LinearDamping": 0,
+          "Locking": {
+            "X": true,
+            "Y": true,
+            "Z": true,
+            "Pitch": true,
+            "Yaw": true,
+            "Roll": true
+          },
+          "MassCenterOverride": "0,0,0",
+          "MassOverride": 0,
+          "MotionEnabled": false,
+          "OverrideMassCenter": false,
+          "RigidbodyFlags": 0,
+          "StartAsleep": false
         }
       ],
       "Children": [
@@ -314,32 +344,32 @@
       ]
     },
     {
-      "__guid": "2d340131-4252-4131-8693-7241c1ec84ff",
-      "Flags": 0,
-      "Name": "Rifle",
-      "Position": "-67.22284,349.9711,40.14374",
-      "Scale": "0.4,0.4,0.4",
-      "Enabled": true,
-      "__Prefab": "prefabs/fps/rifle.prefab",
-      "__PrefabVariables": {
-        "viewmodelxoffset": 25,
-        "viewmodelyoffset": 11,
-        "viewmodelzoffset": -17
-      }
-    },
-    {
       "__guid": "7598e7b4-d52c-4c46-8e77-8916becb6a18",
       "Flags": 0,
       "Name": "PlayerWeapons",
       "Position": "-67.22284,349.9711,40.14374",
-      "Tags": "weapon_template",
+      "Tags": "weapon",
       "Enabled": true,
       "Children": [
+        {
+          "__guid": "2d340131-4252-4131-8693-7241c1ec84ff",
+          "Flags": 0,
+          "Name": "Rifle",
+          "Position": "0,0,0",
+          "Scale": "0.4,0.4,0.4",
+          "Enabled": true,
+          "__Prefab": "prefabs/fps/rifle.prefab",
+          "__PrefabVariables": {
+            "viewmodelxoffset": 25,
+            "viewmodelyoffset": 11,
+            "viewmodelzoffset": -17
+          }
+        },
         {
           "__guid": "1bd376df-d447-48dd-9e78-47bc49035a2a",
           "Flags": 0,
           "Name": "Pistol",
-          "Position": "0,-237.1447,0.6573067",
+          "Position": "0,-237.1447,33.95318",
           "Enabled": true,
           "__Prefab": "prefabs/fps/pistol.prefab",
           "__PrefabVariables": {

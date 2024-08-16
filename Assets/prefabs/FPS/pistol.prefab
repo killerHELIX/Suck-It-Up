@@ -26,7 +26,7 @@
         "Center": "3.499999,0,0.7",
         "IsTrigger": false,
         "Scale": "29.90006,2.800005,15.59999",
-        "Static": true
+        "Static": false
       },
       {
         "__type": "Sandbox.Rigidbody",

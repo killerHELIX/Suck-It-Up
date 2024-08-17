@@ -9,6 +9,8 @@ using System.Threading;
 public class PlayerUnitControl : Component
 {
 	const float CLICK_TIME = 0.1f;
+	const int INITIAL_UNIT_CIRCLE_NUMBER = 6;
+	const float INITIAL_UNIT_CIRCLE_DISTANCE = 30f;
 
 	[Property]	RTSCamComponent RTSCam {  get; set; }
 	[Property] SelectionPanel selectionPanel { get; set; }
@@ -228,6 +230,18 @@ public class PlayerUnitControl : Component
 					moveTarget = tr.EndPosition;
 				}
 			}
+			// Prep grouping algorithm real quick if necessary
+			List<Vector3> positionList = null;
+			if(commandType == UnitModelUtils.CommandType.Move)
+			{
+				positionList = generateMassedUnitPositions(moveTarget, SelectedObjects.Count());
+				RTSPlayer.Local.LocalGame.GameCommandIndicator.PlayMoveIndicatorHere(moveTarget);
+			}
+			else
+			{
+				RTSPlayer.Local.LocalGame.GameCommandIndicator.PlayAttackIndicatorHere(commandTarget.GameObject);
+			}
+			int unitNum = 0;
 			// Issue Command
 			foreach ( var unit in SelectedObjects )
 			{
@@ -236,16 +250,16 @@ public class PlayerUnitControl : Component
 					switch(commandType)
 					{
 						case UnitModelUtils.CommandType.Move:
-							((Unit)unit).setMoveCommand(moveTarget);
-							RTSPlayer.Local.LocalGame.GameCommandIndicator.PlayMoveIndicatorHere(moveTarget);
+							Log.Info("Unit Number " + unitNum + " moving to position: " + positionList.ElementAt(unitNum));
+							((Unit)unit).setMoveCommand(positionList.ElementAt(unitNum));
 							break;
 						case UnitModelUtils.CommandType.Attack:
 							((Unit)unit).setAttackCommand(commandTarget);
-							RTSPlayer.Local.LocalGame.GameCommandIndicator.PlayAttackIndicatorHere( commandTarget.GameObject );
 							break;
 					}
 					//((Unit)unit).commandGiven = commandType;
 				}
+				unitNum++;
 			}
 		}
 
@@ -282,5 +296,47 @@ public class PlayerUnitControl : Component
 	private void stopDrawSelectionRect()
 	{
 		selectionPanel.Enabled = false;
+	}
+
+	private List<Vector3> generateMassedUnitPositions(Vector3 initialPoint, int numberOfUnits)
+	{
+		List<Vector3> positionList = new List<Vector3>();
+		// Assign initial point
+		positionList.Add( initialPoint );
+		// Set up initial loop vars
+		int currentCircle = 0;
+		int currentUnitsInCircle = 0;
+		float totalUnitsInThisCircle = INITIAL_UNIT_CIRCLE_NUMBER;
+		float currentCircleAngleDifference = 360 / totalUnitsInThisCircle;
+		float currentCircleDistance = INITIAL_UNIT_CIRCLE_DISTANCE * (currentCircle + 1);
+		Log.Info("Circle " + currentCircle + ": Total Units=" + totalUnitsInThisCircle + ", Angle Difference=" + currentCircleAngleDifference + ", Distance=" + currentCircleDistance);
+		for (int i = 0; i < numberOfUnits; i++)
+		{
+			// Calculate new position
+			Vector3 currentUnitPosition = (new Vector3(initialPoint.x + currentCircleDistance, initialPoint.y, initialPoint.z)).RotateAround(initialPoint, Rotation.FromYaw(currentCircleAngleDifference * currentUnitsInCircle));
+
+			positionList.Add(currentUnitPosition);
+			currentUnitsInCircle++;
+
+			// If the circle is filled, move on to the next circle and set up the vars for that circle
+			if(currentUnitsInCircle == totalUnitsInThisCircle)
+			{
+				currentCircle++;
+				currentUnitsInCircle = 0;
+				totalUnitsInThisCircle = totalUnitsInThisCircle * 2;
+
+				var unitsLeft = numberOfUnits - i + 1;
+				// Make the group look a little less lopsided when there are only a small number of leftover units
+				if(unitsLeft < totalUnitsInThisCircle)
+				{
+					totalUnitsInThisCircle = unitsLeft;
+				}
+				currentCircleAngleDifference = 360 / totalUnitsInThisCircle;
+				currentCircleDistance = INITIAL_UNIT_CIRCLE_DISTANCE * (currentCircle + 1);
+				Log.Info("Circle " + currentCircle + ": Total Units=" + totalUnitsInThisCircle + ", Angle Difference=" + currentCircleAngleDifference + ", Distance=" + currentCircleDistance);
+			}
+		}
+
+		return positionList;
 	}
 }

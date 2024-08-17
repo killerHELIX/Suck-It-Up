@@ -69,13 +69,13 @@ class SIUUnit : Unit
 		// Move To closeby enemy that we can see
 		else if (tempTargetObject != null && tempTargetObject.isAlive)
 		{
-			Log.Info("Chasing seen unit " + this.GameObject);
+			//Log.Info("Chasing seen unit " + this.GameObject);
 			homeTargetLocation = tempTargetObject.Transform.Position;
 			move(homeTargetLocation, false);
 		}
 		else
 		{
-			Log.Info("Lost unit, continuing to last known location " + this.GameObject);
+			//Log.Info("Lost unit, continuing to last known location " + this.GameObject);
 			//stopMoving();
 		}
 

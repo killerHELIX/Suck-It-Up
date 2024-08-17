@@ -21,6 +21,27 @@ public class PlayerUnitControl : Component
 	private float startSelectTime { get; set; }
 	private Vector2 endRectPos { get; set; }
 
+	public void unitHasDied(Unit deadUnit)
+	{
+		// Update the HUD, if necessary
+		if (SelectedObjects.Contains(deadUnit))
+		{
+			if(SelectedObjects.Count > 2)
+			{
+				RTSPlayer.Local.LocalGame.GameHud.setSelectionVars(true, false, false);
+			}
+			else if(SelectedObjects.Count == 2)
+			{
+				RTSPlayer.Local.LocalGame.GameHud.setSelectionVars(true, true, false);
+			}
+			else
+			{
+				RTSPlayer.Local.LocalGame.GameHud.setSelectionVars(false, false, false);
+			}
+			SelectedObjects.Remove(deadUnit);
+		}
+	}
+
 	protected override void OnStart()
 	{
 		if (Network.IsProxy)

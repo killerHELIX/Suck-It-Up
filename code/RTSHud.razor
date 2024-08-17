@@ -83,19 +83,19 @@
 		{
 			return "Health: " + getUnitHealthString(focusedUnit);
 		}
-		return "";
+		return " ";
 	}
 
 	public string getUnitHealthString(SelectableObject unit)
 	{
-		if(unit.Tags.Has("unit"))
+		if(unit.Tags.Has("unit") && unit != null)
 		{
 			//var specificUnit = (SkinnedModelRenderer)unit;
 			return ((SkinnedRTSObject)unit).currentHealthPoints + "/" + ((SkinnedRTSObject)unit).MaxHealth;
 		}
 		else
 		{
-			return "";
+			return " ";
 		}
 	}
 
@@ -154,17 +154,17 @@
 					}
 
 					/*if (isUnitInAttackStance)
-					{
+						{
 						unitStanceButton.setButtonState(AttackStanceImagePath);
 					}
 					else
-					{
+						{
 						unitStanceButton.setButtonState(DefendStanceImagePath);
 					}*/
 				}
 				else
 				{
-
+					focusedUnit = null;
 				}
 			}
 			else

@@ -238,6 +238,7 @@ class SIUUnit : Unit
 	public override void die()
 	{
 		//Log.Info( this.GameObject.Name + " dies!" );
+		RTSPlayer.Local.UnitControl.unitHasDied(this);
 		PhysicalModelRenderer.animateDeath();
 		UnitNavAgent.Enabled = false;
 		UnitMeleeCollider.Enabled = false;
@@ -254,27 +255,6 @@ class SIUUnit : Unit
 
 		//This will be fully destroyed later when the corpse dissapears
 		PhysicalModelRenderer.addToCorpsePile();
-	}
-
-	public void move(Vector3 location, bool isNewMoveCommand)
-	{
-		if (!Network.IsOwner) { return; }
-		if (location != UnitNavAgent.TargetPosition)
-		{
-			if (isNewMoveCommand || Time.Now - lastMoveOrderTime >= MOVE_ORDER_FREQUENCY)
-			{
-				lastMoveOrderTime = Time.Now;
-				//Log.Info( "Move Command Sent: " + UnitNavAgent.TargetPosition );
-				UnitNavAgent.MoveTo(location);
-			}
-		}
-	}
-
-	public void stopMoving()
-	{
-		if (!Network.IsOwner) { return; }
-		homeTargetLocation = Transform.Position;
-		UnitNavAgent.Stop();
 	}
 
 	[Broadcast]

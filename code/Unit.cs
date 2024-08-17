@@ -1,7 +1,7 @@
 ﻿using Sandbox;
 using System;
 
-class Unit : SkinnedRTSObject
+public class Unit : SkinnedRTSObject
 {
 	[Group( "Gameplay" )]
 	[Property] public float UnitSpeed { get; set; }

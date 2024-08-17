@@ -8,6 +8,8 @@ class SIUUnit : Unit
 	private float maxChaseDistanceFromHome = 600f;
 	private float lastMeleeTime = Time.Now;
 	private float lastMoveOrderTime = Time.Now;
+	private Vector3 oldPosition = new Vector3();
+	private float stuckTime = -1;
 
 	private DynamicToggleButton unitStanceButton;
 
@@ -20,6 +22,12 @@ class SIUUnit : Unit
 	private const float NAV_AGENT_RAD_MULTIPLIER = .5f;
 	private const float CLICK_HITBOX_RADIUS_MULTIPLIER = .5f;
 	private const float GLOBAL_UNIT_SCALE = .1f;
+
+	// Nav Constant
+	private const float MAX_STUCK_TIME = 5f;
+	private const float CLOSE_ENOUGH_TIME = .5f;
+	private const float CLOSE_ENOUGH_DISTANCE = .5f;
+	private const float STUCK_DISTANCE = .1f;
 
 	private const string AttackStanceImagePath = "materials/attack_stance.png";
 	private const string DefendStanceImagePath = "materials/defend_stance.png";
@@ -38,14 +46,41 @@ class SIUUnit : Unit
 				// Move Command
 				if (commandGiven == UnitModelUtils.CommandType.Move)
 				{
+					oldPosition = Transform.Position;
+					stuckTime = -1;
 					move(homeTargetLocation, true);
 				}
 			}
 			else
 			{
-				if(Transform.Position.Distance(homeTargetLocation) < 3)
+				//Log.Info(Transform.Position.Distance(homeTargetLocation) + ", " + oldPosition.Distance(Transform.Position) + ", " + (Time.Now - stuckTime));
+				if (oldPosition.Distance(Transform.Position) >= STUCK_DISTANCE)
 				{
-					commandGiven = UnitModelUtils.CommandType.None;
+					oldPosition = Transform.Position;
+				}
+				// We are probably stuck
+				else
+				{
+					if(stuckTime < 0)
+					{
+						stuckTime = Time.Now;
+					}
+					// If stuck for 3 seconds but close to target, consider yourself there
+					else if (Time.Now - stuckTime > CLOSE_ENOUGH_TIME && Transform.Position.Distance(homeTargetLocation) < CLOSE_ENOUGH_DISTANCE)
+					{
+						stuckTime = -1;
+						//Log.Info("Made it Vaguely to the correct spot");
+						commandGiven = UnitModelUtils.CommandType.None;
+						stopMoving();
+					}
+					// Give up after being stuck for 5 seconds
+					else if(Time.Now - stuckTime > MAX_STUCK_TIME)
+					{
+						stuckTime = -1;
+						//Log.Info("Unit stuck, stopping");
+						commandGiven = UnitModelUtils.CommandType.None;
+						stopMoving();
+					}
 				}
 			}
 			// These commands don't care whether they are new or old
@@ -75,7 +110,7 @@ class SIUUnit : Unit
 		}
 		else
 		{
-			//Log.Info("Lost unit, continuing to last known location " + this.GameObject);
+			//Log.Info("Lost unit or no target, continuing to last known location " + this.GameObject);
 			//stopMoving();
 		}
 
@@ -121,7 +156,7 @@ class SIUUnit : Unit
 				if (collidersInAutoMeleeRange.Where(col => col.Tags.Has(UNIT_TAG)).Any())
 				{
 					// Select only melee colliders
-					foreach (var collision in collidersInAutoMeleeRange)
+					foreach (var collision in collidersInAutoMeleeRange.Where(col => col.Tags.Has(UNIT_TAG)))
 					{
 						var unitCollidedWith = collision.GameObject.Components.GetAll().OfType<Unit>().First();
 						// If it is a unit of the opposite team
@@ -133,10 +168,10 @@ class SIUUnit : Unit
 							var sightRayTrace = sightRay.RunAll();
 							if (sightRayTrace.Any())
 							{
-								foreach (var hit in sightRayTrace)
-								{
-									Log.Info(hit.GameObject);
-								}
+								//foreach (var hit in sightRayTrace)
+								//{
+								//	Log.Info(hit.GameObject);
+								//}
 								// I can see it
 								if (sightRayTrace.First().GameObject == unitCollidedWith.GameObject)
 								{
@@ -163,7 +198,7 @@ class SIUUnit : Unit
 				var sightRay = Scene.Trace.Ray(Transform.Position, tempTargetObject.Transform.Position);
 				sightRay.UseHitboxes(true);
 				var sightRayTrace = sightRay.RunAll();
-				Log.Info(sightRayTrace.Count());
+				//Log.Info(sightRayTrace.Count());
 				if (sightRayTrace.Any())
 				{
 					// I can see it

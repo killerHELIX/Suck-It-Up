@@ -234,10 +234,11 @@ public class PlayerUnitControl : Component
 			List<Vector3> positionList = null;
 			if(commandType == UnitModelUtils.CommandType.Move)
 			{
+				// Theres some bug here that generates extra selected units somehow
 				positionList = generateMassedUnitPositions(moveTarget, SelectedObjects.Count());
 				RTSPlayer.Local.LocalGame.GameCommandIndicator.PlayMoveIndicatorHere(moveTarget);
 			}
-			else
+			else if(commandType == UnitModelUtils.CommandType.Attack)
 			{
 				RTSPlayer.Local.LocalGame.GameCommandIndicator.PlayAttackIndicatorHere(commandTarget.GameObject);
 			}

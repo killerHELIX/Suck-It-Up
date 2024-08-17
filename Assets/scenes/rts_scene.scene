@@ -188,7 +188,7 @@
           "UnitPortraitImage": "materials/skeltal_portrait.PNG",
           "UnitPrefab": {
             "_type": "gameobject",
-            "prefab": "prefabs/skeltal.prefab"
+            "prefab": "prefabs/siu_skeltal.prefab"
           }
         },
         {

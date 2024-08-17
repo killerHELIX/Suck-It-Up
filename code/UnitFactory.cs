@@ -7,16 +7,16 @@
 		if (RTSPlayer.Local.Team == 0)
 		{
 			//Friendly Group
-			spawnUnit(RTSPlayer.Local.skeltalPrefab, 0, new Vector3(607.9f, 1004.7f, 93.609f));
-			spawnUnit(RTSPlayer.Local.skeltalPrefab, 0, new Vector3(715.14f, 1004.7f, 99.609f));
-			spawnUnit(RTSPlayer.Local.skeltalPrefab, 0, new Vector3(689.9f, 1023.7f, 99.609f));
-			spawnUnit(RTSPlayer.Local.skeltalPrefab, 0, new Vector3(689.9f, 981.7f, 99.609f));
-			spawnUnit(RTSPlayer.Local.skeltalPrefab, 0, new Vector3(665.9f, 1004.7f, 99.609f));
+			//spawnUnit(RTSPlayer.Local.skeltalPrefab, 0, new Vector3(607.9f, 1004.7f, 93.609f));
+			//spawnUnit(RTSPlayer.Local.skeltalPrefab, 0, new Vector3(715.14f, 1004.7f, 99.609f));
+			//spawnUnit(RTSPlayer.Local.skeltalPrefab, 0, new Vector3(689.9f, 1023.7f, 99.609f));
+			//spawnUnit(RTSPlayer.Local.skeltalPrefab, 0, new Vector3(689.9f, 981.7f, 99.609f));
+			//spawnUnit(RTSPlayer.Local.skeltalPrefab, 0, new Vector3(665.9f, 1004.7f, 99.609f));
 			//Unfriendly Group
-			spawnUnit(RTSPlayer.Local.skeltalPrefab, 1, new Vector3(894f, 1127f, 98f));
-			spawnUnit(RTSPlayer.Local.skeltalPrefab, 1, new Vector3(716f, 1253f, 98f));
-			spawnUnit(RTSPlayer.Local.skeltalPrefab, 1, new Vector3(733f, 1274f, 98f));
-			spawnUnit(RTSPlayer.Local.skeltalPrefab, 1, new Vector3(753f, 1253f, 98f));
+			//spawnUnit(RTSPlayer.Local.skeltalPrefab, 1, new Vector3(894f, 1127f, 98f));
+			//spawnUnit(RTSPlayer.Local.skeltalPrefab, 1, new Vector3(716f, 1253f, 98f));
+			//spawnUnit(RTSPlayer.Local.skeltalPrefab, 1, new Vector3(733f, 1274f, 98f));
+			//spawnUnit(RTSPlayer.Local.skeltalPrefab, 1, new Vector3(753f, 1253f, 98f));
 			spawnUnit(RTSPlayer.Local.skeltalPrefab, 1, new Vector3(733f, 1231f, 98f));
 
 			//TEST CODE

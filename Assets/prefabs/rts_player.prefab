@@ -28,7 +28,7 @@
         },
         "skeltalPrefab": {
           "_type": "gameobject",
-          "prefab": "prefabs/skeltal.prefab"
+          "prefab": "prefabs/siu_skeltal.prefab"
         }
       },
       {

@@ -236,15 +236,15 @@ public class PlayerUnitControl : Component
 					switch(commandType)
 					{
 						case UnitModelUtils.CommandType.Move:
-							((Unit)unit).homeTargetLocation = moveTarget;
+							((Unit)unit).setMoveCommand(moveTarget);
 							RTSPlayer.Local.LocalGame.GameCommandIndicator.PlayMoveIndicatorHere(moveTarget);
 							break;
 						case UnitModelUtils.CommandType.Attack:
-							((Unit)unit).targetObject = commandTarget;
+							((Unit)unit).setAttackCommand(commandTarget);
 							RTSPlayer.Local.LocalGame.GameCommandIndicator.PlayAttackIndicatorHere( commandTarget.GameObject );
 							break;
 					}
-					((Unit)unit).commandGiven = commandType;
+					//((Unit)unit).commandGiven = commandType;
 				}
 			}
 		}

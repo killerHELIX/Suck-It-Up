@@ -14,6 +14,8 @@
 			spawnUnit(RTSPlayer.Local.skeltalPrefab, 0, new Vector3(665.9f, 1004.7f, 99.609f));
 			//Unfriendly Group
 			spawnUnit(RTSPlayer.Local.skeltalPrefab, 1, new Vector3(894f, 1127f, 98f));
+			spawnUnit(RTSPlayer.Local.skeltalPrefab, 1, new Vector3(894f, 1127f, 98f));
+			spawnUnit(RTSPlayer.Local.skeltalPrefab, 1, new Vector3(894f, 1127f, 98f));
 			spawnUnit(RTSPlayer.Local.skeltalPrefab, 1, new Vector3(716f, 1253f, 98f));
 			spawnUnit(RTSPlayer.Local.skeltalPrefab, 1, new Vector3(733f, 1274f, 98f));
 			spawnUnit(RTSPlayer.Local.skeltalPrefab, 1, new Vector3(753f, 1253f, 98f));

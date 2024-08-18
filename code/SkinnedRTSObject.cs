@@ -1,5 +1,6 @@
 ﻿
 using Sandbox.UI;
+using System;
 using System.Drawing;
 
 public class SkinnedRTSObject : SelectableObject, IScalable, IDamageable, ISelectable
@@ -18,6 +19,7 @@ public class SkinnedRTSObject : SelectableObject, IScalable, IDamageable, ISelec
 
 	// Class Vars
 	bool selected { get; set; }
+	public bool isAlive = true;
 
 	[Sync] public int currentHealthPoints { get; private set; }
 
@@ -33,7 +35,7 @@ public class SkinnedRTSObject : SelectableObject, IScalable, IDamageable, ISelec
 		PhysicalModelRenderer.setModel( ModelFile, AnimGraph, ModelMaterial );
 		onTeamChange();
 		Tags.Add( objectTypeTag );
-		if (!Network.IsOwner) { return; }
+		if (!Network.IsOwner && Network.OwnerId != Guid.Empty) { return; }
 		setHealth(MaxHealth);
 	}
 
@@ -112,6 +114,13 @@ public class SkinnedRTSObject : SelectableObject, IScalable, IDamageable, ISelec
 
 	public void onTeamChange()
 	{
+		if(RTSPlayer.Local == null)
+		{
+			PhysicalModelRenderer.setOutlineState(UnitModelUtils.OutlineState.Neutral);
+			ThisHealthBar.setBarColor("#ffffff");
+			ThisHealthBar.setShowHealthBar(false);
+			return;
+		}
 		if (team == RTSPlayer.Local.Team)
 		{
 			PhysicalModelRenderer.setOutlineState(UnitModelUtils.OutlineState.Mine);

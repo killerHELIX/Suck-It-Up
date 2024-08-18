@@ -1,7 +1,7 @@
 ﻿using Sandbox;
 using System;
 
-class Unit : SkinnedRTSObject
+public class Unit : SkinnedRTSObject
 {
 	[Group( "Gameplay" )]
 	[Property] public float UnitSpeed { get; set; }
@@ -43,6 +43,8 @@ class Unit : SkinnedRTSObject
 	private float lastMeleeTime = Time.Now;
 	private float lastMoveOrderTime = Time.Now;
 	public bool isInAttackMode = true;
+	protected bool hasReachedMoveTarget = true;
+	protected bool isNewCommand = false;
 
 	private DynamicToggleButton unitStanceButton;
 
@@ -67,7 +69,8 @@ class Unit : SkinnedRTSObject
 		homeTargetLocation = Transform.Position;
 		unitStanceButton = new DynamicToggleButton('x', AttackStanceImagePath, DefendStanceImagePath, stanceButtonClicked);
 		buttons.Add(unitStanceButton);
-
+		UnitNavAgent.MaxSpeed = UnitSpeed;
+		UnitNavAgent.Acceleration = UnitSpeed * 10;
 	}
 
 	protected override void OnUpdate()
@@ -249,6 +252,7 @@ class Unit : SkinnedRTSObject
 		ThisHealthBar.Enabled = false;
 		ThisHealthBar.setEnabled( false );
 		PhysicalModelRenderer.baseStand.setEnabled( false );
+		isAlive = false;
 		Enabled = false;
 
 		//This will be fully destroyed later when the corpse dissapears
@@ -350,5 +354,20 @@ class Unit : SkinnedRTSObject
 			setIsInAttackMode(true);
 		}
 		unitStanceButton.toggleButtonState();
+	}
+
+	public void setMoveCommand(Vector3 targetLocation)
+	{
+		commandGiven = UnitModelUtils.CommandType.Move;
+		hasReachedMoveTarget = false;
+		isNewCommand = true;
+		homeTargetLocation = targetLocation;
+	}
+
+	public void setAttackCommand(SkinnedRTSObject newTargetObject)
+	{
+		commandGiven = UnitModelUtils.CommandType.Attack;
+		isNewCommand= true;
+		targetObject = newTargetObject;
 	}
 }

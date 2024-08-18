@@ -31,6 +31,7 @@
         "RangedAttackDamage": 0,
         "RangedAttackRange": 0,
         "RangedAttackSpeed": 0,
+        "ResourceCost": 5,
         "SelectionHitbox": {
           "_type": "component",
           "component_id": "888dcc93-d954-4ef0-80dd-6fee84807de2",
@@ -489,7 +490,18 @@
         ]
       }
     ],
-    "__variables": []
+    "__variables": [
+      {
+        "Id": "resourceCost",
+        "Title": "resourceCost",
+        "Targets": [
+          {
+            "Id": "f6b986cc-f1e3-434f-a9a6-2650d14ad66e",
+            "Property": "ResourceCost"
+          }
+        ]
+      }
+    ]
   },
   "ShowInMenu": false,
   "MenuPath": null,

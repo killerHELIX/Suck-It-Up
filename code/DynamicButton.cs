@@ -14,9 +14,9 @@ public class DynamicButton
 	public Action thisButtonAction { get; set; }
 	public bool isEnabled { get; set; }
 
-	private string isEnabledStyleString = BUTTON_ENABLED_STYLE;
-	private string buttonPointerEventsString = BUTTON_EVENTS_ENABLED_STYLE;
-	private string isEnabledStyleHintString = BUTTON_ENABLED_HINT_STYLE;
+	protected string isEnabledStyleString = BUTTON_ENABLED_STYLE;
+	protected string buttonPointerEventsString = BUTTON_EVENTS_ENABLED_STYLE;
+	protected string isEnabledStyleHintString = BUTTON_ENABLED_HINT_STYLE;
 
 	public DynamicButton() { }
 
@@ -49,17 +49,17 @@ public class DynamicButton
 		}
 	}
 
-	public string getIsDisabledStyle()
+	public virtual string getIsDisabledStyle()
 	{
 		return isEnabledStyleString;
 	}
 
-	public string getIsDisabledStyleHint()
+	public virtual string getIsDisabledStyleHint()
 	{
 		return isEnabledStyleHintString;
 	}
 
-	public string getPointerEventsStyle()
+	public virtual string getPointerEventsStyle()
 	{
 		return buttonPointerEventsString;
 	}

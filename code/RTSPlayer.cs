@@ -23,9 +23,13 @@ public class RTSPlayer : Component
 	//DEBUG REMOVE
 
 	private List<GameObject> myUnits = new List<GameObject>();
+	public uint resourcePoints = 0;
+	private float lastRPTickTime = Time.Now;
 	public UnitFactory myUnitFactory = new UnitFactory();
 
 	private static RTSPlayer _local = null;
+
+	private const float DEFAULT_RP_RATE = 1f;
 
 	protected override void OnStart()
 	{
@@ -73,6 +77,17 @@ public class RTSPlayer : Component
 		}
 
 		base.OnStart();
+
+	}
+
+	protected override void OnUpdate()
+	{
+		if(Time.Now - lastRPTickTime > DEFAULT_RP_RATE)
+		{
+			resourcePoints++;
+			lastRPTickTime = Time.Now;
+			Log.Info("Resource Points: " + resourcePoints);
+		}
 
 	}
 

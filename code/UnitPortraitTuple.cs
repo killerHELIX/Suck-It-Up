@@ -7,4 +7,6 @@ public class UnitPortraitTuple : Component
 
 	[Property] public string UnitPortraitImage { get; set; }
 
+	[Property] public uint UnitResourceCost { get; set; }
+
 }

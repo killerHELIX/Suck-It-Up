@@ -43,7 +43,7 @@ public abstract class Gun : Weapon
             Info("Fired!");
 
             float dist = 10000.0f;
-            var cam = GameObject.Parent.Components.GetInChildren<CameraComponent>();
+            var cam = GameObject.Parent.Components.GetInChildrenOrSelf<CameraComponent>();
 
 			// If the parent has a camera (e.g. a Player) shoot out of that. Otherwise shoot out of this gun directly.
 			var origin = (cam != null) ? cam.Transform.Position : cam.Transform.Position;

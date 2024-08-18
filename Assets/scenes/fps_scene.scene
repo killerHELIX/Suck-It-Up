@@ -68,14 +68,139 @@
       ]
     },
     {
-      "__guid": "efc693fb-5bfa-4989-8a6a-08bc87d5abde",
+      "__guid": "8e642627-67d8-4465-acbe-ce7e848e945e",
       "Flags": 0,
       "Name": "FPSPlayer",
-      "Position": "-3.627136,-30.62734,33.6586",
+      "Position": "0,0,51.00815",
       "Tags": "player",
       "Enabled": true,
-      "__Prefab": "prefabs/fps/fpsplayer.prefab",
-      "__PrefabVariables": {}
+      "Components": [
+        {
+          "__type": "FPSPlayerMover",
+          "__guid": "7cdb1e52-8d0d-49a2-8128-2df56c29c4b6",
+          "AnimationHelper": {
+            "_type": "component",
+            "component_id": "fc74cf8c-c37c-46da-8afa-5906054b6049",
+            "go": "8e642627-67d8-4465-acbe-ce7e848e945e",
+            "component_type": "CitizenAnimationHelper"
+          },
+          "CharacterController": {
+            "_type": "component",
+            "component_id": "94c73ed3-84e4-4dee-bc5c-45b5ca290d20",
+            "go": "8e642627-67d8-4465-acbe-ce7e848e945e",
+            "component_type": "CharacterController"
+          },
+          "CrouchMoveSpeed": 90,
+          "Head": {
+            "_type": "component",
+            "component_id": "dc6717cd-dde7-4ade-a9c8-036b8344883c",
+            "go": "94805b88-f220-4096-bf1c-572773ade854",
+            "component_type": "CameraComponent"
+          },
+          "RunMoveSpeed": 190,
+          "SprintMoveSpeed": 320,
+          "WalkMoveSpeed": 190
+        },
+        {
+          "__type": "FPSWeaponController",
+          "__guid": "112d1b23-049f-4e77-89a1-82380ffe88a4",
+          "Head": {
+            "_type": "component",
+            "component_id": "dc6717cd-dde7-4ade-a9c8-036b8344883c",
+            "go": "94805b88-f220-4096-bf1c-572773ade854",
+            "component_type": "CameraComponent"
+          },
+          "Weapons": []
+        },
+        {
+          "__type": "Sandbox.CharacterController",
+          "__guid": "94c73ed3-84e4-4dee-bc5c-45b5ca290d20",
+          "Acceleration": 10,
+          "Bounciness": 0.3,
+          "GroundAngle": 45,
+          "Height": 64,
+          "IgnoreLayers": "wep",
+          "Radius": 16,
+          "StepHeight": 18,
+          "UseCollisionRules": true
+        },
+        {
+          "__type": "Sandbox.Citizen.CitizenAnimationHelper",
+          "__guid": "fc74cf8c-c37c-46da-8afa-5906054b6049",
+          "BodyWeight": 1,
+          "EyeSource": {
+            "_type": "gameobject",
+            "go": "94805b88-f220-4096-bf1c-572773ade854"
+          },
+          "EyesWeight": 1,
+          "HeadWeight": 1,
+          "LookAtEnabled": false,
+          "Target": {
+            "_type": "component",
+            "component_id": "abbd43d4-b008-4ff5-87ac-21a87706bdcf",
+            "go": "1a844d3f-7873-4f63-95ca-4d6f69b69011",
+            "component_type": "SkinnedModelRenderer"
+          }
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "9b58ec7a-05f6-4405-a85b-516d791ef410",
+          "Center": "0,0,31.79997",
+          "IsTrigger": false,
+          "Scale": "28.89997,38.09999,65.20006",
+          "Static": false
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "1a844d3f-7873-4f63-95ca-4d6f69b69011",
+          "Flags": 0,
+          "Name": "Body",
+          "Position": "0,0,0",
+          "Rotation": "0,0,0.0000003894144,-1",
+          "Tags": "playerbody",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.SkinnedModelRenderer",
+              "__guid": "abbd43d4-b008-4ff5-87ac-21a87706bdcf",
+              "BodyGroups": 341,
+              "CreateBoneObjects": false,
+              "Model": "models/citizen/citizen.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1",
+              "UseAnimGraph": true
+            }
+          ]
+        },
+        {
+          "__guid": "94805b88-f220-4096-bf1c-572773ade854",
+          "Flags": 0,
+          "Name": "Head",
+          "Position": "-10.83131,-0.7938595,64.36189",
+          "Tags": "maincamera",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.CameraComponent",
+              "__guid": "dc6717cd-dde7-4ade-a9c8-036b8344883c",
+              "BackgroundColor": "0.25992,0.51138,0.62791,1",
+              "ClearFlags": "All",
+              "FieldOfView": 90,
+              "IsMainCamera": true,
+              "Orthographic": false,
+              "OrthographicHeight": 1204,
+              "Priority": 1,
+              "RenderExcludeTags": "playerbody",
+              "RenderTags": "",
+              "TargetEye": "None",
+              "Viewport": "0,0,1,1",
+              "ZFar": 10000,
+              "ZNear": 10
+            }
+          ]
+        }
+      ]
     },
     {
       "__guid": "7cde79bf-fd6d-408a-b481-1587a71115ac",
@@ -204,23 +329,32 @@
       "Enabled": true,
       "Children": [
         {
-          "__guid": "2d340131-4252-4131-8693-7241c1ec84ff",
+          "__guid": "5964d856-8a6f-4133-adf4-d44705462854",
           "Flags": 0,
-          "Name": "Rifle",
-          "Position": "0,0,0",
+          "Name": "pistol (2)",
+          "Position": "153.4058,-349.9711,32.20008",
           "Scale": "0.4,0.4,0.4",
           "Enabled": true,
-          "__Prefab": "prefabs/fps/rifle.prefab",
-          "__PrefabVariables": {}
+          "__Prefab": "prefabs/fps/pistol.prefab",
+          "__PrefabVariables": {
+            "vmpos": "15,5,-6",
+            "hpos": "1,-9,30",
+            "hrot": "0,0.6755902,0,0.7372773"
+          }
         },
         {
-          "__guid": "1bd376df-d447-48dd-9e78-47bc49035a2a",
+          "__guid": "2a83dc27-4131-4309-8fcc-d1b8f7a43fad",
           "Flags": 0,
-          "Name": "Pistol",
-          "Position": "159.3672,-354.4133,28.43424",
+          "Name": "rifle (1)",
+          "Position": "161.8389,-382.3781,21.65151",
+          "Scale": "0.2,0.2,0.2",
           "Enabled": true,
-          "__Prefab": "prefabs/fps/pistol.prefab",
-          "__PrefabVariables": {}
+          "__Prefab": "prefabs/fps/rifle.prefab",
+          "__PrefabVariables": {
+            "vmpos": "16,9,-14",
+            "hpos": "-10,0,45",
+            "hrot": "0.4055798,0.4055798,-0.579228,0.579228"
+          }
         }
       ]
     }

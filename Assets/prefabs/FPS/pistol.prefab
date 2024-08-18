@@ -3,6 +3,8 @@
     "__guid": "b0bacc6c-ede5-44d4-926b-8966d3a1bf37",
     "Flags": 0,
     "Name": "pistol",
+    "Position": "-0.09752981,-0.104585,-0.0000004392406",
+    "Scale": "0.4,0.4,0.4",
     "Enabled": true,
     "Components": [
       {
@@ -18,14 +20,14 @@
         "__guid": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
         "HolsterPosition": "1,-9,30",
         "HolsterRotation": "0,0.6755902,0,0.7372773",
-        "ViewmodelPosition": "30,7,-10"
+        "ViewmodelPosition": "15,5,-6"
       },
       {
         "__type": "Sandbox.BoxCollider",
         "__guid": "e486782c-6bbc-42cd-9166-61eb258ad6d7",
         "Center": "3.499999,0,0.7",
         "IsTrigger": false,
-        "Scale": "29.90006,2.800005,15.59999",
+        "Scale": "33.40007,2.800005,15.59999",
         "Static": false
       },
       {
@@ -44,7 +46,38 @@
       }
     ],
     "Children": [],
-    "__variables": []
+    "__variables": [
+      {
+        "Id": "vmpos",
+        "Title": "vmpos",
+        "Targets": [
+          {
+            "Id": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
+            "Property": "ViewmodelPosition"
+          }
+        ]
+      },
+      {
+        "Id": "hpos",
+        "Title": "hpos",
+        "Targets": [
+          {
+            "Id": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
+            "Property": "HolsterPosition"
+          }
+        ]
+      },
+      {
+        "Id": "hrot",
+        "Title": "hrot",
+        "Targets": [
+          {
+            "Id": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
+            "Property": "HolsterRotation"
+          }
+        ]
+      }
+    ]
   },
   "ShowInMenu": false,
   "MenuPath": null,

@@ -1,8 +1,8 @@
 
 public class Rifle : Gun
 {
-    [Property] public Vector3 ViewmodelPosition { get; set; } = Vector3.Zero; // 25,11,-17
-    [Property] public Vector3 HolsterPosition { get; set; } = Vector3.Zero; // -10.2,0,35
+    [Property] public Vector3 ViewmodelPosition { get; set; } = Vector3.Zero; // 16,9,-14
+    [Property] public Vector3 HolsterPosition { get; set; } = Vector3.Zero; // -10,0,45
     [Property] public Rotation HolsterRotation { get; set; } = Angles.Zero; // 0.4055798,0.4055798,-0.579228,0.579228
 	public readonly int MAX_RESERVES = 25;
 	public readonly int MAX_AMMO = 5;

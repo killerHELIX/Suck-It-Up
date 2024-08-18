@@ -23,6 +23,7 @@ public abstract class Weapon : Component, Component.ICollisionListener
     public void Holster()
     {
 		Transform.LocalPosition = GetHolsterPosition();
+        // Transform.LocalPosition = Vector3.Lerp(Transform.LocalPosition, GetHolsterPosition(), Time.Delta * 2f);
 		Transform.LocalRotation = GetHolsterRotation();
     }
     public void Aim()
@@ -34,8 +35,11 @@ public abstract class Weapon : Component, Component.ICollisionListener
             + (head.Transform.Rotation.Right * viewmodelPos.y)
             + (head.Transform.Rotation.Up * viewmodelPos.z);
 
-        Transform.Position = Vector3.Lerp(Transform.Position, targetPos, Time.Delta * 10f);
-        Transform.Rotation = Rotation.Slerp(Transform.Rotation, head.Transform.Rotation, Time.Delta * 10f);
+        Transform.Position = Vector3.Lerp(Transform.Position, targetPos, Time.Delta * 5f);
+        Transform.Rotation = Rotation.Slerp(Transform.Rotation, head.Transform.Rotation, Time.Delta * 20f);
+		
+        // Transform.Position = targetPos;
+        // Transform.Rotation = head.Transform.Rotation;
     }
 
     public void Drop()

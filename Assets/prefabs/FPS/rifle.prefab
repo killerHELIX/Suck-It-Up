@@ -3,7 +3,7 @@
     "__guid": "29f4dcb9-bb57-41dc-8243-a73d5409e7f9",
     "Flags": 0,
     "Name": "rifle",
-    "Scale": "0.4,0.4,0.4",
+    "Scale": "0.2,0.2,0.2",
     "Enabled": true,
     "Components": [
       {
@@ -17,9 +17,9 @@
       {
         "__type": "Rifle",
         "__guid": "0429e363-d855-494b-8ae4-dfbd161c20c7",
-        "HolsterPosition": "-10,0,35",
+        "HolsterPosition": "-10,0,45",
         "HolsterRotation": "0.4055798,0.4055798,-0.579228,0.579228",
-        "ViewmodelPosition": "25,11,-17"
+        "ViewmodelPosition": "16,9,-14"
       },
       {
         "__type": "Sandbox.BoxCollider",
@@ -47,14 +47,34 @@
     "Children": [],
     "__variables": [
       {
-        "Id": "viewmodelposition",
-        "Title": "viewmodelposition",
-        "Targets": []
+        "Id": "vmpos",
+        "Title": "vmpos",
+        "Targets": [
+          {
+            "Id": "0429e363-d855-494b-8ae4-dfbd161c20c7",
+            "Property": "ViewmodelPosition"
+          }
+        ]
       },
       {
-        "Id": "holsterposition",
-        "Title": "holsterposition",
-        "Targets": []
+        "Id": "hpos",
+        "Title": "hpos",
+        "Targets": [
+          {
+            "Id": "0429e363-d855-494b-8ae4-dfbd161c20c7",
+            "Property": "HolsterPosition"
+          }
+        ]
+      },
+      {
+        "Id": "hrot",
+        "Title": "hrot",
+        "Targets": [
+          {
+            "Id": "0429e363-d855-494b-8ae4-dfbd161c20c7",
+            "Property": "HolsterRotation"
+          }
+        ]
       }
     ]
   },

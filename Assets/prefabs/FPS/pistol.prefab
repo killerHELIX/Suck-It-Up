@@ -20,10 +20,12 @@
         "DropDistance": 20,
         "DropSpeedForward": 1000,
         "DropSpeedUp": 500,
+        "FireRate": 0.5,
         "HolsterPosition": "1,-9,30",
         "HolsterRotation": "0,0.6755902,0,0.7372773",
         "MaxAmmo": 8,
-        "MaxReserves": 33,
+        "MaxReserves": 36,
+        "ReloadSpeed": 3,
         "ViewmodelPosition": "15,5,-6"
       },
       {

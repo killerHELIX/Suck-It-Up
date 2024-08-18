@@ -9,6 +9,8 @@ public class Rifle : Gun
     [Property] public override float DropSpeedForward { get; set; } = 3000f;
 	[Property] public override int MaxAmmo { get; set; } = 5;
 	[Property] public override int MaxReserves { get; set; } = 25;
+	[Property] public override float FireRate { get; set; } = 1.5f;
+	[Property] public override float ReloadSpeed { get; set; } = 4.0f;
 
     public Rifle()
     {

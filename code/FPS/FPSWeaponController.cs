@@ -61,7 +61,7 @@ public sealed class FPSWeaponController : Component
 				SelectedWeapon = null;
 				return;
 			}
-			if (Input.Pressed("select")) SelectedWeapon.Fire();
+			if (Input.Down("select")) SelectedWeapon.Fire(); // Fire the weapon as long as the input is held. The weapon knows its own rate of fire.
 
 			if (SelectedWeapon.GetType().IsSubclassOf(typeof(Gun)))
 			{

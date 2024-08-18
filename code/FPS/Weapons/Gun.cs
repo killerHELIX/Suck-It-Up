@@ -10,18 +10,22 @@ public abstract class Gun : Weapon
 	[Description("The maximum amount of ammo this gun can hold in its reserve ammo pool.")]
 	public abstract int MaxReserves { get; set; }
 
+    [Property] 
+	[Description("The rate of fire of this gun in seconds.")]
+	public abstract float FireRate { get; set; }
+    [Property] 
+	[Description("The reload speed of this gun in seconds.")]
+	public abstract float ReloadSpeed { get; set; }
+
     private int CurrentAmmo;
     private int CurrentReserves;
-    private float FireRate = 1.0f; // sec
     private float LastFireTime = 0f;
-    private float ReloadSpeed = 5.0f; // sec
     private float LastReloadTime = 0f;
 	private SceneTraceResult lastTraceResult;
     public Gun(){
         // Start gun loaded.
         CurrentAmmo = MaxAmmo;
         CurrentReserves = MaxReserves;
-
     }
 
 	protected override void OnUpdate()
@@ -30,10 +34,13 @@ public abstract class Gun : Weapon
 
 		if ( !IsProxy )
 		{
-            // Log.Info($"Now: {Time.Now} Last Fire: {LastFireTime} Fire Rate: {FireRate} CAN FIRE: {CanFire()} CAN RELOAD: {CanReload()}");
-            Log.Info($"Gun Paused: {IsPaused()}");
 
-
+            // if (IsPaused())
+            // {
+            //     var fireTimeElapsed = System.Math.Round((decimal) (Time.Now - LastFireTime), 2);
+            //     var reloadTimeElapsed = System.Math.Round((decimal) (Time.Now - LastReloadTime), 2);
+            //     Log.Info($"Fire: [ {fireTimeElapsed}s // {FireRate}s ] Reload: [ {reloadTimeElapsed}s // {ReloadSpeed}s ]");
+            // }
             // Debug draw the last projectile fired.
             Gizmo.Draw.SolidSphere(lastTraceResult.EndPosition, 2.0f);
 		}
@@ -50,34 +57,36 @@ public abstract class Gun : Weapon
 
     public override void Fire()
     {
-
-        if (CurrentAmmo <= 0)
-        {
-            Info("Empty!");
-        }
-        else if (!IsPaused())
+        if (!IsPaused())
         {
             LastFireTime = Time.Now;
 
-            CurrentAmmo--;
-            Info("Fired!");
+            if (CurrentAmmo <= 0)
+            {
+                Info("Empty!");
+            }
+            else
+            {
+                CurrentAmmo--;
+                Info("Fired!");
 
-            float dist = 10000.0f;
-            var cam = GameObject.Parent.Components.GetInChildrenOrSelf<CameraComponent>();
+                float dist = 10000.0f;
+                var cam = GameObject.Parent.Components.GetInChildrenOrSelf<CameraComponent>();
 
-			// If the parent has a camera (e.g. a Player) shoot out of that. Otherwise shoot out of this gun directly.
-			var origin = (cam != null) ? cam.Transform.Position : cam.Transform.Position;
-			lastTraceResult = Scene.Trace.Ray(new Ray(origin, Transform.Rotation.Forward * dist), dist).Run();
+                // If the parent has a camera (e.g. a Player) shoot out of that. Otherwise shoot out of this gun directly.
+                var origin = (cam != null) ? cam.Transform.Position : cam.Transform.Position;
+                lastTraceResult = Scene.Trace.Ray(new Ray(origin, Transform.Rotation.Forward * dist), dist).Run();
 
-			if (lastTraceResult.Hit)
-			{
-				Log.Info($"Hit: {lastTraceResult.GameObject} at {lastTraceResult.EndPosition}");
-			}
+                if (lastTraceResult.Hit)
+                {
+                    Log.Info($"Hit: {lastTraceResult.GameObject} at {lastTraceResult.EndPosition}");
+                }
+            }
         }
     }
 
     // HL2 Style reloading. Pool of reserve bullets that refill a fixed magazine size. 
-    public void Reload()
+    public async void Reload()
     {
         if (!IsPaused())
         {
@@ -91,7 +100,9 @@ public abstract class Gun : Weapon
             }
             else 
             {
+                Info("Reloading...");
                 LastReloadTime = Time.Now;
+                await GameTask.Delay((ReloadSpeed * 1000f).CeilToInt()); // Wait for reload time (in ms) prior to actually updating ammo/reserves.
 
                 var ammoDiff = MaxAmmo - CurrentAmmo;
 

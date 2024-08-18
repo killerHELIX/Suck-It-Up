@@ -106,7 +106,7 @@ public class PlayerUnitControl : Component
 
 			// For a drag just make sure we give them some time to actually click
 			// TODO: I think I can fix the jank here if I make multiselect ALSO depend on how large of a rectangle you actually draw
-			if ( Time.Now - startSelectTime > CLICK_TIME )
+			if ( Time.Now - startSelectTime > CLICK_TIME && selectionRect.Size.Length > 20)
 			{
 				//Log.Info( "Release" );
 				endRectPos = Mouse.Position;
@@ -161,6 +161,7 @@ public class PlayerUnitControl : Component
 			// This is for a single click
 			else
 			{
+				stopDrawSelectionRect();
 				var mouseScreenPos = Mouse.Position;
 				// Set up and run mouse ray to find what we're now selecting
 				var mouseDirection = RTSCam.CamView.ScreenPixelToRay( mouseScreenPos );

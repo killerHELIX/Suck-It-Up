@@ -2,8 +2,7 @@
   "RootObject": {
     "__guid": "a0ff0c40-72bf-4cc8-93c4-eeeb81e7fb86",
     "Flags": 0,
-    "Name": "SIU Skeltal",
-    "Position": "862.4725,185.0845,100.679",
+    "Name": "siu_skeltal",
     "Tags": "unit",
     "Enabled": true,
     "NetworkMode": 1,
@@ -16,7 +15,7 @@
         "AnimGraph": "animgraphs/sk_light_infantry_a.vanmgrph",
         "HasMeleeAttack": true,
         "HasRangedAttack": false,
-        "MaxHealth": 1000,
+        "MaxHealth": 100,
         "MeleeAttackDamage": 20,
         "MeleeAttackSpeed": 1.5,
         "ModelFile": "models/prebuilt_characters/sk_light_infantry_a.vmdl",
@@ -117,7 +116,6 @@
         "__guid": "bb7a04dc-3376-4072-ab29-dd86ffbbed6f",
         "Flags": 0,
         "Name": "UnitModel",
-        "Position": "0,0,0",
         "Enabled": true,
         "NetworkOrphaned": 1,
         "OwnerTransfer": 2,
@@ -454,7 +452,6 @@
         "__guid": "fbbbfb9c-00ee-4049-b598-8a684ba16f0e",
         "Flags": 0,
         "Name": "UnitHealthBar",
-        "Position": "0,0,0",
         "Enabled": true,
         "NetworkOrphaned": 1,
         "OwnerTransfer": 2,
@@ -491,7 +488,8 @@
           }
         ]
       }
-    ]
+    ],
+    "__variables": []
   },
   "ShowInMenu": false,
   "MenuPath": null,

@@ -1,0 +1,142 @@
+{
+  "RootObject": {
+    "__guid": "efc693fb-5bfa-4989-8a6a-08bc87d5abde",
+    "Flags": 0,
+    "Name": "fpsplayer",
+    "Tags": "player",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "FPSPlayerMover",
+        "__guid": "7d1c208e-c5f0-4168-b1bb-3b44369e6cd9",
+        "AnimationHelper": {
+          "_type": "component",
+          "component_id": "39f60558-5899-4db1-8a22-5c4b5967880b",
+          "go": "efc693fb-5bfa-4989-8a6a-08bc87d5abde",
+          "component_type": "CitizenAnimationHelper"
+        },
+        "CharacterController": {
+          "_type": "component",
+          "component_id": "97b63059-8c87-4449-891b-fac173b0d763",
+          "go": "efc693fb-5bfa-4989-8a6a-08bc87d5abde",
+          "component_type": "CharacterController"
+        },
+        "CrouchMoveSpeed": 90,
+        "Head": {
+          "_type": "component",
+          "component_id": "ad8755ce-4bda-4e12-8952-a6bc950f4d96",
+          "go": "d8c46b2b-6ebd-463a-94ba-fe08a1a7fa2f",
+          "component_type": "CameraComponent"
+        },
+        "RunMoveSpeed": 190,
+        "SprintMoveSpeed": 320,
+        "WalkMoveSpeed": 190
+      },
+      {
+        "__type": "FPSWeaponController",
+        "__guid": "4dd27e63-756e-4df7-bf49-1bee6c0db05f",
+        "Head": {
+          "_type": "component",
+          "component_id": "ad8755ce-4bda-4e12-8952-a6bc950f4d96",
+          "go": "d8c46b2b-6ebd-463a-94ba-fe08a1a7fa2f",
+          "component_type": "CameraComponent"
+        },
+        "Weapons": []
+      },
+      {
+        "__type": "Sandbox.CharacterController",
+        "__guid": "97b63059-8c87-4449-891b-fac173b0d763",
+        "Acceleration": 10,
+        "Bounciness": 0.3,
+        "GroundAngle": 45,
+        "Height": 64,
+        "IgnoreLayers": "wep",
+        "Radius": 16,
+        "StepHeight": 18,
+        "UseCollisionRules": true
+      },
+      {
+        "__type": "Sandbox.Citizen.CitizenAnimationHelper",
+        "__guid": "39f60558-5899-4db1-8a22-5c4b5967880b",
+        "BodyWeight": 1,
+        "EyeSource": {
+          "_type": "gameobject",
+          "go": "d8c46b2b-6ebd-463a-94ba-fe08a1a7fa2f"
+        },
+        "EyesWeight": 1,
+        "HeadWeight": 1,
+        "LookAtEnabled": false,
+        "Target": {
+          "_type": "component",
+          "component_id": "10aaba91-986a-4e3e-8d7f-1f90eba451a7",
+          "go": "335c2a91-3158-4479-98d3-2984fe7dc63c",
+          "component_type": "SkinnedModelRenderer"
+        }
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "bb355d1a-075d-42a5-89e5-7cf0d8794811",
+        "Center": "0,0,31.79997",
+        "IsTrigger": false,
+        "Scale": "28.89997,38.09999,65.20006",
+        "Static": false
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "335c2a91-3158-4479-98d3-2984fe7dc63c",
+        "Flags": 0,
+        "Name": "Body",
+        "Rotation": "0,0,0.0000003894144,-1",
+        "Tags": "playerbody",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "10aaba91-986a-4e3e-8d7f-1f90eba451a7",
+            "BodyGroups": 341,
+            "CreateBoneObjects": false,
+            "Model": "models/citizen/citizen.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ]
+      },
+      {
+        "__guid": "d8c46b2b-6ebd-463a-94ba-fe08a1a7fa2f",
+        "Flags": 0,
+        "Name": "Head",
+        "Position": "-10.83131,-0.7938595,64.36189",
+        "Tags": "maincamera",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.CameraComponent",
+            "__guid": "ad8755ce-4bda-4e12-8952-a6bc950f4d96",
+            "BackgroundColor": "0.25992,0.51138,0.62791,1",
+            "ClearFlags": "All",
+            "FieldOfView": 90,
+            "IsMainCamera": true,
+            "Orthographic": false,
+            "OrthographicHeight": 1204,
+            "Priority": 1,
+            "RenderExcludeTags": "playerbody",
+            "RenderTags": "",
+            "TargetEye": "None",
+            "Viewport": "0,0,1,1",
+            "ZFar": 10000,
+            "ZNear": 10
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

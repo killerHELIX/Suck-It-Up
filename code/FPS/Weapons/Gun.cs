@@ -16,8 +16,11 @@ public abstract class Gun : Weapon
 
 	protected override void OnUpdate()
 	{
+        base.OnUpdate();
+
 		if ( !IsProxy )
 		{
+
 
             // Debug draw the last projectile fired.
             Gizmo.Draw.SolidSphere(lastTraceResult.EndPosition, 2.0f);

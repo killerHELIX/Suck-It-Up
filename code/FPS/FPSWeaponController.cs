@@ -1,10 +1,12 @@
+using System;
+
 public sealed class FPSWeaponController : Component
 {
 	[Property] public CameraComponent Head { get; set; }
 
 	[Property] public List<Weapon> Weapons { get; set; }
 
-	[Property] public float WeaponSwaySpeed { get; set; } = 50f;
+	private Weapon SelectedWeapon;
 
 
 	protected override void OnStart()
@@ -12,29 +14,6 @@ public sealed class FPSWeaponController : Component
 		if (!IsProxy)
 		{
 			// pass
-		}
-
-		var weapons = Scene.GetAllComponents<Weapon>();
-		foreach (Weapon weapon in weapons)
-		{
-			if (weapon.Tags.Contains("weapon"))
-			{
-				// Log.Info($"Simulating pickup of weapon: {weapon}");
-				// var clonedWep = weapon.GameObject.Clone(GameObject, Transform.Position, Transform.Rotation, Transform.Scale);
-				// clonedWep.Tags.Add("playerweapon");
-				// foreach (Component clonedWeaponComponent in clonedWep.Components.GetAll())
-				// {
-				// 	if (clonedWeaponComponent.GetType().IsSubclassOf(typeof(Weapon)))
-				// 	{
-				// 		var wep = (Weapon) clonedWeaponComponent;
-				// 		wep.Components.Get<Rigidbody>().Enabled = false;
-
-				// 		Weapons.Add(wep);
-				// 	}
-
-				// }
-				break;
-			}
 		}
 	}
 
@@ -49,28 +28,49 @@ public sealed class FPSWeaponController : Component
 
 	private void WeaponInput()
 	{
-		if (Weapons.Any())
+		if (Input.Pressed("slot1"))
 		{
+			Log.Info("Equipping weapon slot 1");
+			var wep = Weapons.ElementAtOrDefault(0);
+			if (SelectedWeapon != null && SelectedWeapon != wep) SelectedWeapon.Holster();
 
-			var weapon = Weapons[0];
+			SelectedWeapon = wep;
+		}
 
+		if (Input.Pressed("slot2"))
+		{
+			Log.Info("Equipping weapon slot 2");
+			var wep = Weapons.ElementAtOrDefault(1);
+			if (SelectedWeapon != null && SelectedWeapon != wep) SelectedWeapon.Holster();
+			SelectedWeapon = wep;
+		}
 
-			if (Input.Pressed("select")) weapon.Fire();
+		if (Input.Pressed("slot3"))
+		{
+			Log.Info("Holstering selected weapon");
+			if (SelectedWeapon != null) SelectedWeapon.Holster();
+			SelectedWeapon = null;
+		}
 
-			if (weapon.GetType().IsSubclassOf(typeof(Gun)))
+		if (SelectedWeapon != null)
+		{
+			if (Input.Pressed("drop"))
 			{
-				Gun gun = (Gun) weapon;
+				Weapons.Remove(SelectedWeapon);
+				SelectedWeapon.Drop();
+				SelectedWeapon = null;
+				return;
+			}
+			if (Input.Pressed("select")) SelectedWeapon.Fire();
+
+			if (SelectedWeapon.GetType().IsSubclassOf(typeof(Gun)))
+			{
+				Gun gun = (Gun)SelectedWeapon;
 				if (Input.Pressed("reload")) gun.Reload();
 			}
 
-			var targetPos = Head.Transform.Position
-				+ (Head.Transform.Rotation.Forward * weapon.GetViewmodelXOffset())
-				+ (Head.Transform.Rotation.Right * weapon.GetViewmodelYOffset())
-				+ (Head.Transform.Rotation.Up * weapon.GetViewmodelZOffset());
-
-
-			weapon.Transform.Position = Vector3.Lerp(weapon.Transform.Position, targetPos, Time.Delta * WeaponSwaySpeed);
-			weapon.Transform.Rotation = Head.Transform.Rotation;
+			SelectedWeapon.Aim();
 		}
+
 	}
 }

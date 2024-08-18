@@ -257,7 +257,7 @@ public sealed class FPSPlayerMover : Component
 		var renderMode = ModelRenderer.ShadowRenderType.On;
 		if ( !IsProxy ) renderMode = ModelRenderer.ShadowRenderType.ShadowsOnly;
 
-		AnimationHelper.Target.RenderType = renderMode;
+		// AnimationHelper.Target.RenderType = renderMode;
 
 		// foreach ( var clothing in AnimationHelper.Target.Components.GetAll<ModelRenderer>( FindMode.InChildren ) )
 		// {

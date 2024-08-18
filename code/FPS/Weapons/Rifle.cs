@@ -1,30 +1,15 @@
 
 public class Rifle : Gun
 {
-	[Property] public float ViewmodelXOffset { get; set; } = 25f;
-	[Property] public float ViewmodelYOffset { get; set; } = 11f;
-	[Property] public float ViewmodelZOffset { get; set; } = -17f;
+    [Property] public Vector3 ViewmodelPosition { get; set; } = Vector3.Zero; // 25,11,-17
+    [Property] public Vector3 HolsterPosition { get; set; } = Vector3.Zero; // -10.2,0,35
+    [Property] public Rotation HolsterRotation { get; set; } = Angles.Zero; // 0.4055798,0.4055798,-0.579228,0.579228
 	public readonly int MAX_RESERVES = 25;
 	public readonly int MAX_AMMO = 5;
 
 	public Rifle()
 	{
 		Log.Info("Instantiated Rifle");
-	}
-
-	public override float GetViewmodelXOffset()
-	{
-		return ViewmodelXOffset;
-	}
-
-	public override float GetViewmodelYOffset()
-	{
-		return ViewmodelYOffset;
-	}
-
-	public override float GetViewmodelZOffset()
-	{
-		return ViewmodelZOffset;
 	}
 
 	public override int GetMaxAmmo()
@@ -36,4 +21,20 @@ public class Rifle : Gun
 	{
 		return MAX_RESERVES;
 	}
+
+    public override Vector3 GetHolsterPosition()
+    {
+        return HolsterPosition;
+    }
+
+
+    public override Rotation GetHolsterRotation()
+    {
+        return HolsterRotation;
+    }
+
+    public override Vector3 GetViewmodelPosition()
+    {
+        return ViewmodelPosition;
+    }
 }

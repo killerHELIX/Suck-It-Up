@@ -2,13 +2,29 @@
 public abstract class Weapon : Component, Component.ICollisionListener
 {
 
-    [Property] public abstract Vector3 ViewmodelPosition { get; set; }
-    [Property] public abstract Vector3 HolsterPosition { get; set; }
-    [Property] public abstract Rotation HolsterRotation { get; set; }
+    [Property] 
+	[Description("The position of this weapon's viewmodel when equipped.")]
+	public abstract Vector3 ViewmodelPosition { get; set; }
 
-	[Property] public abstract float DropDistance { get; set; }
-	[Property] public abstract float DropSpeedUp { get; set; }
-	[Property] public abstract float DropSpeedForward { get; set; }
+    [Property] 
+	[Description("The position of this weapon's model when holstered.")]
+    public abstract Vector3 HolsterPosition { get; set; }
+
+    [Property] 
+	[Description("The rotation of this weapon's model when holstered.")]
+    public abstract Rotation HolsterRotation { get; set; }
+
+    [Property] 
+	[Description("This distance this weapon should start away from the player when dropped.")]
+	public abstract float DropDistance { get; set; }
+
+    [Property] 
+	[Description("The speed this weapon should go up when dropped.")]
+	public abstract float DropSpeedUp { get; set; }
+
+    [Property] 
+	[Description("The speed this weapon should go forward when dropped.")]
+	public abstract float DropSpeedForward { get; set; }
 
 	public abstract void Fire();
 

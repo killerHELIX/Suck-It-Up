@@ -2,8 +2,13 @@
 
 public abstract class Gun : Weapon
 {
-	[Property] public abstract int MaxAmmo { get; set; }
-	[Property] public abstract int MaxReserves { get; set; }
+    [Property] 
+	[Description("The maximum ammount of ammo in this gun's magazine.")]
+	public abstract int MaxAmmo { get; set; }
+
+    [Property] 
+	[Description("The maximum amount of ammo this gun can hold in its reserve ammo pool.")]
+	public abstract int MaxReserves { get; set; }
 
     private int CurrentAmmo;
     private int CurrentReserves;

@@ -12,7 +12,10 @@ public abstract class Gun : Weapon
 
     private int CurrentAmmo;
     private int CurrentReserves;
-    private bool IsFiring = false;
+    private float FireRate = 1.0f; // sec
+    private float LastFireTime = 0f;
+    private float ReloadSpeed = 5.0f; // sec
+    private float LastReloadTime = 0f;
 	private SceneTraceResult lastTraceResult;
     public Gun(){
         // Start gun loaded.
@@ -27,12 +30,22 @@ public abstract class Gun : Weapon
 
 		if ( !IsProxy )
 		{
+            // Log.Info($"Now: {Time.Now} Last Fire: {LastFireTime} Fire Rate: {FireRate} CAN FIRE: {CanFire()} CAN RELOAD: {CanReload()}");
+            Log.Info($"Gun Paused: {IsPaused()}");
 
 
             // Debug draw the last projectile fired.
             Gizmo.Draw.SolidSphere(lastTraceResult.EndPosition, 2.0f);
 		}
 	}
+
+    // The Gun is "Paused", i.e. ignoring player input, while certain actions are occurring like fire rate cooldown and reloading.
+    private bool IsPaused()
+    {
+        bool firing = Time.Now - LastFireTime < FireRate;
+        bool reloading = Time.Now - LastReloadTime < ReloadSpeed;
+        return firing || reloading;
+    }
 
 
     public override void Fire()
@@ -42,8 +55,10 @@ public abstract class Gun : Weapon
         {
             Info("Empty!");
         }
-        else if (!IsFiring)
+        else if (!IsPaused())
         {
+            LastFireTime = Time.Now;
+
             CurrentAmmo--;
             Info("Fired!");
 
@@ -64,32 +79,37 @@ public abstract class Gun : Weapon
     // HL2 Style reloading. Pool of reserve bullets that refill a fixed magazine size. 
     public void Reload()
     {
-        if (CurrentAmmo == MaxAmmo)
+        if (!IsPaused())
         {
-            Info("Already reloaded!");
-        }
-        else if (CurrentReserves <= 0)
-        {
-            Info("Out of reserves!");
-        }
-        else
-        {
-            var ammoDiff = MaxAmmo - CurrentAmmo;
-
-            // If ammoDiff is less than reserves, reload full mag.
-            if (ammoDiff <= CurrentReserves)
+            if (CurrentAmmo == MaxAmmo)
             {
-                CurrentReserves -= ammoDiff;
-                CurrentAmmo = MaxAmmo;
+                Info("Already reloaded!");
             }
-            // Else, ammoDiff is greater than reserves, so load mag with whatever is left in reserves.
-            else
+            else if (CurrentReserves <= 0)
             {
-                CurrentAmmo += CurrentReserves;
-                CurrentReserves -= CurrentReserves;
+                Info("Out of reserves!");
             }
+            else 
+            {
+                LastReloadTime = Time.Now;
 
-            Info("Reloaded!");
+                var ammoDiff = MaxAmmo - CurrentAmmo;
+
+                // If ammoDiff is less than reserves, reload full mag.
+                if (ammoDiff <= CurrentReserves)
+                {
+                    CurrentReserves -= ammoDiff;
+                    CurrentAmmo = MaxAmmo;
+                }
+                // Else, ammoDiff is greater than reserves, so load mag with whatever is left in reserves.
+                else
+                {
+                    CurrentAmmo += CurrentReserves;
+                    CurrentReserves -= CurrentReserves;
+                }
+
+                Info("Reloaded!");
+            }
         }
     }
 

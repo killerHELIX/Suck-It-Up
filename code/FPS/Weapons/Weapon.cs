@@ -1,6 +1,8 @@
 ﻿using Sandbox;
 public abstract class Weapon : Component, Component.ICollisionListener
 {
+    private const string PLAYER_OWNED_WEAPON = "playerweapon";
+    private const string UNOWNED_WEAPON = "weapon";
 
     [Property] 
 	[Description("The position of this weapon's viewmodel when equipped.")]
@@ -36,7 +38,7 @@ public abstract class Weapon : Component, Component.ICollisionListener
 			// Transform.LocalPosition = Vector3.Zero;
 			// Transform.Rotation = Angles.Zero;
 			Components.Get<Rigidbody>().Enabled = false;
-			GameObject.Tags.Add("playerweapon");
+			GameObject.Tags.Add(PLAYER_OWNED_WEAPON);
 			playerWeaponController.Weapons.Add(this);
 			Holster();
 	}
@@ -73,8 +75,8 @@ public abstract class Weapon : Component, Component.ICollisionListener
 		var forward = Transform.Rotation.Forward * DropDistance;
 		Transform.Position += forward;
 
-		GameObject.Tags.Remove("playerweapon");
-		GameObject.Tags.Add("weapon");
+		GameObject.Tags.Remove(PLAYER_OWNED_WEAPON);
+		GameObject.Tags.Add(UNOWNED_WEAPON);
 		var rigidbody = Components.Get<Rigidbody>(includeDisabled: true);
 		rigidbody.Enabled = true;
 

@@ -1,8 +1,15 @@
-﻿using Sandbox;
+﻿using System;
+using Sandbox;
 public abstract class Weapon : Component, Component.ICollisionListener
 {
     private const string PLAYER_OWNED_WEAPON = "playerweapon";
     private const string UNOWNED_WEAPON = "weapon";
+
+
+
+    [Property] 
+	[Description("The position of this weapon's viewmodel when equipped.")]
+	public abstract String Name { get; set; }
 
     [Property] 
 	[Description("The position of this weapon's viewmodel when equipped.")]
@@ -28,7 +35,41 @@ public abstract class Weapon : Component, Component.ICollisionListener
 	[Description("The speed this weapon should go forward when dropped.")]
 	public abstract float DropSpeedForward { get; set; }
 
-	public abstract void Fire();
+    [Property] 
+	[Description("The maximum amount of ammo in the weapon.")]
+	public abstract int MaxAmmo { get; set; }
+
+    [Property] 
+	[Description("The maximum amount of ammo this weapon can hold in its reserve ammo pool.")]
+	public abstract int MaxReserves { get; set; }
+
+    [Property] 
+	[Description("The rate of fire of this weapon in seconds.")]
+	public abstract float FireRate { get; set; }
+
+    [Property] 
+	[Description("The reload speed of this weapon in seconds.")]
+	public abstract float ReloadSpeed { get; set; }
+
+    [Property] 
+	[Description("The current ammo in the weapon.")]
+	public int CurrentAmmo { get; set; }
+
+    [Property] 
+	[Description("The current reserve ammo pool of this weapon.")]
+    public int CurrentReserves { get; set; }
+
+    private float LastFireTime = 0f;
+    private float LastReloadTime = 0f;
+	private SceneTraceResult lastTraceResult;
+
+
+
+    public Weapon(){
+        // Start gun loaded.
+        CurrentAmmo = MaxAmmo;
+        CurrentReserves = MaxReserves;
+    }
 
 	public void Pickup(GameObject player, FPSWeaponController playerWeaponController)
 	{
@@ -106,6 +147,113 @@ public abstract class Weapon : Component, Component.ICollisionListener
 		// no op
 	}
 
+	protected override void OnUpdate()
+	{
+        base.OnUpdate();
+
+		if ( !IsProxy )
+		{
+
+            // if (IsPaused())
+            // {
+            //     var fireTimeElapsed = System.Math.Round((decimal) (Time.Now - LastFireTime), 2);
+            //     var reloadTimeElapsed = System.Math.Round((decimal) (Time.Now - LastReloadTime), 2);
+            //     Log.Info($"Fire: [ {fireTimeElapsed}s // {FireRate}s ] Reload: [ {reloadTimeElapsed}s // {ReloadSpeed}s ]");
+            // }
+            // Debug draw the last projectile fired.
+            Gizmo.Draw.SolidSphere(lastTraceResult.EndPosition, 2.0f);
+		}
+	}
+
+
+
+
+    public virtual void Fire()
+    {
+        if (!IsPaused())
+        {
+            LastFireTime = Time.Now;
+
+            if (CurrentAmmo <= 0)
+            {
+                Info("Empty!");
+            }
+            else
+            {
+                CurrentAmmo--;
+                Info("Fired!");
+
+                float dist = 10000.0f;
+                var cam = GameObject.Parent.Components.GetInChildrenOrSelf<CameraComponent>();
+
+                // If the parent has a camera (e.g. a Player) shoot out of that. Otherwise shoot out of this gun directly.
+                var origin = (cam != null) ? cam.Transform.Position : cam.Transform.Position;
+                lastTraceResult = Scene.Trace.Ray(new Ray(origin, Transform.Rotation.Forward * dist), dist).Run();
+
+                if (lastTraceResult.Hit)
+                {
+                    Log.Info($"Hit: {lastTraceResult.GameObject} at {lastTraceResult.EndPosition}");
+                }
+            }
+        }
+    }
+
+    // HL2 Style reloading. Pool of reserve bullets that refill a fixed magazine size. 
+    public async void Reload()
+    {
+        if (!IsPaused())
+        {
+            if (CurrentAmmo == MaxAmmo)
+            {
+                Info("Already reloaded!");
+            }
+            else if (CurrentReserves <= 0)
+            {
+                Info("Out of reserves!");
+            }
+            else 
+            {
+                Info("Reloading...");
+                LastReloadTime = Time.Now;
+                await GameTask.Delay((ReloadSpeed * 1000f).CeilToInt()); // Wait for reload time (in ms) prior to actually updating ammo/reserves.
+
+                var ammoDiff = MaxAmmo - CurrentAmmo;
+
+                // If ammoDiff is less than reserves, reload full mag.
+                if (ammoDiff <= CurrentReserves)
+                {
+                    CurrentReserves -= ammoDiff;
+                    CurrentAmmo = MaxAmmo;
+                }
+                // Else, ammoDiff is greater than reserves, so load mag with whatever is left in reserves.
+                else
+                {
+                    CurrentAmmo += CurrentReserves;
+                    CurrentReserves -= CurrentReserves;
+                }
+
+                Info("Reloaded!");
+            }
+        }
+    }
+
+
+
+    protected void Info(string str)
+    {
+        Log.Info($"{str} [{CurrentAmmo} / {CurrentReserves} ]");
+    }
+
+
+
+    // The Gun is "Paused", i.e. ignoring player input, while certain actions are occurring like fire rate cooldown and reloading.
+    private bool IsPaused()
+    {
+        bool firing = Time.Now - LastFireTime < FireRate;
+        bool reloading = Time.Now - LastReloadTime < ReloadSpeed;
+        return firing || reloading;
+    }
+
 	private void TryToPickup(GameObject other)
 	{
 		var playerWeaponController = other.Components.Get<FPSWeaponController>();
@@ -114,5 +262,4 @@ public abstract class Weapon : Component, Component.ICollisionListener
 			Pickup(other, playerWeaponController);
 		}
 	}
-
 }

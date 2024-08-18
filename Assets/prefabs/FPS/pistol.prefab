@@ -24,7 +24,7 @@
         "HolsterPosition": "1,-9,30",
         "HolsterRotation": "0,0.6755902,0,0.7372773",
         "MaxAmmo": 8,
-        "MaxReserves": 36,
+        "MaxReserves": 64,
         "ReloadSpeed": 3,
         "ViewmodelPosition": "15,5,-6"
       },
@@ -110,6 +110,56 @@
           {
             "Id": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
             "Property": "DropSpeedForward"
+          }
+        ]
+      },
+      {
+        "Id": "maxammo",
+        "Title": "maxammo",
+        "Targets": [
+          {
+            "Id": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
+            "Property": "MaxAmmo"
+          }
+        ]
+      },
+      {
+        "Id": "maxreserves",
+        "Title": "maxreserves",
+        "Targets": [
+          {
+            "Id": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
+            "Property": "MaxReserves"
+          }
+        ]
+      },
+      {
+        "Id": "firerate",
+        "Title": "firerate",
+        "Targets": []
+      },
+      {
+        "Id": "firerate",
+        "Title": "firerate",
+        "Targets": [
+          {
+            "Id": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
+            "Property": "FireRate"
+          }
+        ]
+      },
+      {
+        "Id": "reloadspeed",
+        "Title": "reloadspeed",
+        "Targets": []
+      },
+      {
+        "Id": "reloadspeed",
+        "Title": "reloadspeed",
+        "Targets": [
+          {
+            "Id": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
+            "Property": "ReloadSpeed"
           }
         ]
       }

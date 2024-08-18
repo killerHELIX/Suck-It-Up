@@ -1,5 +1,6 @@
-public class Pistol : Gun
+public class Pistol : Weapon
 {
+    [Property] public override string Name { get; set; } = "9mm - \"The Scrapshot\"";
     [Property] public override Vector3 ViewmodelPosition { get; set; } = new Vector3(15, 5, -6); // 15,5,-6
     [Property] public override Vector3 HolsterPosition { get; set; } = new Vector3(1, -9, 30); // 1,-9,30
     [Property] public override Rotation HolsterRotation { get; set; } = new Rotation(0, 0.6755902f, 0, 0.7372773f); // 0,0.6755902,0,0.7372773

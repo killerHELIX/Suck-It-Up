@@ -199,6 +199,33 @@
               "ZNear": 10
             }
           ]
+        },
+        {
+          "__guid": "cae5e72f-a0e8-4bd0-8ec4-a77f3e963182",
+          "Flags": 0,
+          "Name": "HUD",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "FPSHud",
+              "__guid": "fd89e71f-f712-4e94-89ba-0513036f32e1",
+              "fpsWeaponController": {
+                "_type": "component",
+                "component_id": "112d1b23-049f-4e77-89a1-82380ffe88a4",
+                "go": "8e642627-67d8-4465-acbe-ce7e848e945e",
+                "component_type": "FPSWeaponController"
+              }
+            },
+            {
+              "__type": "Sandbox.ScreenPanel",
+              "__guid": "998d2899-fbe6-42a8-b966-8ffbeefc7b66",
+              "AutoScreenScale": true,
+              "Opacity": 1,
+              "Scale": 1,
+              "ZIndex": 100
+            }
+          ]
         }
       ]
     },
@@ -342,7 +369,11 @@
             "hrot": "0.4055798,0.4055798,-0.579228,0.579228",
             "dropdistance": 40,
             "dropspeedup": 1000,
-            "dropspeedforward": 5000
+            "dropspeedforward": 5000,
+            "maxammo": 5,
+            "maxreserves": 25,
+            "firerate": 1.5,
+            "reloadspeed": 5
           }
         },
         {
@@ -359,7 +390,11 @@
             "hrot": "0,0.6755902,0,0.7372773",
             "dropdistance": 20,
             "dropspeedup": 500,
-            "dropspeedforward": 1000
+            "dropspeedforward": 1000,
+            "maxammo": 8,
+            "maxreserves": 64,
+            "firerate": 0.5,
+            "reloadspeed": 3
           }
         }
       ]

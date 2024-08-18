@@ -6,7 +6,8 @@ public sealed class FPSWeaponController : Component
 
 	[Property] public List<Weapon> Weapons { get; set; }
 
-	private Weapon SelectedWeapon;
+
+	[Property] public Weapon SelectedWeapon { get; set; }
 
 
 	protected override void OnStart()
@@ -62,12 +63,7 @@ public sealed class FPSWeaponController : Component
 				return;
 			}
 			if (Input.Down("select")) SelectedWeapon.Fire(); // Fire the weapon as long as the input is held. The weapon knows its own rate of fire.
-
-			if (SelectedWeapon.GetType().IsSubclassOf(typeof(Gun)))
-			{
-				Gun gun = (Gun)SelectedWeapon;
-				if (Input.Pressed("reload")) gun.Reload();
-			}
+			if (Input.Pressed("reload")) SelectedWeapon.Reload();
 
 			SelectedWeapon.Aim();
 		}

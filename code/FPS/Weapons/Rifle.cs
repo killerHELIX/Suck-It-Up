@@ -1,6 +1,7 @@
 
-public class Rifle : Gun
+public class Rifle : Weapon
 {
+    [Property] public override string Name { get; set; } = ".357 - \"The Rusty Repeater\"";
     [Property] public override Vector3 ViewmodelPosition { get; set; } = new Vector3(16, 9, -14); // 16,9,-14
     [Property] public override Vector3 HolsterPosition { get; set; } = new Vector3(-10, 0, 45); // -10,0,45
     [Property] public override Rotation HolsterRotation { get; set; } = new Rotation(0.4055798f, 0.4055798f, -0.579228f, 0.579228f); // 0.4055798,0.4055798,-0.579228,0.579228

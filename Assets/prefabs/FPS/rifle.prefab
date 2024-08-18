@@ -112,6 +112,51 @@
             "Property": "DropSpeedForward"
           }
         ]
+      },
+      {
+        "Id": "maxammo",
+        "Title": "maxammo",
+        "Targets": [
+          {
+            "Id": "0429e363-d855-494b-8ae4-dfbd161c20c7",
+            "Property": "MaxAmmo"
+          }
+        ]
+      },
+      {
+        "Id": "maxreserves",
+        "Title": "maxreserves",
+        "Targets": [
+          {
+            "Id": "0429e363-d855-494b-8ae4-dfbd161c20c7",
+            "Property": "MaxReserves"
+          }
+        ]
+      },
+      {
+        "Id": "firerate",
+        "Title": "firerate",
+        "Targets": []
+      },
+      {
+        "Id": "firerate",
+        "Title": "firerate",
+        "Targets": [
+          {
+            "Id": "0429e363-d855-494b-8ae4-dfbd161c20c7",
+            "Property": "FireRate"
+          }
+        ]
+      },
+      {
+        "Id": "reloadspeed",
+        "Title": "reloadspeed",
+        "Targets": [
+          {
+            "Id": "0429e363-d855-494b-8ae4-dfbd161c20c7",
+            "Property": "ReloadSpeed"
+          }
+        ]
       }
     ]
   },

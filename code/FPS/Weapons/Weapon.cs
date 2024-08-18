@@ -5,6 +5,11 @@ public abstract class Weapon : Component, Component.ICollisionListener
 	public abstract Vector3 GetViewmodelPosition();
     public abstract Vector3 GetHolsterPosition();
     public abstract Rotation GetHolsterRotation();
+
+	[Property] public abstract float DropDistance { get; set; }
+	[Property] public abstract float DropSpeedUp { get; set; }
+	[Property] public abstract float DropSpeedForward { get; set; }
+
 	public abstract void Fire();
 
 	public void Pickup(GameObject player, FPSWeaponController playerWeaponController)
@@ -49,7 +54,7 @@ public abstract class Weapon : Component, Component.ICollisionListener
 
 		GameObject.SetParent(Scene);
 
-		var forward = Transform.Rotation.Forward * 20.0f;
+		var forward = Transform.Rotation.Forward * DropDistance;
 		Transform.Position += forward;
 
 		GameObject.Tags.Remove("playerweapon");
@@ -57,7 +62,7 @@ public abstract class Weapon : Component, Component.ICollisionListener
 		var rigidbody = Components.Get<Rigidbody>(includeDisabled: true);
 		rigidbody.Enabled = true;
 
-		var throwPosVec = (Transform.Rotation.Forward * 5_000f) + (Transform.Rotation.Up * 10_000f);
+		var throwPosVec = (Transform.Rotation.Forward * DropSpeedForward) + (Transform.Rotation.Up * DropSpeedUp);
 		rigidbody.ApplyImpulse(throwPosVec);
 
 		// When dropping a weapon, randomly spin it left or right.

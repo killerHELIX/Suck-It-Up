@@ -17,6 +17,9 @@
       {
         "__type": "Rifle",
         "__guid": "0429e363-d855-494b-8ae4-dfbd161c20c7",
+        "DropDistance": 40,
+        "DropSpeedForward": 5000,
+        "DropSpeedUp": 1000,
         "HolsterPosition": "-10,0,45",
         "HolsterRotation": "0.4055798,0.4055798,-0.579228,0.579228",
         "ViewmodelPosition": "16,9,-14"
@@ -73,6 +76,36 @@
           {
             "Id": "0429e363-d855-494b-8ae4-dfbd161c20c7",
             "Property": "HolsterRotation"
+          }
+        ]
+      },
+      {
+        "Id": "dropdistance",
+        "Title": "dropdistance",
+        "Targets": [
+          {
+            "Id": "0429e363-d855-494b-8ae4-dfbd161c20c7",
+            "Property": "DropDistance"
+          }
+        ]
+      },
+      {
+        "Id": "dropspeedup",
+        "Title": "dropspeedup",
+        "Targets": [
+          {
+            "Id": "0429e363-d855-494b-8ae4-dfbd161c20c7",
+            "Property": "DropSpeedUp"
+          }
+        ]
+      },
+      {
+        "Id": "dropspeedforward",
+        "Title": "dropspeedforward",
+        "Targets": [
+          {
+            "Id": "0429e363-d855-494b-8ae4-dfbd161c20c7",
+            "Property": "DropSpeedForward"
           }
         ]
       }

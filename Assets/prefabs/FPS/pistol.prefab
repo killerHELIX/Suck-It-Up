@@ -3,7 +3,6 @@
     "__guid": "b0bacc6c-ede5-44d4-926b-8966d3a1bf37",
     "Flags": 0,
     "Name": "pistol",
-    "Position": "-0.09752981,-0.104585,-0.0000004392406",
     "Scale": "0.4,0.4,0.4",
     "Enabled": true,
     "Components": [
@@ -18,6 +17,9 @@
       {
         "__type": "Pistol",
         "__guid": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
+        "DropDistance": 20,
+        "DropSpeedForward": 1000,
+        "DropSpeedUp": 500,
         "HolsterPosition": "1,-9,30",
         "HolsterRotation": "0,0.6755902,0,0.7372773",
         "ViewmodelPosition": "15,5,-6"
@@ -25,9 +27,9 @@
       {
         "__type": "Sandbox.BoxCollider",
         "__guid": "e486782c-6bbc-42cd-9166-61eb258ad6d7",
-        "Center": "3.499999,0,0.7",
+        "Center": "8.799999,0,-2.6",
         "IsTrigger": false,
-        "Scale": "33.40007,2.800005,15.59999",
+        "Scale": "46.10005,2.800005,22.89999",
         "Static": false
       },
       {
@@ -74,6 +76,36 @@
           {
             "Id": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
             "Property": "HolsterRotation"
+          }
+        ]
+      },
+      {
+        "Id": "dropdistance",
+        "Title": "dropdistance",
+        "Targets": [
+          {
+            "Id": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
+            "Property": "DropDistance"
+          }
+        ]
+      },
+      {
+        "Id": "dropspeedup",
+        "Title": "dropspeedup",
+        "Targets": [
+          {
+            "Id": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
+            "Property": "DropSpeedUp"
+          }
+        ]
+      },
+      {
+        "Id": "dropspeedforward",
+        "Title": "dropspeedforward",
+        "Targets": [
+          {
+            "Id": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
+            "Property": "DropSpeedForward"
           }
         ]
       }

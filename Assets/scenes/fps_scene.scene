@@ -324,38 +324,42 @@
       "__guid": "7598e7b4-d52c-4c46-8e77-8916becb6a18",
       "Flags": 0,
       "Name": "PlayerWeapons",
-      "Position": "-67.22284,349.9711,40.14374",
+      "Position": "59.91624,65.47053,77.54209",
       "Tags": "weapon",
       "Enabled": true,
       "Children": [
         {
-          "__guid": "5964d856-8a6f-4133-adf4-d44705462854",
-          "Flags": 0,
-          "Name": "pistol (2)",
-          "Position": "153.4058,-349.9711,32.20008",
-          "Rotation": "-0.7071067,0,0,0.7071068",
-          "Scale": "0.4,0.4,0.4",
-          "Enabled": true,
-          "__Prefab": "prefabs/fps/pistol.prefab",
-          "__PrefabVariables": {
-            "vmpos": "15,5,-6",
-            "hpos": "1,-9,30",
-            "hrot": "0,0.6755902,0,0.7372773"
-          }
-        },
-        {
-          "__guid": "2a83dc27-4131-4309-8fcc-d1b8f7a43fad",
+          "__guid": "3eb73911-f1cf-42ed-b070-dc1180611121",
           "Flags": 0,
           "Name": "rifle (1)",
-          "Position": "194.8118,-389.3622,16.04823",
-          "Rotation": "-0.6532815,-0.270598,-0.2705981,0.6532816",
+          "Position": "0,0,0",
           "Scale": "0.2,0.2,0.2",
           "Enabled": true,
           "__Prefab": "prefabs/fps/rifle.prefab",
           "__PrefabVariables": {
             "vmpos": "16,9,-14",
             "hpos": "-10,0,45",
-            "hrot": "0.4055798,0.4055798,-0.579228,0.579228"
+            "hrot": "0.4055798,0.4055798,-0.579228,0.579228",
+            "dropdistance": 40,
+            "dropspeedup": 1000,
+            "dropspeedforward": 5000
+          }
+        },
+        {
+          "__guid": "9026b2b6-a321-45d0-8adb-e468d4c3e6e1",
+          "Flags": 0,
+          "Name": "pistol (1)",
+          "Position": "-3.423229,-65.47054,4.932732",
+          "Scale": "0.4,0.4,0.4",
+          "Enabled": true,
+          "__Prefab": "prefabs/fps/pistol.prefab",
+          "__PrefabVariables": {
+            "vmpos": "15,5,-6",
+            "hpos": "1,-9,30",
+            "hrot": "0,0.6755902,0,0.7372773",
+            "dropdistance": 20,
+            "dropspeedup": 500,
+            "dropspeedforward": 1000
           }
         }
       ]

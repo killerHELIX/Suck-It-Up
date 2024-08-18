@@ -2,6 +2,8 @@
 
 public abstract class Gun : Weapon
 {
+	[Property] public abstract int MaxAmmo { get; set; }
+	[Property] public abstract int MaxReserves { get; set; }
 
     private int CurrentAmmo;
     private int CurrentReserves;
@@ -9,8 +11,8 @@ public abstract class Gun : Weapon
 	private SceneTraceResult lastTraceResult;
     public Gun(){
         // Start gun loaded.
-        CurrentAmmo = GetMaxAmmo();
-        CurrentReserves = GetMaxReserves();
+        CurrentAmmo = MaxAmmo;
+        CurrentReserves = MaxReserves;
 
     }
 
@@ -27,8 +29,6 @@ public abstract class Gun : Weapon
 		}
 	}
 
-	public abstract int GetMaxAmmo();
-	public abstract int GetMaxReserves();
 
     public override void Fire()
     {
@@ -59,7 +59,7 @@ public abstract class Gun : Weapon
     // HL2 Style reloading. Pool of reserve bullets that refill a fixed magazine size. 
     public void Reload()
     {
-        if (CurrentAmmo == GetMaxAmmo())
+        if (CurrentAmmo == MaxAmmo)
         {
             Info("Already reloaded!");
         }
@@ -69,13 +69,13 @@ public abstract class Gun : Weapon
         }
         else
         {
-            var ammoDiff = GetMaxAmmo() - CurrentAmmo;
+            var ammoDiff = MaxAmmo - CurrentAmmo;
 
             // If ammoDiff is less than reserves, reload full mag.
             if (ammoDiff <= CurrentReserves)
             {
                 CurrentReserves -= ammoDiff;
-                CurrentAmmo = GetMaxAmmo();
+                CurrentAmmo = MaxAmmo;
             }
             // Else, ammoDiff is greater than reserves, so load mag with whatever is left in reserves.
             else

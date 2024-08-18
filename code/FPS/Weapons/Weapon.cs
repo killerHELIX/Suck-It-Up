@@ -2,9 +2,9 @@
 public abstract class Weapon : Component, Component.ICollisionListener
 {
 
-	public abstract Vector3 GetViewmodelPosition();
-    public abstract Vector3 GetHolsterPosition();
-    public abstract Rotation GetHolsterRotation();
+    [Property] public abstract Vector3 ViewmodelPosition { get; set; }
+    [Property] public abstract Vector3 HolsterPosition { get; set; }
+    [Property] public abstract Rotation HolsterRotation { get; set; }
 
 	[Property] public abstract float DropDistance { get; set; }
 	[Property] public abstract float DropSpeedUp { get; set; }
@@ -27,18 +27,18 @@ public abstract class Weapon : Component, Component.ICollisionListener
 
     public void Holster()
     {
-		Transform.LocalPosition = GetHolsterPosition();
+		Transform.LocalPosition = HolsterPosition;
         // Transform.LocalPosition = Vector3.Lerp(Transform.LocalPosition, GetHolsterPosition(), Time.Delta * 2f);
-		Transform.LocalRotation = GetHolsterRotation();
+		Transform.LocalRotation = HolsterRotation;
     }
     public void Aim()
     {
         var head = GameObject.Parent.Components.GetInChildrenOrSelf<CameraComponent>();
-		var viewmodelPos = GetViewmodelPosition();
+		// var viewmodelPos = GetViewmodelPosition();
         var targetPos = head.Transform.Position
-            + (head.Transform.Rotation.Forward * viewmodelPos.x)
-            + (head.Transform.Rotation.Right * viewmodelPos.y)
-            + (head.Transform.Rotation.Up * viewmodelPos.z);
+            + (head.Transform.Rotation.Forward * ViewmodelPosition.x)
+            + (head.Transform.Rotation.Right * ViewmodelPosition.y)
+            + (head.Transform.Rotation.Up * ViewmodelPosition.z);
 
         Transform.Position = Vector3.Lerp(Transform.Position, targetPos, Time.Delta * 5f);
         Transform.Rotation = Rotation.Slerp(Transform.Rotation, head.Transform.Rotation, Time.Delta * 20f);

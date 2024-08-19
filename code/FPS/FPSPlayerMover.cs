@@ -254,8 +254,8 @@ public sealed class FPSPlayerMover : Component
 		if ( AnimationHelper is null )
 			return;
 
-		var renderMode = ModelRenderer.ShadowRenderType.On;
-		if ( !IsProxy ) renderMode = ModelRenderer.ShadowRenderType.ShadowsOnly;
+		// var renderMode = ModelRenderer.ShadowRenderType.On;
+		// if ( !IsProxy ) renderMode = ModelRenderer.ShadowRenderType.ShadowsOnly;
 
 		// AnimationHelper.Target.RenderType = renderMode;
 

@@ -1,31 +1,32 @@
 {
   "RootObject": {
-    "__guid": "efc693fb-5bfa-4989-8a6a-08bc87d5abde",
+    "__guid": "8e642627-67d8-4465-acbe-ce7e848e945e",
     "Flags": 0,
-    "Name": "fpsplayer",
+    "Name": "FPSPlayer",
+    "Position": "0,0,51.00815",
     "Tags": "player",
     "Enabled": true,
     "Components": [
       {
         "__type": "FPSPlayerMover",
-        "__guid": "7d1c208e-c5f0-4168-b1bb-3b44369e6cd9",
+        "__guid": "7cdb1e52-8d0d-49a2-8128-2df56c29c4b6",
         "AnimationHelper": {
           "_type": "component",
-          "component_id": "39f60558-5899-4db1-8a22-5c4b5967880b",
-          "go": "efc693fb-5bfa-4989-8a6a-08bc87d5abde",
+          "component_id": "fc74cf8c-c37c-46da-8afa-5906054b6049",
+          "go": "8e642627-67d8-4465-acbe-ce7e848e945e",
           "component_type": "CitizenAnimationHelper"
         },
         "CharacterController": {
           "_type": "component",
-          "component_id": "97b63059-8c87-4449-891b-fac173b0d763",
-          "go": "efc693fb-5bfa-4989-8a6a-08bc87d5abde",
+          "component_id": "94c73ed3-84e4-4dee-bc5c-45b5ca290d20",
+          "go": "8e642627-67d8-4465-acbe-ce7e848e945e",
           "component_type": "CharacterController"
         },
         "CrouchMoveSpeed": 90,
         "Head": {
           "_type": "component",
-          "component_id": "ad8755ce-4bda-4e12-8952-a6bc950f4d96",
-          "go": "d8c46b2b-6ebd-463a-94ba-fe08a1a7fa2f",
+          "component_id": "dc6717cd-dde7-4ade-a9c8-036b8344883c",
+          "go": "94805b88-f220-4096-bf1c-572773ade854",
           "component_type": "CameraComponent"
         },
         "RunMoveSpeed": 190,
@@ -34,18 +35,18 @@
       },
       {
         "__type": "FPSWeaponController",
-        "__guid": "4dd27e63-756e-4df7-bf49-1bee6c0db05f",
+        "__guid": "112d1b23-049f-4e77-89a1-82380ffe88a4",
         "Head": {
           "_type": "component",
-          "component_id": "ad8755ce-4bda-4e12-8952-a6bc950f4d96",
-          "go": "d8c46b2b-6ebd-463a-94ba-fe08a1a7fa2f",
+          "component_id": "dc6717cd-dde7-4ade-a9c8-036b8344883c",
+          "go": "94805b88-f220-4096-bf1c-572773ade854",
           "component_type": "CameraComponent"
         },
         "Weapons": []
       },
       {
         "__type": "Sandbox.CharacterController",
-        "__guid": "97b63059-8c87-4449-891b-fac173b0d763",
+        "__guid": "94c73ed3-84e4-4dee-bc5c-45b5ca290d20",
         "Acceleration": 10,
         "Bounciness": 0.3,
         "GroundAngle": 45,
@@ -57,25 +58,25 @@
       },
       {
         "__type": "Sandbox.Citizen.CitizenAnimationHelper",
-        "__guid": "39f60558-5899-4db1-8a22-5c4b5967880b",
+        "__guid": "fc74cf8c-c37c-46da-8afa-5906054b6049",
         "BodyWeight": 1,
         "EyeSource": {
           "_type": "gameobject",
-          "go": "d8c46b2b-6ebd-463a-94ba-fe08a1a7fa2f"
+          "go": "94805b88-f220-4096-bf1c-572773ade854"
         },
         "EyesWeight": 1,
         "HeadWeight": 1,
         "LookAtEnabled": false,
         "Target": {
           "_type": "component",
-          "component_id": "10aaba91-986a-4e3e-8d7f-1f90eba451a7",
-          "go": "335c2a91-3158-4479-98d3-2984fe7dc63c",
+          "component_id": "abbd43d4-b008-4ff5-87ac-21a87706bdcf",
+          "go": "1a844d3f-7873-4f63-95ca-4d6f69b69011",
           "component_type": "SkinnedModelRenderer"
         }
       },
       {
         "__type": "Sandbox.BoxCollider",
-        "__guid": "bb355d1a-075d-42a5-89e5-7cf0d8794811",
+        "__guid": "9b58ec7a-05f6-4405-a85b-516d791ef410",
         "Center": "0,0,31.79997",
         "IsTrigger": false,
         "Scale": "28.89997,38.09999,65.20006",
@@ -84,16 +85,17 @@
     ],
     "Children": [
       {
-        "__guid": "335c2a91-3158-4479-98d3-2984fe7dc63c",
+        "__guid": "1a844d3f-7873-4f63-95ca-4d6f69b69011",
         "Flags": 0,
         "Name": "Body",
+        "Position": "0,0,0",
         "Rotation": "0,0,0.0000003894144,-1",
         "Tags": "playerbody",
         "Enabled": true,
         "Components": [
           {
             "__type": "Sandbox.SkinnedModelRenderer",
-            "__guid": "10aaba91-986a-4e3e-8d7f-1f90eba451a7",
+            "__guid": "abbd43d4-b008-4ff5-87ac-21a87706bdcf",
             "BodyGroups": 341,
             "CreateBoneObjects": false,
             "Model": "models/citizen/citizen.vmdl",
@@ -104,7 +106,7 @@
         ]
       },
       {
-        "__guid": "d8c46b2b-6ebd-463a-94ba-fe08a1a7fa2f",
+        "__guid": "94805b88-f220-4096-bf1c-572773ade854",
         "Flags": 0,
         "Name": "Head",
         "Position": "-10.83131,-0.7938595,64.36189",
@@ -113,7 +115,7 @@
         "Components": [
           {
             "__type": "Sandbox.CameraComponent",
-            "__guid": "ad8755ce-4bda-4e12-8952-a6bc950f4d96",
+            "__guid": "dc6717cd-dde7-4ade-a9c8-036b8344883c",
             "BackgroundColor": "0.25992,0.51138,0.62791,1",
             "ClearFlags": "All",
             "FieldOfView": 90,
@@ -129,9 +131,35 @@
             "ZNear": 10
           }
         ]
+      },
+      {
+        "__guid": "cae5e72f-a0e8-4bd0-8ec4-a77f3e963182",
+        "Flags": 0,
+        "Name": "HUD",
+        "Position": "0,0,0",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "FPSHud",
+            "__guid": "fd89e71f-f712-4e94-89ba-0513036f32e1",
+            "fpsWeaponController": {
+              "_type": "component",
+              "component_id": "112d1b23-049f-4e77-89a1-82380ffe88a4",
+              "go": "8e642627-67d8-4465-acbe-ce7e848e945e",
+              "component_type": "FPSWeaponController"
+            }
+          },
+          {
+            "__type": "Sandbox.ScreenPanel",
+            "__guid": "998d2899-fbe6-42a8-b966-8ffbeefc7b66",
+            "AutoScreenScale": true,
+            "Opacity": 1,
+            "Scale": 1,
+            "ZIndex": 100
+          }
+        ]
       }
-    ],
-    "__variables": []
+    ]
   },
   "ShowInMenu": false,
   "MenuPath": null,

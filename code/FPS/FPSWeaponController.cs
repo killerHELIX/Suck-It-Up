@@ -31,7 +31,6 @@ public sealed class FPSWeaponController : Component
 	{
 		if (Input.Pressed("slot1"))
 		{
-			Log.Info("Equipping weapon slot 1");
 			var wep = Weapons.ElementAtOrDefault(0);
 			if (SelectedWeapon != null && SelectedWeapon != wep) SelectedWeapon.Holster();
 
@@ -40,7 +39,6 @@ public sealed class FPSWeaponController : Component
 
 		if (Input.Pressed("slot2"))
 		{
-			Log.Info("Equipping weapon slot 2");
 			var wep = Weapons.ElementAtOrDefault(1);
 			if (SelectedWeapon != null && SelectedWeapon != wep) SelectedWeapon.Holster();
 			SelectedWeapon = wep;
@@ -48,7 +46,6 @@ public sealed class FPSWeaponController : Component
 
 		if (Input.Pressed("slot3"))
 		{
-			Log.Info("Holstering selected weapon");
 			if (SelectedWeapon != null) SelectedWeapon.Holster();
 			SelectedWeapon = null;
 		}

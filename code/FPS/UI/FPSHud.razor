@@ -31,6 +31,7 @@
 	protected String GetWeaponInfoClass()
 	{
 		var selectedWep = fpsWeaponController.SelectedWeapon;
+		@* return ""; *@
 		return (selectedWep == null) ? "hidden" : "";
 	}
 	protected String GetName()
@@ -43,14 +44,14 @@
 	protected String GetAmmo()
 	{
 		var selectedWep = fpsWeaponController.SelectedWeapon;
-		return (selectedWep != null) ? $"{selectedWep.CurrentAmmo}" : " ";
+		return (selectedWep != null) ? $"{selectedWep.CurrentAmmo}" : "0";
 
 	}
 
 	protected String GetReserves()
 	{
 		var selectedWep = fpsWeaponController.SelectedWeapon;
-		return (selectedWep != null) ? $"{selectedWep.CurrentReserves}" : " ";
+		return (selectedWep != null) ? $"{selectedWep.CurrentReserves}" : "0";
 
 	}
 }

@@ -33,7 +33,7 @@
 			newUnit.NetworkMode = NetworkMode.Object;
 			newUnit.Transform.Position = newUnitPosition;
 			newUnit.Components.Get<Unit>().setTeam(team);
-			RTSPlayer.Local.addUnit( newUnit );
+			RTSPlayer.Local.addUnit( newUnit, newUnit.Components.Get<Unit>().CapacityCost);
 			newUnit.Enabled = true;
 			newUnit.NetworkSpawn();
 		}

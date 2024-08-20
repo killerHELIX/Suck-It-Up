@@ -6,7 +6,7 @@ public class RTSPlayer : Component
 	{
 		get
 		{
-			if(!_local.IsValid())
+			if (!_local.IsValid())
 			{
 				_local = Game.ActiveScene.GetAllComponents<RTSPlayer>().FirstOrDefault(x => x.Network.IsOwner);
 			}
@@ -18,18 +18,23 @@ public class RTSPlayer : Component
 	[Property] public int Team;
 	[Property] public RTSGameComponent LocalGame;
 	//DEBUG REMOVE
-	[Property] public GameObject skeltalPrefab {  get; set; }
+	[Property] public GameObject skeltalPrefab { get; set; }
 	[Property] public GameObject skeltalHousePrefab { get; set; }
+	[Property] public int ResourceCap {  get; set; }
+	[Property] public int CapacityCap { get; set; }
 	//DEBUG REMOVE
 
-	private List<GameObject> myUnits = new List<GameObject>();
-	public uint resourcePoints = 0;
+	public List<GameObject> myUnits = new List<GameObject>();
+	public int resourcePoints = 0;
+	public int capacityPoints = 0;
 	private float lastRPTickTime = Time.Now;
 	public UnitFactory myUnitFactory = new UnitFactory();
 
 	private static RTSPlayer _local = null;
 
 	private const float DEFAULT_RP_RATE = 1f;
+	private const float PER_PLAYER_RESOURCE_MULT = 1.5f;
+	private const float PER_PHASE_RESOURCE_MULT = 2f;
 
 	protected override void OnStart()
 	{
@@ -82,7 +87,7 @@ public class RTSPlayer : Component
 
 	protected override void OnUpdate()
 	{
-		if(Time.Now - lastRPTickTime > DEFAULT_RP_RATE)
+		if(Time.Now - lastRPTickTime > DEFAULT_RP_RATE / float.Max(((PER_PLAYER_RESOURCE_MULT * 0) * (PER_PHASE_RESOURCE_MULT * 0)), 1))
 		{
 			resourcePoints++;
 			lastRPTickTime = Time.Now;
@@ -91,13 +96,34 @@ public class RTSPlayer : Component
 
 	}
 
-	public void addUnit(GameObject newUnit)
+	public void addResourcePoints(int newResPoints)
 	{
-		myUnits.Add( newUnit );
+		if (resourcePoints + newResPoints > 0 && resourcePoints + newResPoints <= ResourceCap)
+		{
+			resourcePoints += newResPoints;
+		}
 	}
 
-	public void removeUnit(GameObject unitToRemove)
+	public void addCapacityPoints(int newCapPoints)
 	{
+		Log.Info("Add " + newCapPoints + " new cap points to " + capacityPoints);
+		if (capacityPoints + newCapPoints > 0 && capacityPoints + newCapPoints <= CapacityCap)
+		{
+			capacityPoints += newCapPoints;
+		}
+	}
+
+	public void addUnit(GameObject newUnit, int unitCapPts)
+	{
+		Log.Info("Add Unit");
+		myUnits.Add( newUnit );
+		addCapacityPoints(unitCapPts);
+	}
+
+	public void removeUnit(GameObject unitToRemove, int unitCapPts)
+	{
+		Log.Info("Remove Unit");
 		myUnits.Remove( unitToRemove );
+		addCapacityPoints( -unitCapPts );
 	}
 }

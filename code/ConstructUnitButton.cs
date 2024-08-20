@@ -6,9 +6,9 @@ public class ConstructUnitButton : DynamicButton
 
 	public Vector3 thisSpawnerPosition { get; set; }
 
-	private uint constructionCost = 0;
+	private int constructionCost = 0;
 
-	public ConstructUnitButton(char hotkey, string bg1, GameObject unitPrefab, Vector3 spawnerPosition, uint cost) : base()
+	public ConstructUnitButton(char hotkey, string bg1, GameObject unitPrefab, Vector3 spawnerPosition, int cost) : base()
 	{
 		hotkeyChar = hotkey;
 		activeBackgroundImage = bg1;

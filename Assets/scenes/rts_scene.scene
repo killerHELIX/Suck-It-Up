@@ -185,6 +185,7 @@
         {
           "__type": "UnitPortraitTuple",
           "__guid": "19e9b742-d460-4133-9e55-e0207446fe22",
+          "UnitCapacityCost": 5,
           "UnitPortraitImage": "materials/skeltal_portrait.PNG",
           "UnitPrefab": {
             "_type": "gameobject",
@@ -252,6 +253,7 @@
           "__type": "SIUUnit",
           "__guid": "a129bdf9-2521-4495-9574-f413b6cac1be",
           "AnimGraph": "animgraphs/sk_light_infantry_a.vanmgrph",
+          "CapacityCost": 0,
           "HasMeleeAttack": true,
           "HasRangedAttack": false,
           "MaxHealth": 1000,

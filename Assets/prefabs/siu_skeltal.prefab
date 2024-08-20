@@ -13,6 +13,7 @@
         "__type": "SIUUnit",
         "__guid": "f6b986cc-f1e3-434f-a9a6-2650d14ad66e",
         "AnimGraph": "animgraphs/sk_light_infantry_a.vanmgrph",
+        "CapacityCost": 5,
         "HasMeleeAttack": true,
         "HasRangedAttack": false,
         "MaxHealth": 100,

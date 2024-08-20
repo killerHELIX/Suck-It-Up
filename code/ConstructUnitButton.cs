@@ -8,7 +8,9 @@ public class ConstructUnitButton : DynamicButton
 
 	private int constructionCost = 0;
 
-	public ConstructUnitButton(char hotkey, string bg1, GameObject unitPrefab, Vector3 spawnerPosition, int cost) : base()
+	private int capacityCost = 0;
+
+	public ConstructUnitButton(char hotkey, string bg1, GameObject unitPrefab, Vector3 spawnerPosition, int cost, int capacity) : base()
 	{
 		hotkeyChar = hotkey;
 		activeBackgroundImage = bg1;
@@ -16,6 +18,7 @@ public class ConstructUnitButton : DynamicButton
 		thisButtonAction = () => constructUnit(unitPrefab);
 		thisSpawnerPosition = spawnerPosition;
 		constructionCost = cost;
+		capacityCost = capacity;
 	}
 
 	public void constructUnit(GameObject unitPrefab)
@@ -26,7 +29,7 @@ public class ConstructUnitButton : DynamicButton
 
 	public bool canAffordUnit()
 	{
-		if(RTSPlayer.Local.resourcePoints >= constructionCost)
+		if(RTSPlayer.Local.resourcePoints >= constructionCost && RTSPlayer.Local.CapacityCap - RTSPlayer.Local.capacityPoints >= capacityCost)
 		{
 			return true;
 		}

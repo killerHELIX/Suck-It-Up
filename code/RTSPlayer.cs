@@ -20,9 +20,9 @@ public class RTSPlayer : Component
 	//DEBUG REMOVE
 	[Property] public GameObject skeltalPrefab { get; set; }
 	[Property] public GameObject skeltalHousePrefab { get; set; }
+	//DEBUG REMOVE
 	[Property] public int ResourceCap {  get; set; }
 	[Property] public int CapacityCap { get; set; }
-	//DEBUG REMOVE
 
 	public List<GameObject> myUnits = new List<GameObject>();
 	public int resourcePoints = 0;
@@ -71,6 +71,7 @@ public class RTSPlayer : Component
 			//Log.Info("Taking Ownership of " + unit.GameObject.Name);
 			unit.Network.TakeOwnership();
 			unit.onTeamChange();
+			addUnit(unit.GameObject, unit.CapacityCost);
 		}
 		//Get Ownership over control orbs
 		var myOrbList = Game.ActiveScene.GetAllComponents<ControlOrb>().Where(x => x.team == Team);

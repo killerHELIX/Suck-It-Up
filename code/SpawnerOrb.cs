@@ -8,7 +8,7 @@ public class SpawnerOrb : ControlOrb
 		ThisOrbType = OrbType.Spawner;
 		foreach(var unitType in spawnableUnitList) 
 		{
-			buttons.Add(new ConstructUnitButton('.', unitType.UnitPortraitImage, unitType.UnitPrefab, Transform.Position));
+			buttons.Add(new ConstructUnitButton('.', unitType.UnitPortraitImage, unitType.UnitPrefab, Transform.Position, unitType.UnitResourceCost, unitType.UnitCapacityCost));
 		}
 	}
 }

@@ -19,6 +19,10 @@ public class Unit : SkinnedRTSObject
 	[Property] public int RangedAttackDamage { get; set; }
 	[Group( "Gameplay" )]
 	[Property] public float RangedAttackSpeed { get; set; }
+	[Group("Gameplay")]
+	[Property] public int ResourceCost { get; set; }
+	[Group("Gameplay")]
+	[Property] public int CapacityCost { get; set; }
 
 	[Group( "Triggers And Collision" )]
 	[Property] public UnitTriggerListener TriggerListener { get; set; }

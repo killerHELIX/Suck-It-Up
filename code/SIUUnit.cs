@@ -251,6 +251,7 @@ class SIUUnit : Unit
 		ThisHealthBar.Enabled = false;
 		ThisHealthBar.setEnabled(false);
 		PhysicalModelRenderer.baseStand.setEnabled(false);
+		RTSPlayer.Local.removeUnit(this.GameObject, CapacityCost);
 		Enabled = false;
 
 		//This will be fully destroyed later when the corpse dissapears

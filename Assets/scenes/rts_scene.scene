@@ -1,5 +1,5 @@
 {
-  "__guid": "e776ce16-3d5d-47f8-99ff-bacb2f6934f6",
+  "__guid": "3ca5ec47-fd49-4043-b66a-40e7ced6ddfa",
   "GameObjects": [
     {
       "__guid": "9fe8a9d1-d2b6-40dd-98ff-f7f8984aab67",
@@ -65,7 +65,7 @@
       "Components": [
         {
           "__type": "ControlOrb",
-          "__guid": "fc5445e2-2f56-4d66-a6ad-00a5b9452a93",
+          "__guid": "49c81552-be09-4080-9a50-0c50a1eac46c",
           "ModelFile": "models/dev/sphere.vmdl",
           "ModelMaterial": "materials/default.vmat",
           "name": "Trap Orb",
@@ -148,7 +148,7 @@
       "Components": [
         {
           "__type": "SpawnerOrb",
-          "__guid": "67ebe9a0-f6bb-41ab-8b56-94380a52d7ed",
+          "__guid": "0d82a996-ee31-4b97-9b10-f1348d58030a",
           "ModelFile": "models/dev/sphere.vmdl",
           "ModelMaterial": "materials/default.vmat",
           "name": "Spawner Orb",
@@ -175,7 +175,7 @@
           "spawnableUnitList": [
             {
               "_type": "component",
-              "component_id": "d6de9eb8-1cca-4d7e-85e2-ea4b3fb4f66f",
+              "component_id": "19e9b742-d460-4133-9e55-e0207446fe22",
               "go": "d0f4beb4-098e-47db-b02f-43ab206eb349",
               "component_type": "UnitPortraitTuple"
             }
@@ -184,12 +184,14 @@
         },
         {
           "__type": "UnitPortraitTuple",
-          "__guid": "d6de9eb8-1cca-4d7e-85e2-ea4b3fb4f66f",
+          "__guid": "19e9b742-d460-4133-9e55-e0207446fe22",
+          "UnitCapacityCost": 5,
           "UnitPortraitImage": "materials/skeltal_portrait.PNG",
           "UnitPrefab": {
             "_type": "gameobject",
             "prefab": "prefabs/siu_skeltal.prefab"
-          }
+          },
+          "UnitResourceCost": 5
         },
         {
           "__type": "Sandbox.BoxCollider",
@@ -249,8 +251,9 @@
       "Components": [
         {
           "__type": "SIUUnit",
-          "__guid": "c31ed183-d213-48c8-9b9e-df29612675c2",
+          "__guid": "a129bdf9-2521-4495-9574-f413b6cac1be",
           "AnimGraph": "animgraphs/sk_light_infantry_a.vanmgrph",
+          "CapacityCost": 0,
           "HasMeleeAttack": true,
           "HasRangedAttack": false,
           "MaxHealth": 1000,
@@ -269,6 +272,7 @@
           "RangedAttackDamage": 0,
           "RangedAttackRange": 0,
           "RangedAttackSpeed": 0,
+          "ResourceCost": 0,
           "SelectionHitbox": {
             "_type": "component",
             "component_id": "efc95f1b-ddba-4875-bf73-904a7d26e058",

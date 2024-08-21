@@ -13,6 +13,7 @@
         "__type": "Unit",
         "__guid": "280b27a6-35c2-4e9b-a35e-e874ff192469",
         "AnimGraph": "animgraphs/sk_light_infantry_a.vanmgrph",
+        "CapacityCost": 5,
         "HasMeleeAttack": true,
         "HasRangedAttack": false,
         "MaxHealth": 100,
@@ -31,6 +32,7 @@
         "RangedAttackDamage": 0,
         "RangedAttackRange": 0,
         "RangedAttackSpeed": 0,
+        "ResourceCost": 5,
         "SelectionHitbox": {
           "_type": "component",
           "component_id": "ffbdea9f-5b9e-4343-af77-4d405a856a54",

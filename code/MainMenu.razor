@@ -1,0 +1,71 @@
+﻿@using Sandbox;
+@using Sandbox.UI;
+@using System.Linq;
+@using System;
+@inherits PanelComponent
+@attribute [StyleSheet]
+
+@code
+{
+	private string textColor = "white";
+
+	private Dictionary<string, string> menuItems = new Dictionary<string, string>();
+
+	protected override void OnStart()
+	{
+		menuItems.Add("Quit", "white");
+		menuItems.Add("Settings", "white");
+		menuItems.Add("Join", "white");
+		menuItems.Add("Host", "white");
+	}
+	//Game.ActiveScene.LoadFromFile( "scenes/tests/menu.scene" );
+	//
+	// Create a lobby if we're not connected
+	//
+	//if ( !GameNetworkSystem.IsActive )
+	//{
+	//GameNetworkSystem.CreateLobby();
+	//}
+	//list = await GameNetworkSystem.QueryLobbies();
+	//GameNetworkSystem.Connect( lobbyid );
+
+	void isHoveredColor(string hoveredItem)
+	{
+
+		Log.Info("Mouse Enter");
+		menuItems[hoveredItem] = "darkorange";
+	}
+
+	void isNotHoveredColor(string hoveredItem)
+	{
+		Log.Info("Mouse Exit");
+		menuItems[hoveredItem] = "white";
+	}
+
+	void itemClicked(string clickedItem)
+	{
+		Log.Info("You have clicked" + clickedItem);
+		return;
+	}
+
+	void itemPressed(string clickedItem)
+	{
+		menuItems[clickedItem] = "yellow";
+	}
+
+	void itemPressReleased(string clickedItem)
+	{
+		menuItems[clickedItem] = "darkorange";
+	}
+	//@onclickreleased"@(() => itemClickReleased(itemName))"
+
+}
+
+<root>
+	<div class="OptionsPanel">
+		@foreach (string itemName in menuItems.Keys)
+			{
+			<button @onmouseover="@(() => isHoveredColor(itemName))" @onmouseout="@(() => isNotHoveredColor(itemName))" @onclick="@(() => itemClicked(itemName))" @onmousedown="@(()=> itemPressed(itemName))" @onmouseup="@(() => itemPressReleased(itemName))" style="color: @(menuItems[itemName])" class="MenuOption">@(itemName)</button>
+			}
+	</div>
+</root>

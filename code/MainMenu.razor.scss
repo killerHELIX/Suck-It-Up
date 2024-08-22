@@ -1,0 +1,29 @@
+MainMenu {
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    pointer-events: none;
+}
+
+.OptionsPanel {
+    width: 30%;
+    height: 60%;
+    bottom: 5%;
+    left: 5%;
+    position: absolute;
+    //background-color: black;
+    flex-direction: column-reverse;
+    pointer-events: none;
+}
+
+.MenuOption {
+    width: 100%;
+    height: 20%;
+    color: white;
+    //border: 1px white;
+    font-size: 100px;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif, Arial;
+    pointer-events: all;
+}

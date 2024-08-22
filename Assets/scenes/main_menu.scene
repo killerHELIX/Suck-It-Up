@@ -1,0 +1,174 @@
+{
+  "__guid": "a5742acf-ba61-4925-9be6-093cf63341c8",
+  "GameObjects": [
+    {
+      "__guid": "0dc3dab6-b368-4b38-9706-914d71345e2b",
+      "Flags": 0,
+      "Name": "Plane",
+      "Scale": "34.75246,27.39461,1",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "10ce0b43-970c-447d-ba0a-0651de544892",
+          "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/default.vmat",
+          "Model": "models/dev/plane.vmdl",
+          "RenderType": "Off",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "48a27996-6e62-42b0-877a-94c836885300",
+      "Flags": 0,
+      "Name": "Light",
+      "Position": "96.54483,37.11548,163.4522",
+      "Tags": "light_point,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.PointLight",
+          "__guid": "df35e8da-c262-4420-b9d7-52bc32f75f98",
+          "Attenuation": 0.13,
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.91373,0.98039,1,1",
+          "Radius": 4000,
+          "Shadows": true
+        }
+      ]
+    },
+    {
+      "__guid": "db553222-f657-475c-93ee-a60291c020a4",
+      "Flags": 0,
+      "Name": "Camera",
+      "Position": "223.0655,33.28958,82.48463",
+      "Rotation": "-0.1305262,0.00000001944992,0.9914448,0.0000001477368",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.CameraComponent",
+          "__guid": "11a06264-14bd-451a-bd28-156f3622e2fc",
+          "BackgroundColor": "0.33333,0.46275,0.52157,1",
+          "ClearFlags": "All",
+          "FieldOfView": 60,
+          "IsMainCamera": true,
+          "Orthographic": false,
+          "OrthographicHeight": 1204,
+          "Priority": 1,
+          "RenderExcludeTags": "",
+          "RenderTags": "",
+          "TargetEye": "None",
+          "Viewport": "0,0,1,1",
+          "ZFar": 10000,
+          "ZNear": 10
+        }
+      ]
+    },
+    {
+      "__guid": "24b85afd-cb1e-4edb-b028-d28c6605eff5",
+      "Flags": 0,
+      "Name": "Cube",
+      "Position": "49.21268,55.61245,16.32014",
+      "Rotation": "0,0,0.3826834,0.9238796",
+      "Scale": "0.6,0.6,0.6",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "1313f303-ae42-4bfe-95f1-4e88c41a1ad3",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "0,1,0.05,1"
+        }
+      ]
+    },
+    {
+      "__guid": "e6329ca2-0d38-4978-b395-2a5ba0ab2a4d",
+      "Flags": 0,
+      "Name": "Cube (1)",
+      "Position": "49.86097,10.99946,16.32014",
+      "Rotation": "0,0,-0.1305262,0.9914449",
+      "Scale": "0.6,0.6,0.6",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "23bd7f4a-f88d-4153-9b97-fe9e17f06e43",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "1,0,0,1"
+        }
+      ]
+    },
+    {
+      "__guid": "ec558767-2dfc-499d-b88c-5e2183dc6d68",
+      "Flags": 0,
+      "Name": "Cube (2)",
+      "Position": "49.86097,32.40603,46.38122",
+      "Rotation": "0,0,0.1305262,0.9914449",
+      "Scale": "0.6,0.6,0.6",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "ab6e6143-ac68-474f-ac91-5893c558c85a",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "0,0,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "a6d12069-87a3-43a0-a1e8-accba04872c7",
+      "Flags": 0,
+      "Name": "Main Menu",
+      "Position": "282.8159,274.2523,183.7692",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "MainMenu",
+          "__guid": "f870d22a-fe33-4067-8acb-20696a573d46"
+        },
+        {
+          "__type": "Sandbox.ScreenPanel",
+          "__guid": "3373cc8f-a230-4e9f-af87-1372831a27df",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ZIndex": 100
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 30,
+    "NetworkInterpolation": true,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "Title": "main_menu",
+  "Description": "",
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

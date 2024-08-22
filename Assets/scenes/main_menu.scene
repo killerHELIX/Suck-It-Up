@@ -43,8 +43,8 @@
       "__guid": "db553222-f657-475c-93ee-a60291c020a4",
       "Flags": 0,
       "Name": "Camera",
-      "Position": "223.0655,33.28958,82.48463",
-      "Rotation": "-0.1305262,0.00000001944992,0.9914448,0.0000001477368",
+      "Position": "223.0656,21.64857,82.48463",
+      "Rotation": "-0.1304815,-0.003416779,0.9911051,-0.02595302",
       "Enabled": true,
       "Components": [
         {
@@ -63,6 +63,20 @@
           "Viewport": "0,0,1,1",
           "ZFar": 10000,
           "ZNear": 10
+        },
+        {
+          "__type": "Sandbox.DepthOfField",
+          "__guid": "47a487b9-cf28-40fc-8074-4c8197424bcf",
+          "BackBlur": true,
+          "BlurSize": 100,
+          "FocalDistance": 448.72,
+          "FrontBlur": false
+        },
+        {
+          "__type": "Sandbox.FilmGrain",
+          "__guid": "d508d2ca-dc59-4869-a7dd-54b40cf22160",
+          "Intensity": 0.1,
+          "Response": 0.5
         }
       ]
     },
@@ -70,7 +84,7 @@
       "__guid": "24b85afd-cb1e-4edb-b028-d28c6605eff5",
       "Flags": 0,
       "Name": "Cube",
-      "Position": "49.21268,55.61245,16.32014",
+      "Position": "-88.45517,74.71185,16.32014",
       "Rotation": "0,0,0.3826834,0.9238796",
       "Scale": "0.6,0.6,0.6",
       "Enabled": true,
@@ -89,7 +103,7 @@
       "__guid": "e6329ca2-0d38-4978-b395-2a5ba0ab2a4d",
       "Flags": 0,
       "Name": "Cube (1)",
-      "Position": "49.86097,10.99946,16.32014",
+      "Position": "33.48129,-65.97304,16.32014",
       "Rotation": "0,0,-0.1305262,0.9914449",
       "Scale": "0.6,0.6,0.6",
       "Enabled": true,
@@ -108,7 +122,7 @@
       "__guid": "ec558767-2dfc-499d-b88c-5e2183dc6d68",
       "Flags": 0,
       "Name": "Cube (2)",
-      "Position": "49.86097,32.40603,46.38122",
+      "Position": "-77.02271,-74.64522,14.3416",
       "Rotation": "0,0,0.1305262,0.9914449",
       "Scale": "0.6,0.6,0.6",
       "Enabled": true,
@@ -124,23 +138,349 @@
       ]
     },
     {
-      "__guid": "a6d12069-87a3-43a0-a1e8-accba04872c7",
+      "__guid": "86aecafd-ef19-48e1-87d8-7d5dcb8792e2",
       "Flags": 0,
-      "Name": "Main Menu",
-      "Position": "282.8159,274.2523,183.7692",
+      "Name": "Object",
+      "Position": "13.24461,12.63725,0.2798235",
+      "Rotation": "0,0,0.1305262,0.9914449",
+      "Scale": "5,5,5",
       "Enabled": true,
       "Components": [
         {
-          "__type": "MainMenu",
-          "__guid": "f870d22a-fe33-4067-8acb-20696a573d46"
+          "__type": "Sandbox.SkinnedModelRenderer",
+          "__guid": "b15ead19-f3e6-4dfd-a6c2-b338e0c632c1",
+          "BodyGroups": 18446744073709551615,
+          "CreateBoneObjects": false,
+          "Model": "models/enemies/critter.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1",
+          "UseAnimGraph": true
+        }
+      ]
+    },
+    {
+      "__guid": "dcd26a2b-5728-48de-b559-783354dfab7f",
+      "Flags": 0,
+      "Name": "Object (8)",
+      "Position": "-85.80482,8.052815,0.2798177",
+      "Rotation": "0,0,-0.6087614,0.7933535",
+      "Scale": "5,5,5",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SkinnedModelRenderer",
+          "__guid": "8580de30-9b2e-44e8-bd84-1a8f04392e3c",
+          "BodyGroups": 18446744073709551615,
+          "CreateBoneObjects": false,
+          "Model": "models/enemies/giant.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1",
+          "UseAnimGraph": true
+        }
+      ]
+    },
+    {
+      "__guid": "cf031d78-58e5-4234-9dd6-a49ec2fa9e39",
+      "Flags": 0,
+      "Name": "Object (6)",
+      "Position": "-49.51089,114.7775,0.2798117",
+      "Rotation": "0,0,-0.8660256,0.5",
+      "Scale": "5,5,5",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SkinnedModelRenderer",
+          "__guid": "0d0659fe-2244-4ab9-8d20-9df433e1ab26",
+          "BodyGroups": 18446744073709551615,
+          "CreateBoneObjects": false,
+          "Model": "models/enemies/normal.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1",
+          "UseAnimGraph": true
+        }
+      ]
+    },
+    {
+      "__guid": "2fd15014-5045-45bb-beed-ff49e3fc29c1",
+      "Flags": 0,
+      "Name": "Object (7)",
+      "Position": "14.69465,-17.42287,0.2798166",
+      "Rotation": "0,0,-0.5000002,0.8660255",
+      "Scale": "5,5,5",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SkinnedModelRenderer",
+          "__guid": "1a7fe9ed-f223-4600-a40d-8abef2b7df0e",
+          "BodyGroups": 18446744073709551615,
+          "CreateBoneObjects": false,
+          "Model": "models/enemies/normal.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1",
+          "UseAnimGraph": true
+        }
+      ]
+    },
+    {
+      "__guid": "c4cd5bda-74cd-42fa-bd99-1784ac030793",
+      "Flags": 0,
+      "Name": "Object (4)",
+      "Position": "79.92801,-30.47889,0.2798255",
+      "Rotation": "0,0,-0.4999999,0.8660255",
+      "Scale": "5,5,5",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SkinnedModelRenderer",
+          "__guid": "7d92a30c-ba85-45aa-8be4-1bbee02480f8",
+          "BodyGroups": 18446744073709551615,
+          "CreateBoneObjects": false,
+          "Model": "models/enemies/roller.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1",
+          "UseAnimGraph": true
+        }
+      ]
+    },
+    {
+      "__guid": "dff8c477-92d1-48e1-94e7-8d9127e34fba",
+      "Flags": 0,
+      "Name": "Object (5)",
+      "Position": "31.12136,54.05665,0.2798255",
+      "Rotation": "0,0,-0.9238795,0.3826837",
+      "Scale": "5,5,5",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SkinnedModelRenderer",
+          "__guid": "f041e22e-0cfd-4a37-a706-87a2fa809d50",
+          "BodyGroups": 18446744073709551615,
+          "CreateBoneObjects": false,
+          "Model": "models/enemies/roller.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1",
+          "UseAnimGraph": true
+        }
+      ]
+    },
+    {
+      "__guid": "bf4ab7cb-5a69-480a-b940-f5430697f9e3",
+      "Flags": 0,
+      "Name": "Object (1)",
+      "Position": "35.60487,-63.58617,30.14639",
+      "Rotation": "0,0,0.1305262,0.9914449",
+      "Scale": "5,5,5",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SkinnedModelRenderer",
+          "__guid": "fc379063-1a2a-4498-a912-c5cc534fbf4d",
+          "BodyGroups": 18446744073709551615,
+          "CreateBoneObjects": false,
+          "Model": "models/enemies/critter.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1",
+          "UseAnimGraph": true
+        }
+      ]
+    },
+    {
+      "__guid": "0ba9dc11-664e-46ff-9ade-f57ca40fb1f1",
+      "Flags": 0,
+      "Name": "Object (2)",
+      "Position": "90.77419,25.99977,0.2798283",
+      "Rotation": "0,0,-0.1305262,0.9914449",
+      "Scale": "5,5,5",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SkinnedModelRenderer",
+          "__guid": "36bf0049-b444-4784-b958-4e17300b358f",
+          "BodyGroups": 18446744073709551615,
+          "CreateBoneObjects": false,
+          "Model": "models/enemies/critter.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1",
+          "UseAnimGraph": true
+        }
+      ]
+    },
+    {
+      "__guid": "ed71e2cc-afbe-4d97-9a8d-f0d3cc00c2e1",
+      "Flags": 0,
+      "Name": "Object (3)",
+      "Position": "46.70549,92.95575,0.2798249",
+      "Rotation": "0,0,-0.258819,0.9659258",
+      "Scale": "5,5,5",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SkinnedModelRenderer",
+          "__guid": "66472b03-5b08-471f-98fe-9adb71fafde3",
+          "BodyGroups": 18446744073709551615,
+          "CreateBoneObjects": false,
+          "Model": "models/enemies/critter.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1",
+          "UseAnimGraph": true
+        }
+      ]
+    },
+    {
+      "__guid": "4b11853d-ac86-453e-8663-886602f001d6",
+      "Flags": 0,
+      "Name": "Object",
+      "Position": "-65.75615,12.9998,52.01772",
+      "Tags": "light_point,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.PointLight",
+          "__guid": "a98dd86f-2ad7-4f80-a82e-0f46515c7900",
+          "Attenuation": 0.56,
+          "FogMode": "Enabled",
+          "FogStrength": 0,
+          "LightColor": "1,0.04651,0.04651,1",
+          "Radius": 60,
+          "Shadows": true
         },
         {
-          "__type": "Sandbox.ScreenPanel",
-          "__guid": "3373cc8f-a230-4e9f-af87-1372831a27df",
-          "AutoScreenScale": true,
-          "Opacity": 1,
-          "Scale": 1,
-          "ZIndex": 100
+          "__type": "Sandbox.AmbientLight",
+          "__guid": "0b8f5ba1-3914-44e5-9bd8-635c6ba6cadf",
+          "__enabled": false,
+          "Color": "0.13953,0.29729,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "28d11f5c-9e53-4666-aa83-6ade51b8b4de",
+      "Flags": 0,
+      "Name": "Object (9)",
+      "Position": "-45.1226,105.5754,57.78038",
+      "Tags": "light_point,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.PointLight",
+          "__guid": "f656c80d-c928-4e92-8c23-dc9a4a90e578",
+          "Attenuation": 0.56,
+          "FogMode": "Enabled",
+          "FogStrength": 0,
+          "LightColor": "1,0.04651,0.04651,1",
+          "Radius": 60,
+          "Shadows": true
+        },
+        {
+          "__type": "Sandbox.AmbientLight",
+          "__guid": "bc36f670-bc5b-4496-b69b-cff6e2e7349d",
+          "__enabled": false,
+          "Color": "0.13953,0.29729,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "999f87f5-db27-4e46-9957-08a17a2bfcaa",
+      "Flags": 0,
+      "Name": "Object (11)",
+      "Position": "-39.14196,115.5773,57.59132",
+      "Tags": "light_point,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.PointLight",
+          "__guid": "1e5e4736-da97-4605-a67f-f3775402f43c",
+          "Attenuation": 0.56,
+          "FogMode": "Enabled",
+          "FogStrength": 0,
+          "LightColor": "1,0.04651,0.04651,1",
+          "Radius": 60,
+          "Shadows": true
+        },
+        {
+          "__type": "Sandbox.AmbientLight",
+          "__guid": "612e99ed-5725-471b-bc16-df665ece8bd1",
+          "__enabled": false,
+          "Color": "0.13953,0.29729,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "4d24c90f-9c41-411e-9af4-7af01195cc7a",
+      "Flags": 0,
+      "Name": "Object (10)",
+      "Position": "24.55043,-17.83009,57.46217",
+      "Tags": "light_point,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.PointLight",
+          "__guid": "31f38933-c9f6-454f-ad8c-0d1fa1a886e5",
+          "Attenuation": 0.56,
+          "FogMode": "Enabled",
+          "FogStrength": 0,
+          "LightColor": "1,0.04651,0.04651,1",
+          "Radius": 60,
+          "Shadows": true
+        },
+        {
+          "__type": "Sandbox.AmbientLight",
+          "__guid": "fff7315f-79bf-41fa-8897-685c40dce987",
+          "__enabled": false,
+          "Color": "0.13953,0.29729,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "ef0168c1-1a46-46da-bd60-d8e5a91b2f0e",
+      "Flags": 0,
+      "Name": "Object (12)",
+      "Position": "19.18894,-7.915539,57.7257",
+      "Tags": "light_point,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.PointLight",
+          "__guid": "d59fd1e2-9a87-40c8-8c47-e980dd797433",
+          "Attenuation": 0.56,
+          "FogMode": "Enabled",
+          "FogStrength": 0,
+          "LightColor": "1,0.04651,0.04651,1",
+          "Radius": 60,
+          "Shadows": true
+        },
+        {
+          "__type": "Sandbox.AmbientLight",
+          "__guid": "fc59f023-3ec7-4fa5-a120-963c6ea32782",
+          "__enabled": false,
+          "Color": "0.13953,0.29729,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "36ef4334-e091-43de-b302-4812907671e6",
+      "Flags": 0,
+      "Name": "Main Menu",
+      "Position": "-414.3859,-2111.661,1010.93",
+      "Tags": "main_menu",
+      "Enabled": true,
+      "NetworkInterpolation": false,
+      "__Prefab": "prefabs/mainmenu.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "10cd86b0-9600-4941-9893-b2f99479ee75",
+      "Flags": 0,
+      "Name": "GameObject",
+      "Components": [
+        {
+          "__type": "Sandbox.NetworkHelper",
+          "__guid": "75942cae-ef5f-4c1e-a1e4-26e39a411a0a",
+          "PlayerPrefab": {
+            "_type": "gameobject",
+            "go": "36ef4334-e091-43de-b302-4812907671e6"
+          },
+          "SpawnPoints": [],
+          "StartServer": true
         }
       ]
     }

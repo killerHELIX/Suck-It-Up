@@ -1,0 +1,19 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using System.Linq;
+@using System;
+@inherits PanelComponent
+@attribute [StyleSheet]
+
+@code
+{
+	public void returnToMain()
+	{
+		MainMenuComponent.Local.setActivePanel(MainMenuComponent.MenuPanelType.MAIN);
+	}
+}
+
+<root>
+	<div>Joined Lobby</div>
+	<button @onclick="@(() => returnToMain())">Back</button>
+</root>

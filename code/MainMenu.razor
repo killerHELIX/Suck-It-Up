@@ -7,16 +7,26 @@
 
 @code
 {
-	private string textColor = "white";
+	private class MenuPanelData
+	{
+		public string textColor = "white";
+		public MainMenuComponent.MenuPanelType panelType = MainMenuComponent.MenuPanelType.NULL;
 
-	private Dictionary<string, string> menuItems = new Dictionary<string, string>();
+		public MenuPanelData(string newColor, MainMenuComponent.MenuPanelType newPanelType)
+		{
+			textColor = newColor;
+			panelType = newPanelType;
+		}
+	}
+
+	private Dictionary<string, MenuPanelData> menuItems = new Dictionary<string, MenuPanelData>();
 
 	protected override void OnStart()
 	{
-		menuItems.Add("Quit", "white");
-		menuItems.Add("Settings", "white");
-		menuItems.Add("Join", "white");
-		menuItems.Add("Host", "white");
+		menuItems.Add("Quit", new MenuPanelData("white", MainMenuComponent.MenuPanelType.NULL));
+		menuItems.Add("Settings", new MenuPanelData("white", MainMenuComponent.MenuPanelType.SETTINGS));
+		menuItems.Add("Join", new MenuPanelData("white", MainMenuComponent.MenuPanelType.LOBBYLIST));
+		menuItems.Add("Host", new MenuPanelData("white", MainMenuComponent.MenuPanelType.JOINEDLOBBY));
 	}
 	//Game.ActiveScene.LoadFromFile( "scenes/tests/menu.scene" );
 	//
@@ -33,30 +43,43 @@
 	{
 
 		Log.Info("Mouse Enter");
-		menuItems[hoveredItem] = "darkorange";
+		menuItems[hoveredItem].textColor = "darkorange";
 	}
 
 	void isNotHoveredColor(string hoveredItem)
 	{
 		Log.Info("Mouse Exit");
-		menuItems[hoveredItem] = "white";
+		menuItems[hoveredItem].textColor = "white";
 	}
 
 	void itemClicked(string clickedItem)
 	{
-		Log.Info("You have clicked" + clickedItem);
+		Log.Info("You have clicked " + clickedItem);
+		foreach(string itemName in menuItems.Keys)
+		{
+			menuItems[itemName].textColor = "white";
+		}
+		MainMenuComponent.Local.setActivePanel(menuItems[clickedItem].panelType);
 		return;
 	}
 
 	void itemPressed(string clickedItem)
 	{
-		menuItems[clickedItem] = "yellow";
+		menuItems[clickedItem].textColor = "yellow";
 	}
 
 	void itemPressReleased(string clickedItem)
 	{
-		menuItems[clickedItem] = "darkorange";
+		menuItems[clickedItem].textColor = "darkorange";
 	}
+
+	//public MainMenuComponent.MenuPanelType getPanelTypeFromButtonText(string buttonText)
+	//{
+	//	switch(buttonText)
+	//	{
+	//		case "Settings"
+	//	}
+	//}
 	//@onclickreleased"@(() => itemClickReleased(itemName))"
 
 }
@@ -65,7 +88,7 @@
 	<div class="OptionsPanel">
 		@foreach (string itemName in menuItems.Keys)
 			{
-			<button @onmouseover="@(() => isHoveredColor(itemName))" @onmouseout="@(() => isNotHoveredColor(itemName))" @onclick="@(() => itemClicked(itemName))" @onmousedown="@(()=> itemPressed(itemName))" @onmouseup="@(() => itemPressReleased(itemName))" style="color: @(menuItems[itemName])" class="MenuOption">@(itemName)</button>
+			<button @onmouseover="@(() => isHoveredColor(itemName))" @onmouseout="@(() => isNotHoveredColor(itemName))" @onclick="@(() => itemClicked(itemName))" @onmousedown="@(()=> itemPressed(itemName))" @onmouseup="@(() => itemPressReleased(itemName))" style="color: @(menuItems[itemName].textColor)" class="MenuOption">@(itemName)</button>
 			}
 	</div>
 </root>

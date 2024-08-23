@@ -34,7 +34,7 @@
       {
         "__type": "Sandbox.BoxCollider",
         "__guid": "ce8c45fa-5fd1-43ab-a9df-a26d1071c877",
-        "Center": "-70.19999,0,-4.500006",
+        "Center": "-22.29997,0,-4.500006",
         "IsTrigger": false,
         "Scale": "206.6999,16.49999,41.69993",
         "Static": false

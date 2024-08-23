@@ -8,6 +8,7 @@
   "Resources": "\nmaterials/temple_portrait.PNG\nmaterials/skeltal_portrait.PNG\nmaterials/attack_stance.png\nmaterials/defend_stance.png",
   "PackageReferences": [],
   "EditorReferences": null,
+  "IsWhitelistDisabled": false,
   "Metadata": {
     "MaxPlayers": 64,
     "MinPlayers": 1,

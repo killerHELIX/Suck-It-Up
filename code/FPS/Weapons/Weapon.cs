@@ -135,6 +135,7 @@ public abstract class Weapon : Component, Component.ICollisionListener
 
 	public void OnCollisionStart(Collision collision)
 	{
+        if (IsProxy) return;
 		var otherObj = collision.Other.Collider.GameObject;
 		TryToPickup(otherObj);
 

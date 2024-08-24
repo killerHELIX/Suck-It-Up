@@ -339,6 +339,27 @@
           "Name": "Spawn",
           "Position": "-186.8602,-200.0041,-46.53906",
           "Enabled": true
+        },
+        {
+          "__guid": "870ab6f1-d9ef-47ec-adc9-51696f0da992",
+          "Flags": 0,
+          "Name": "Debug",
+          "Position": "-243.3846,-246.5512,-14.18115",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Debug",
+              "__guid": "881eea50-8116-454d-bf0e-1e1380127670",
+              "PlayerPrefab": {
+                "_type": "gameobject",
+                "prefab": "prefabs/fps/fpsplayer.prefab"
+              },
+              "Spawn": {
+                "_type": "gameobject",
+                "go": "52094ed3-85c1-4ec0-9b84-26611e0ab6e2"
+              }
+            }
+          ]
         }
       ]
     },
@@ -381,6 +402,7 @@
       "Position": "-64.06602,-177.3066,107.051",
       "Tags": "weapon",
       "Enabled": true,
+      "NetworkMode": 1,
       "Children": [
         {
           "__guid": "3eb73911-f1cf-42ed-b070-dc1180611121",
@@ -389,6 +411,7 @@
           "Position": "0,0,0",
           "Scale": "0.2,0.2,0.2",
           "Enabled": true,
+          "NetworkMode": 1,
           "__Prefab": "prefabs/fps/rifle.prefab",
           "__PrefabVariables": {
             "vmpos": "30.00003,10,-11",
@@ -410,6 +433,7 @@
           "Position": "-3.423229,-65.47054,4.932732",
           "Scale": "0.4,0.4,0.4",
           "Enabled": true,
+          "NetworkMode": 1,
           "__Prefab": "prefabs/fps/pistol.prefab",
           "__PrefabVariables": {
             "vmpos": "15,5,-6",
@@ -422,27 +446,6 @@
             "maxreserves": 64,
             "firerate": 0.5,
             "reloadspeed": 3
-          }
-        }
-      ]
-    },
-    {
-      "__guid": "870ab6f1-d9ef-47ec-adc9-51696f0da992",
-      "Flags": 0,
-      "Name": "Debug",
-      "Position": "-299.4931,-263.264,94.70454",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Debug",
-          "__guid": "881eea50-8116-454d-bf0e-1e1380127670",
-          "PlayerPrefab": {
-            "_type": "gameobject",
-            "prefab": "prefabs/fps/fpsplayer.prefab"
-          },
-          "Spawn": {
-            "_type": "gameobject",
-            "go": "52094ed3-85c1-4ec0-9b84-26611e0ab6e2"
           }
         }
       ]

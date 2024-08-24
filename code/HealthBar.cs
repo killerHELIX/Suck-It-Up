@@ -6,8 +6,8 @@ public class HealthBar : Component
 	[Property] public WorldPanel UnitStatusWorldPanel;
 	[Property] public HealthBarUI healthBarUI;
 
-	private const float WIDTH_MULTIPLIER = 20f;
-	private const float SET_HEIGHT = 200f;
+	private const float WIDTH_MULTIPLIER = 50f;
+	private const float SET_HEIGHT = 10f;
 	public void setHealth(int currentHealth, int maxHealth)
 	{
 		healthBarUI.setHealth((int)(((float)currentHealth/(float)maxHealth) * 100));

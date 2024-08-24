@@ -21,7 +21,8 @@ class SIUUnit : Unit
 	private const float AUTO_MELEE_RAD_MULTIPLIER = 90f;
 	private const float NAV_AGENT_RAD_MULTIPLIER = .5f;
 	private const float CLICK_HITBOX_RADIUS_MULTIPLIER = .5f;
-	private const float GLOBAL_UNIT_SCALE = .1f;
+	private const float GLOBAL_UNIT_SCALE = 15f;
+	private const float BASE_STAND_SIZE_MULTIPLIER = 1.6f;
 
 	// Nav Constant
 	private const float MAX_STUCK_TIME = 5f;
@@ -280,13 +281,14 @@ class SIUUnit : Unit
 		float targetxyMax = float.Max(targetModelSize.x, targetModelSize.y);
 		float defaultxyMin = float.Min(defaultModelSize.x, defaultModelSize.y);
 		float defaultxyMax = float.Max(defaultModelSize.x, defaultModelSize.y);
-		//Log.Info("defaultModelSize: " +  defaultModelSize);
-		//Log.Info("Target Model Size: " + targetModelSize );
-		//Log.Info( "Calculated Scale: " + new Vector3(
-		//((unitSize.x * globalScaleModifier.x) / defaultModelSize.x),
-		//((unitSize.y * globalScaleModifier.y) / defaultModelSize.y),
-		//((unitSize.z * globalScaleModifier.z) / defaultModelSize.z)
-		//));
+		Log.Info("global modifier" + globalScaleModifier);
+		Log.Info("defaultModelSize: " +  defaultModelSize);
+		Log.Info("Target Model Size: " + targetModelSize );
+		Log.Info( "Calculated Scale: " + new Vector3(
+		((unitSize.x * globalScaleModifier.x) / defaultModelSize.x),
+		((unitSize.y * globalScaleModifier.y) / defaultModelSize.y),
+		((unitSize.z * globalScaleModifier.z) / defaultModelSize.z)
+		));
 		Transform.LocalScale = new Vector3(
 			(targetModelSize.x / defaultModelSize.x),
 			(targetModelSize.y / defaultModelSize.y),
@@ -317,7 +319,7 @@ class SIUUnit : Unit
 		maxChaseDistanceFromHome = CHASE_DIST_MULTIPLIER * targetxyMax;
 
 		// Auto Calculate other visual element sizes
-		PhysicalModelRenderer.setModelSize(defaultModelSize);
+		PhysicalModelRenderer.setModelSize(BASE_STAND_SIZE_MULTIPLIER * defaultModelSize);
 		ThisHealthBar.setSize(defaultModelSize);
 	}
 }

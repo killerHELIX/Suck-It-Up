@@ -189,7 +189,7 @@
           "UnitPortraitImage": "materials/skeltal_portrait.PNG",
           "UnitPrefab": {
             "_type": "gameobject",
-            "prefab": "prefabs/siu_skeltal.prefab"
+            "prefab": "prefabs/normal.prefab"
           },
           "UnitResourceCost": 5
         },
@@ -244,7 +244,6 @@
       "Name": "Speedy Bonezales",
       "Position": "-838.319,71.94043,100.6789",
       "Tags": "unit",
-      "Enabled": true,
       "NetworkMode": 1,
       "NetworkOrphaned": 1,
       "OwnerTransfer": 2,
@@ -695,7 +694,7 @@
           "__guid": "fccbc80e-7631-422c-8238-53d0f4f04190",
           "Flags": 0,
           "Name": "UnitHealthBar",
-          "Position": "0,0,0",
+          "Position": "0,0,20",
           "Enabled": true,
           "NetworkOrphaned": 1,
           "OwnerTransfer": 2,
@@ -736,6 +735,43 @@
     },
     {
       "__guid": "65e6d12e-89b1-4727-ae83-2470647ea850",
+      "Flags": 0,
+      "Name": "GameObject",
+      "Enabled": true
+    },
+    {
+      "__guid": "4c329369-56bd-4399-9ac2-ba6900b6425d",
+      "Flags": 0,
+      "Name": "Normal",
+      "Position": "-592.1092,1182.528,129.8806",
+      "Tags": "unit",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 2,
+      "__Prefab": "prefabs/normal.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "d7d9df8b-5d99-4559-9794-a39a5903c179",
+      "Flags": 0,
+      "Name": "Cube",
+      "Position": "-366.5123,1173.574,100.7308",
+      "Scale": "0.4239242,0.7168595,1.463112",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "c85e9754-e510-4a87-a93c-738bb594afcc",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "421305d3-d76b-4ac1-9763-7825838266cd",
       "Flags": 0,
       "Name": "GameObject",
       "Enabled": true

@@ -10,7 +10,7 @@ public class PlayerUnitControl : Component
 {
 	const float CLICK_TIME = 0.1f;
 	const int INITIAL_UNIT_CIRCLE_NUMBER = 6;
-	const float INITIAL_UNIT_CIRCLE_DISTANCE = 30f;
+	const float INITIAL_UNIT_CIRCLE_DISTANCE = 90f;
 
 	[Property]	RTSCamComponent RTSCam {  get; set; }
 	[Property] SelectionPanel selectionPanel { get; set; }

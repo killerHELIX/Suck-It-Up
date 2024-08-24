@@ -28,7 +28,7 @@ public class HealthBar : Component
 
 	public void setSize(Vector3 size)
 	{
-		float targetWidth = WIDTH_MULTIPLIER * float.Max( size.x, size.y );
+		float targetWidth = float.Min(WIDTH_MULTIPLIER * float.Max( size.x, size.y ), 500f);
 		float targetHeight = SET_HEIGHT;
 		UnitStatusWorldPanel.PanelSize = new Vector2( targetWidth, targetHeight );
 	}

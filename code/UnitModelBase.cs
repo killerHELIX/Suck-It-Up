@@ -76,7 +76,9 @@ public abstract class UnitModelBase : Component
 	public abstract void animateDeath();
 	public virtual void setModelSize( Vector3 size ) 
 	{
-		baseStand.setSize( size );
+		float minSize = float.Min(size.x, size.y);
+		Vector3 requestedBaseSize = new Vector3(minSize, minSize, minSize);
+		baseStand.setSize( requestedBaseSize );
 	}
 
 	protected override void OnUpdate()

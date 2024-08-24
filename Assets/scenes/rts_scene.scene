@@ -175,6 +175,18 @@
           "spawnableUnitList": [
             {
               "_type": "component",
+              "component_id": "01e7d5c7-ea9e-4852-9d35-799fef49bd6e",
+              "go": "d0f4beb4-098e-47db-b02f-43ab206eb349",
+              "component_type": "UnitPortraitTuple"
+            },
+            {
+              "_type": "component",
+              "component_id": "3c81f041-d634-497b-8007-4ee1fdf62c92",
+              "go": "d0f4beb4-098e-47db-b02f-43ab206eb349",
+              "component_type": "UnitPortraitTuple"
+            },
+            {
+              "_type": "component",
               "component_id": "19e9b742-d460-4133-9e55-e0207446fe22",
               "go": "d0f4beb4-098e-47db-b02f-43ab206eb349",
               "component_type": "UnitPortraitTuple"
@@ -184,7 +196,18 @@
         },
         {
           "__type": "UnitPortraitTuple",
-          "__guid": "19e9b742-d460-4133-9e55-e0207446fe22",
+          "__guid": "01e7d5c7-ea9e-4852-9d35-799fef49bd6e",
+          "UnitCapacityCost": 3,
+          "UnitPortraitImage": "materials/skeltal_portrait.PNG",
+          "UnitPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/critter.prefab"
+          },
+          "UnitResourceCost": 2
+        },
+        {
+          "__type": "UnitPortraitTuple",
+          "__guid": "3c81f041-d634-497b-8007-4ee1fdf62c92",
           "UnitCapacityCost": 5,
           "UnitPortraitImage": "materials/skeltal_portrait.PNG",
           "UnitPrefab": {
@@ -192,6 +215,17 @@
             "prefab": "prefabs/normal.prefab"
           },
           "UnitResourceCost": 5
+        },
+        {
+          "__type": "UnitPortraitTuple",
+          "__guid": "19e9b742-d460-4133-9e55-e0207446fe22",
+          "UnitCapacityCost": 15,
+          "UnitPortraitImage": "materials/skeltal_portrait.PNG",
+          "UnitPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/giant.prefab"
+          },
+          "UnitResourceCost": 20
         },
         {
           "__type": "Sandbox.BoxCollider",
@@ -255,6 +289,7 @@
           "CapacityCost": 0,
           "HasMeleeAttack": true,
           "HasRangedAttack": false,
+          "IndividualModelScale": 0,
           "MaxHealth": 1000,
           "MeleeAttackDamage": 20,
           "MeleeAttackSpeed": 1.5,
@@ -753,6 +788,32 @@
       "__PrefabVariables": {}
     },
     {
+      "__guid": "5508d319-e56f-44cf-b066-957f5ae801c8",
+      "Flags": 0,
+      "Name": "Giant",
+      "Position": "-960.5023,1182.528,129.8806",
+      "Tags": "unit",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 2,
+      "__Prefab": "prefabs/giant.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "17310faf-4192-4a8f-8a22-9fc0489361b9",
+      "Flags": 0,
+      "Name": "Critter",
+      "Position": "-776.0456,1182.528,129.8806",
+      "Tags": "unit",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 2,
+      "__Prefab": "prefabs/critter.prefab",
+      "__PrefabVariables": {}
+    },
+    {
       "__guid": "d7d9df8b-5d99-4559-9794-a39a5903c179",
       "Flags": 0,
       "Name": "Cube",
@@ -769,12 +830,6 @@
           "Tint": "1,1,1,1"
         }
       ]
-    },
-    {
-      "__guid": "421305d3-d76b-4ac1-9763-7825838266cd",
-      "Flags": 0,
-      "Name": "GameObject",
-      "Enabled": true
     }
   ],
   "SceneProperties": {

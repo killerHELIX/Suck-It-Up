@@ -4,6 +4,8 @@ using System;
 class SIUUnit : Unit
 {
 
+	[Property] public float IndividualModelScale { get; set; }
+
 	// This will be a factor of the unit size I imagine
 	private float maxChaseDistanceFromHome = 600f;
 	private float lastMeleeTime = Time.Now;
@@ -275,7 +277,7 @@ class SIUUnit : Unit
 		//Vector3 globalScaleModifier = Vector3.One * Scene.GetAllObjects( true ).Where( go => go.Name == "RTSGameOptions" ).First().Components.GetAll<RTSGameOptionsComponent>().First().getFloatValue( RTSGameOptionsComponent.GLOBAL_UNIT_SCALE );
 		//Log.Info( ModelFile.Bounds.Size );
 
-		Vector3 globalScaleModifier = Vector3.One * GLOBAL_UNIT_SCALE;//RTSPlayer.Local.LocalGame.GameOptions.getFloatValue( RTSGameOptionsComponent.GLOBAL_UNIT_SCALE );
+		Vector3 globalScaleModifier = Vector3.One * GLOBAL_UNIT_SCALE * IndividualModelScale ;//RTSPlayer.Local.LocalGame.GameOptions.getFloatValue( RTSGameOptionsComponent.GLOBAL_UNIT_SCALE );
 		Vector3 targetModelSize = new Vector3((unitSize.x * globalScaleModifier.x), (unitSize.y * globalScaleModifier.y), (unitSize.z * globalScaleModifier.z));
 		float targetxyMin = float.Min(targetModelSize.x, targetModelSize.y);
 		float targetxyMax = float.Max(targetModelSize.x, targetModelSize.y);

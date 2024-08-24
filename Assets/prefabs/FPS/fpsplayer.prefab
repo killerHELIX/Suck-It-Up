@@ -17,26 +17,7 @@
         "IgnoreLayers": "player",
         "Radius": 16,
         "StepHeight": 18,
-        "UseCollisionRules": false
-      },
-      {
-        "__type": "FPSPlayerMovementController",
-        "__guid": "9de3cd54-719c-4f98-9438-0215bd74ec97",
-        "AirControl": 0.1,
-        "Body": {
-          "_type": "gameobject",
-          "go": "d7fe2b32-3de3-44e4-8f57-a4dfc5848c50"
-        },
-        "CrouchSpeed": 150,
-        "GroundControl": 4,
-        "Head": {
-          "_type": "gameobject",
-          "go": "13e98b7a-876a-4e28-891c-73f8aa12b49d"
-        },
-        "JumpForce": 400,
-        "MaxForce": 50,
-        "RunSpeed": 300,
-        "Speed": 250
+        "UseCollisionRules": true
       },
       {
         "__type": "Sandbox.Citizen.CitizenAnimationHelper",
@@ -53,17 +34,23 @@
         }
       },
       {
-        "__type": "FPSWeaponController",
-        "__guid": "3c44501c-5495-45e3-8ab7-853ddb0a22ef",
+        "__type": "FPSPlayerMovementController",
+        "__guid": "b1427d82-86f1-4a28-9463-20c13b9cbc7b",
+        "AirControl": 0.1,
         "Body": {
           "_type": "gameobject",
           "go": "d7fe2b32-3de3-44e4-8f57-a4dfc5848c50"
         },
+        "CrouchSpeed": 90,
+        "GroundControl": 4,
         "Head": {
           "_type": "gameobject",
           "go": "13e98b7a-876a-4e28-891c-73f8aa12b49d"
         },
-        "Weapons": []
+        "JumpForce": 400,
+        "MaxForce": 50,
+        "RunSpeed": 290,
+        "Speed": 160
       },
       {
         "__type": "Sandbox.BoxCollider",
@@ -101,57 +88,6 @@
             "RenderType": "On",
             "Tint": "1,1,1,1",
             "UseAnimGraph": true
-          }
-        ]
-      },
-      {
-        "__guid": "3349f4ce-a601-4ad6-8b71-e3858c277858",
-        "Flags": 0,
-        "Name": "Nametag",
-        "Position": "0,0,78.08778",
-        "Enabled": true,
-        "NetworkMode": 1,
-        "Components": [
-          {
-            "__type": "Sandbox.WorldPanel",
-            "__guid": "e9aa4058-e4bd-4ca3-9004-2dbc3314e9c5",
-            "HorizontalAlign": "Center",
-            "InteractionRange": 1000,
-            "LookAtCamera": true,
-            "PanelSize": "800,150",
-            "RenderScale": 1,
-            "VerticalAlign": "Center"
-          },
-          {
-            "__type": "FPSNametag",
-            "__guid": "6ca35120-652f-4c9d-82c2-c57012a2f5a0"
-          }
-        ]
-      },
-      {
-        "__guid": "efbb31b4-5ff1-4268-966b-527382f1f5a6",
-        "Flags": 0,
-        "Name": "HUD",
-        "Enabled": true,
-        "NetworkMode": 0,
-        "Components": [
-          {
-            "__type": "Sandbox.ScreenPanel",
-            "__guid": "c046e3c8-f394-404f-9046-1eff1c4cafb6",
-            "AutoScreenScale": true,
-            "Opacity": 1,
-            "Scale": 1,
-            "ZIndex": 100
-          },
-          {
-            "__type": "FPSHud",
-            "__guid": "1cb24a41-04cb-44e2-8b3a-70b85a506cdb",
-            "fpsWeaponController": {
-              "_type": "component",
-              "component_id": "3c44501c-5495-45e3-8ab7-853ddb0a22ef",
-              "go": "d1a65faa-cc24-4865-ac5d-84ea8af79e91",
-              "component_type": "FPSWeaponController"
-            }
           }
         ]
       }

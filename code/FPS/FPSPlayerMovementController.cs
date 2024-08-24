@@ -12,8 +12,8 @@ public sealed class FPSPlayerMovementController : Component
 	[Property] public float CrouchSpeed { get; set; } = 90f;
 	[Property] public float JumpForce { get; set; } = 400f;
 
-	[Property] public GameObject Head { get; set; }
-	[Property] public GameObject Body { get; set; }
+	[Sync][Property] public GameObject Head { get; set; }
+	[Sync][Property] public GameObject Body { get; set; }
 
 	public Vector3 WishVelocity = Vector3.Zero;
 	[Sync] public bool IsCrouching { get; set; } = false;
@@ -24,31 +24,18 @@ public sealed class FPSPlayerMovementController : Component
 	private CitizenAnimationHelper AnimationHelper;
 	private ModelRenderer BodyRenderer;
 
-	public static FPSPlayerMovementController Local
-	{
-		get
-		{
-			if (!_local.IsValid())
-			{
-				_local = Game.ActiveScene.GetAllComponents<FPSPlayerMovementController>().FirstOrDefault(x => x.Network.IsOwner);
-			}
-			return _local;
-		}
-	}
-
-	private static FPSPlayerMovementController _local = null;
-
-	protected override void OnAwake()
+	protected override void OnStart()
 	{
 		CharacterController = Components.Get<CharacterController>();
 		AnimationHelper = Components.Get<CitizenAnimationHelper>();
 		BodyRenderer = Body.Components.Get<ModelRenderer>();
 
+
 	}
 
 	protected override void OnUpdate()
 	{
-		if (Network.IsOwner)
+		if (!IsProxy)
 		{
 			// Set our sprinting and crouching states
 			UpdateCrouch();
@@ -56,6 +43,7 @@ public sealed class FPSPlayerMovementController : Component
 
 			if (Input.Pressed("Jump")) Jump();
 
+			Log.Info($"Head: {Head}");
 			TargetAngle = new Angles(0, Head.Transform.Rotation.Yaw(), 0).ToRotation();
 		}
 
@@ -66,7 +54,7 @@ public sealed class FPSPlayerMovementController : Component
 
 	protected override void OnFixedUpdate()
 	{
-		if (Network.IsProxy) return;
+		if (IsProxy) return;
 
 		BuildWishVelocity();
 		Move();
@@ -153,7 +141,7 @@ public sealed class FPSPlayerMovementController : Component
 
 	void UpdateAnimations()
 	{
-		BodyRenderer.RenderType = (Network.IsProxy) ? ModelRenderer.ShadowRenderType.On : ModelRenderer.ShadowRenderType.ShadowsOnly;
+		// BodyRenderer.RenderType = (Network.IsProxy) ? ModelRenderer.ShadowRenderType.On;
 
 		if (AnimationHelper is null) return;
 		AnimationHelper.WithWishVelocity(WishVelocity);

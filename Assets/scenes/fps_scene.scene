@@ -341,7 +341,7 @@
           "__guid": "52094ed3-85c1-4ec0-9b84-26611e0ab6e2",
           "Flags": 0,
           "Name": "Spawn",
-          "Position": "0,0,76.57008",
+          "Position": "-186.8602,-200.0041,-64.82561",
           "Enabled": true
         }
       ]
@@ -350,7 +350,7 @@
       "__guid": "5681a214-b822-4a7a-a66e-3bf346951fff",
       "Flags": 0,
       "Name": "Camera",
-      "Position": "-49.31966,0,69.43201",
+      "Position": "-207.5286,0,69.43201",
       "Enabled": true,
       "Components": [
         {
@@ -373,7 +373,7 @@
         {
           "__type": "FPSCameraController",
           "__guid": "373eeb7f-5ee5-4cc5-bd5a-3ff42f175d39",
-          "Distance": 0
+          "Distance": 90
         }
       ]
     },
@@ -392,7 +392,6 @@
           "Position": "0,0,0",
           "Scale": "0.2,0.2,0.2",
           "Enabled": true,
-          "NetworkMode": 1,
           "__Prefab": "prefabs/fps/rifle.prefab",
           "__PrefabVariables": {
             "vmpos": "30.00003,10,-11",
@@ -414,7 +413,6 @@
           "Position": "-3.423229,-65.47054,4.932732",
           "Scale": "0.4,0.4,0.4",
           "Enabled": true,
-          "NetworkMode": 1,
           "__Prefab": "prefabs/fps/pistol.prefab",
           "__PrefabVariables": {
             "vmpos": "15,5,-6",

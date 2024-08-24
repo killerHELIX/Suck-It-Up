@@ -1,0 +1,20 @@
+{
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "fpsplayer",
+      "Type": "asset",
+      "Org": "local",
+      "Ident": "fpsplayer",
+      "Schema": 0,
+      "IncludeSourceFiles": true,
+      "Resources": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "IsWhitelistDisabled": false,
+      "Metadata": {
+        "SingleAssetSource": "prefabs/fps/fpsplayer.prefab"
+      }
+    }
+  }
+}

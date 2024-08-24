@@ -13,7 +13,7 @@ public sealed class FPSCameraController : Component
 	private GameObject Head { get; set; }
 
 
-	protected override void OnAwake()
+	protected override void OnStart()
 	{
 		Camera = Components.Get<CameraComponent>();
 	}
@@ -23,13 +23,14 @@ public sealed class FPSCameraController : Component
 	{
 		if (Player is null)
 		{
-			Player = FPSPlayerMovementController.Local;
+			Player = Game.ActiveScene.GetAllComponents<FPSPlayerMovementController>().FirstOrDefault(x => x.Network.IsOwner);
+			Log.Info(Player);
 			Head = Player.Head;
 			Body = Player.Body;
 			BodyRenderer = Body.Components.Get<ModelRenderer>();
 		}
 
-		Log.Info(Player.Head);
+
 		var eyeAngles = Head.Transform.Rotation.Angles();
 		eyeAngles.pitch += Input.MouseDelta.y * 0.1f;
 		eyeAngles.yaw -= Input.MouseDelta.x * 0.1f;

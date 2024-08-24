@@ -1,7 +1,8 @@
 public sealed class FPSCameraController : Component
 {
 
-	[Property] public float Distance { get; set; } = 0f;
+	[Property] public float Distance { get; set; } = 40f;
+	[Property] public float ThirdPersonHorizontalDistance { get; set; } = 30f;
 
 
 	public bool IsFirstPerson => Distance <= 0f;
@@ -41,6 +42,7 @@ public sealed class FPSCameraController : Component
 		// Set the current camera offset
 		var targetOffset = Vector3.Zero;
 		if (Player.IsCrouching) targetOffset += Vector3.Down * 32f;
+		targetOffset += IsFirstPerson ? Vector3.Zero : Head.Transform.Rotation.Right.Normal * ThirdPersonHorizontalDistance;
 		CurrentOffset = Vector3.Lerp(CurrentOffset, targetOffset, Time.Delta * 10f);
 
 		if (Camera != null && BodyRenderer != null)

@@ -60,6 +60,19 @@
         "IsTrigger": false,
         "Scale": "15.59997,50.00001,70.50004",
         "Static": false
+      },
+      {
+        "__type": "FPSWeaponController",
+        "__guid": "0be6af03-17cc-4d7c-8b70-126bc738101b",
+        "Body": {
+          "_type": "gameobject",
+          "go": "f6341e54-9a94-4a77-904b-d8fc9e1d9c01"
+        },
+        "Head": {
+          "_type": "gameobject",
+          "go": "19f10a6a-30ec-42c4-b7cd-32843fe1ca04"
+        },
+        "Weapons": []
       }
     ],
     "Children": [

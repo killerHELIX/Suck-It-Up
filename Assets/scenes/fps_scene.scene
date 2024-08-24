@@ -319,10 +319,16 @@
       "Name": "Network",
       "Position": "-56.10849,-16.71288,108.8857",
       "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
       "Components": [
         {
           "__type": "Sandbox.NetworkHelper",
           "__guid": "b1377d30-e00d-4acc-9af1-e1a8d94b6c77",
+          "PlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/fps/fpsplayer.prefab"
+          },
           "SpawnPoints": [
             {
               "_type": "gameobject",
@@ -390,6 +396,12 @@
         {
           "__type": "FPSCameraController",
           "__guid": "373eeb7f-5ee5-4cc5-bd5a-3ff42f175d39",
+          "Camera": {
+            "_type": "component",
+            "component_id": "ca55b686-2c93-47a8-a2d6-716e9ebf60bc",
+            "go": "5681a214-b822-4a7a-a66e-3bf346951fff",
+            "component_type": "CameraComponent"
+          },
           "Distance": 40,
           "ThirdPersonHorizontalDistance": 30
         }

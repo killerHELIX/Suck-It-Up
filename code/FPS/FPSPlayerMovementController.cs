@@ -12,31 +12,46 @@ public sealed class FPSPlayerMovementController : Component
 	[Property] public float CrouchSpeed { get; set; } = 90f;
 	[Property] public float JumpForce { get; set; } = 400f;
 
-	[Property] public GameObject Head { get; set; }
-	[Property] public GameObject Body { get; set; }
+	[Property] public GameObject HeadObject { get; set; }
+	[Property] public GameObject BodyObject { get; set; }
 
-	public Vector3 WishVelocity = Vector3.Zero;
+	[Property] public CharacterController CharacterController { get; set; }
+	[Property] CitizenAnimationHelper AnimationHelper { get; set; }
+	[Property] SkinnedModelRenderer MyBodyRenderer { get; set; }
+
+	[Sync] public Vector3 WishVelocity { get; set; } = Vector3.Zero;
 	[Sync] public bool IsCrouching { get; set; } = false;
 	[Sync] public bool IsSprinting { get; set; } = false;
 	[Sync] Angles TargetAngle { get; set; }
 
-	private CharacterController CharacterController;
-	private CitizenAnimationHelper AnimationHelper;
-	private ModelRenderer BodyRenderer;
+	//private CharacterController CharacterController;
+	//private CitizenAnimationHelper AnimationHelper;
+	//private ModelRenderer BodyRenderer;
 
 	protected override void OnAwake()
 	{
-		if (IsProxy) return;
+		//Log.Info(MyBodyRenderer);
+		//AnimationHelper.Target = MyBodyRenderer;
+		//Log.Info("Target: " + AnimationHelper.Target);
+		//if (IsProxy) return;
 
-		CharacterController = Components.Get<CharacterController>();
-		AnimationHelper = Components.Get<CitizenAnimationHelper>();
-		Head = GameObject.Children.FirstOrDefault(x => x.Tags.Contains("playerhead"));
-		Body = GameObject.Children.FirstOrDefault(x => x.Tags.Contains("playerbody"));
-		BodyRenderer = Body.Components.Get<ModelRenderer>();
-		Log.Info($"{this} Head: {Head} Body: {Body}");
+		//CharacterController = Components.Get<CharacterController>();
+		//AnimationHelper = Components.Get<CitizenAnimationHelper>();
+		//Head = GameObject.Children.FirstOrDefault(x => x.Tags.Contains("playerhead"));
+		//Body = GameObject.Children.FirstOrDefault(x => x.Tags.Contains("playerbody"));
+		//BodyRenderer = Body.Components.Get<ModelRenderer>();
+		//Log.Info($"{this} Head: {Head} Body: {Body}");
 
 		// if (!IsProxy) Network.Refresh();
 
+	}
+
+	protected override void OnStart()
+	{
+		Log.Info(MyBodyRenderer);
+		AnimationHelper.Target = MyBodyRenderer;
+		Log.Info("Target: " + AnimationHelper.Target);
+		if (IsProxy) return;
 	}
 
 	protected override void OnUpdate()
@@ -50,7 +65,7 @@ public sealed class FPSPlayerMovementController : Component
 
 			if (Input.Pressed("Jump")) Jump();
 
-			TargetAngle = new Angles(0, Head.Transform.Rotation.Yaw(), 0).ToRotation();
+			TargetAngle = new Angles(0, HeadObject.Transform.Rotation.Yaw(), 0).ToRotation();
 
 			RotateBody();
 			UpdateAnimations();
@@ -71,7 +86,7 @@ public sealed class FPSPlayerMovementController : Component
 	{
 		WishVelocity = 0;
 
-		var rot = Head.Transform.Rotation;
+		var rot = HeadObject.Transform.Rotation;
 
 		if (Input.Down("Forward")) WishVelocity += rot.Forward;
 		if (Input.Down("Backward")) WishVelocity += rot.Backward;
@@ -123,15 +138,16 @@ public sealed class FPSPlayerMovementController : Component
 
 	}
 
+	[Broadcast]
 	void RotateBody()
 	{
-		if (Body is null) return;
+		if (BodyObject is null) return;
 
-		float rotateDifference = Body.Transform.Rotation.Distance(TargetAngle);
+		float rotateDifference = BodyObject.Transform.Rotation.Distance(TargetAngle);
 
 		if (rotateDifference > 50f || CharacterController.Velocity.Length > 10f)
 		{
-			Body.Transform.Rotation = Rotation.Lerp(Body.Transform.Rotation, TargetAngle, Time.Delta * 2f);
+			BodyObject.Transform.Rotation = Rotation.Lerp(BodyObject.Transform.Rotation, TargetAngle, Time.Delta * 2f);
 		}
 	}
 
@@ -146,12 +162,13 @@ public sealed class FPSPlayerMovementController : Component
 
 	}
 
-	void UpdateAnimations()
+	[Broadcast] void UpdateAnimations()
 	{
 		// BodyRenderer.RenderType = (Network.IsProxy) ? ModelRenderer.ShadowRenderType.On;
 
 		if (AnimationHelper is null) return;
-		// Log.Info(AnimationHelper.Target);
+		 //Log.Info(AnimationHelper.Target);
+		//Log.Info(WishVelocity);
 		AnimationHelper.WithWishVelocity(WishVelocity);
 		AnimationHelper.WithVelocity(CharacterController.Velocity);
 		AnimationHelper.AimAngle = TargetAngle;

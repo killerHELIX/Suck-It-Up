@@ -5,7 +5,7 @@ public sealed class Debug : Component
 	[Property] GameObject PlayerPrefab;
 	[Property] GameObject Spawn;
 
-	protected override void OnAwake()
+	/*protected override void OnAwake()
 	{
 		Log.Info("SPAWNING PLAYER!!!!!!!!!!!!!!!");
 		var clone = PlayerPrefab.Clone();
@@ -19,5 +19,5 @@ public sealed class Debug : Component
 	protected override void OnUpdate()
 	{
 
-	}
+	}*/
 }

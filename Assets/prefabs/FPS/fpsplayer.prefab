@@ -26,30 +26,42 @@
         "BodyWeight": 1,
         "EyesWeight": 1,
         "HeadWeight": 1,
-        "LookAtEnabled": false,
-        "Target": {
-          "_type": "component",
-          "component_id": "d8b8a70b-dfda-49be-b17d-f29cb3da96ef",
-          "go": "f6341e54-9a94-4a77-904b-d8fc9e1d9c01",
-          "component_type": "SkinnedModelRenderer"
-        }
+        "LookAtEnabled": false
       },
       {
         "__type": "FPSPlayerMovementController",
         "__guid": "4b7324b2-45f7-4877-8d3d-bb88cb7e09ae",
         "AirControl": 0.1,
-        "Body": {
+        "AnimationHelper": {
+          "_type": "component",
+          "component_id": "93cf183d-80a5-4d7c-adaf-99231c474dab",
+          "go": "0a3d43ee-19a7-4e0f-a008-88f7e6c0ec2e",
+          "component_type": "CitizenAnimationHelper"
+        },
+        "BodyObject": {
           "_type": "gameobject",
           "go": "f6341e54-9a94-4a77-904b-d8fc9e1d9c01"
         },
+        "CharacterController": {
+          "_type": "component",
+          "component_id": "82f97dc4-5381-49d1-8513-71101206a841",
+          "go": "0a3d43ee-19a7-4e0f-a008-88f7e6c0ec2e",
+          "component_type": "CharacterController"
+        },
         "CrouchSpeed": 90,
         "GroundControl": 4,
-        "Head": {
+        "HeadObject": {
           "_type": "gameobject",
           "go": "19f10a6a-30ec-42c4-b7cd-32843fe1ca04"
         },
         "JumpForce": 400,
         "MaxForce": 50,
+        "MyBodyRenderer": {
+          "_type": "component",
+          "component_id": "d8b8a70b-dfda-49be-b17d-f29cb3da96ef",
+          "go": "f6341e54-9a94-4a77-904b-d8fc9e1d9c01",
+          "component_type": "SkinnedModelRenderer"
+        },
         "RunSpeed": 290,
         "Speed": 160
       },
@@ -73,26 +85,36 @@
           "go": "19f10a6a-30ec-42c4-b7cd-32843fe1ca04"
         },
         "Weapons": []
+      },
+      {
+        "__type": "Sandbox.SkinnedModelRenderer",
+        "__guid": "4dacd620-b31d-4ff0-bd44-e474ef216096",
+        "__enabled": false,
+        "BodyGroups": 341,
+        "CreateBoneObjects": false,
+        "Model": "models/citizen/citizen.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1",
+        "UseAnimGraph": true
       }
     ],
     "Children": [
       {
         "__guid": "19f10a6a-30ec-42c4-b7cd-32843fe1ca04",
         "Flags": 0,
-        "Name": "Head",
+        "Name": "Player Head",
         "Position": "0,0,62.85746",
         "Tags": "playerhead",
         "Enabled": true,
-        "NetworkMode": 1,
+        "NetworkOrphaned": 3,
         "OwnerTransfer": 0
       },
       {
         "__guid": "f6341e54-9a94-4a77-904b-d8fc9e1d9c01",
         "Flags": 0,
-        "Name": "Body",
+        "Name": "Player Body",
         "Tags": "playerbody",
         "Enabled": true,
-        "NetworkMode": 1,
         "OwnerTransfer": 0,
         "Components": [
           {

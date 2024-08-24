@@ -1,101 +1,90 @@
 {
   "RootObject": {
-    "__guid": "8e642627-67d8-4465-acbe-ce7e848e945e",
+    "__guid": "d1a65faa-cc24-4865-ac5d-84ea8af79e91",
     "Flags": 0,
-    "Name": "FPSPlayer",
-    "Position": "0,0,51.00815",
+    "Name": "fpsplayer",
     "Tags": "player",
     "Enabled": true,
+    "NetworkMode": 1,
     "Components": [
       {
-        "__type": "FPSPlayerMover",
-        "__guid": "7cdb1e52-8d0d-49a2-8128-2df56c29c4b6",
-        "AnimationHelper": {
-          "_type": "component",
-          "component_id": "fc74cf8c-c37c-46da-8afa-5906054b6049",
-          "go": "8e642627-67d8-4465-acbe-ce7e848e945e",
-          "component_type": "CitizenAnimationHelper"
-        },
-        "CharacterController": {
-          "_type": "component",
-          "component_id": "94c73ed3-84e4-4dee-bc5c-45b5ca290d20",
-          "go": "8e642627-67d8-4465-acbe-ce7e848e945e",
-          "component_type": "CharacterController"
-        },
-        "CrouchMoveSpeed": 90,
-        "Head": {
-          "_type": "component",
-          "component_id": "dc6717cd-dde7-4ade-a9c8-036b8344883c",
-          "go": "94805b88-f220-4096-bf1c-572773ade854",
-          "component_type": "CameraComponent"
-        },
-        "RunMoveSpeed": 190,
-        "SprintMoveSpeed": 320,
-        "WalkMoveSpeed": 190
-      },
-      {
-        "__type": "FPSWeaponController",
-        "__guid": "112d1b23-049f-4e77-89a1-82380ffe88a4",
-        "Head": {
-          "_type": "component",
-          "component_id": "dc6717cd-dde7-4ade-a9c8-036b8344883c",
-          "go": "94805b88-f220-4096-bf1c-572773ade854",
-          "component_type": "CameraComponent"
-        },
-        "Weapons": []
-      },
-      {
         "__type": "Sandbox.CharacterController",
-        "__guid": "94c73ed3-84e4-4dee-bc5c-45b5ca290d20",
+        "__guid": "32b3c30d-f173-42c5-850e-1de6f6518d10",
         "Acceleration": 10,
         "Bounciness": 0.3,
         "GroundAngle": 45,
         "Height": 64,
-        "IgnoreLayers": "wep",
+        "IgnoreLayers": "player",
         "Radius": 16,
         "StepHeight": 18,
-        "UseCollisionRules": true
+        "UseCollisionRules": false
+      },
+      {
+        "__type": "FPSPlayerMovementController",
+        "__guid": "9de3cd54-719c-4f98-9438-0215bd74ec97",
+        "AirControl": 0.1,
+        "Body": {
+          "_type": "gameobject",
+          "go": "d7fe2b32-3de3-44e4-8f57-a4dfc5848c50"
+        },
+        "CrouchSpeed": 150,
+        "GroundControl": 4,
+        "Head": {
+          "_type": "gameobject",
+          "go": "13e98b7a-876a-4e28-891c-73f8aa12b49d"
+        },
+        "JumpForce": 400,
+        "MaxForce": 50,
+        "RunSpeed": 300,
+        "Speed": 250
       },
       {
         "__type": "Sandbox.Citizen.CitizenAnimationHelper",
-        "__guid": "fc74cf8c-c37c-46da-8afa-5906054b6049",
+        "__guid": "637399a6-fddf-4119-80e2-fab3f9c51312",
         "BodyWeight": 1,
-        "EyeSource": {
-          "_type": "gameobject",
-          "go": "94805b88-f220-4096-bf1c-572773ade854"
-        },
         "EyesWeight": 1,
         "HeadWeight": 1,
         "LookAtEnabled": false,
         "Target": {
           "_type": "component",
-          "component_id": "abbd43d4-b008-4ff5-87ac-21a87706bdcf",
-          "go": "1a844d3f-7873-4f63-95ca-4d6f69b69011",
+          "component_id": "e39c89c6-fb4e-4c0e-b145-392c3692fcb9",
+          "go": "d7fe2b32-3de3-44e4-8f57-a4dfc5848c50",
           "component_type": "SkinnedModelRenderer"
         }
       },
       {
+        "__type": "FPSWeaponController",
+        "__guid": "3c44501c-5495-45e3-8ab7-853ddb0a22ef",
+        "Body": {
+          "_type": "gameobject",
+          "go": "d7fe2b32-3de3-44e4-8f57-a4dfc5848c50"
+        },
+        "Head": {
+          "_type": "gameobject",
+          "go": "13e98b7a-876a-4e28-891c-73f8aa12b49d"
+        },
+        "Weapons": []
+      },
+      {
         "__type": "Sandbox.BoxCollider",
-        "__guid": "9b58ec7a-05f6-4405-a85b-516d791ef410",
-        "Center": "0,0,31.79997",
+        "__guid": "2521a28f-97b7-4842-a84c-b8009eb49a0c",
+        "Center": "0,0,36.10001",
         "IsTrigger": false,
-        "Scale": "28.89997,38.09999,65.20006",
+        "Scale": "15.59997,50.00001,70.50004",
         "Static": false
       }
     ],
     "Children": [
       {
-        "__guid": "1a844d3f-7873-4f63-95ca-4d6f69b69011",
+        "__guid": "d7fe2b32-3de3-44e4-8f57-a4dfc5848c50",
         "Flags": 0,
         "Name": "Body",
-        "Position": "0,0,0",
-        "Rotation": "0,0,0.0000003894144,-1",
         "Tags": "playerbody",
         "Enabled": true,
         "Components": [
           {
             "__type": "Sandbox.SkinnedModelRenderer",
-            "__guid": "abbd43d4-b008-4ff5-87ac-21a87706bdcf",
+            "__guid": "e39c89c6-fb4e-4c0e-b145-392c3692fcb9",
             "BodyGroups": 341,
             "CreateBoneObjects": false,
             "Model": "models/citizen/citizen.vmdl",
@@ -106,60 +95,66 @@
         ]
       },
       {
-        "__guid": "94805b88-f220-4096-bf1c-572773ade854",
+        "__guid": "3349f4ce-a601-4ad6-8b71-e3858c277858",
         "Flags": 0,
-        "Name": "Head",
-        "Position": "-10.83131,-0.7938595,64.36189",
-        "Tags": "maincamera",
+        "Name": "Nametag",
+        "Position": "0,0,78.08778",
         "Enabled": true,
         "Components": [
           {
-            "__type": "Sandbox.CameraComponent",
-            "__guid": "dc6717cd-dde7-4ade-a9c8-036b8344883c",
-            "BackgroundColor": "0.25992,0.51138,0.62791,1",
-            "ClearFlags": "All",
-            "FieldOfView": 90,
-            "IsMainCamera": true,
-            "Orthographic": false,
-            "OrthographicHeight": 1204,
-            "Priority": 1,
-            "RenderExcludeTags": "playerbody",
-            "RenderTags": "",
-            "TargetEye": "None",
-            "Viewport": "0,0,1,1",
-            "ZFar": 10000,
-            "ZNear": 10
+            "__type": "Sandbox.WorldPanel",
+            "__guid": "e9aa4058-e4bd-4ca3-9004-2dbc3314e9c5",
+            "HorizontalAlign": "Center",
+            "InteractionRange": 1000,
+            "LookAtCamera": true,
+            "PanelSize": "800,150",
+            "RenderScale": 1,
+            "VerticalAlign": "Center"
+          },
+          {
+            "__type": "FPSNametag",
+            "__guid": "6ca35120-652f-4c9d-82c2-c57012a2f5a0"
+          }
+        ],
+        "Children": [
+          {
+            "__guid": "13e98b7a-876a-4e28-891c-73f8aa12b49d",
+            "Flags": 0,
+            "Name": "Head",
+            "Position": "0,0,-15.23032",
+            "Tags": "playerhead",
+            "Enabled": true
           }
         ]
       },
       {
-        "__guid": "cae5e72f-a0e8-4bd0-8ec4-a77f3e963182",
+        "__guid": "efbb31b4-5ff1-4268-966b-527382f1f5a6",
         "Flags": 0,
         "Name": "HUD",
-        "Position": "0,0,0",
         "Enabled": true,
         "Components": [
           {
-            "__type": "FPSHud",
-            "__guid": "fd89e71f-f712-4e94-89ba-0513036f32e1",
-            "fpsWeaponController": {
-              "_type": "component",
-              "component_id": "112d1b23-049f-4e77-89a1-82380ffe88a4",
-              "go": "8e642627-67d8-4465-acbe-ce7e848e945e",
-              "component_type": "FPSWeaponController"
-            }
-          },
-          {
             "__type": "Sandbox.ScreenPanel",
-            "__guid": "998d2899-fbe6-42a8-b966-8ffbeefc7b66",
+            "__guid": "c046e3c8-f394-404f-9046-1eff1c4cafb6",
             "AutoScreenScale": true,
             "Opacity": 1,
             "Scale": 1,
             "ZIndex": 100
+          },
+          {
+            "__type": "FPSHud",
+            "__guid": "1cb24a41-04cb-44e2-8b3a-70b85a506cdb",
+            "fpsWeaponController": {
+              "_type": "component",
+              "component_id": "3c44501c-5495-45e3-8ab7-853ddb0a22ef",
+              "go": "d1a65faa-cc24-4865-ac5d-84ea8af79e91",
+              "component_type": "FPSWeaponController"
+            }
           }
         ]
       }
-    ]
+    ],
+    "__variables": []
   },
   "ShowInMenu": false,
   "MenuPath": null,

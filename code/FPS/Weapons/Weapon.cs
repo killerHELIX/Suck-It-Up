@@ -51,17 +51,21 @@ public abstract class Weapon : Component, Component.ICollisionListener
 	[Description("The reload speed of this weapon in seconds.")]
 	public abstract float ReloadSpeed { get; set; }
 
-    [Property] 
+    [Sync] 
+    [Property]
 	[Description("The current ammo in the weapon.")]
 	public int CurrentAmmo { get; set; }
 
-    [Property] 
+    [Sync] 
+    [Property]
 	[Description("The current reserve ammo pool of this weapon.")]
     public int CurrentReserves { get; set; }
 
     private float LastFireTime = 0f;
     private float LastReloadTime = 0f;
 	private SceneTraceResult lastTraceResult;
+
+    private FPSWeaponController PlayerWeaponController;
 
 
 
@@ -73,33 +77,32 @@ public abstract class Weapon : Component, Component.ICollisionListener
 
 	public void Pickup(GameObject player, FPSWeaponController playerWeaponController)
 	{
+        if (!Network.IsProxy)
+        {
+            PlayerWeaponController = playerWeaponController;
 			Log.Info($"{player} picking up {this}");
-			GameObject.SetParent(playerWeaponController.GameObject, keepWorldPosition: false);
-			// Transform.Position = playerWeaponController.GameObject.Transform.Position;
-			// Transform.LocalPosition = Vector3.Zero;
-			// Transform.Rotation = Angles.Zero;
+			GameObject.SetParent(PlayerWeaponController.Body, keepWorldPosition: false);
 			Components.Get<Rigidbody>().Enabled = false;
 			GameObject.Tags.Add(PLAYER_OWNED_WEAPON);
 			playerWeaponController.Weapons.Add(this);
 			Holster();
+        }
 	}
 
     public void Holster()
     {
 		Transform.LocalPosition = HolsterPosition;
-        // Transform.LocalPosition = Vector3.Lerp(Transform.LocalPosition, GetHolsterPosition(), Time.Delta * 2f);
 		Transform.LocalRotation = HolsterRotation;
     }
     public void Aim()
     {
-        var head = GameObject.Parent.Components.GetInChildrenOrSelf<CameraComponent>();
-		// var viewmodelPos = GetViewmodelPosition();
+        var head = PlayerWeaponController.Head;
         var targetPos = head.Transform.Position
             + (head.Transform.Rotation.Forward * ViewmodelPosition.x)
             + (head.Transform.Rotation.Right * ViewmodelPosition.y)
             + (head.Transform.Rotation.Up * ViewmodelPosition.z);
 
-        Transform.Position = Vector3.Lerp(Transform.Position, targetPos, Time.Delta * 5f);
+        Transform.Position = Vector3.Lerp(Transform.Position, targetPos, Time.Delta * 10f);
         Transform.Rotation = Rotation.Slerp(Transform.Rotation, head.Transform.Rotation, Time.Delta * 20f);
 		
         // Transform.Position = targetPos;
@@ -146,11 +149,15 @@ public abstract class Weapon : Component, Component.ICollisionListener
 	{
 		// no op
 	}
+	protected override void OnStart()
+    {
+        // Network.SetOwnerTransfer(OwnerTransfer.Takeover);
+
+    }
 
 	protected override void OnUpdate()
 	{
-        base.OnUpdate();
-
+        // Log.Info($"{this} {Network.}");
 		if ( !IsProxy )
 		{
 
@@ -184,10 +191,10 @@ public abstract class Weapon : Component, Component.ICollisionListener
                 Info("Fired!");
 
                 float dist = 10000.0f;
-                var cam = GameObject.Parent.Components.GetInChildrenOrSelf<CameraComponent>();
+                var head = PlayerWeaponController.Head;
 
-                // If the parent has a camera (e.g. a Player) shoot out of that. Otherwise shoot out of this gun directly.
-                var origin = (cam != null) ? cam.Transform.Position : cam.Transform.Position;
+                // If the parent has a head shoot out of that. Otherwise shoot out of this gun directly.
+                var origin = (head != null) ? head.Transform.Position : head.Transform.Position;
                 lastTraceResult = Scene.Trace.Ray(new Ray(origin, Transform.Rotation.Forward * dist), dist).Run();
 
                 if (lastTraceResult.Hit)

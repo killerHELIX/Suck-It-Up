@@ -1,6 +1,7 @@
 using Sandbox.Citizen;
+using System.Linq;
 
-public sealed class FPSPlayerMover : Component
+public sealed class FPSPlayerMovementControllerOld : Component
 {
 	[Property] public CharacterController CharacterController { get; set; }
 	[Property] public float CrouchMoveSpeed { get; set; } = 90.0f;
@@ -18,21 +19,29 @@ public sealed class FPSPlayerMover : Component
 	public bool WishCrouch;
 	public float EyeHeight = 64;
 
+	protected override void OnStart()
+	{
+		if (!IsProxy) return;
+	}
+
 	protected override void OnUpdate()
 	{
-		if ( !IsProxy )
-		{
-			MouseInput();
-			Transform.Rotation = new Angles( 0, EyeAngles.yaw, 0 );
-		}
 
-		UpdateAnimation();
+		Log.Info($"{this}: {Head}");
+		// Log.Info($"IsProxy: {IsProxy}");
+
+		if (IsProxy) return;
+
+
+		MouseInput();
+		Transform.Rotation = new Angles(0, EyeAngles.yaw, 0);
+
+		// UpdateAnimation();
 	}
 
 	protected override void OnFixedUpdate()
 	{
-		if ( IsProxy )
-			return;
+		if (IsProxy) return;
 
 		CrouchingInput();
 		MovementInput();
@@ -42,7 +51,7 @@ public sealed class FPSPlayerMover : Component
 	{
 		var e = EyeAngles;
 		e += Input.AnalogLook;
-		e.pitch = e.pitch.Clamp( -90, 90 );
+		e.pitch = e.pitch.Clamp(-90, 90);
 		e.roll = 0.0f;
 		EyeAngles = e;
 	}
@@ -51,9 +60,9 @@ public sealed class FPSPlayerMover : Component
 	{
 		get
 		{
-			if ( Crouching ) return CrouchMoveSpeed;
-			if ( Input.Down( "run" ) ) return SprintMoveSpeed;
-			if ( Input.Down( "walk" ) ) return WalkMoveSpeed;
+			if (Crouching) return CrouchMoveSpeed;
+			if (Input.Down("run")) return SprintMoveSpeed;
+			if (Input.Down("walk")) return WalkMoveSpeed;
 
 			return RunMoveSpeed;
 		}
@@ -65,7 +74,7 @@ public sealed class FPSPlayerMover : Component
 
 	float GetFriction()
 	{
-		if ( CharacterController.IsOnGround ) return 6.0f;
+		if (CharacterController.IsOnGround) return 6.0f;
 
 		// air friction
 		return 0.2f;
@@ -73,7 +82,7 @@ public sealed class FPSPlayerMover : Component
 
 	private void MovementInput()
 	{
-		if ( CharacterController is null )
+		if (CharacterController is null)
 			return;
 
 		var cc = CharacterController;
@@ -82,39 +91,40 @@ public sealed class FPSPlayerMover : Component
 
 		WishVelocity = Input.AnalogMove;
 
-		if ( lastGrounded < 0.2f && lastJump > 0.3f && Input.Pressed( "jump" ) )
+		if (lastGrounded < 0.2f && lastJump > 0.3f && Input.Pressed("jump"))
 		{
 			lastJump = 0;
-			cc.Punch( Vector3.Up * 300 );
+			cc.Punch(Vector3.Up * 300);
 		}
 
-		if ( !WishVelocity.IsNearlyZero() )
+		if (!WishVelocity.IsNearlyZero())
 		{
-			WishVelocity = new Angles( 0, EyeAngles.yaw, 0 ).ToRotation() * WishVelocity;
-			WishVelocity = WishVelocity.WithZ( 0 );
-			WishVelocity = WishVelocity.ClampLength( 1 );
+			WishVelocity = new Angles(0, EyeAngles.yaw, 0).ToRotation() * WishVelocity;
+			WishVelocity = WishVelocity.WithZ(0);
+			WishVelocity = WishVelocity.ClampLength(1);
 			WishVelocity *= CurrentMoveSpeed;
 
-			if ( !cc.IsOnGround )
+			if (!cc.IsOnGround)
 			{
-				WishVelocity = WishVelocity.ClampLength( 50 );
+				WishVelocity = WishVelocity.ClampLength(50);
 			}
 		}
 
 
-		cc.ApplyFriction( GetFriction() );
+		cc.ApplyFriction(GetFriction());
 
-		if ( cc.IsOnGround )
+		if (cc.IsOnGround)
 		{
-			cc.Accelerate( WishVelocity );
-			cc.Velocity = CharacterController.Velocity.WithZ( 0 );
+			cc.Accelerate(WishVelocity);
+			cc.Velocity = CharacterController.Velocity.WithZ(0);
 		}
 		else
 		{
 			cc.Velocity += halfGravity;
-			cc.Accelerate( WishVelocity );
+			cc.Accelerate(WishVelocity);
 
 		}
+
 
 		//
 		// Don't walk through other players, let them push you out of the way
@@ -133,16 +143,16 @@ public sealed class FPSPlayerMover : Component
 
 		cc.Move();
 
-		if ( !cc.IsOnGround )
+		if (!cc.IsOnGround)
 		{
 			cc.Velocity += halfGravity;
 		}
 		else
 		{
-			cc.Velocity = cc.Velocity.WithZ( 0 );
+			cc.Velocity = cc.Velocity.WithZ(0);
 		}
 
-		if ( cc.IsOnGround )
+		if (cc.IsOnGround)
 		{
 			lastGrounded = 0;
 		}
@@ -155,22 +165,22 @@ public sealed class FPSPlayerMover : Component
 
 	bool CanUncrouch()
 	{
-		if ( !Crouching ) return true;
-		if ( lastUngrounded < 0.2f ) return false;
+		if (!Crouching) return true;
+		if (lastUngrounded < 0.2f) return false;
 
-		var tr = CharacterController.TraceDirection( Vector3.Up * CrouchHeight );
+		var tr = CharacterController.TraceDirection(Vector3.Up * CrouchHeight);
 		return !tr.Hit; // hit nothing - we can!
 	}
 
 	public void CrouchingInput()
 	{
-		WishCrouch = Input.Down( "crouch" );
+		WishCrouch = Input.Down("crouch");
 
-		if ( WishCrouch == Crouching )
+		if (WishCrouch == Crouching)
 			return;
 
 		// crouch
-		if ( WishCrouch )
+		if (WishCrouch)
 		{
 			CharacterController.Height = 36;
 			Crouching = WishCrouch;
@@ -178,9 +188,9 @@ public sealed class FPSPlayerMover : Component
 			// if we're not on the ground, slide up our bbox so when we crouch
 			// the bottom shrinks, instead of the top, which will mean we can reach
 			// places by crouch jumping that we couldn't.
-			if ( !CharacterController.IsOnGround )
+			if (!CharacterController.IsOnGround)
 			{
-				CharacterController.MoveTo( Transform.Position += Vector3.Up * CrouchHeight, false );
+				CharacterController.MoveTo(Transform.Position += Vector3.Up * CrouchHeight, false);
 				Transform.ClearInterpolation();
 				EyeHeight -= CrouchHeight;
 			}
@@ -189,9 +199,9 @@ public sealed class FPSPlayerMover : Component
 		}
 
 		// uncrouch
-		if ( !WishCrouch )
+		if (!WishCrouch)
 		{
-			if ( !CanUncrouch() ) return;
+			if (!CanUncrouch()) return;
 
 			CharacterController.Height = 64;
 			Crouching = WishCrouch;
@@ -204,17 +214,17 @@ public sealed class FPSPlayerMover : Component
 	private void UpdateCamera()
 	{
 		var camera = Head;
-		if ( camera is null ) return;
+		if (camera is null) return;
 
 		var targetEyeHeight = Crouching ? 28 : 64;
-		EyeHeight = EyeHeight.LerpTo( targetEyeHeight, RealTime.Delta * 10.0f );
+		EyeHeight = EyeHeight.LerpTo(targetEyeHeight, RealTime.Delta * 10.0f);
 
-		var targetCameraPos = Transform.Position + new Vector3( 0, 0, EyeHeight );
+		var targetCameraPos = Transform.Position + new Vector3(0, 0, EyeHeight);
 
 		// smooth view z, so when going up and down stairs or crouching, it's smooth af
-		if ( lastUngrounded > 0.2f )
+		if (lastUngrounded > 0.2f)
 		{
-			targetCameraPos.z = camera.Transform.Position.z.LerpTo( targetCameraPos.z, RealTime.Delta * 25.0f );
+			targetCameraPos.z = camera.Transform.Position.z.LerpTo(targetCameraPos.z, RealTime.Delta * 25.0f);
 		}
 
 		camera.Transform.Position = targetCameraPos;
@@ -226,7 +236,7 @@ public sealed class FPSPlayerMover : Component
 	{
 		UpdateBodyVisibility();
 
-		if ( IsProxy )
+		if (IsProxy)
 			return;
 
 		UpdateCamera();
@@ -234,24 +244,25 @@ public sealed class FPSPlayerMover : Component
 
 	private void UpdateAnimation()
 	{
-		if ( AnimationHelper is null ) return;
+		if (AnimationHelper is null) return;
 
 		var wv = WishVelocity.Length;
 
-		AnimationHelper.WithWishVelocity( WishVelocity );
-		AnimationHelper.WithVelocity( CharacterController.Velocity );
+		Log.Info(AnimationHelper.Target);
+		AnimationHelper.WithWishVelocity(WishVelocity);
+		AnimationHelper.WithVelocity(CharacterController.Velocity);
 		AnimationHelper.IsGrounded = CharacterController.IsOnGround;
 		AnimationHelper.DuckLevel = Crouching ? 1.0f : 0.0f;
 
 		AnimationHelper.MoveStyle = wv < 160f ? CitizenAnimationHelper.MoveStyles.Walk : CitizenAnimationHelper.MoveStyles.Run;
 
 		var lookDir = EyeAngles.ToRotation().Forward * 1024;
-		AnimationHelper.WithLook( lookDir, 1, 0.5f, 0.25f );
+		AnimationHelper.WithLook(lookDir, 1, 0.5f, 0.25f);
 	}
 
 	private void UpdateBodyVisibility()
 	{
-		if ( AnimationHelper is null )
+		if (AnimationHelper is null)
 			return;
 
 		// var renderMode = ModelRenderer.ShadowRenderType.On;

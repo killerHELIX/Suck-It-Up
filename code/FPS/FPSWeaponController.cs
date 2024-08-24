@@ -2,28 +2,22 @@ using System;
 
 public sealed class FPSWeaponController : Component
 {
-	[Property] public CameraComponent Head { get; set; }
 
-	[Property] public List<Weapon> Weapons { get; set; }
-
-
-	[Property] public Weapon SelectedWeapon { get; set; }
+	[Property] public GameObject Head;
+	[Property] public GameObject Body;
+	[Sync] [Property] public List<Weapon> Weapons { get; set; }
 
 
-	protected override void OnStart()
-	{
-		if (!IsProxy)
-		{
-			// pass
-		}
-	}
+	[Sync] [Property] public Weapon SelectedWeapon { get; set; }
+
 
 	protected override void OnUpdate()
 	{
 		if (!IsProxy)
 		{
 			WeaponInput();
-
+			Log.Info($"{Network.OwnerConnection.DisplayName} Selected Weapon: {SelectedWeapon}");
+			// Log.Info("xxx");
 		}
 	}
 

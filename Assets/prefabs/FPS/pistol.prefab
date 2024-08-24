@@ -5,6 +5,7 @@
     "Name": "pistol",
     "Scale": "0.4,0.4,0.4",
     "Enabled": true,
+    "NetworkMode": 1,
     "Components": [
       {
         "__type": "Sandbox.ModelRenderer",
@@ -17,6 +18,8 @@
       {
         "__type": "Pistol",
         "__guid": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
+        "CurrentAmmo": 0,
+        "CurrentReserves": 0,
         "DropDistance": 20,
         "DropSpeedForward": 1000,
         "DropSpeedUp": 500,
@@ -25,6 +28,7 @@
         "HolsterRotation": "0,0.6755902,0,0.7372773",
         "MaxAmmo": 8,
         "MaxReserves": 64,
+        "Name": "9mm - \u0022The Scrapshot\u0022",
         "ReloadSpeed": 3,
         "ViewmodelPosition": "15,5,-6"
       },
@@ -136,22 +140,12 @@
       {
         "Id": "firerate",
         "Title": "firerate",
-        "Targets": []
-      },
-      {
-        "Id": "firerate",
-        "Title": "firerate",
         "Targets": [
           {
             "Id": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
             "Property": "FireRate"
           }
         ]
-      },
-      {
-        "Id": "reloadspeed",
-        "Title": "reloadspeed",
-        "Targets": []
       },
       {
         "Id": "reloadspeed",

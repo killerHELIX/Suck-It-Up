@@ -5,6 +5,7 @@
     "Name": "rifle",
     "Scale": "0.2,0.2,0.2",
     "Enabled": true,
+    "NetworkMode": 1,
     "Components": [
       {
         "__type": "Sandbox.ModelRenderer",

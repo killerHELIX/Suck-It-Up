@@ -17,6 +17,8 @@ public class MainMenuComponent : Component
 	[Property] public SIUSettingsPanel SettingsPanel { get; set; }
 	[Property] ScreenPanel myScreenPanel { get; set; }
 
+	[Property] public ulong MyServID { get; set; }
+
 	private MenuPanelType activePanel = MenuPanelType.MAIN;
 
 	private static MainMenuComponent _local = null;
@@ -46,10 +48,33 @@ public class MainMenuComponent : Component
 		setActivePanel(MenuPanelType.MAIN);
 	}
 
-	protected override void OnUpdate()
+	//protected override void OnUpdate()
+	//{
+	//	getPanelFromEnum(activePanel).StateHasChanged();
+	//}
+
+	protected override async void OnUpdate()
 	{
+		//Log.Info("Networking ID: " Networking.Id);
+
+
+		if (MyServID == 0)
+		{
+			var lobbies = await Networking.QueryLobbies();
+			foreach (Sandbox.Network.LobbyInformation lobby in lobbies)
+			{
+				//Log.Info("Lobby ID: " + lobby.LobbyId);
+				//Log.Info("Lobby Owner ID: " + lobby.OwnerId);
+				if (lobby.OwnerId == Connection.Local.SteamId)
+				{
+					this.MyServID = lobby.LobbyId;
+					Log.Info(MyServID);
+				}
+			}
+		}
 		getPanelFromEnum(activePanel).StateHasChanged();
 	}
+
 
 	public void setActivePanel(MenuPanelType panel)
 	{
@@ -78,6 +103,7 @@ public class MainMenuComponent : Component
 			case MenuPanelType.SETTINGS:
 				return SettingsPanel;
 			default:
+				Game.Close();
 				return null;
 		}
 	}

@@ -23,7 +23,9 @@
 
 	public void attemptJoinServer(ulong serverID)
 	{
-		GameNetworkSystem.TryConnectSteamId(serverID);
+		//GameNetworkSystem.TryConnectSteamId(serverID);
+		GameNetworkSystem.Connect(serverID);
+		MainMenuComponent.Local.setActivePanel(MainMenuComponent.MenuPanelType.JOINEDLOBBY);
 	}
 
 	protected override void OnUpdate()

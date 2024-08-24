@@ -1,5 +1,6 @@
 @using Sandbox;
 @using Sandbox.UI;
+@using Sandbox.Network;
 @using System.Linq;
 @using System;
 @using System.Threading.Tasks;
@@ -8,7 +9,7 @@
 
 @code
 {
-	public ulong myServID = Connection.Local.SteamId;
+	//[Property] public ulong MyServID { get; set; }//Connection.Local.SteamId;
 
 	public void startGame()
 	{
@@ -22,20 +23,21 @@
 
 	public void copyIDToClipboard()
 	{
-		Log.Info(myServID.ToString());
-		Clipboard.SetText(myServID.ToString());
+		Log.Info(MainMenuComponent.Local.MyServID.ToString());
+		Clipboard.SetText(MainMenuComponent.Local.MyServID.ToString());
 		return;
 	}
 
 	public void returnToMain()
 	{
 		MainMenuComponent.Local.setActivePanel(MainMenuComponent.MenuPanelType.MAIN);
+		GameNetworkSystem.Disconnect();
 	}
 }
 
 <root>
 	<div class="ServerIDControlsPanel">
-		<div class="ServerIDPanel">Lobby ID: @(myServID)</div>
+		<div class="ServerIDPanel">Lobby ID: @(MainMenuComponent.Local.MyServID)</div>
 		<button @onclick="@(() => copyIDToClipboard())" class="IDCopyButton">Copy To Clipboard</button>
 	</div>
 	<div class="PlayerTeamSelectionPanel">

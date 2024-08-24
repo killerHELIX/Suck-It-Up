@@ -5,9 +5,10 @@
   "Ident": "suckitup",
   "Schema": 1,
   "IncludeSourceFiles": true,
-  "Resources": "\nmaterials/temple_portrait.PNG\nmaterials/skeltal_portrait.PNG\nmaterials/attack_stance.png\nmaterials/defend_stance.png\nmaterials/resource_icon.png\nmaterials/spawner_icon.png\nmaterials/trap_icon.png\nmaterials/capacity_icon.png\nmaterials/circle.png",
+  "Resources": "\nmaterials/temple_portrait.PNG\nmaterials/skeltal_portrait.PNG\nmaterials/attack_stance.png\nmaterials/defend_stance.png\nmaterials/resource_icon.png\nmaterials/spawner_icon.png\nmaterials/trap_icon.png\nmaterials/capacity_icon.png\nmaterials/circle.png\nmodels/Enemies/critter.fbx\nmodels/Enemies/giant.fbx\nmodels/Enemies/normal.fbx\nmodels/Enemies/TPose/critter_tpose.fbx\nmodels/Enemies/TPose/giant_tpose.fbx\nmodels/Enemies/TPose/roller_tpose.fbx\nanimations/Enemies/critter2.fbx\nanimations/Enemies/roller.fbx",
   "PackageReferences": [],
   "EditorReferences": null,
+  "IsWhitelistDisabled": false,
   "Metadata": {
     "MaxPlayers": 64,
     "MinPlayers": 1,

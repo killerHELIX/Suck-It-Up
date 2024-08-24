@@ -48,7 +48,6 @@ public sealed class FPSPlayerMovementController : Component
 
 	protected override void OnUpdate()
 	{
-
 		if (Network.IsOwner)
 		{
 			// Set our sprinting and crouching states

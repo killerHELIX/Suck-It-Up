@@ -82,7 +82,7 @@
         "Position": "0,0,62.85746",
         "Tags": "playerhead",
         "Enabled": true,
-        "NetworkMode": 0
+        "NetworkMode": 1
       },
       {
         "__guid": "d7fe2b32-3de3-44e4-8f57-a4dfc5848c50",
@@ -115,7 +115,6 @@
           {
             "__type": "Sandbox.WorldPanel",
             "__guid": "e9aa4058-e4bd-4ca3-9004-2dbc3314e9c5",
-            "__enabled": false,
             "HorizontalAlign": "Center",
             "InteractionRange": 1000,
             "LookAtCamera": true,
@@ -125,8 +124,7 @@
           },
           {
             "__type": "FPSNametag",
-            "__guid": "6ca35120-652f-4c9d-82c2-c57012a2f5a0",
-            "__enabled": false
+            "__guid": "6ca35120-652f-4c9d-82c2-c57012a2f5a0"
           }
         ]
       },

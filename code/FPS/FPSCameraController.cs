@@ -29,6 +29,7 @@ public sealed class FPSCameraController : Component
 			BodyRenderer = Body.Components.Get<ModelRenderer>();
 		}
 
+		Log.Info(Player.Head);
 		var eyeAngles = Head.Transform.Rotation.Angles();
 		eyeAngles.pitch += Input.MouseDelta.y * 0.1f;
 		eyeAngles.yaw -= Input.MouseDelta.x * 0.1f;

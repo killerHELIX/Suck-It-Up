@@ -16,7 +16,6 @@ public sealed class FPSWeaponController : Component
 		if (!IsProxy)
 		{
 			WeaponInput();
-			Log.Info($"{Network.OwnerConnection.DisplayName} Selected Weapon: {SelectedWeapon}");
 		}
 	}
 

@@ -17,7 +17,6 @@ public sealed class FPSWeaponController : Component
 		{
 			WeaponInput();
 			Log.Info($"{Network.OwnerConnection.DisplayName} Selected Weapon: {SelectedWeapon}");
-			// Log.Info("xxx");
 		}
 	}
 

@@ -77,16 +77,15 @@ public abstract class Weapon : Component, Component.ICollisionListener
 
 	public void Pickup(GameObject player, FPSWeaponController playerWeaponController)
 	{
-        if (!Network.IsProxy)
-        {
-            PlayerWeaponController = playerWeaponController;
-			Log.Info($"{player} picking up {this}");
-			GameObject.SetParent(PlayerWeaponController.Body, keepWorldPosition: false);
-			Components.Get<Rigidbody>().Enabled = false;
-			GameObject.Tags.Add(PLAYER_OWNED_WEAPON);
-			playerWeaponController.Weapons.Add(this);
-			Holster();
-        }
+
+        PlayerWeaponController = playerWeaponController;
+        Log.Info($"{player} picking up {this}");
+        GameObject.SetParent(PlayerWeaponController.Body, keepWorldPosition: false);
+        Network.TakeOwnership();
+        Components.Get<Rigidbody>().Enabled = false;
+        GameObject.Tags.Add(PLAYER_OWNED_WEAPON);
+        playerWeaponController.Weapons.Add(this);
+        Holster();
 	}
 
     public void Holster()
@@ -115,6 +114,7 @@ public abstract class Weapon : Component, Component.ICollisionListener
 		Log.Info($"Dropping {this}");
 
 		GameObject.SetParent(Scene);
+        Network.DropOwnership();
 
 		var forward = Transform.Rotation.Forward * DropDistance;
 		Transform.Position += forward;
@@ -151,7 +151,6 @@ public abstract class Weapon : Component, Component.ICollisionListener
 	}
 	protected override void OnStart()
     {
-        // Network.SetOwnerTransfer(OwnerTransfer.Takeover);
 
     }
 

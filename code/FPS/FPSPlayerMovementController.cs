@@ -12,8 +12,8 @@ public sealed class FPSPlayerMovementController : Component
 	[Property] public float CrouchSpeed { get; set; } = 90f;
 	[Property] public float JumpForce { get; set; } = 400f;
 
-	[Sync][Property] public GameObject Head { get; set; }
-	[Sync][Property] public GameObject Body { get; set; }
+	[Property] public GameObject Head { get; set; }
+	[Property] public GameObject Body { get; set; }
 
 	public Vector3 WishVelocity = Vector3.Zero;
 	[Sync] public bool IsCrouching { get; set; } = false;
@@ -24,17 +24,24 @@ public sealed class FPSPlayerMovementController : Component
 	private CitizenAnimationHelper AnimationHelper;
 	private ModelRenderer BodyRenderer;
 
-	protected override void OnStart()
+	protected override void OnAwake()
 	{
+		if (IsProxy) return;
+
 		CharacterController = Components.Get<CharacterController>();
 		AnimationHelper = Components.Get<CitizenAnimationHelper>();
+		Head = GameObject.Children.FirstOrDefault(x => x.Tags.Contains("playerhead"));
+		Body = GameObject.Children.FirstOrDefault(x => x.Tags.Contains("playerbody"));
 		BodyRenderer = Body.Components.Get<ModelRenderer>();
+		Log.Info($"{this} Head: {Head} Body: {Body}");
 
+		// if (!IsProxy) Network.Refresh();
 
 	}
 
 	protected override void OnUpdate()
 	{
+		// return; 
 		if (!IsProxy)
 		{
 			// Set our sprinting and crouching states
@@ -43,12 +50,12 @@ public sealed class FPSPlayerMovementController : Component
 
 			if (Input.Pressed("Jump")) Jump();
 
-			Log.Info($"Head: {Head}");
 			TargetAngle = new Angles(0, Head.Transform.Rotation.Yaw(), 0).ToRotation();
+
+			RotateBody();
+			UpdateAnimations();
 		}
 
-		RotateBody();
-		UpdateAnimations();
 
 	}
 
@@ -144,6 +151,7 @@ public sealed class FPSPlayerMovementController : Component
 		// BodyRenderer.RenderType = (Network.IsProxy) ? ModelRenderer.ShadowRenderType.On;
 
 		if (AnimationHelper is null) return;
+		// Log.Info(AnimationHelper.Target);
 		AnimationHelper.WithWishVelocity(WishVelocity);
 		AnimationHelper.WithVelocity(CharacterController.Velocity);
 		AnimationHelper.AimAngle = TargetAngle;

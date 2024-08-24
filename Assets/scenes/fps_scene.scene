@@ -323,10 +323,6 @@
         {
           "__type": "Sandbox.NetworkHelper",
           "__guid": "b1377d30-e00d-4acc-9af1-e1a8d94b6c77",
-          "PlayerPrefab": {
-            "_type": "gameobject",
-            "prefab": "prefabs/fps/fpsplayer.prefab"
-          },
           "SpawnPoints": [
             {
               "_type": "gameobject",
@@ -341,7 +337,7 @@
           "__guid": "52094ed3-85c1-4ec0-9b84-26611e0ab6e2",
           "Flags": 0,
           "Name": "Spawn",
-          "Position": "-186.8602,-200.0041,-64.82561",
+          "Position": "-186.8602,-200.0041,-46.53906",
           "Enabled": true
         }
       ]
@@ -425,6 +421,27 @@
             "maxreserves": 64,
             "firerate": 0.5,
             "reloadspeed": 3
+          }
+        }
+      ]
+    },
+    {
+      "__guid": "870ab6f1-d9ef-47ec-adc9-51696f0da992",
+      "Flags": 0,
+      "Name": "Debug",
+      "Position": "-299.4931,-263.264,94.70454",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Debug",
+          "__guid": "881eea50-8116-454d-bf0e-1e1380127670",
+          "PlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/fps/fpsplayer.prefab"
+          },
+          "Spawn": {
+            "_type": "gameobject",
+            "go": "52094ed3-85c1-4ec0-9b84-26611e0ab6e2"
           }
         }
       ]

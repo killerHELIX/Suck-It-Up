@@ -13,7 +13,7 @@ public sealed class FPSCameraController : Component
 	private GameObject Head { get; set; }
 
 
-	protected override void OnStart()
+	protected override void OnAwake()
 	{
 		Camera = Components.Get<CameraComponent>();
 	}
@@ -21,10 +21,10 @@ public sealed class FPSCameraController : Component
 
 	protected override void OnUpdate()
 	{
+		if (IsProxy) return; 
 		if (Player is null)
 		{
 			Player = Game.ActiveScene.GetAllComponents<FPSPlayerMovementController>().FirstOrDefault(x => x.Network.IsOwner);
-			Log.Info(Player);
 			Head = Player.Head;
 			Body = Player.Body;
 			BodyRenderer = Body.Components.Get<ModelRenderer>();

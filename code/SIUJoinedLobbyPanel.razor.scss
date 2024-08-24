@@ -5,6 +5,20 @@ SIUJoinedLobbyPanel {
     pointer-events: all;
 }
 
+.ServerIDPanel {
+    width: 100%;
+    height: 10%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    pointer-events: none;
+    justify-content: center;
+    color: white;
+    font-size: 80px;
+    justify-content: center;
+    font-family: sans-serif, Arial;
+}
+
 .ServerControlsPanel {
     width: 100%;
     height: 10%;
@@ -29,8 +43,8 @@ SIUJoinedLobbyPanel {
 
 .PlayerTeamSelectionPanel {
     width: 100%;
-    height: 75%;
-    top: 5%;
+    height: 70%;
+    top: 10%;
     position: absolute;
     flex-direction: row;
     align-items: center;

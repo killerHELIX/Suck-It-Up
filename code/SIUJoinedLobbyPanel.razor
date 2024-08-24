@@ -2,20 +2,15 @@
 @using Sandbox.UI;
 @using System.Linq;
 @using System;
+@using System.Threading.Tasks;
 @inherits PanelComponent
 @attribute [StyleSheet]
 
 @code
 {
+	public ulong myServID = Connection.Local.SteamId;
 
-	protected override void OnStart()
-	{
-		//rtsPlayerList = new List<string>();
-		//spectatorPlayerList = new List<string>();
-		//survivorPlayerList = new List<string>();
-	}
-
-	/*[Broadcast(NetPermission.HostOnly)]*/ public void startGame()
+	public void startGame()
 	{
 		if (GameState.Local.rtsPlayerList.Count() > 0 && GameState.Local.survivorPlayerList.Count() > 0)
 		{
@@ -32,6 +27,7 @@
 }
 
 <root>
+	<div class="ServerIDPanel">Lobby ID: @(myServID)</div>
 	<div class="PlayerTeamSelectionPanel">
 		<div class="PlayerColumn">
 			<div class="PlayerLabel">Vacumaster</div>

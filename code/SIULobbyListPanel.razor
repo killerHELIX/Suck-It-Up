@@ -1,5 +1,6 @@
 @using Sandbox;
 @using Sandbox.UI;
+@using Sandbox.Network;
 @using System.Linq;
 @using System;
 @inherits PanelComponent
@@ -7,13 +8,37 @@
 
 @code
 {
+	public TextEntry entryContainer;
+
 	public void returnToMain()
 	{
 		MainMenuComponent.Local.setActivePanel(MainMenuComponent.MenuPanelType.MAIN);
 	}
+
+	public void submitText()
+	{
+		Log.Info(entryContainer.Value);
+		attemptJoinServer(entryContainer.Value.ToULong());
+	}
+
+	public void attemptJoinServer(ulong serverID)
+	{
+		GameNetworkSystem.TryConnectSteamId(serverID);
+	}
+
+	protected override void OnUpdate()
+	{
+		StateHasChanged();
+	}
 }
 
 <root>
-	<div>Lobby List</div>
-	<button @onclick="@(() => returnToMain())">Back</button>
+	<div class="PanelLabel">Enter Lobby ID</div>
+	<form class="IDInput">
+		<textentry @ref=entryContainer class="TextBS" rows="1" cols="50" @onsubmit="@(() => submitText())"></textentry>
+	</form>
+	<div class="ServerControlsPanel">
+		<button @onclick="@(() => returnToMain())" class="ServerControlOption">Back</button>
+		<button @onclick="@(() => attemptJoinServer(entryContainer.Value.ToULong()))" class="ServerControlOption">Join</button>
+	</div>
 </root>

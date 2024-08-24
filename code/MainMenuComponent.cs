@@ -12,9 +12,9 @@ public class MainMenuComponent : Component
 	}
 
 	[Property] MainMenu MainPanel { get; set; }
-	[Property] SIUJoinedLobbyPanel JoinedLobbyPanel { get; set; }
-	[Property] SIULobbyListPanel LobbyListPanel { get; set; }
-	[Property] SIUSettingsPanel SettingsPanel { get; set; }
+	[Property] public SIUJoinedLobbyPanel JoinedLobbyPanel { get; set; }
+	[Property] public SIULobbyListPanel LobbyListPanel { get; set; }
+	[Property] public SIUSettingsPanel SettingsPanel { get; set; }
 	[Property] ScreenPanel myScreenPanel { get; set; }
 
 	private MenuPanelType activePanel = MenuPanelType.MAIN;
@@ -27,7 +27,8 @@ public class MainMenuComponent : Component
 		{
 			if (!_local.IsValid())
 			{
-				_local = Game.ActiveScene.Directory.FindByName("Main Menu").First().Components.Get<MainMenuComponent>();//Game.ActiveScene.GetAllComponents<MainMenuComponent>().FirstOrDefault(x => x.Network.IsOwner);
+				//_local = Game.ActiveScene.Directory.FindByName("Main Menu").First().Components.Get<MainMenuComponent>();
+				_local = Game.ActiveScene.GetAllComponents<MainMenuComponent>().FirstOrDefault(x => x.Network.IsOwner);
 				Log.Info("Tried getting local main menu, found this: " + _local);
 			}
 			return _local;
@@ -36,7 +37,12 @@ public class MainMenuComponent : Component
 
 	protected override void OnStart()
 	{
-		base.OnStart();
+		if (Network.IsProxy){ 
+			myScreenPanel.Enabled = false;
+			JoinedLobbyPanel.Enabled = true;
+			//Enabled = false;
+			return; 
+		}
 		setActivePanel(MenuPanelType.MAIN);
 	}
 
@@ -56,11 +62,6 @@ public class MainMenuComponent : Component
 		{
 			activePanel = panel;
 			getPanelFromEnum(panel).Enabled = true;
-		}
-		else
-		{
-			activePanel = MenuPanelType.MAIN;
-			MainPanel.Enabled = true;
 		}
 	}
 

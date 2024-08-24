@@ -2,6 +2,49 @@
   "__guid": "a5742acf-ba61-4925-9be6-093cf63341c8",
   "GameObjects": [
     {
+      "__guid": "36ef4334-e091-43de-b302-4812907671e6",
+      "Flags": 0,
+      "Name": "Main Menu",
+      "Position": "-414.3859,-2111.661,1010.93",
+      "Tags": "main_menu",
+      "NetworkInterpolation": false,
+      "__Prefab": "prefabs/mainmenu.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "10cd86b0-9600-4941-9893-b2f99479ee75",
+      "Flags": 0,
+      "Name": "Network",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.NetworkHelper",
+          "__guid": "75942cae-ef5f-4c1e-a1e4-26e39a411a0a",
+          "PlayerPrefab": {
+            "_type": "gameobject",
+            "go": "36ef4334-e091-43de-b302-4812907671e6"
+          },
+          "SpawnPoints": [],
+          "StartServer": true
+        }
+      ]
+    },
+    {
+      "__guid": "c918b060-a76c-4cd1-8a5f-43685fb2b7bf",
+      "Flags": 0,
+      "Name": "Game State",
+      "Position": "308.9923,284.8962,110.8963",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "OwnerTransfer": 0,
+      "Components": [
+        {
+          "__type": "GameState",
+          "__guid": "5b62a30f-8480-4cfe-a49b-46d29807cf70"
+        }
+      ]
+    },
+    {
       "__guid": "0dc3dab6-b368-4b38-9706-914d71345e2b",
       "Flags": 0,
       "Name": "Plane",
@@ -435,7 +478,7 @@
       "Flags": 0,
       "Name": "Object (12)",
       "Position": "19.18894,-7.915539,57.7257",
-      "Tags": "light_point,light",
+      "Tags": "light_point,light,water",
       "Enabled": true,
       "Components": [
         {
@@ -453,34 +496,6 @@
           "__guid": "fc59f023-3ec7-4fa5-a120-963c6ea32782",
           "__enabled": false,
           "Color": "0.13953,0.29729,1,1"
-        }
-      ]
-    },
-    {
-      "__guid": "36ef4334-e091-43de-b302-4812907671e6",
-      "Flags": 0,
-      "Name": "Main Menu",
-      "Position": "-414.3859,-2111.661,1010.93",
-      "Tags": "main_menu",
-      "Enabled": true,
-      "NetworkInterpolation": false,
-      "__Prefab": "prefabs/mainmenu.prefab",
-      "__PrefabVariables": {}
-    },
-    {
-      "__guid": "10cd86b0-9600-4941-9893-b2f99479ee75",
-      "Flags": 0,
-      "Name": "GameObject",
-      "Components": [
-        {
-          "__type": "Sandbox.NetworkHelper",
-          "__guid": "75942cae-ef5f-4c1e-a1e4-26e39a411a0a",
-          "PlayerPrefab": {
-            "_type": "gameobject",
-            "go": "36ef4334-e091-43de-b302-4812907671e6"
-          },
-          "SpawnPoints": [],
-          "StartServer": true
         }
       ]
     }

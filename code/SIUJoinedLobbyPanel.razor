@@ -7,44 +7,21 @@
 
 @code
 {
-	public enum PlayerType
-	{
-		RTS,
-		SPECTATOR,
-		SURVIVOR
-	}
-
-	public const int MAX_RTS_PLAYERS = 1;
-	public const int MAX_SPECTATOR_PLAYERS = 99;
-	public const int MAX_SURVIVOR_PLAYERS = 10;
-
-	public List<string> rtsPlayerList = new List<string>();
-	public List<string> spectatorPlayerList = new List<string>();
-	public List<string> survivorPlayerList = new List<string>();
 
 	protected override void OnStart()
 	{
-		survivorPlayerList.Add("dfad");
+		//rtsPlayerList = new List<string>();
+		//spectatorPlayerList = new List<string>();
+		//survivorPlayerList = new List<string>();
 	}
 
-	public void addPlayerToList(string player, PlayerType listType)
+	/*[Broadcast(NetPermission.HostOnly)]*/ public void startGame()
 	{
-		Log.Info(player + " clicked " + listType);
-		if (getPlayerListFromType(listType).Count() >= getMaxPlayerFromType(listType))
+		if (GameState.Local.rtsPlayerList.Count() > 0 && GameState.Local.survivorPlayerList.Count() > 0)
 		{
+			GameState.Local.currentGameState = GameState.GameStateType.PLAYING;
+			Game.ActiveScene.LoadFromFile("scenes/sui_main.scene");
 			return;
-		}
-		rtsPlayerList.Remove(player);
-		spectatorPlayerList.Remove(player);
-		survivorPlayerList.Remove(player);
-		getPlayerListFromType(listType).Add(player);
-	}
-
-	public void startGame()
-	{
-		if(rtsPlayerList.Count() > 0 && survivorPlayerList.Count() > 0)
-		{
-			
 		}
 	}
 
@@ -52,50 +29,14 @@
 	{
 		MainMenuComponent.Local.setActivePanel(MainMenuComponent.MenuPanelType.MAIN);
 	}
-
-	public List<string> getPlayerListFromType(PlayerType pType)
-	{
-		switch (pType)
-		{
-			case PlayerType.RTS:
-				return rtsPlayerList;
-				break;
-			case PlayerType.SPECTATOR:
-				return spectatorPlayerList;
-				break;
-			case PlayerType.SURVIVOR:
-				return survivorPlayerList;
-				break;
-			default:
-				return spectatorPlayerList;
-		}
-	}
-
-	public int getMaxPlayerFromType(PlayerType pType)
-	{
-		switch (pType)
-		{
-			case PlayerType.RTS:
-				return MAX_RTS_PLAYERS;
-				break;
-			case PlayerType.SPECTATOR:
-				return MAX_SPECTATOR_PLAYERS;
-				break;
-			case PlayerType.SURVIVOR:
-				return MAX_SURVIVOR_PLAYERS;
-				break;
-			default:
-				return 0;
-		}
-	}
 }
 
 <root>
 	<div class="PlayerTeamSelectionPanel">
 		<div class="PlayerColumn">
 			<div class="PlayerLabel">Vacumaster</div>
-			<div @onclick="@(() => addPlayerToList("retard", PlayerType.RTS))" class="RTSPlayerPanel">
-				@foreach (string player in rtsPlayerList)
+			<div @onclick="@(() => GameState.Local.addPlayerToList(Network.OwnerConnection.DisplayName, GameState.PlayerType.RTS, true))" class="RTSPlayerPanel">
+				@foreach (string player in GameState.Local.rtsPlayerList)
 				{
 					<div class="PlayerListItem">@(player)</div>
 				}
@@ -103,8 +44,8 @@
 		</div>
 		<div class="PlayerColumn">
 			<div class="PlayerLabel">Spectator</div>
-			<div @onclick="@(() => addPlayerToList("retard", PlayerType.SPECTATOR))" class="SpectatorPlayerPanel">
-				@foreach (string player in spectatorPlayerList)
+			<div @onclick="@(() => GameState.Local.addPlayerToList(Network.OwnerConnection.DisplayName, GameState.PlayerType.SPECTATOR, true))" class="SpectatorPlayerPanel">
+				@foreach (string player in GameState.Local.spectatorPlayerList)
 				{
 					<div class="PlayerListItem">@(player)</div>
 				}
@@ -112,8 +53,8 @@
 		</div>
 		<div class="PlayerColumn">
 			<div class="PlayerLabel">Survivors</div>
-			<div @onclick="@(() => addPlayerToList("retard", PlayerType.SURVIVOR))" class="SurvivorPlayerPanel">
-				@foreach (string player in survivorPlayerList)
+			<div @onclick="@(() => GameState.Local.addPlayerToList(Network.OwnerConnection.DisplayName, GameState.PlayerType.SURVIVOR, true))" class="SurvivorPlayerPanel">
+				@foreach (string player in GameState.Local.survivorPlayerList)
 				{
 					<div class="PlayerListItem">@(player)</div>
 				}
@@ -122,6 +63,6 @@
 	</div>
 	<div class="ServerControlsPanel">
 		<button class="ServerControlOption" @onclick="@(() => returnToMain())">Back</button>
-		<button class="ServerControlOption" @onclick="@(() => returnToMain())">Start</button>
+		<button class="ServerControlOption" @onclick="@(() => startGame())">Start</button>
 	</div>
 </root>

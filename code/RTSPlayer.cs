@@ -46,15 +46,20 @@ public class RTSPlayer : Component
 			return;
 		}
 
-		//Set Team. This will probably be replaced when we have a lobby setup
-		if (Game.ActiveScene.GetAllComponents<RTSPlayer>().Count() == 1)
+		//Set Team
+		if(GameState.Local.rtsPlayerList.Contains(Connection.Local.DisplayName))
 		{
 			this.Team = 0;
 		}
+		else if(GameState.Local.survivorPlayerList.Contains(Connection.Local.DisplayName))
+		{
+			this.Team = 1;
+		}
 		else
 		{
-			this.Team = Game.ActiveScene.GetAllComponents<RTSPlayer>().MaxBy(x => x.Team).Team + 1;
+			this.Team = 2;
 		}
+		//this.Team = 0;
 
 		//Update display for all units (probably wont work for those it doesnt have ownership of)
 		var allUnitList = Game.ActiveScene.GetAllComponents<Unit>();

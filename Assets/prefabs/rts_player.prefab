@@ -22,13 +22,15 @@
           "go": "88fe0df8-db2f-4954-9a8e-ff064164a8ea",
           "component_type": "PlayerUnitControl"
         },
+        "CapacityCap": 80,
+        "ResourceCap": 100,
         "skeltalHousePrefab": {
           "_type": "gameobject",
           "prefab": "prefabs/skeltalhouse.prefab"
         },
         "skeltalPrefab": {
           "_type": "gameobject",
-          "prefab": "prefabs/skeltal.prefab"
+          "prefab": "prefabs/siu_skeltal.prefab"
         }
       },
       {

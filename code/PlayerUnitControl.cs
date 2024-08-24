@@ -9,15 +9,38 @@ using System.Threading;
 public class PlayerUnitControl : Component
 {
 	const float CLICK_TIME = 0.1f;
+	const int INITIAL_UNIT_CIRCLE_NUMBER = 6;
+	const float INITIAL_UNIT_CIRCLE_DISTANCE = 30f;
 
 	[Property]	RTSCamComponent RTSCam {  get; set; }
 	[Property] SelectionPanel selectionPanel { get; set; }
-	public List<SkinnedRTSObject> SelectedObjects { get; set; }
+	public List<SelectableObject> SelectedObjects { get; set; }
 
 	private Rect selectionRect = new Rect();
 	private Vector2 startSelectPos {  get; set; }
 	private float startSelectTime { get; set; }
 	private Vector2 endRectPos { get; set; }
+
+	public void unitHasDied(Unit deadUnit)
+	{
+		// Update the HUD, if necessary
+		if (SelectedObjects.Contains(deadUnit))
+		{
+			if(SelectedObjects.Count > 2)
+			{
+				RTSPlayer.Local.LocalGame.GameHud.setSelectionVars(true, false, false);
+			}
+			else if(SelectedObjects.Count == 2)
+			{
+				RTSPlayer.Local.LocalGame.GameHud.setSelectionVars(true, true, false);
+			}
+			else
+			{
+				RTSPlayer.Local.LocalGame.GameHud.setSelectionVars(false, false, false);
+			}
+			SelectedObjects.Remove(deadUnit);
+		}
+	}
 
 	protected override void OnStart()
 	{
@@ -29,7 +52,7 @@ public class PlayerUnitControl : Component
 			return;
 		}
 		base.OnStart();
-		SelectedObjects = new List<SkinnedRTSObject>();
+		SelectedObjects = new List<SelectableObject>();
 		//DEBUG REMOVE
 		RTSPlayer.Local.myUnitFactory.SpawnDebugUnits();
 		//DEBUG REMOVE
@@ -75,14 +98,15 @@ public class PlayerUnitControl : Component
 		else if(Input.Released("Select"))
 		{
 			// Delesect all currently selected
-			foreach ( SkinnedRTSObject obj in SelectedObjects )
+			foreach ( SelectableObject obj in SelectedObjects )
 			{
 				obj.deSelect();
 			}
 			SelectedObjects.Clear();
+
 			// For a drag just make sure we give them some time to actually click
 			// TODO: I think I can fix the jank here if I make multiselect ALSO depend on how large of a rectangle you actually draw
-			if ( Time.Now - startSelectTime > CLICK_TIME )
+			if ( Time.Now - startSelectTime > CLICK_TIME && selectionRect.Size.Length > 20)
 			{
 				//Log.Info( "Release" );
 				endRectPos = Mouse.Position;
@@ -115,7 +139,6 @@ public class PlayerUnitControl : Component
 					}
 
 					// TODO: Make the stance stuff less cheesy
-					Log.Info( SelectedObjects.Count() );
 					if ( SelectedObjects.Count() == 1 )
 					{
 						RTSPlayer.Local.LocalGame.GameHud.setSelectionVars( true, true, ((Unit)SelectedObjects.First()).isInAttackMode );
@@ -138,8 +161,7 @@ public class PlayerUnitControl : Component
 			// This is for a single click
 			else
 			{
-				//RTSPlayer.Local.LocalGame.GameHUD.setSelectionVars( false, false );
-
+				stopDrawSelectionRect();
 				var mouseScreenPos = Mouse.Position;
 				// Set up and run mouse ray to find what we're now selecting
 				var mouseDirection = RTSCam.CamView.ScreenPixelToRay( mouseScreenPos );
@@ -147,11 +169,13 @@ public class PlayerUnitControl : Component
 				var tr = mouseRay.Run();
 
 				// Get unit under ray
+				//FIX WHEN YOU CLICK ON THE SKY
 				var hitUnitComponents = tr.GameObject.Components.GetAll().OfType<Unit>();
-				var hitBuildingComponents = tr.GameObject.Components.GetAll().OfType<Building>();
+				var hitOrbComponents = tr.GameObject.Components.GetAll().OfType<ControlOrb>();
+				//var hitBuildingComponents = tr.GameObject.Components.GetAll().OfType<Building>();
 				var hitSomethingValid = false;
 
-				if ( hitUnitComponents.Any() != false || hitBuildingComponents.Any() != false )
+				if ( hitUnitComponents.Any() != false || hitOrbComponents.Any() != false )
 				{
 					// Select unit if one is hit
 					if ( hitUnitComponents.Any() )
@@ -169,20 +193,16 @@ public class PlayerUnitControl : Component
 						}
 					}
 
-					// Select building if one is hit
-					if ( hitBuildingComponents.Any() )
+					// Select orb if one is hit
+					if (hitOrbComponents.Any() )
 					{
-						var selectedBuilding = hitBuildingComponents.First();
-						// Make sure the unit is ours
-						if ( selectedBuilding.team == RTSPlayer.Local.Team )
-						{
-							//Log.Info( "Team " + team + " " + selectedUnit.GameObject.Name + " Selected from team " + selectedUnit.team );
-							// Select Building
-							SelectedObjects.Add( selectedBuilding );
-							selectedBuilding.select();
-							RTSPlayer.Local.LocalGame.GameHud.setSelectionVars( true, true, false );
-							hitSomethingValid = true;
-						}
+						var selectedOrb = hitOrbComponents.First();
+						//Log.Info("Hit Orb!");
+						// Select Orb
+						SelectedObjects.Add( selectedOrb );
+						selectedOrb.select();
+						RTSPlayer.Local.LocalGame.GameHud.setSelectionVars( true, true, false );
+						hitSomethingValid = true;
 					}
 					if (! hitSomethingValid )
 					{
@@ -211,7 +231,7 @@ public class PlayerUnitControl : Component
 			var tr = mouseRay.Run();
 			// Get hit components
 			var hitRtsObjects = tr.GameObject.Components.GetAll().OfType<SkinnedRTSObject>();
-			Log.Info(tr.GameObject.Name);
+			//Log.Info(tr.GameObject.Name);
 			var hitWorldObjects = tr.GameObject.Components.GetAll().OfType<MapCollider>();
 			
 			// Set Up Attack Command if we hit an enemy unit
@@ -220,7 +240,7 @@ public class PlayerUnitControl : Component
 			if ( hitRtsObjects.Any() && hitRtsObjects.First().team != RTSPlayer.Local.Team)
 			{
 				commandType = UnitModelUtils.CommandType.Attack;
-				Log.Info( "Team " + RTSPlayer.Local.Team + " " + ((SkinnedRTSObject)(hitRtsObjects.First())).GameObject.Name + " Selected to be attacked!" );
+				//Log.Info( "Team " + RTSPlayer.Local.Team + " " + ((SkinnedRTSObject)(hitRtsObjects.First())).GameObject.Name + " Selected to be attacked!" );
 				commandTarget = (SkinnedRTSObject)(hitRtsObjects.First());
 			}
 			// Otherwise Set Up Move Command
@@ -232,6 +252,19 @@ public class PlayerUnitControl : Component
 					moveTarget = tr.EndPosition;
 				}
 			}
+			// Prep grouping algorithm real quick if necessary
+			List<Vector3> positionList = null;
+			if(commandType == UnitModelUtils.CommandType.Move)
+			{
+				// Theres some bug here that generates extra selected units somehow
+				positionList = generateMassedUnitPositions(moveTarget, SelectedObjects.Count());
+				RTSPlayer.Local.LocalGame.GameCommandIndicator.PlayMoveIndicatorHere(moveTarget);
+			}
+			else if(commandType == UnitModelUtils.CommandType.Attack)
+			{
+				RTSPlayer.Local.LocalGame.GameCommandIndicator.PlayAttackIndicatorHere(commandTarget.GameObject);
+			}
+			int unitNum = 0;
 			// Issue Command
 			foreach ( var unit in SelectedObjects )
 			{
@@ -240,16 +273,16 @@ public class PlayerUnitControl : Component
 					switch(commandType)
 					{
 						case UnitModelUtils.CommandType.Move:
-							((Unit)unit).homeTargetLocation = moveTarget;
-							RTSPlayer.Local.LocalGame.GameCommandIndicator.PlayMoveIndicatorHere(moveTarget);
+							Log.Info("Unit Number " + unitNum + " moving to position: " + positionList.ElementAt(unitNum));
+							((Unit)unit).setMoveCommand(positionList.ElementAt(unitNum));
 							break;
 						case UnitModelUtils.CommandType.Attack:
-							((Unit)unit).targetObject = commandTarget;
-							RTSPlayer.Local.LocalGame.GameCommandIndicator.PlayAttackIndicatorHere( commandTarget.GameObject );
+							((Unit)unit).setAttackCommand(commandTarget);
 							break;
 					}
-					((Unit)unit).commandGiven = commandType;
+					//((Unit)unit).commandGiven = commandType;
 				}
+				unitNum++;
 			}
 		}
 
@@ -262,7 +295,7 @@ public class PlayerUnitControl : Component
 			var tr = mouseRay.Run();
 
 			//Call Unit Factory Here.
-			Log.Info( "Spawning Skeltal!" );
+			//Log.Info( "Spawning Skeltal!" );
 			RTSPlayer.Local.myUnitFactory.spawnUnit(RTSPlayer.Local.skeltalPrefab, RTSPlayer.Local.Team, tr.EndPosition);
 			//Log.Info( "Spawning Skeltal House!" );
 			//RTSGame.Instance.ThisPlayer.myUnitFactory.spawnUnit( RTSGame.Instance.ThisPlayer.skeltalHousePrefab, tr.EndPosition );
@@ -286,5 +319,47 @@ public class PlayerUnitControl : Component
 	private void stopDrawSelectionRect()
 	{
 		selectionPanel.Enabled = false;
+	}
+
+	private List<Vector3> generateMassedUnitPositions(Vector3 initialPoint, int numberOfUnits)
+	{
+		List<Vector3> positionList = new List<Vector3>();
+		// Assign initial point
+		positionList.Add( initialPoint );
+		// Set up initial loop vars
+		int currentCircle = 0;
+		int currentUnitsInCircle = 0;
+		float totalUnitsInThisCircle = INITIAL_UNIT_CIRCLE_NUMBER;
+		float currentCircleAngleDifference = 360 / totalUnitsInThisCircle;
+		float currentCircleDistance = INITIAL_UNIT_CIRCLE_DISTANCE * (currentCircle + 1);
+		Log.Info("Circle " + currentCircle + ": Total Units=" + totalUnitsInThisCircle + ", Angle Difference=" + currentCircleAngleDifference + ", Distance=" + currentCircleDistance);
+		for (int i = 0; i < numberOfUnits; i++)
+		{
+			// Calculate new position
+			Vector3 currentUnitPosition = (new Vector3(initialPoint.x + currentCircleDistance, initialPoint.y, initialPoint.z)).RotateAround(initialPoint, Rotation.FromYaw(currentCircleAngleDifference * currentUnitsInCircle));
+
+			positionList.Add(currentUnitPosition);
+			currentUnitsInCircle++;
+
+			// If the circle is filled, move on to the next circle and set up the vars for that circle
+			if(currentUnitsInCircle == totalUnitsInThisCircle)
+			{
+				currentCircle++;
+				currentUnitsInCircle = 0;
+				totalUnitsInThisCircle = totalUnitsInThisCircle * 2;
+
+				var unitsLeft = numberOfUnits - i + 1;
+				// Make the group look a little less lopsided when there are only a small number of leftover units
+				if(unitsLeft < totalUnitsInThisCircle)
+				{
+					totalUnitsInThisCircle = unitsLeft;
+				}
+				currentCircleAngleDifference = 360 / totalUnitsInThisCircle;
+				currentCircleDistance = INITIAL_UNIT_CIRCLE_DISTANCE * (currentCircle + 1);
+				Log.Info("Circle " + currentCircle + ": Total Units=" + totalUnitsInThisCircle + ", Angle Difference=" + currentCircleAngleDifference + ", Distance=" + currentCircleDistance);
+			}
+		}
+
+		return positionList;
 	}
 }

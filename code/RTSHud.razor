@@ -20,8 +20,6 @@
 
 	public bool showPanel = true;
 
-	private DynamicToggleButton unitStanceButton;
-
 	private string AttackStanceImagePath;
 	private string DefendStanceImagePath;
 
@@ -39,19 +37,20 @@
 
 	public List<DynamicButton> currentButtonList { get; set; }
 
-	public SkinnedRTSObject focusedUnit;
+	public SelectableObject focusedUnit;
 
-	/* public void setButtons(List<DynamicButton> newbuttonList)
-		* {
-		* }
-		*/
+	public void setButtons(List<DynamicButton> newbuttonList)
+	{
+		currentButtonList = newbuttonList;
+	}
+
+	private static List<DynamicButton> emptyList = new List<DynamicButton>();
 
 	protected override void OnStart()
 	{
 		base.OnStart();
 		AttackStanceImagePath = AttackStanceImageResource.ResourcePath.Split(".")[0] + ".png";
 		DefendStanceImagePath = DefendStanceImageResource.ResourcePath.Split(".")[0] + ".png";
-		unitStanceButton = new DynamicToggleButton('z', AttackStanceImagePath, DefendStanceImagePath, stanceButtonClicked);
 		currentButtonList = new List<DynamicButton>();
 		focusedUnitPortraitImage = "";
 		focusedUnitHealth = "";
@@ -64,11 +63,11 @@
 		focusedUnit = null;
 
 		//TEST CODE
-		currentButtonList.Add(unitStanceButton);
-		for(int i=0;i<14;i++)
-		{
-			currentButtonList.Add(new DynamicButton('a', DefendStanceImagePath, printy));
-		}
+		//currentButtonList.Add(unitStanceButton);
+		//for(int i=0;i<14;i++)
+		//{
+		//	currentButtonList.Add(new DynamicButton('a', DefendStanceImagePath, printy));
+		//}
 		/////
 	}
 
@@ -84,12 +83,20 @@
 		{
 			return "Health: " + getUnitHealthString(focusedUnit);
 		}
-		return "";
+		return " ";
 	}
 
-	public string getUnitHealthString(SkinnedRTSObject unit)
+	public string getUnitHealthString(SelectableObject unit)
 	{
-		return unit.currentHealthPoints + "/" + unit.MaxHealth;
+		if(unit.Tags.Has("unit") && unit != null)
+		{
+			//var specificUnit = (SkinnedModelRenderer)unit;
+			return ((SkinnedRTSObject)unit).currentHealthPoints + "/" + ((SkinnedRTSObject)unit).MaxHealth;
+		}
+		else
+		{
+			return " ";
+		}
 	}
 
 	//BS TEST FUNCTION
@@ -112,55 +119,62 @@
 
 	public void setSelectionVars(bool isSelect, bool isSingleUnitSelected, bool isUnitInAttackStance)
 	{
-		Log.Info("setSelectionVars(isSelect=" + isSelect + ", isSingleUnitSelected=" + isSingleUnitSelected + ", isUnitInAttackStance=" + isUnitInAttackStance);
+		//Log.Info("setSelectionVars(isSelect=" + isSelect + ", isSingleUnitSelected=" + isSingleUnitSelected + ", isUnitInAttackStance=" + isUnitInAttackStance);
 		focusedUnit = null;
 		if(isSelect)
 		{
-			// Setup Stance Button
-			unitStanceButton.setEnabled(true);
 
 			if (isSingleUnitSelected)
 			{
+				var selectedObjList = RTSPlayer.Local.UnitControl.SelectedObjects;
 				this.isSingleUnitSelected = true;
 				this.selectionPresent = true;
-				// Grab stats
-				var selectedObjList = RTSPlayer.Local.UnitControl.SelectedObjects;
-				foreach (SkinnedRTSObject obj in selectedObjList)
+				if(selectedObjList.Any())
 				{
-
-					focusedUnit = obj;
-					focusedUnitPortraitImage = obj.PortraitImage;
-					focusedUnitHealth = "Health: " + obj.currentHealthPoints + "/" + obj.MaxHealth;
-					selectedUnitName = obj.name;
-					selectedUnitTeam = "Team " + obj.team.ToString();
-					if (obj.Tags.Contains("unit"))
+					// Grab stats
+					foreach (SelectableObject obj in selectedObjList)
 					{
-						selectedUnitMeleeDamage = "Melee Damage: " + ((Unit)obj).MeleeAttackDamage;
-						selectedUnitRangedDamage = "Ranged Damage: " + ((Unit)obj).RangedAttackDamage;
+						setButtons(obj.getDynamicButtons());
+						focusedUnit = obj;
+						focusedUnitPortraitImage = obj.PortraitImage;
+						selectedUnitName = obj.name;
+						selectedUnitTeam = "Team " + obj.team.ToString();
+						if (obj.Tags.Contains("unit"))
+						{
+							focusedUnitHealth = "Health: " + ((SkinnedRTSObject)obj).currentHealthPoints + "/" + ((SkinnedRTSObject)obj).MaxHealth;
+							selectedUnitMeleeDamage = "Melee Damage: " + ((Unit)obj).MeleeAttackDamage;
+							selectedUnitRangedDamage = "Ranged Damage: " + ((Unit)obj).RangedAttackDamage;
+						}
+						else
+						{
+							selectedUnitMeleeDamage = "";
+							selectedUnitRangedDamage = "";
+							focusedUnitHealth = "";
+						}
+					}
+
+					/*if (isUnitInAttackStance)
+						{
+						unitStanceButton.setButtonState(AttackStanceImagePath);
 					}
 					else
-					{
-						selectedUnitMeleeDamage = "";
-						selectedUnitRangedDamage = "";
-					}
-				}
-
-				if (isUnitInAttackStance)
-				{
-					unitStanceButton.setButtonState(AttackStanceImagePath);
+						{
+						unitStanceButton.setButtonState(DefendStanceImagePath);
+					}*/
 				}
 				else
 				{
-					unitStanceButton.setButtonState(DefendStanceImagePath);
+					focusedUnit = null;
 				}
 			}
 			else
 			{
 				if (RTSPlayer.Local.UnitControl.SelectedObjects.Count() > 0)
 				{
-					SkinnedRTSObject firstUnit = RTSPlayer.Local.UnitControl.SelectedObjects.First();
+					SelectableObject firstUnit = RTSPlayer.Local.UnitControl.SelectedObjects.First();
 					//focusedUnit = firstUnit;
 					unitListItemClicked(firstUnit);
+					setButtons(firstUnit.getDynamicButtons());
 					//unitStanceButton.buttonState = !(((Unit)focusedUnit).isInAttackMode);
 				}
 
@@ -176,6 +190,7 @@
 		}
 		else
 		{
+			currentButtonList = emptyList;
 			focusedUnitPortraitImage = "";
 			focusedUnitHealth = "";
 			selectedUnitName = "";
@@ -185,42 +200,17 @@
 			focusedUnit = null;
 			this.isSingleUnitSelected = false;
 			this.selectionPresent = false;
-
-			unitStanceButton.setEnabled(false);
 		}
 
 		this.StateHasChanged();
 		this.Panel.Style.Dirty();
 	}
 
-	public void stanceButtonClicked()
-	{
-		if (unitStanceButton.activeBackgroundImage == AttackStanceImagePath)
-		{
-			((Unit)focusedUnit).setIsInAttackMode(false);
-		}
-		else
-		{
-			((Unit)focusedUnit).setIsInAttackMode(true);
-		}
-		unitStanceButton.toggleButtonState();
-		this.StateHasChanged();
-		this.Panel.Style.Dirty();
-	}
-
-	public void unitListItemClicked(SkinnedRTSObject unit)
+	public void unitListItemClicked(SelectableObject unit)
 	{
 		Log.Info("Clicked Unit List Item " + unit.GameObject.Name);
 		focusedUnit = unit;
-
-		if (((Unit)focusedUnit).isInAttackMode)
-		{
-			unitStanceButton.setButtonState(AttackStanceImagePath);
-		}
-		else
-		{
-			unitStanceButton.setButtonState(DefendStanceImagePath);
-		}
+		setButtons(unit.getDynamicButtons());
 		this.StateHasChanged();
 		this.Panel.Style.Dirty();
 	}
@@ -231,8 +221,19 @@
 	}
 }
 <root>
+	<div class="topPanel">
+		<div class="resourceDisplay">
+			<div class="resourceItem">
+				<div style="background-image: url(materials/resource_icon.png);" class="resourceIcon"></div>
+				<div class="resourceText">@(RTSPlayer.Local.resourcePoints) / @(RTSPlayer.Local.ResourceCap)</div>
+			</div>
+			<div class="resourceItem">
+				<div style="background-image: url(materials/capacity_icon.png);" class="resourceIcon"></div>
+				<div class="resourceText">@(RTSPlayer.Local.capacityPoints) / @(RTSPlayer.Local.CapacityCap)</div>
+			</div>
+		</div>
+	</div>
 	<div class="bottomPanel">
-		<div class="minimapSubPanel"></div>
 		<div class="statusSubPanel">
 			<div class="portraitStatusPanel">
 				<div style="background-image: url(@(getFocusedUnitPortraitImage()));" class="portraitImage"></div>
@@ -241,7 +242,7 @@
 			<div class=@(isSingleUnitSelected ? "infoStatusPanel" : "infoStatusPanelMultiple")>
 				@if(selectionPresent == true && isSingleUnitSelected != true)
 				{
-					foreach (SkinnedRTSObject selectedUnit in RTSPlayer.Local.UnitControl.SelectedObjects)
+					foreach (SelectableObject selectedUnit in RTSPlayer.Local.UnitControl.SelectedObjects)
 					{
 						<div @onclick="@(() => unitListItemClicked(selectedUnit))" class=@(focusedUnit == selectedUnit ? "portraitStatusPanelListItemFocused" : "portraitStatusPanelListItem")>
 							<div style="background-image: url(@(selectedUnit.PortraitImage));" class="portraitImage"></div>

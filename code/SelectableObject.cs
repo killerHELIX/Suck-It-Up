@@ -39,9 +39,9 @@ public class SelectableObject : Component, IScalable, ISelectable
 	protected override void OnStart()
 	{
 		//TODO there is a bug where units can attack this one before it fully initializes its size or is able to fight back. Need a solution
+		PhysicalModelRenderer.setModel(ModelFile, null, ModelMaterial);
 		setRelativeSizeHelper(Size);
 		base.OnStart();
-		PhysicalModelRenderer.setModel(ModelFile, null, ModelMaterial);
 		Tags.Add(objectTypeTag);
 		buttons = new List<DynamicButton>();
 	}

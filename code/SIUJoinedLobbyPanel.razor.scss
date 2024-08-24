@@ -1,0 +1,146 @@
+SIUJoinedLobbyPanel {
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    pointer-events: all;
+}
+
+.ServerIdControlsPanel {
+    width: 100%;
+    height: 10%;
+    top: 2%;
+    left: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.ServerIDPanel {
+    width: 80%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    pointer-events: none;
+    justify-content: center;
+    color: white;
+    font-size: 80px;
+    font-family: sans-serif, Arial;
+}
+
+.IDCopyButton {
+    width: 20%;
+    height: 100%;
+    top: 5%;
+    right: 5%;
+    color: white;
+    font-size: 40px;
+    justify-content: center;
+    align-items: center;
+    background-color: #80808080;
+    position: absolute;
+    pointer-events: all;
+}
+
+.ServerControlsPanel {
+    width: 100%;
+    height: 10%;
+    bottom: 5%;
+    left: 0;
+    position: absolute;
+    pointer-events: none;
+    justify-content: space-evenly;
+}
+
+.ServerControlOption {
+    width: 20%;
+    height: 100%;
+    color: white;
+    font-size: 100px;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    font-family: sans-serif, Arial;
+    pointer-events: all;
+}
+
+.PlayerTeamSelectionPanel {
+    width: 100%;
+    height: 70%;
+    top: 13%;
+    position: absolute;
+    color: white;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: space-evenly;
+    flex-grow: 0;
+    
+}
+
+.PlayerColumn {
+    width: 20%;
+    height: 100%;
+    flex-direction: column;
+}
+
+.PlayerLabel {
+    width: 100%;
+    height: 10%;
+    font-size: 50px;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif, Arial;
+}
+
+.RTSPlayerPanel {
+    width: 100%;
+    height: 95%;
+    color: white;
+    border: 3px solid darkred;
+    border-radius: 5px;
+    background-color: #aa000080;
+    font-size: 50px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: sans-serif, Arial;
+    pointer-events: all;
+}
+
+.SpectatorPlayerPanel {
+    width: 100%;
+    height: 95%;
+    color: white;
+    border: 3px solid darkgrey;
+    border-radius: 5px;
+    background-color: #aaaaaa80;
+    font-size: 50px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: sans-serif, Arial;
+    pointer-events: all;
+}
+
+.SurvivorPlayerPanel {
+    width: 100%;
+    height: 95%;
+    color: white;
+    border: 3px solid darkgreen;
+    border-radius: 5px;
+    background-color: #00aa0080;
+    font-size: 50px;
+    justify-content: center;
+    flex-direction: column;
+    font-family: sans-serif, Arial;
+    pointer-events: all;
+}
+
+.PlayerListItem {
+    width: 100%;
+    height: 10%;
+    color: white;
+    font-size: 50px;
+    justify-content: center;
+    font-family: sans-serif, Arial;
+}

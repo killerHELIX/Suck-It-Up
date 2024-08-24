@@ -1,0 +1,77 @@
+{
+  "RootObject": {
+    "__guid": "36ef4334-e091-43de-b302-4812907671e6",
+    "Flags": 0,
+    "Name": "Main Menu",
+    "Position": "-414.3859,-2111.661,1010.93",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "NetworkInterpolation": false,
+    "Components": [
+      {
+        "__type": "MainMenuComponent",
+        "__guid": "cad408db-f59a-491f-bd48-f76b95a120eb",
+        "JoinedLobbyPanel": {
+          "_type": "component",
+          "component_id": "ef1aee4e-70a7-4ed8-b988-454f87c246de",
+          "go": "36ef4334-e091-43de-b302-4812907671e6",
+          "component_type": "SIUJoinedLobbyPanel"
+        },
+        "LobbyListPanel": {
+          "_type": "component",
+          "component_id": "7ba0e4bc-83d2-409e-834c-8a3d027c350f",
+          "go": "36ef4334-e091-43de-b302-4812907671e6",
+          "component_type": "SIULobbyListPanel"
+        },
+        "MainPanel": {
+          "_type": "component",
+          "component_id": "09993229-c2db-4203-9ab8-a3be459da714",
+          "go": "36ef4334-e091-43de-b302-4812907671e6",
+          "component_type": "MainMenu"
+        },
+        "myScreenPanel": {
+          "_type": "component",
+          "component_id": "8f880cff-ec9e-48c6-9e51-c9bbf701805a",
+          "go": "36ef4334-e091-43de-b302-4812907671e6",
+          "component_type": "ScreenPanel"
+        },
+        "SettingsPanel": {
+          "_type": "component",
+          "component_id": "3d0288e7-70b0-4b63-9166-281e7af59226",
+          "go": "36ef4334-e091-43de-b302-4812907671e6",
+          "component_type": "SIUSettingsPanel"
+        }
+      },
+      {
+        "__type": "Sandbox.ScreenPanel",
+        "__guid": "8f880cff-ec9e-48c6-9e51-c9bbf701805a",
+        "AutoScreenScale": true,
+        "Opacity": 1,
+        "Scale": 1,
+        "ZIndex": 100
+      },
+      {
+        "__type": "MainMenu",
+        "__guid": "09993229-c2db-4203-9ab8-a3be459da714"
+      },
+      {
+        "__type": "SIUJoinedLobbyPanel",
+        "__guid": "ef1aee4e-70a7-4ed8-b988-454f87c246de"
+      },
+      {
+        "__type": "SIULobbyListPanel",
+        "__guid": "7ba0e4bc-83d2-409e-834c-8a3d027c350f"
+      },
+      {
+        "__type": "SIUSettingsPanel",
+        "__guid": "3d0288e7-70b0-4b63-9166-281e7af59226"
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

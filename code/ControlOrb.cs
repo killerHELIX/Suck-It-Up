@@ -110,6 +110,10 @@ public class ControlOrb : SelectableObject, IScalable, ISelectable
 
 	public override void setRelativeSizeHelper(Vector3 unitSize)
 	{
+		Log.Info(unitSize);
+		Log.Info(ModelFile);
+		Log.Info(ModelFile.Bounds);
+		Log.Info(ModelFile.Bounds.Size);
 		// The scale is going to be calculated from the ratio of the default model size and the object's given size modified by a global scaling constant
 		Vector3 defaultModelSize = ModelFile.Bounds.Size;
 

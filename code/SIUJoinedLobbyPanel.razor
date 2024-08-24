@@ -1,0 +1,76 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using Sandbox.Network;
+@using System.Linq;
+@using System;
+@using System.Threading.Tasks;
+@inherits PanelComponent
+@attribute [StyleSheet]
+
+@code
+{
+	//[Property] public ulong MyServID { get; set; }//Connection.Local.SteamId;
+
+	public void startGame()
+	{
+		if (GameState.Local.rtsPlayerList.Count() > 0 && GameState.Local.survivorPlayerList.Count() > 0)
+		{
+			GameState.Local.currentGameState = GameState.GameStateType.PLAYING;
+			Game.ActiveScene.LoadFromFile("scenes/sui_main.scene");
+			return;
+		}
+	}
+
+	public void copyIDToClipboard()
+	{
+		Log.Info(MainMenuComponent.Local.MyServID.ToString());
+		Clipboard.SetText(MainMenuComponent.Local.MyServID.ToString());
+		return;
+	}
+
+	public void returnToMain()
+	{
+		MainMenuComponent.Local.setActivePanel(MainMenuComponent.MenuPanelType.MAIN);
+		GameNetworkSystem.Disconnect();
+	}
+}
+
+<root>
+	<div class="ServerIDControlsPanel">
+		<div class="ServerIDPanel">Lobby ID: @(MainMenuComponent.Local.MyServID)</div>
+		<button @onclick="@(() => copyIDToClipboard())" class="IDCopyButton">Copy To Clipboard</button>
+	</div>
+	<div class="PlayerTeamSelectionPanel">
+		<div class="PlayerColumn">
+			<div class="PlayerLabel">Vacumaster</div>
+			<div @onclick="@(() => GameState.Local.addPlayerToList(Network.OwnerConnection.DisplayName, GameState.PlayerType.RTS, true))" class="RTSPlayerPanel">
+				@foreach (string player in GameState.Local.rtsPlayerList)
+				{
+					<div class="PlayerListItem">@(player)</div>
+				}
+			</div>
+		</div>
+		<div class="PlayerColumn">
+			<div class="PlayerLabel">Spectator</div>
+			<div @onclick="@(() => GameState.Local.addPlayerToList(Network.OwnerConnection.DisplayName, GameState.PlayerType.SPECTATOR, true))" class="SpectatorPlayerPanel">
+				@foreach (string player in GameState.Local.spectatorPlayerList)
+				{
+					<div class="PlayerListItem">@(player)</div>
+				}
+			</div>
+		</div>
+		<div class="PlayerColumn">
+			<div class="PlayerLabel">Survivors</div>
+			<div @onclick="@(() => GameState.Local.addPlayerToList(Network.OwnerConnection.DisplayName, GameState.PlayerType.SURVIVOR, true))" class="SurvivorPlayerPanel">
+				@foreach (string player in GameState.Local.survivorPlayerList)
+				{
+					<div class="PlayerListItem">@(player)</div>
+				}
+			</div>
+		</div>
+	</div>
+	<div class="ServerControlsPanel">
+		<button class="ServerControlOption" @onclick="@(() => returnToMain())">Back</button>
+		<button class="ServerControlOption" @onclick="@(() => startGame())">Start</button>
+	</div>
+</root>

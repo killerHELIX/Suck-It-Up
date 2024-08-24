@@ -20,6 +20,13 @@
 		}
 	}
 
+	public void copyIDToClipboard()
+	{
+		Log.Info(myServID.ToString());
+		Clipboard.SetText(myServID.ToString());
+		return;
+	}
+
 	public void returnToMain()
 	{
 		MainMenuComponent.Local.setActivePanel(MainMenuComponent.MenuPanelType.MAIN);
@@ -27,7 +34,10 @@
 }
 
 <root>
-	<div class="ServerIDPanel">Lobby ID: @(myServID)</div>
+	<div class="ServerIDControlsPanel">
+		<div class="ServerIDPanel">Lobby ID: @(myServID)</div>
+		<button @onclick="@(() => copyIDToClipboard())" class="IDCopyButton">Copy To Clipboard</button>
+	</div>
 	<div class="PlayerTeamSelectionPanel">
 		<div class="PlayerColumn">
 			<div class="PlayerLabel">Vacumaster</div>

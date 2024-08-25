@@ -9,6 +9,27 @@
 			{
 				key = 
 				{
+					m_id = 398777380
+				}
+				value = 
+				{
+					_class = "CSequenceAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ -224.0, 288.0 ]
+					m_nNodeID = 
+					{
+						m_id = 398777380
+					}
+					m_sNote = ""
+					m_tagSpans = [  ]
+					m_sequenceName = "giant_isHit"
+					m_playbackSpeed = 3.0
+					m_bLoop = false
+				}
+			},
+			{
+				key = 
+				{
 					m_id = 685588885
 				}
 				value = 
@@ -357,7 +378,7 @@
 							{
 								m_nodeID = 
 								{
-									m_id = 4294967295
+									m_id = 398777380
 								}
 								m_outputID = 
 								{
@@ -485,7 +506,7 @@
 										m_vControlPoint2 = [ 0.5, 1.0 ]
 									}
 									m_bForceFootPlant = false
-									m_bDisabled = true
+									m_bDisabled = false
 									m_bRandomTimeBetween = false
 									m_flRandomTimeStart = 0.0
 									m_flRandomTimeEnd = 0.0

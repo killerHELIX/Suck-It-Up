@@ -9,6 +9,27 @@
 			{
 				key = 
 				{
+					m_id = 15595869
+				}
+				value = 
+				{
+					_class = "CSequenceAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ -160.0, 224.0 ]
+					m_nNodeID = 
+					{
+						m_id = 15595869
+					}
+					m_sNote = ""
+					m_tagSpans = [  ]
+					m_sequenceName = "critter_isHit"
+					m_playbackSpeed = 1.0
+					m_bLoop = false
+				}
+			},
+			{
+				key = 
+				{
 					m_id = 349894776
 				}
 				value = 
@@ -23,27 +44,6 @@
 					m_sNote = ""
 					m_tagSpans = [  ]
 					m_sequenceName = "critter_death"
-					m_playbackSpeed = 1.0
-					m_bLoop = false
-				}
-			},
-			{
-				key = 
-				{
-					m_id = 360535484
-				}
-				value = 
-				{
-					_class = "CSequenceAnimNode"
-					m_sName = "Unnamed"
-					m_vecPosition = [ -140.191238, 289.659851 ]
-					m_nNodeID = 
-					{
-						m_id = 360535484
-					}
-					m_sNote = ""
-					m_tagSpans = [  ]
-					m_sequenceName = "critter_attack"
 					m_playbackSpeed = 1.0
 					m_bLoop = false
 				}
@@ -100,13 +100,34 @@
 			{
 				key = 
 				{
+					m_id = 877923405
+				}
+				value = 
+				{
+					_class = "CSequenceAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ -160.0, 288.0 ]
+					m_nNodeID = 
+					{
+						m_id = 877923405
+					}
+					m_sNote = ""
+					m_tagSpans = [  ]
+					m_sequenceName = "critter_attack"
+					m_playbackSpeed = 1.0
+					m_bLoop = false
+				}
+			},
+			{
+				key = 
+				{
 					m_id = 1070572804
 				}
 				value = 
 				{
 					_class = "CStateMachineAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ 352.0, 96.0 ]
+					m_vecPosition = [ 320.0, 112.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1070572804
@@ -290,7 +311,7 @@
 							{
 								m_nodeID = 
 								{
-									m_id = 360535484
+									m_id = 877923405
 								}
 								m_outputID = 
 								{
@@ -350,7 +371,7 @@
 							{
 								m_nodeID = 
 								{
-									m_id = 4294967295
+									m_id = 15595869
 								}
 								m_outputID = 
 								{
@@ -441,7 +462,7 @@
 										m_vControlPoint2 = [ 0.5, 1.0 ]
 									}
 									m_bForceFootPlant = false
-									m_bDisabled = true
+									m_bDisabled = false
 									m_bRandomTimeBetween = false
 									m_flRandomTimeStart = 0.0
 									m_flRandomTimeEnd = 0.0
@@ -551,7 +572,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -138.129608, 104.11261 ]
+					m_vecPosition = [ -144.0, 80.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1894199177

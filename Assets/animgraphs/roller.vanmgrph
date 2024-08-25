@@ -15,7 +15,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -192.0, 272.0 ]
+					m_vecPosition = [ -176.0, 256.0 ]
 					m_nNodeID = 
 					{
 						m_id = 147338533
@@ -25,6 +25,27 @@
 					m_sequenceName = "roller_death"
 					m_playbackSpeed = 1.0
 					m_bLoop = false
+				}
+			},
+			{
+				key = 
+				{
+					m_id = 202054405
+				}
+				value = 
+				{
+					_class = "CSequenceAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ -160.0, 48.0 ]
+					m_nNodeID = 
+					{
+						m_id = 202054405
+					}
+					m_sNote = ""
+					m_tagSpans = [  ]
+					m_sequenceName = "roller_isHit"
+					m_playbackSpeed = 0.1
+					m_bLoop = true
 				}
 			},
 			{
@@ -142,7 +163,7 @@
 							{
 								m_nodeID = 
 								{
-									m_id = 4294967295
+									m_id = 202054405
 								}
 								m_outputID = 
 								{
@@ -209,7 +230,7 @@
 							{
 								m_nodeID = 
 								{
-									m_id = 4294967295
+									m_id = 1470467726
 								}
 								m_outputID = 
 								{
@@ -357,7 +378,7 @@
 							{
 								m_nodeID = 
 								{
-									m_id = 653241507
+									m_id = 1915735657
 								}
 								m_outputID = 
 								{
@@ -397,7 +418,7 @@
 											}
 										},
 									]
-									m_blendDuration = 0.0
+									m_blendDuration = 0.3
 									m_destState = 
 									{
 										m_id = 163481915
@@ -521,6 +542,48 @@
 					m_bLockStateWhenWaning = false
 				}
 			},
+			{
+				key = 
+				{
+					m_id = 1470467726
+				}
+				value = 
+				{
+					_class = "CSequenceAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ -159.069336, 117.875038 ]
+					m_nNodeID = 
+					{
+						m_id = 1470467726
+					}
+					m_sNote = ""
+					m_tagSpans = [  ]
+					m_sequenceName = "roller_walk"
+					m_playbackSpeed = 1.0
+					m_bLoop = true
+				}
+			},
+			{
+				key = 
+				{
+					m_id = 1915735657
+				}
+				value = 
+				{
+					_class = "CSequenceAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ -176.0, 320.0 ]
+					m_nNodeID = 
+					{
+						m_id = 1915735657
+					}
+					m_sNote = ""
+					m_tagSpans = [  ]
+					m_sequenceName = "roller_isHit"
+					m_playbackSpeed = 1.0
+					m_bLoop = false
+				}
+			},
 		]
 	}
 	m_pParameterList = 
@@ -573,7 +636,7 @@
 				}
 				m_previewButton = "ANIMPARAM_BUTTON_NONE"
 				m_bUseMostRecentValue = false
-				m_bAutoReset = false
+				m_bAutoReset = true
 				m_bDefaultValue = false
 			},
 		]

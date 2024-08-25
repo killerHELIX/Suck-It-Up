@@ -73,7 +73,7 @@
         {
           "__type": "Sandbox.PointLight",
           "__guid": "df35e8da-c262-4420-b9d7-52bc32f75f98",
-          "Attenuation": 0.13,
+          "Attenuation": 1.57,
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "0.91373,0.98039,1,1",
@@ -229,7 +229,7 @@
       "Name": "Object (6)",
       "Position": "-49.51089,114.7775,0.2798117",
       "Rotation": "0,0,-0.8660256,0.5",
-      "Scale": "5,5,5",
+      "Scale": "10,10,10",
       "Enabled": true,
       "Components": [
         {
@@ -251,7 +251,7 @@
       "Name": "Object (7)",
       "Position": "14.69465,-17.42287,0.2798166",
       "Rotation": "0,0,-0.5000002,0.8660255",
-      "Scale": "5,5,5",
+      "Scale": "10,10,10",
       "Enabled": true,
       "Components": [
         {
@@ -273,7 +273,7 @@
       "Name": "Object (4)",
       "Position": "79.92801,-30.47889,0.2798255",
       "Rotation": "0,0,-0.4999999,0.8660255",
-      "Scale": "5,5,5",
+      "Scale": "10,10,10",
       "Enabled": true,
       "Components": [
         {
@@ -295,7 +295,7 @@
       "Name": "Object (5)",
       "Position": "31.12136,54.05665,0.2798255",
       "Rotation": "0,0,-0.9238795,0.3826837",
-      "Scale": "5,5,5",
+      "Scale": "10,10,10",
       "Enabled": true,
       "Components": [
         {
@@ -379,7 +379,7 @@
       "Flags": 0,
       "Name": "Object",
       "Position": "-65.75615,12.9998,52.01772",
-      "Tags": "light_point,light",
+      "Tags": "light_point,light,light_spot,light_directional",
       "Enabled": true,
       "Components": [
         {
@@ -397,6 +397,18 @@
           "__guid": "0b8f5ba1-3914-44e5-9bd8-635c6ba6cadf",
           "__enabled": false,
           "Color": "0.13953,0.29729,1,1"
+        },
+        {
+          "__type": "Sandbox.SpotLight",
+          "__guid": "27183917-7e14-4c91-b0d8-80d67e7f16ef",
+          "Attenuation": 0.03,
+          "ConeInner": 14.14,
+          "ConeOuter": 31.11,
+          "FogMode": "Disabled",
+          "FogStrength": 0.48,
+          "LightColor": "1,0,0,1",
+          "Radius": 500,
+          "Shadows": true
         }
       ]
     },
@@ -404,7 +416,7 @@
       "__guid": "28d11f5c-9e53-4666-aa83-6ade51b8b4de",
       "Flags": 0,
       "Name": "Object (9)",
-      "Position": "-45.1226,105.5754,57.78038",
+      "Position": "-45.82934,107.3759,45.39703",
       "Tags": "light_point,light",
       "Enabled": true,
       "Components": [
@@ -430,7 +442,7 @@
       "__guid": "999f87f5-db27-4e46-9957-08a17a2bfcaa",
       "Flags": 0,
       "Name": "Object (11)",
-      "Position": "-39.14196,115.5773,57.59132",
+      "Position": "-41.49924,115.2638,45.15854",
       "Tags": "light_point,light",
       "Enabled": true,
       "Components": [
@@ -456,7 +468,7 @@
       "__guid": "4d24c90f-9c41-411e-9af4-7af01195cc7a",
       "Flags": 0,
       "Name": "Object (10)",
-      "Position": "24.55043,-17.83009,57.46217",
+      "Position": "22.63793,-18.07651,45.58405",
       "Tags": "light_point,light",
       "Enabled": true,
       "Components": [
@@ -482,7 +494,7 @@
       "__guid": "ef0168c1-1a46-46da-bd60-d8e5a91b2f0e",
       "Flags": 0,
       "Name": "Object (12)",
-      "Position": "19.18894,-7.915539,57.7257",
+      "Position": "18.26586,-10.34147,45.58411",
       "Tags": "light_point,light,water",
       "Enabled": true,
       "Components": [

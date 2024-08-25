@@ -2,8 +2,7 @@
   "RootObject": {
     "__guid": "17310faf-4192-4a8f-8a22-9fc0489361b9",
     "Flags": 0,
-    "Name": "Critter",
-    "Position": "-776.0456,1182.528,129.8806",
+    "Name": "critter",
     "Tags": "unit",
     "Enabled": true,
     "NetworkMode": 1,
@@ -22,7 +21,7 @@
         "MeleeAttackDamage": 5,
         "MeleeAttackSpeed": 1,
         "ModelFile": "models/enemies/critter.vmdl",
-        "ModelMaterial": "materials/default.vmat",
+        "ModelMaterial": "materials/enemies/critter_pixel.vmat",
         "name": "Critter",
         "PhysicalModelRenderer": {
           "_type": "component",
@@ -120,7 +119,6 @@
         "__guid": "fdd2f36b-7275-4fd4-840c-7e5d05e223d5",
         "Flags": 0,
         "Name": "UnitModel",
-        "Position": "0,0,0",
         "Rotation": "0,-0,-0.7071068,0.7071068",
         "Enabled": true,
         "NetworkOrphaned": 1,
@@ -495,7 +493,8 @@
           }
         ]
       }
-    ]
+    ],
+    "__variables": []
   },
   "ShowInMenu": false,
   "MenuPath": null,

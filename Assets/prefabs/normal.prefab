@@ -21,7 +21,7 @@
         "MeleeAttackDamage": 10,
         "MeleeAttackSpeed": 1.5,
         "ModelFile": "models/enemies/normal.vmdl",
-        "ModelMaterial": "materials/default.vmat",
+        "ModelMaterial": "materials/enemies/normal_pixel.vmat",
         "name": "Normal",
         "PhysicalModelRenderer": {
           "_type": "component",

@@ -2,8 +2,7 @@
   "RootObject": {
     "__guid": "5508d319-e56f-44cf-b066-957f5ae801c8",
     "Flags": 0,
-    "Name": "Giant",
-    "Position": "-960.5023,1182.528,129.8806",
+    "Name": "giant",
     "Tags": "unit",
     "Enabled": true,
     "NetworkMode": 1,
@@ -22,7 +21,7 @@
         "MeleeAttackDamage": 25,
         "MeleeAttackSpeed": 3,
         "ModelFile": "models/enemies/giant.vmdl",
-        "ModelMaterial": "materials/default.vmat",
+        "ModelMaterial": "materials/enemies/giant_pixel.vmat",
         "name": "Normal",
         "PhysicalModelRenderer": {
           "_type": "component",
@@ -120,7 +119,6 @@
         "__guid": "e90840cd-cf76-46cc-829a-7a34103ad6fc",
         "Flags": 0,
         "Name": "UnitModel",
-        "Position": "0,0,0",
         "Rotation": "0,-0,-0.7071068,0.7071068",
         "Enabled": true,
         "NetworkOrphaned": 1,
@@ -495,7 +493,8 @@
           }
         ]
       }
-    ]
+    ],
+    "__variables": []
   },
   "ShowInMenu": false,
   "MenuPath": null,

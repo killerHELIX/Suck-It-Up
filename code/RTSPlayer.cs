@@ -47,18 +47,6 @@ public class RTSPlayer : Component
 		}
 
 		//Set Team
-		/*if(GameState.Local.rtsPlayerList.Contains(Connection.Local.DisplayName))
-		{
-			this.Team = 0;
-		}
-		else if(GameState.Local.survivorPlayerList.Contains(Connection.Local.DisplayName))
-		{
-			this.Team = 1;
-		}
-		else
-		{
-			this.Team = 2;
-		}*/
 		this.Team = 0;
 
 		//Update display for all units (probably wont work for those it doesnt have ownership of)

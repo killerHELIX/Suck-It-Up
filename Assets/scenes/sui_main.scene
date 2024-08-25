@@ -83,7 +83,7 @@
           ],
           "SpectatorPlayerPrefab": {
             "_type": "gameobject",
-            "prefab": "prefabs/rts_player.prefab"
+            "prefab": "prefabs/spectatorplayer.prefab"
           },
           "SpectatorSpawnPoints": [
             {

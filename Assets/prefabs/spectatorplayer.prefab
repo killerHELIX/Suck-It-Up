@@ -1,0 +1,68 @@
+{
+  "RootObject": {
+    "__guid": "6f05ba85-5cb3-48e1-90fe-b557cae5a7c1",
+    "Flags": 0,
+    "Name": "SpectatorPlayer",
+    "Position": "1783.067,5937.499,1750.117",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "SpectatorPlayer",
+        "__guid": "17c7443c-747a-4fc5-b117-89ba365a9075",
+        "Controller": {
+          "_type": "component",
+          "component_id": "13c9140e-14f4-4cc3-94f8-71908039eff2",
+          "go": "6f05ba85-5cb3-48e1-90fe-b557cae5a7c1",
+          "component_type": "SpectatorControl"
+        },
+        "Team": 0
+      },
+      {
+        "__type": "SpectatorControl",
+        "__guid": "13c9140e-14f4-4cc3-94f8-71908039eff2",
+        "RTSCam": {
+          "_type": "component",
+          "component_id": "aec3b0bc-18ad-42d7-a80a-c91160789e16",
+          "go": "6f05ba85-5cb3-48e1-90fe-b557cae5a7c1",
+          "component_type": "RTSCamComponent"
+        }
+      },
+      {
+        "__type": "RTSCamComponent",
+        "__guid": "aec3b0bc-18ad-42d7-a80a-c91160789e16",
+        "CamMoveSpeed": 80,
+        "CamRotateSpeed": 800,
+        "CamView": {
+          "_type": "component",
+          "component_id": "77490850-0f12-40f0-8f97-609ea96b153f",
+          "go": "6f05ba85-5cb3-48e1-90fe-b557cae5a7c1",
+          "component_type": "CameraComponent"
+        },
+        "CamZoomSpeed": 80
+      },
+      {
+        "__type": "Sandbox.CameraComponent",
+        "__guid": "77490850-0f12-40f0-8f97-609ea96b153f",
+        "BackgroundColor": "0.33333,0.46275,0.52157,1",
+        "ClearFlags": "All",
+        "FieldOfView": 60,
+        "IsMainCamera": true,
+        "Orthographic": false,
+        "OrthographicHeight": 1204,
+        "Priority": 1,
+        "RenderExcludeTags": "",
+        "RenderTags": "",
+        "TargetEye": "None",
+        "Viewport": "0,0,1,1",
+        "ZFar": 10000,
+        "ZNear": 10
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

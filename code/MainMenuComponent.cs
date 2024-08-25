@@ -55,16 +55,17 @@ public class MainMenuComponent : Component
 
 	protected override async void OnUpdate()
 	{
-		//Log.Info("Networking ID: " Networking.Id);
-
+		Log.Info("Is this even happening anymore?");
+		var lobbies = await Networking.QueryLobbies();
 
 		if (MyServID == 0)
 		{
-			var lobbies = await Networking.QueryLobbies();
+			Log.Info("Is my serv id 0?");
+			Log.Info(lobbies.Count());
 			foreach (Sandbox.Network.LobbyInformation lobby in lobbies)
 			{
-				//Log.Info("Lobby ID: " + lobby.LobbyId);
-				//Log.Info("Lobby Owner ID: " + lobby.OwnerId);
+				Log.Info("Lobby ID: " + lobby.LobbyId);
+				Log.Info("Lobby Owner ID: " + lobby.OwnerId);
 				if (lobby.OwnerId == Connection.Local.SteamId)
 				{
 					this.MyServID = lobby.LobbyId;

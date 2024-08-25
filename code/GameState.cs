@@ -37,7 +37,6 @@ public class GameState : Component
 			{
 				Log.Info("Attempting get local game state");
 				_local = Game.ActiveScene.Directory.FindByName(OBJECT_NAME).FirstOrDefault(x => x.Network.IsOwner).Components.Get<GameState>();
-				//_local = Game.ActiveScene.GetAllComponents<MainMenuComponent>().FirstOrDefault(x => x.Network.IsOwner);
 				Log.Info("Tried getting local game state, found this: " + _local);
 			}
 			return _local;
@@ -55,7 +54,10 @@ public class GameState : Component
 			Log.Info("Non proxy gamestate starting...");
 			Network.TakeOwnership();
 			pullCurrentGameStateFromHost();
+			// DEBUG
 			survivorPlayerList.Add("balls");
+			//rtsPlayerList.Add("Grundle");
+			// DEBUG
 			spectatorPlayerList.Add(Network.OwnerConnection.DisplayName);
 			GameObject.NetworkSpawn(Network.OwnerConnection);
 		}

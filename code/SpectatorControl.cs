@@ -13,8 +13,9 @@ public class SpectatorControl : Component
 	{
 		if (Network.IsProxy)
 		{
-			Enabled = false;
+			Log.Info("Non-local spectator controller, disabling");
 			RTSCam.Enabled = false;
+			Enabled = false;
 			return;
 		}
 		base.OnStart();

@@ -22,13 +22,13 @@ public class SpectatorPlayer : Component
 
 	protected override void OnStart()
 	{
-		if(Network.IsProxy) 
+		//Set Team
+		this.Team = 2;
+
+		if (Network.IsProxy) 
 		{ 
 			return;
 		}
-
-		//Set Team
-		this.Team = 2;
 
 		//Update display for all units (probably wont work for those it doesnt have ownership of)
 		var allUnitList = Game.ActiveScene.GetAllComponents<Unit>();

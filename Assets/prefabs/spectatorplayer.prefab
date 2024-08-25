@@ -2,9 +2,10 @@
   "RootObject": {
     "__guid": "6f05ba85-5cb3-48e1-90fe-b557cae5a7c1",
     "Flags": 0,
-    "Name": "SpectatorPlayer",
-    "Position": "1783.067,5937.499,1750.117",
+    "Name": "spectatorplayer",
     "Enabled": true,
+    "NetworkMode": 1,
+    "OwnerTransfer": 0,
     "Components": [
       {
         "__type": "SpectatorPlayer",
@@ -57,7 +58,9 @@
         "ZFar": 10000,
         "ZNear": 10
       }
-    ]
+    ],
+    "Children": [],
+    "__variables": []
   },
   "ShowInMenu": false,
   "MenuPath": null,

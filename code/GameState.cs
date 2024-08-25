@@ -159,4 +159,20 @@ public class GameState : Component
 				return 0;
 		}
 	}
+
+	public PlayerType getPlayerTypeFromPlayer(string playername)
+	{
+		if (rtsPlayerList.Contains(playername))
+		{
+			return PlayerType.RTS;
+		}
+		else if (survivorPlayerList.Contains(playername))
+		{
+			return PlayerType.SURVIVOR;
+		}
+		else
+		{
+			return PlayerType.SPECTATOR;
+		}
+	}
 }

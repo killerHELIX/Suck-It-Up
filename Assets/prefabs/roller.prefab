@@ -1,0 +1,506 @@
+{
+  "RootObject": {
+    "__guid": "cdf08c0f-f6a7-4f96-a32f-a7f36cb69e56",
+    "Flags": 0,
+    "Name": "Roller (1)",
+    "Position": "-1139.46,1182.528,129.8806",
+    "Tags": "unit",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "NetworkOrphaned": 1,
+    "OwnerTransfer": 2,
+    "Components": [
+      {
+        "__type": "SIUUnit",
+        "__guid": "1d1345d8-09ed-4641-b9e4-4124a08d150b",
+        "AnimGraph": "animgraphs/roller.vanmgrph",
+        "CapacityCost": 10,
+        "HasMeleeAttack": true,
+        "HasRangedAttack": false,
+        "IndividualModelScale": 0.4,
+        "MaxHealth": 60,
+        "MeleeAttackDamage": 10,
+        "MeleeAttackSpeed": 1,
+        "ModelFile": "models/enemies/roller.vmdl",
+        "ModelMaterial": "materials/default.vmat",
+        "name": "Normal",
+        "PhysicalModelRenderer": {
+          "_type": "component",
+          "component_id": "ca59f4bc-bf97-40b8-b67c-b25233837348",
+          "go": "72783acf-5f77-44b2-bdac-045d1c3bcdce",
+          "component_type": "UnitModel"
+        },
+        "PortraitImage": "materials/skeltal_portrait.PNG",
+        "RangedAttackDamage": 0,
+        "RangedAttackRange": 0,
+        "RangedAttackSpeed": 0,
+        "ResourceCost": 10,
+        "SelectionHitbox": {
+          "_type": "component",
+          "component_id": "7f85cf34-0c64-4fd4-81dc-5a190b056b12",
+          "go": "cdf08c0f-f6a7-4f96-a32f-a7f36cb69e56",
+          "component_type": "BoxCollider"
+        },
+        "Size": "12.3661,4.3994,11.4614",
+        "ThisHealthBar": {
+          "_type": "component",
+          "component_id": "dbe2b82f-0b98-418a-91ec-fdd1e5f642bf",
+          "go": "4f07a6b5-acda-4eae-b033-308ba65d6d2b",
+          "component_type": "HealthBar"
+        },
+        "TriggerListener": {
+          "_type": "component",
+          "component_id": "bc239942-b69f-483a-be0d-307b0e89515d",
+          "go": "cdf08c0f-f6a7-4f96-a32f-a7f36cb69e56",
+          "component_type": "UnitTriggerListener"
+        },
+        "UnitAutoMeleeCollider": {
+          "_type": "component",
+          "component_id": "d3f9a855-884a-4d4a-b408-22ad80f741c6",
+          "go": "cdf08c0f-f6a7-4f96-a32f-a7f36cb69e56",
+          "component_type": "SphereCollider"
+        },
+        "UnitMeleeCollider": {
+          "_type": "component",
+          "component_id": "adc773bc-5fb9-4dec-ac6b-fcfcc01da2bc",
+          "go": "cdf08c0f-f6a7-4f96-a32f-a7f36cb69e56",
+          "component_type": "CapsuleCollider"
+        },
+        "UnitNavAgent": {
+          "_type": "component",
+          "component_id": "ba978d36-422b-435e-86c0-6df3c8fadddc",
+          "go": "cdf08c0f-f6a7-4f96-a32f-a7f36cb69e56",
+          "component_type": "NavMeshAgent"
+        },
+        "UnitSpeed": 200
+      },
+      {
+        "__type": "Sandbox.NavMeshAgent",
+        "__guid": "ba978d36-422b-435e-86c0-6df3c8fadddc",
+        "Acceleration": 600,
+        "Height": 20,
+        "MaxSpeed": 60,
+        "Radius": 5,
+        "Separation": 0,
+        "UpdatePosition": true,
+        "UpdateRotation": true
+      },
+      {
+        "__type": "Sandbox.CapsuleCollider",
+        "__guid": "adc773bc-5fb9-4dec-ac6b-fcfcc01da2bc",
+        "End": "0,0,180",
+        "IsTrigger": true,
+        "Radius": 100,
+        "Start": "0,0,0",
+        "Static": false
+      },
+      {
+        "__type": "Sandbox.SphereCollider",
+        "__guid": "d3f9a855-884a-4d4a-b408-22ad80f741c6",
+        "Center": "0,0,0",
+        "IsTrigger": true,
+        "Radius": 600,
+        "Static": false
+      },
+      {
+        "__type": "UnitTriggerListener",
+        "__guid": "bc239942-b69f-483a-be0d-307b0e89515d"
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "7f85cf34-0c64-4fd4-81dc-5a190b056b12",
+        "Center": "0,0,100",
+        "IsTrigger": false,
+        "Scale": "110,110,200",
+        "Static": false
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "72783acf-5f77-44b2-bdac-045d1c3bcdce",
+        "Flags": 0,
+        "Name": "UnitModel",
+        "Position": "0,0,0",
+        "Rotation": "0,-0,-0.7071068,0.7071068",
+        "Enabled": true,
+        "NetworkOrphaned": 1,
+        "OwnerTransfer": 2,
+        "Components": [
+          {
+            "__type": "UnitModel",
+            "__guid": "ca59f4bc-bf97-40b8-b67c-b25233837348",
+            "selectionOutlineState": "Mine",
+            "baseStand": {
+              "_type": "component",
+              "component_id": "706fa4b3-6f96-47d2-93ef-5b96ce75df82",
+              "go": "d02a4a6f-b20e-4aca-8615-1f658bac1b54",
+              "component_type": "DecalBaseStand"
+            },
+            "outline": {
+              "_type": "component",
+              "component_id": "045fa78b-834a-48fd-82bf-ee8b81bafa8e",
+              "go": "72783acf-5f77-44b2-bdac-045d1c3bcdce",
+              "component_type": "HighlightOutline"
+            },
+            "skinnedModel": {
+              "_type": "component",
+              "component_id": "1df1687a-97b8-4ede-be2d-d4e61c77586f",
+              "go": "72783acf-5f77-44b2-bdac-045d1c3bcdce",
+              "component_type": "SkinnedModelRenderer"
+            }
+          },
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "1df1687a-97b8-4ede-be2d-d4e61c77586f",
+            "AnimationGraph": "animgraphs/sk_light_infantry_a.vanmgrph",
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": true,
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          },
+          {
+            "__type": "Sandbox.HighlightOutline",
+            "__guid": "045fa78b-834a-48fd-82bf-ee8b81bafa8e",
+            "Color": "0,0,0,0",
+            "InsideColor": "0,0,0,0",
+            "InsideObscuredColor": "0,0,0,0",
+            "ObscuredColor": "0,1,0,0.50196",
+            "Width": 0.25
+          }
+        ],
+        "Children": [
+          {
+            "__guid": "d02a4a6f-b20e-4aca-8615-1f658bac1b54",
+            "Flags": 0,
+            "Name": "UnitBaseStand",
+            "Position": "0,0,1",
+            "Rotation": "0,0.7071068,0,0.7071068",
+            "Enabled": true,
+            "NetworkOrphaned": 1,
+            "OwnerTransfer": 2,
+            "Components": [
+              {
+                "__type": "DecalBaseStand",
+                "__guid": "706fa4b3-6f96-47d2-93ef-5b96ce75df82",
+                "BaseSelectionState": "None",
+                "SelectionOutlineState": "Mine",
+                "BaseStandModel": {
+                  "_type": "component",
+                  "component_id": "8f70c64b-a8e4-43a0-8346-0eb3ae3a4044",
+                  "go": "d02a4a6f-b20e-4aca-8615-1f658bac1b54",
+                  "component_type": "DecalRenderer"
+                }
+              },
+              {
+                "__type": "Sandbox.DecalRenderer",
+                "__guid": "8f70c64b-a8e4-43a0-8346-0eb3ae3a4044",
+                "CutoffAngle": 0,
+                "CutoffAngleSoftness": 5,
+                "Material": "materials/circle.vmat",
+                "Mod2XBlending": false,
+                "Size": "1,1,1",
+                "TintColor": "0,1,0,0.50196",
+                "TriPlanar": false
+              }
+            ]
+          },
+          {
+            "__guid": "acfbafa1-3e64-42b1-8354-8175fadc35eb",
+            "Flags": 0,
+            "Name": "Bip001_Pelvis",
+            "Position": "-5.798592,0.00001689682,86.79316",
+            "Rotation": "-0.499999,-0.5000007,-0.4999992,0.5000011",
+            "Enabled": true,
+            "Children": [
+              {
+                "__guid": "48d3f01c-7b4b-4d2b-b6b5-9e6c13f1a207",
+                "Flags": 0,
+                "Name": "Bip001_Spine",
+                "Position": "13.30795,-0.03401756,-0.00000005243419",
+                "Rotation": "-0.000002205372,0.0000007152557,0.0003981292,1",
+                "Enabled": true,
+                "Children": [
+                  {
+                    "__guid": "78d4a66e-a52b-4de6-abea-520b848db9a2",
+                    "Flags": 0,
+                    "Name": "Bip001_Head",
+                    "Position": "53.25089,4.075115,0.00005633738",
+                    "Rotation": "0,-0.0000001788139,0.03837076,0.9992636",
+                    "Enabled": true
+                  },
+                  {
+                    "__guid": "591653e1-b994-406f-b731-344cbdb049be",
+                    "Flags": 0,
+                    "Name": "Bip001_L_Clavicle",
+                    "Position": "38.77982,0.003199009,7.660675",
+                    "Rotation": "0.6105239,-0.02929533,0.7911471,-0.02210546",
+                    "Enabled": true,
+                    "Children": [
+                      {
+                        "__guid": "31ecca92-6bdc-415d-8f41-4d1e8c0bf5e6",
+                        "Flags": 0,
+                        "Name": "Bip001_L_UpperArm",
+                        "Position": "19.27486,-0.00004354265,-0.0001220703",
+                        "Rotation": "0.06110927,0.2080645,-0.01017112,0.9761513",
+                        "Enabled": true,
+                        "Children": [
+                          {
+                            "__guid": "7dc5d329-6735-45c8-9bc7-9f0063988805",
+                            "Flags": 0,
+                            "Name": "Bip001_L_Forearm",
+                            "Position": "35.1718,-0.00003767012,-0.00004577635",
+                            "Rotation": "0,0.00000006705523,-0.09983324,0.9950042",
+                            "Enabled": true,
+                            "Children": [
+                              {
+                                "__guid": "bd3d829a-03af-43f1-8b5b-01b9b52b8069",
+                                "Flags": 0,
+                                "Name": "Bip001_L_Hand",
+                                "Position": "26.93674,-0.00004482269,-0.00009155273",
+                                "Rotation": "-0.7064035,-0.02440213,0.02442143,0.7069669",
+                                "Enabled": true,
+                                "Children": [
+                                  {
+                                    "__guid": "7600395b-f151-408d-a1e9-41f3d4db9191",
+                                    "Flags": 0,
+                                    "Name": "L_hand_container",
+                                    "Position": "11.21021,4.713615,-7.2899",
+                                    "Rotation": "0.7203268,0.0778612,-0.6861206,0.06561676",
+                                    "Enabled": true
+                                  },
+                                  {
+                                    "__guid": "47ee5af8-e0cb-40b3-9aa3-a670613fb81f",
+                                    "Flags": 0,
+                                    "Name": "L_shield_container",
+                                    "Position": "15.61458,-2.107361,-1.217068",
+                                    "Rotation": "0.4558555,-0.220695,-0.2492924,0.8254349",
+                                    "Enabled": true
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "__guid": "2eacb1ae-843a-4381-9624-19defeabb8bd",
+                    "Flags": 0,
+                    "Name": "Bip001_R_Clavicle",
+                    "Position": "38.77985,0.003236217,-7.660638",
+                    "Rotation": "-0.6105237,0.02929303,0.7911474,-0.02210366",
+                    "Enabled": true,
+                    "Children": [
+                      {
+                        "__guid": "5d45592c-8280-4479-8221-901126631c24",
+                        "Flags": 0,
+                        "Name": "Bip001_R_UpperArm",
+                        "Position": "19.27485,-0.00001422289,0.0001144409",
+                        "Rotation": "-0.06110913,-0.2080646,-0.01017098,0.9761513",
+                        "Enabled": true,
+                        "Children": [
+                          {
+                            "__guid": "4fcd500b-d44b-407f-9369-ab3504982c5c",
+                            "Flags": 0,
+                            "Name": "Bip001_R_Forearm",
+                            "Position": "35.17181,-0.00002098083,0.00008392334",
+                            "Rotation": "-0.0000001272959,-0.00000002070899,-0.09983331,0.9950041",
+                            "Enabled": true,
+                            "Children": [
+                              {
+                                "__guid": "42c40c0f-0910-48b2-adad-402a6b9ec439",
+                                "Flags": 0,
+                                "Name": "Bip001_R_Hand",
+                                "Position": "26.93673,-0.000008583069,0.00006103516",
+                                "Rotation": "0.7064037,0.02440183,0.02442159,0.7069668",
+                                "Enabled": true,
+                                "Children": [
+                                  {
+                                    "__guid": "9a459f75-3533-4798-8290-89c2a85680eb",
+                                    "Flags": 0,
+                                    "Name": "R_hand_container",
+                                    "Position": "9.460909,3.674278,7.148975",
+                                    "Rotation": "0.06561623,-0.6861193,0.07785986,0.7203283",
+                                    "Enabled": true
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "__guid": "632e3ce4-e3f4-4208-9cc5-f938506de249",
+                    "Flags": 0,
+                    "Name": "Bip001_Neck",
+                    "Position": "46.19928,-0.7339948,0.0001170953",
+                    "Rotation": "-0.0000002384186,-0.0000012815,0.1940421,0.9809932",
+                    "Enabled": true
+                  },
+                  {
+                    "__guid": "958898e2-8126-475e-bccc-335768efb086",
+                    "Flags": 0,
+                    "Name": "Bone_wood",
+                    "Position": "13.60838,41.63414,19.02982",
+                    "Rotation": "0.7602621,-0.2644683,0.5726831,-0.1552157",
+                    "Enabled": true
+                  },
+                  {
+                    "__guid": "7b924c70-0a08-4fcd-931d-2772b7a0c976",
+                    "Flags": 0,
+                    "Name": "Bone_bag",
+                    "Position": "49.39709,0.4403982,18.3043",
+                    "Rotation": "-0.4998009,0.5001988,-0.5001983,0.499802",
+                    "Enabled": true
+                  },
+                  {
+                    "__guid": "05d859e7-5253-4122-bd34-865fb018e631",
+                    "Flags": 0,
+                    "Name": "Quiver_container",
+                    "Position": "29.93579,-21.96646,-6.282219",
+                    "Rotation": "0.000335902,0.8433906,-0.0002126619,0.5373006",
+                    "Enabled": true
+                  }
+                ]
+              },
+              {
+                "__guid": "cd6cbc73-077a-45be-9c15-b57d611ac3eb",
+                "Flags": 0,
+                "Name": "Bip001_L_Thigh",
+                "Position": "-0.00009178636,0.00005194653,13.19196",
+                "Rotation": "0.02158642,0.9986579,0.02090822,-0.04218106",
+                "Enabled": true,
+                "Children": [
+                  {
+                    "__guid": "9a5c13cf-2056-4186-b41d-70fe01a90fc2",
+                    "Flags": 0,
+                    "Name": "Bip001_L_Calf",
+                    "Position": "45.66684,0.000003576279,0.00001907349",
+                    "Rotation": "-0.0000001937151,0.00000008940697,-0.09567872,0.9954123",
+                    "Enabled": true,
+                    "Children": [
+                      {
+                        "__guid": "02b84ba7-83a5-43ca-885f-a59db2948a2b",
+                        "Flags": 0,
+                        "Name": "Bip001_L_Foot",
+                        "Position": "28.72986,0.00000858307,0.00003266335",
+                        "Rotation": "0.0248487,-0.03998621,0.07406291,0.9961418",
+                        "Enabled": true,
+                        "Children": [
+                          {
+                            "__guid": "5a0f8ce9-fe5d-488b-b970-ae356ddb86eb",
+                            "Flags": 0,
+                            "Name": "Bip001_L_Toe0",
+                            "Position": "12.34698,27.552,0.0001353272",
+                            "Rotation": "-0.0000008750519,-0.00000002980232,0.7071064,0.7071072",
+                            "Enabled": true
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "__guid": "08f0f56c-4059-4e73-9ad6-4d7e2e80b908",
+                "Flags": 0,
+                "Name": "Bip001_R_Thigh",
+                "Position": "-0.0001676131,0.000002413149,-13.19192",
+                "Rotation": "0.02158642,0.9986579,-0.02090941,0.0421795",
+                "Enabled": true,
+                "Children": [
+                  {
+                    "__guid": "13828f59-5b05-4634-b8a3-5b35dc05ce3a",
+                    "Flags": 0,
+                    "Name": "Bip001_R_Calf",
+                    "Position": "45.66682,-0.000007152557,-0.00003051758",
+                    "Rotation": "-0.0000000233904,0.0000000851118,-0.09567883,0.9954122",
+                    "Enabled": true,
+                    "Children": [
+                      {
+                        "__guid": "f676c048-992c-4fdd-88b9-f2a45a409f77",
+                        "Flags": 0,
+                        "Name": "Bip001_R_Foot",
+                        "Position": "28.72986,-0.0000009536743,-0.00002288818",
+                        "Rotation": "-0.02484852,0.03998632,0.07406288,0.9961417",
+                        "Enabled": true,
+                        "Children": [
+                          {
+                            "__guid": "e8071c3d-da03-4040-96a4-6c7c45f031f9",
+                            "Flags": 0,
+                            "Name": "Bip001_R_Toe0",
+                            "Position": "12.34693,27.55198,0.00008310061",
+                            "Rotation": "-0.0000007350482,-0.0000002086163,0.7071065,0.7071071",
+                            "Enabled": true
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "__guid": "d78c7607-e52e-43ce-9000-779692ae0e82",
+            "Flags": 0,
+            "Name": "Bip001",
+            "Position": "-5.798613,0.0000000000006856566,86.79321",
+            "Enabled": true
+          }
+        ]
+      },
+      {
+        "__guid": "4f07a6b5-acda-4eae-b033-308ba65d6d2b",
+        "Flags": 0,
+        "Name": "UnitHealthBar",
+        "Position": "0,0,12",
+        "Enabled": true,
+        "NetworkOrphaned": 1,
+        "OwnerTransfer": 2,
+        "Components": [
+          {
+            "__type": "HealthBar",
+            "__guid": "dbe2b82f-0b98-418a-91ec-fdd1e5f642bf",
+            "healthBarUI": {
+              "_type": "component",
+              "component_id": "7b899c5b-efce-4cb2-b9e6-fa87a5c35790",
+              "go": "4f07a6b5-acda-4eae-b033-308ba65d6d2b",
+              "component_type": "HealthBarUI"
+            },
+            "UnitStatusWorldPanel": {
+              "_type": "component",
+              "component_id": "d60699c3-59e9-4efc-b3a3-10512f29ad49",
+              "go": "4f07a6b5-acda-4eae-b033-308ba65d6d2b",
+              "component_type": "WorldPanel"
+            }
+          },
+          {
+            "__type": "Sandbox.WorldPanel",
+            "__guid": "d60699c3-59e9-4efc-b3a3-10512f29ad49",
+            "HorizontalAlign": "Center",
+            "InteractionRange": 0,
+            "LookAtCamera": true,
+            "PanelSize": "5000,200",
+            "RenderScale": 1,
+            "VerticalAlign": "Center"
+          },
+          {
+            "__type": "HealthBarUI",
+            "__guid": "7b899c5b-efce-4cb2-b9e6-fa87a5c35790"
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

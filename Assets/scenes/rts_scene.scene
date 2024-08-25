@@ -181,6 +181,12 @@
             },
             {
               "_type": "component",
+              "component_id": "557c08d0-9b17-499a-a9ba-bd56ac36336b",
+              "go": "d0f4beb4-098e-47db-b02f-43ab206eb349",
+              "component_type": "UnitPortraitTuple"
+            },
+            {
+              "_type": "component",
               "component_id": "3c81f041-d634-497b-8007-4ee1fdf62c92",
               "go": "d0f4beb4-098e-47db-b02f-43ab206eb349",
               "component_type": "UnitPortraitTuple"
@@ -197,6 +203,17 @@
         {
           "__type": "UnitPortraitTuple",
           "__guid": "01e7d5c7-ea9e-4852-9d35-799fef49bd6e",
+          "UnitCapacityCost": 10,
+          "UnitPortraitImage": "materials/skeltal_portrait.PNG",
+          "UnitPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/roller.prefab"
+          },
+          "UnitResourceCost": 10
+        },
+        {
+          "__type": "UnitPortraitTuple",
+          "__guid": "557c08d0-9b17-499a-a9ba-bd56ac36336b",
           "UnitCapacityCost": 3,
           "UnitPortraitImage": "materials/skeltal_portrait.PNG",
           "UnitPrefab": {
@@ -788,6 +805,19 @@
       "__PrefabVariables": {}
     },
     {
+      "__guid": "cdf08c0f-f6a7-4f96-a32f-a7f36cb69e56",
+      "Flags": 0,
+      "Name": "Roller",
+      "Position": "-1139.46,1182.528,129.8806",
+      "Tags": "unit",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 2,
+      "__Prefab": "prefabs/roller.prefab",
+      "__PrefabVariables": {}
+    },
+    {
       "__guid": "5508d319-e56f-44cf-b066-957f5ae801c8",
       "Flags": 0,
       "Name": "Giant",
@@ -830,6 +860,12 @@
           "Tint": "1,1,1,1"
         }
       ]
+    },
+    {
+      "__guid": "da569660-c0ef-40b9-a834-6df12d76e3d9",
+      "Flags": 0,
+      "Name": "GameObject",
+      "Enabled": true
     }
   ],
   "SceneProperties": {

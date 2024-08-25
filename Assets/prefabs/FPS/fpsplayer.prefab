@@ -85,17 +85,6 @@
           "go": "19f10a6a-30ec-42c4-b7cd-32843fe1ca04"
         },
         "Weapons": []
-      },
-      {
-        "__type": "Sandbox.SkinnedModelRenderer",
-        "__guid": "4dacd620-b31d-4ff0-bd44-e474ef216096",
-        "__enabled": false,
-        "BodyGroups": 341,
-        "CreateBoneObjects": false,
-        "Model": "models/citizen/citizen.vmdl",
-        "RenderType": "On",
-        "Tint": "1,1,1,1",
-        "UseAnimGraph": true
       }
     ],
     "Children": [

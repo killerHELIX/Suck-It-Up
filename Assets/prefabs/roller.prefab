@@ -2,8 +2,7 @@
   "RootObject": {
     "__guid": "cdf08c0f-f6a7-4f96-a32f-a7f36cb69e56",
     "Flags": 0,
-    "Name": "Roller (1)",
-    "Position": "-1139.46,1182.528,129.8806",
+    "Name": "roller",
     "Tags": "unit",
     "Enabled": true,
     "NetworkMode": 1,
@@ -22,7 +21,7 @@
         "MeleeAttackDamage": 10,
         "MeleeAttackSpeed": 1,
         "ModelFile": "models/enemies/roller.vmdl",
-        "ModelMaterial": "materials/default.vmat",
+        "ModelMaterial": "materials/enemies/roller_pixel.vmat",
         "name": "Normal",
         "PhysicalModelRenderer": {
           "_type": "component",
@@ -120,7 +119,6 @@
         "__guid": "72783acf-5f77-44b2-bdac-045d1c3bcdce",
         "Flags": 0,
         "Name": "UnitModel",
-        "Position": "0,0,0",
         "Rotation": "0,-0,-0.7071068,0.7071068",
         "Enabled": true,
         "NetworkOrphaned": 1,
@@ -495,7 +493,8 @@
           }
         ]
       }
-    ]
+    ],
+    "__variables": []
   },
   "ShowInMenu": false,
   "MenuPath": null,

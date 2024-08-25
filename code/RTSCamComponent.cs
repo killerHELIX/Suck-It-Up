@@ -13,17 +13,17 @@ public class RTSCamComponent : Component
 
 	protected override void OnStart()
 	{
-		base.OnStart();
 		if (Network.IsProxy)
 		{
 			CamView.IsMainCamera = false;
-			Enabled = false;
 			CamView.Enabled = false;
+			Enabled = false;
 		}
 		else
 		{
 			CamView.IsMainCamera = true;
 		}
+		base.OnStart();
 	}
 
 	protected override void OnUpdate()

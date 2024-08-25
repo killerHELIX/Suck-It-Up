@@ -50,30 +50,6 @@
       "Enabled": true
     },
     {
-      "__guid": "8dc28175-0b01-498e-8b1d-97b0fba89300",
-      "Flags": 0,
-      "Name": "Network",
-      "Position": "408.021,344.2917,387.9409",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.NetworkHelper",
-          "__guid": "d13bf3b7-db4f-4d94-be45-d0c9522ac8ff",
-          "PlayerPrefab": {
-            "_type": "gameobject",
-            "prefab": "prefabs/rts_player.prefab"
-          },
-          "SpawnPoints": [
-            {
-              "_type": "gameobject",
-              "go": "0a0c0087-7f20-47fa-8840-617b14b82e91"
-            }
-          ],
-          "StartServer": true
-        }
-      ]
-    },
-    {
       "__guid": "323bd1de-4589-4fff-8a55-e55ca64a3bca",
       "Flags": 0,
       "Name": "Spawner Orb",
@@ -84,6 +60,50 @@
       "OwnerTransfer": 2,
       "__Prefab": "prefabs/spawnerorb.prefab",
       "__PrefabVariables": {}
+    },
+    {
+      "__guid": "2a475ac1-855f-4e3e-8b82-0f5f7ec48759",
+      "Flags": 0,
+      "Name": "Network Helper",
+      "Position": "1766.853,5585.244,1770.225",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SIUNetworkHelper",
+          "__guid": "8b6edd51-8db7-4700-8b79-2be79a8405b6",
+          "RTSPlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/rts_player.prefab"
+          },
+          "RTSSpawnPoints": [
+            {
+              "_type": "gameobject",
+              "go": "0a0c0087-7f20-47fa-8840-617b14b82e91"
+            }
+          ],
+          "SpectatorPlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/spectatorplayer.prefab"
+          },
+          "SpectatorSpawnPoints": [
+            {
+              "_type": "gameobject",
+              "go": "0a0c0087-7f20-47fa-8840-617b14b82e91"
+            }
+          ],
+          "StartServer": true,
+          "SurvivorPlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/rts_player.prefab"
+          },
+          "SurvivorSpawnPoints": [
+            {
+              "_type": "gameobject",
+              "go": "0a0c0087-7f20-47fa-8840-617b14b82e91"
+            }
+          ]
+        }
+      ]
     }
   ],
   "SceneProperties": {

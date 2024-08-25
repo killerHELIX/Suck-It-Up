@@ -38,6 +38,7 @@ public class SelectableObject : Component, IScalable, ISelectable
 
 	protected override void OnStart()
 	{
+		if(PhysicalModelRenderer == null) { return; }
 		//TODO there is a bug where units can attack this one before it fully initializes its size or is able to fight back. Need a solution
 		PhysicalModelRenderer.setModel(ModelFile, null, ModelMaterial);
 		setRelativeSizeHelper(Size);

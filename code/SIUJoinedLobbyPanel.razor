@@ -9,6 +9,17 @@
 
 @code
 {
+
+	protected override void OnStart()
+	{
+		if (!GameNetworkSystem.IsActive)
+		{
+			LoadingScreen.Title = "Creating Lobby";
+			//await Task.DelayRealtimeSeconds(0.1f);
+			GameNetworkSystem.CreateLobby();
+		}
+	}
+
 	public void startGame()
 	{
 		if (GameState.Local.rtsPlayerList.Count() > 0 && GameState.Local.survivorPlayerList.Count() > 0)
@@ -31,6 +42,41 @@
 		MainMenuComponent.Local.setActivePanel(MainMenuComponent.MenuPanelType.MAIN);
 		GameNetworkSystem.Disconnect();
 	}
+
+	public void setTeamRequest(GameState.PlayerType newType)
+	{
+		/*if(Network.OwnerConnection != null)
+		{
+			if (Network.OwnerConnection.DisplayName != null)
+			{
+				GameState.Local.addPlayerToList(Network.OwnerConnection.DisplayName, newType, true);
+			}
+			else
+			{
+				Log.Info("Cannot find Local connection display name!");
+			}
+		}
+		else
+		{
+			Log.Info("Cannot find Local connection!");
+		}*/
+
+		if (Connection.Local != null)
+		{
+			if (Connection.Local.DisplayName != null)
+			{
+				GameState.Local.addPlayerToList(Connection.Local.DisplayName, newType, true);
+			}
+			else
+			{
+				Log.Info("Cannot find Local connection display name!");
+			}
+		}
+		else
+		{
+			Log.Info("Cannot find Local connection!");
+		}
+	}
 }
 
 <root>
@@ -41,7 +87,7 @@
 	<div class="PlayerTeamSelectionPanel">
 		<div class="PlayerColumn">
 			<div class="PlayerLabel">Vacumaster</div>
-			<div @onclick="@(() => GameState.Local.addPlayerToList(Network.OwnerConnection.DisplayName, GameState.PlayerType.RTS, true))" class="RTSPlayerPanel">
+			<div @onclick="@(() => setTeamRequest(GameState.PlayerType.RTS))" class="RTSPlayerPanel">
 				@foreach (string player in GameState.Local.rtsPlayerList)
 				{
 					<div class="PlayerListItem">@(player)</div>
@@ -50,7 +96,7 @@
 		</div>
 		<div class="PlayerColumn">
 			<div class="PlayerLabel">Spectator</div>
-			<div @onclick="@(() => GameState.Local.addPlayerToList(Network.OwnerConnection.DisplayName, GameState.PlayerType.SPECTATOR, true))" class="SpectatorPlayerPanel">
+			<div @onclick="@(() => setTeamRequest(GameState.PlayerType.SPECTATOR))" class="SpectatorPlayerPanel">
 				@foreach (string player in GameState.Local.spectatorPlayerList)
 				{
 					<div class="PlayerListItem">@(player)</div>
@@ -59,7 +105,7 @@
 		</div>
 		<div class="PlayerColumn">
 			<div class="PlayerLabel">Survivors</div>
-			<div @onclick="@(() => GameState.Local.addPlayerToList(Network.OwnerConnection.DisplayName, GameState.PlayerType.SURVIVOR, true))" class="SurvivorPlayerPanel">
+			<div @onclick="@(() => setTeamRequest(GameState.PlayerType.SURVIVOR))" class="SurvivorPlayerPanel">
 				@foreach (string player in GameState.Local.survivorPlayerList)
 				{
 					<div class="PlayerListItem">@(player)</div>

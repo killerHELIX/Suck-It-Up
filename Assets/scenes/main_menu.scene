@@ -2,10 +2,20 @@
   "__guid": "a5742acf-ba61-4925-9be6-093cf63341c8",
   "GameObjects": [
     {
+      "__guid": "2de54cf4-7403-43bd-aeb4-277b0474be5d",
+      "Flags": 0,
+      "Name": "Menu",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkInterpolation": false,
+      "OwnerTransfer": 0,
+      "__Prefab": "prefabs/mainmenu.prefab",
+      "__PrefabVariables": {}
+    },
+    {
       "__guid": "10cd86b0-9600-4941-9893-b2f99479ee75",
       "Flags": 0,
       "Name": "Network",
-      "Enabled": true,
       "Components": [
         {
           "__type": "Sandbox.NetworkHelper",

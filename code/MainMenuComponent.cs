@@ -1,6 +1,8 @@
-﻿using Sandbox.UI;
+﻿using Sandbox.Network;
+using Sandbox.UI;
+using System.Threading.Tasks;
 
-public class MainMenuComponent : Component
+public class MainMenuComponent : Component, Component.INetworkListener
 {
 	public enum MenuPanelType
 	{
@@ -17,7 +19,9 @@ public class MainMenuComponent : Component
 	[Property] public SIUSettingsPanel SettingsPanel { get; set; }
 	[Property] ScreenPanel myScreenPanel { get; set; }
 
-	[Property] public ulong MyServID { get; set; }
+	[Property] public ulong MyServID { get; set; } = 0;
+
+	[Property] public bool startServer { get; set; } = false;
 
 	private MenuPanelType activePanel = MenuPanelType.MAIN;
 
@@ -29,22 +33,59 @@ public class MainMenuComponent : Component
 		{
 			if (!_local.IsValid())
 			{
-				//_local = Game.ActiveScene.Directory.FindByName("Main Menu").First().Components.Get<MainMenuComponent>();
-				_local = Game.ActiveScene.GetAllComponents<MainMenuComponent>().FirstOrDefault(x => x.Network.IsOwner);
+				var localFirstTry = Game.ActiveScene.Directory.FindByName("Menu").First().Components.Get<MainMenuComponent>();
+				var localSecondTry = Game.ActiveScene.GetAllComponents<MainMenuComponent>().FirstOrDefault(x => x.Network.IsOwner);
+
+				if (localFirstTry != null)
+				{
+					_local = localFirstTry;
+				}
+				else if (localSecondTry != null)
+				{
+					Log.Info("Didn't find correct component inside name=Menu, but did we find the object at all?\n");
+					if(Game.ActiveScene.Directory.FindByName("Menu").Count() > 0)
+					{
+						Log.Info("Yes");
+					}
+					else
+					{
+						Log.Info("No");
+					}
+					_local = localSecondTry;
+				}
+				else
+				{
+					Log.Info("Still couldn't find the main menu component for some reason, here's a dump of enabled GameObjects: \n");
+					var goList = Game.ActiveScene.GetAllObjects(true);
+					foreach(GameObject obj in goList)
+					{
+						Log.Info(obj.Name);
+					}
+				}
 				Log.Info("Tried getting local main menu, found this: " + _local);
 			}
 			return _local;
 		}
 	}
 
+	protected override async Task OnLoad()
+	{
+	}
+
+	public void OnActive(Connection channel)
+	{
+	}
+
 	protected override void OnStart()
 	{
-		if (Network.IsProxy){ 
-			myScreenPanel.Enabled = false;
-			JoinedLobbyPanel.Enabled = true;
+		//if (Network.IsProxy){
+			//Log.Info("Found a Proxy Menu");
+			//myScreenPanel.Enabled = false;
+			//JoinedLobbyPanel.Enabled = true;
 			//Enabled = false;
-			return; 
-		}
+			//return; 
+		//}
+		Log.Info("Found my Menu");
 		setActivePanel(MenuPanelType.MAIN);
 	}
 
@@ -55,11 +96,26 @@ public class MainMenuComponent : Component
 
 	protected override async void OnUpdate()
 	{
-		Log.Info("Is this even happening anymore?");
-		var lobbies = await Networking.QueryLobbies();
-
-		if (MyServID == 0)
+		//Log.Info("Hello?");
+		if (Scene.IsEditor)
 		{
+			//Log.Info("Should be ending up here");
+			return;
+		}
+
+		//Log.Info("Why is this running?");
+
+		/*if(startServer && !GameNetworkSystem.IsActive)
+		{
+			LoadingScreen.Title = "Creating Lobby";
+			await Task.DelayRealtimeSeconds(0.1f);
+			GameNetworkSystem.CreateLobby();
+		}*/
+
+
+		if (MyServID == 0 && activePanel == MenuPanelType.JOINEDLOBBY)
+		{
+			var lobbies = await Networking.QueryLobbies();
 			Log.Info("Is my serv id 0?");
 			Log.Info(lobbies.Count());
 			foreach (Sandbox.Network.LobbyInformation lobby in lobbies)

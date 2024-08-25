@@ -4,6 +4,8 @@ using System;
 class SIUUnit : Unit
 {
 
+	[Property] public float IndividualModelScale { get; set; }
+
 	// This will be a factor of the unit size I imagine
 	private float maxChaseDistanceFromHome = 600f;
 	private float lastMeleeTime = Time.Now;
@@ -21,7 +23,8 @@ class SIUUnit : Unit
 	private const float AUTO_MELEE_RAD_MULTIPLIER = 90f;
 	private const float NAV_AGENT_RAD_MULTIPLIER = .5f;
 	private const float CLICK_HITBOX_RADIUS_MULTIPLIER = .5f;
-	private const float GLOBAL_UNIT_SCALE = .1f;
+	private const float GLOBAL_UNIT_SCALE = 15f;
+	private const float BASE_STAND_SIZE_MULTIPLIER = 1.6f;
 
 	// Nav Constant
 	private const float MAX_STUCK_TIME = 5f;
@@ -274,19 +277,20 @@ class SIUUnit : Unit
 		//Vector3 globalScaleModifier = Vector3.One * Scene.GetAllObjects( true ).Where( go => go.Name == "RTSGameOptions" ).First().Components.GetAll<RTSGameOptionsComponent>().First().getFloatValue( RTSGameOptionsComponent.GLOBAL_UNIT_SCALE );
 		//Log.Info( ModelFile.Bounds.Size );
 
-		Vector3 globalScaleModifier = Vector3.One * GLOBAL_UNIT_SCALE;//RTSPlayer.Local.LocalGame.GameOptions.getFloatValue( RTSGameOptionsComponent.GLOBAL_UNIT_SCALE );
+		Vector3 globalScaleModifier = Vector3.One * GLOBAL_UNIT_SCALE * IndividualModelScale ;//RTSPlayer.Local.LocalGame.GameOptions.getFloatValue( RTSGameOptionsComponent.GLOBAL_UNIT_SCALE );
 		Vector3 targetModelSize = new Vector3((unitSize.x * globalScaleModifier.x), (unitSize.y * globalScaleModifier.y), (unitSize.z * globalScaleModifier.z));
 		float targetxyMin = float.Min(targetModelSize.x, targetModelSize.y);
 		float targetxyMax = float.Max(targetModelSize.x, targetModelSize.y);
 		float defaultxyMin = float.Min(defaultModelSize.x, defaultModelSize.y);
 		float defaultxyMax = float.Max(defaultModelSize.x, defaultModelSize.y);
-		//Log.Info("defaultModelSize: " +  defaultModelSize);
-		//Log.Info("Target Model Size: " + targetModelSize );
-		//Log.Info( "Calculated Scale: " + new Vector3(
-		//((unitSize.x * globalScaleModifier.x) / defaultModelSize.x),
-		//((unitSize.y * globalScaleModifier.y) / defaultModelSize.y),
-		//((unitSize.z * globalScaleModifier.z) / defaultModelSize.z)
-		//));
+		Log.Info("global modifier" + globalScaleModifier);
+		Log.Info("defaultModelSize: " +  defaultModelSize);
+		Log.Info("Target Model Size: " + targetModelSize );
+		Log.Info( "Calculated Scale: " + new Vector3(
+		((unitSize.x * globalScaleModifier.x) / defaultModelSize.x),
+		((unitSize.y * globalScaleModifier.y) / defaultModelSize.y),
+		((unitSize.z * globalScaleModifier.z) / defaultModelSize.z)
+		));
 		Transform.LocalScale = new Vector3(
 			(targetModelSize.x / defaultModelSize.x),
 			(targetModelSize.y / defaultModelSize.y),
@@ -317,7 +321,7 @@ class SIUUnit : Unit
 		maxChaseDistanceFromHome = CHASE_DIST_MULTIPLIER * targetxyMax;
 
 		// Auto Calculate other visual element sizes
-		PhysicalModelRenderer.setModelSize(defaultModelSize);
+		PhysicalModelRenderer.setModelSize(BASE_STAND_SIZE_MULTIPLIER * defaultModelSize);
 		ThisHealthBar.setSize(defaultModelSize);
 	}
 }

@@ -250,7 +250,7 @@
           {
             "__type": "RTSGameOptionsComponent",
             "__guid": "0d8a3edc-95fb-49e0-bd47-e8aaab4c82d7",
-            "GlobalUnitScale": 0.1
+            "GlobalUnitScale": 1
           }
         ]
       }

@@ -47,7 +47,7 @@ public class RTSPlayer : Component
 		}
 
 		//Set Team
-		if(GameState.Local.rtsPlayerList.Contains(Connection.Local.DisplayName))
+		/*if(GameState.Local.rtsPlayerList.Contains(Connection.Local.DisplayName))
 		{
 			this.Team = 0;
 		}
@@ -58,8 +58,8 @@ public class RTSPlayer : Component
 		else
 		{
 			this.Team = 2;
-		}
-		//this.Team = 0;
+		}*/
+		this.Team = 0;
 
 		//Update display for all units (probably wont work for those it doesnt have ownership of)
 		var allUnitList = Game.ActiveScene.GetAllComponents<Unit>();
@@ -97,7 +97,7 @@ public class RTSPlayer : Component
 		{
 			resourcePoints++;
 			lastRPTickTime = Time.Now;
-			Log.Info("Resource Points: " + resourcePoints);
+			//Log.Info("Resource Points: " + resourcePoints);
 		}
 
 	}
@@ -112,7 +112,7 @@ public class RTSPlayer : Component
 
 	public void addCapacityPoints(int newCapPoints)
 	{
-		Log.Info("Add " + newCapPoints + " new cap points to " + capacityPoints);
+		//Log.Info("Add " + newCapPoints + " new cap points to " + capacityPoints);
 		if (capacityPoints + newCapPoints > 0 && capacityPoints + newCapPoints <= CapacityCap)
 		{
 			capacityPoints += newCapPoints;
@@ -121,14 +121,14 @@ public class RTSPlayer : Component
 
 	public void addUnit(GameObject newUnit, int unitCapPts)
 	{
-		Log.Info("Add Unit");
+		//Log.Info("Add Unit");
 		myUnits.Add( newUnit );
 		addCapacityPoints(unitCapPts);
 	}
 
 	public void removeUnit(GameObject unitToRemove, int unitCapPts)
 	{
-		Log.Info("Remove Unit");
+		//Log.Info("Remove Unit");
 		myUnits.Remove( unitToRemove );
 		addCapacityPoints( -unitCapPts );
 	}

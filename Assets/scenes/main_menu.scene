@@ -185,7 +185,7 @@
       "Flags": 0,
       "Name": "Object",
       "Position": "13.24461,12.63725,0.2798235",
-      "Rotation": "0,0,0.1305262,0.9914449",
+      "Rotation": "0,0,-0.6087614,0.7933534",
       "Scale": "5,5,5",
       "Enabled": true,
       "Components": [
@@ -213,6 +213,7 @@
         {
           "__type": "Sandbox.SkinnedModelRenderer",
           "__guid": "8580de30-9b2e-44e8-bd84-1a8f04392e3c",
+          "AnimationGraph": "animgraphs/giant.vanmgrph",
           "BodyGroups": 18446744073709551615,
           "CreateBoneObjects": false,
           "Model": "models/enemies/giant.vmdl",
@@ -234,6 +235,7 @@
         {
           "__type": "Sandbox.SkinnedModelRenderer",
           "__guid": "0d0659fe-2244-4ab9-8d20-9df433e1ab26",
+          "AnimationGraph": "animgraphs/normal.vanmgrph",
           "BodyGroups": 18446744073709551615,
           "CreateBoneObjects": false,
           "Model": "models/enemies/normal.vmdl",
@@ -255,6 +257,7 @@
         {
           "__type": "Sandbox.SkinnedModelRenderer",
           "__guid": "1a7fe9ed-f223-4600-a40d-8abef2b7df0e",
+          "AnimationGraph": "animgraphs/normal.vanmgrph",
           "BodyGroups": 18446744073709551615,
           "CreateBoneObjects": false,
           "Model": "models/enemies/normal.vmdl",
@@ -276,6 +279,7 @@
         {
           "__type": "Sandbox.SkinnedModelRenderer",
           "__guid": "7d92a30c-ba85-45aa-8be4-1bbee02480f8",
+          "AnimationGraph": "animgraphs/roller.vanmgrph",
           "BodyGroups": 18446744073709551615,
           "CreateBoneObjects": false,
           "Model": "models/enemies/roller.vmdl",
@@ -297,6 +301,7 @@
         {
           "__type": "Sandbox.SkinnedModelRenderer",
           "__guid": "f041e22e-0cfd-4a37-a706-87a2fa809d50",
+          "AnimationGraph": "animgraphs/roller.vanmgrph",
           "BodyGroups": 18446744073709551615,
           "CreateBoneObjects": false,
           "Model": "models/enemies/roller.vmdl",
@@ -311,7 +316,7 @@
       "Flags": 0,
       "Name": "Object (1)",
       "Position": "35.60487,-63.58617,30.14639",
-      "Rotation": "0,0,0.1305262,0.9914449",
+      "Rotation": "0,0,-0.4999999,0.8660255",
       "Scale": "5,5,5",
       "Enabled": true,
       "Components": [
@@ -331,8 +336,8 @@
       "__guid": "0ba9dc11-664e-46ff-9ade-f57ca40fb1f1",
       "Flags": 0,
       "Name": "Object (2)",
-      "Position": "90.77419,25.99977,0.2798283",
-      "Rotation": "0,0,-0.1305262,0.9914449",
+      "Position": "80.31136,25.67766,0.2798285",
+      "Rotation": "0,0,-0.7933534,0.6087615",
       "Scale": "5,5,5",
       "Enabled": true,
       "Components": [
@@ -353,7 +358,7 @@
       "Flags": 0,
       "Name": "Object (3)",
       "Position": "46.70549,92.95575,0.2798249",
-      "Rotation": "0,0,-0.258819,0.9659258",
+      "Rotation": "0,0,-0.8660253,0.5000001",
       "Scale": "5,5,5",
       "Enabled": true,
       "Components": [

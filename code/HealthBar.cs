@@ -6,8 +6,8 @@ public class HealthBar : Component
 	[Property] public WorldPanel UnitStatusWorldPanel;
 	[Property] public HealthBarUI healthBarUI;
 
-	private const float WIDTH_MULTIPLIER = 20f;
-	private const float SET_HEIGHT = 200f;
+	private const float WIDTH_MULTIPLIER = 50f;
+	private const float SET_HEIGHT = 10f;
 	public void setHealth(int currentHealth, int maxHealth)
 	{
 		healthBarUI.setHealth((int)(((float)currentHealth/(float)maxHealth) * 100));
@@ -28,7 +28,7 @@ public class HealthBar : Component
 
 	public void setSize(Vector3 size)
 	{
-		float targetWidth = WIDTH_MULTIPLIER * float.Max( size.x, size.y );
+		float targetWidth = float.Min(WIDTH_MULTIPLIER * float.Min( size.x, size.y ), 500f);
 		float targetHeight = SET_HEIGHT;
 		UnitStatusWorldPanel.PanelSize = new Vector2( targetWidth, targetHeight );
 	}

@@ -145,98 +145,8 @@
       "NetworkMode": 1,
       "NetworkOrphaned": 3,
       "OwnerTransfer": 2,
-      "Components": [
-        {
-          "__type": "SpawnerOrb",
-          "__guid": "0d82a996-ee31-4b97-9b10-f1348d58030a",
-          "ModelFile": "models/dev/sphere.vmdl",
-          "ModelMaterial": "materials/default.vmat",
-          "name": "Spawner Orb",
-          "OrbHighlight": {
-            "_type": "component",
-            "component_id": "939dae9b-779d-4ed3-bac2-ce59c2d05403",
-            "go": "d0f4beb4-098e-47db-b02f-43ab206eb349",
-            "component_type": "HighlightOutline"
-          },
-          "PhysicalModelRenderer": {
-            "_type": "component",
-            "component_id": "44598e56-6826-4709-a9e8-18f28f9ea6e9",
-            "go": "d0f4beb4-098e-47db-b02f-43ab206eb349",
-            "component_type": "UnitModelBasic"
-          },
-          "PortraitImage": "materials/spawner_icon.png",
-          "SelectionHitbox": {
-            "_type": "component",
-            "component_id": "4204bb2e-dd58-4bb4-b2e3-ab3c04ded705",
-            "go": "d0f4beb4-098e-47db-b02f-43ab206eb349",
-            "component_type": "BoxCollider"
-          },
-          "Size": "100,100,100",
-          "spawnableUnitList": [
-            {
-              "_type": "component",
-              "component_id": "19e9b742-d460-4133-9e55-e0207446fe22",
-              "go": "d0f4beb4-098e-47db-b02f-43ab206eb349",
-              "component_type": "UnitPortraitTuple"
-            }
-          ],
-          "ThisOrbType": "Spawner"
-        },
-        {
-          "__type": "UnitPortraitTuple",
-          "__guid": "19e9b742-d460-4133-9e55-e0207446fe22",
-          "UnitCapacityCost": 5,
-          "UnitPortraitImage": "materials/skeltal_portrait.PNG",
-          "UnitPrefab": {
-            "_type": "gameobject",
-            "prefab": "prefabs/siu_skeltal.prefab"
-          },
-          "UnitResourceCost": 5
-        },
-        {
-          "__type": "Sandbox.BoxCollider",
-          "__guid": "4204bb2e-dd58-4bb4-b2e3-ab3c04ded705",
-          "Center": "0,0,0",
-          "IsTrigger": false,
-          "Scale": "1,1,1",
-          "Static": false
-        },
-        {
-          "__type": "UnitModelBasic",
-          "__guid": "44598e56-6826-4709-a9e8-18f28f9ea6e9",
-          "selectionOutlineState": "Mine",
-          "outline": {
-            "_type": "component",
-            "component_id": "939dae9b-779d-4ed3-bac2-ce59c2d05403",
-            "go": "d0f4beb4-098e-47db-b02f-43ab206eb349",
-            "component_type": "HighlightOutline"
-          },
-          "skinnedModel": {
-            "_type": "component",
-            "component_id": "b3754e14-d06a-4872-a03e-4dc980a6654e",
-            "go": "d0f4beb4-098e-47db-b02f-43ab206eb349",
-            "component_type": "SkinnedModelRenderer"
-          }
-        },
-        {
-          "__type": "Sandbox.SkinnedModelRenderer",
-          "__guid": "b3754e14-d06a-4872-a03e-4dc980a6654e",
-          "BodyGroups": 18446744073709551615,
-          "CreateBoneObjects": false,
-          "RenderType": "Off",
-          "Tint": "1,1,1,1",
-          "UseAnimGraph": false
-        },
-        {
-          "__type": "Sandbox.HighlightOutline",
-          "__guid": "939dae9b-779d-4ed3-bac2-ce59c2d05403",
-          "Color": "1,1,1,1",
-          "InsideColor": "0,0,0,0",
-          "InsideObscuredColor": "0,0,0,0",
-          "ObscuredColor": "0,0,0,0.4",
-          "Width": 0.25
-        }
-      ]
+      "__Prefab": "prefabs/spawnerorb.prefab",
+      "__PrefabVariables": {}
     },
     {
       "__guid": "a0ff0c40-72bf-4cc8-93c4-eeeb81e7fb86",
@@ -244,7 +154,6 @@
       "Name": "Speedy Bonezales",
       "Position": "-838.319,71.94043,100.6789",
       "Tags": "unit",
-      "Enabled": true,
       "NetworkMode": 1,
       "NetworkOrphaned": 1,
       "OwnerTransfer": 2,
@@ -256,6 +165,7 @@
           "CapacityCost": 0,
           "HasMeleeAttack": true,
           "HasRangedAttack": false,
+          "IndividualModelScale": 0,
           "MaxHealth": 1000,
           "MeleeAttackDamage": 20,
           "MeleeAttackSpeed": 1.5,
@@ -695,7 +605,7 @@
           "__guid": "fccbc80e-7631-422c-8238-53d0f4f04190",
           "Flags": 0,
           "Name": "UnitHealthBar",
-          "Position": "0,0,0",
+          "Position": "0,0,20",
           "Enabled": true,
           "NetworkOrphaned": 1,
           "OwnerTransfer": 2,
@@ -736,6 +646,82 @@
     },
     {
       "__guid": "65e6d12e-89b1-4727-ae83-2470647ea850",
+      "Flags": 0,
+      "Name": "GameObject",
+      "Enabled": true
+    },
+    {
+      "__guid": "4c329369-56bd-4399-9ac2-ba6900b6425d",
+      "Flags": 0,
+      "Name": "Normal",
+      "Position": "-592.1092,1182.528,129.8806",
+      "Tags": "unit",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 2,
+      "__Prefab": "prefabs/normal.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "cdf08c0f-f6a7-4f96-a32f-a7f36cb69e56",
+      "Flags": 0,
+      "Name": "Roller",
+      "Position": "-1139.46,1182.528,129.8806",
+      "Tags": "unit",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 2,
+      "__Prefab": "prefabs/roller.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "5508d319-e56f-44cf-b066-957f5ae801c8",
+      "Flags": 0,
+      "Name": "Giant",
+      "Position": "-960.5023,1182.528,129.8806",
+      "Tags": "unit",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 2,
+      "__Prefab": "prefabs/giant.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "17310faf-4192-4a8f-8a22-9fc0489361b9",
+      "Flags": 0,
+      "Name": "Critter",
+      "Position": "-776.0456,1182.528,129.8806",
+      "Tags": "unit",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 2,
+      "__Prefab": "prefabs/critter.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "d7d9df8b-5d99-4559-9794-a39a5903c179",
+      "Flags": 0,
+      "Name": "Cube",
+      "Position": "-366.5123,1173.574,100.7308",
+      "Scale": "0.4239242,0.7168595,1.463112",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "c85e9754-e510-4a87-a93c-738bb594afcc",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "da569660-c0ef-40b9-a834-6df12d76e3d9",
       "Flags": 0,
       "Name": "GameObject",
       "Enabled": true

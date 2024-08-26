@@ -67,8 +67,25 @@ public class GameState : Component
 		}
 		else 
 		{
-			addPlayerToList(Connection.Local.DisplayName, PlayerType.SPECTATOR, true);
 			_local = this;
+			if(GameState.Local != null)
+			{
+				string myName = Connection.Local.DisplayName;
+				if (!rtsPlayerList.Contains(myName) && !spectatorPlayerList.Contains(myName) && !survivorPlayerList.Contains(myName))
+				{
+					Log.Info("Player is not on any team!");
+					addPlayerToList(myName, PlayerType.SPECTATOR, true);
+				}
+				else
+				{
+					Log.Info("Player is on a team already!");
+				}
+			}
+			else
+			{
+				Log.Info("GameState.Local is null!");
+				addPlayerToList("Unknown PLayer", PlayerType.SPECTATOR, true);
+			}
 		}
 	}
 

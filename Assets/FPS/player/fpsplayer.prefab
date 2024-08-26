@@ -108,7 +108,6 @@
         "__type": "FPSHealthController",
         "__guid": "225acc55-b82c-40f7-922b-9208678a26a3",
         "CurrentHealth": 100,
-        "IsAlive": false,
         "MaxHealth": 100
       }
     ],
@@ -160,7 +159,13 @@
           {
             "__type": "FPSHud",
             "__guid": "9604e978-7f81-4f39-9da7-c2532fe8f2c3",
-            "fpsWeaponController": {
+            "FpsHealthController": {
+              "_type": "component",
+              "component_id": "225acc55-b82c-40f7-922b-9208678a26a3",
+              "go": "0a3d43ee-19a7-4e0f-a008-88f7e6c0ec2e",
+              "component_type": "FPSHealthController"
+            },
+            "FpsWeaponController": {
               "_type": "component",
               "component_id": "0be6af03-17cc-4d7c-8b70-126bc738101b",
               "go": "0a3d43ee-19a7-4e0f-a008-88f7e6c0ec2e",

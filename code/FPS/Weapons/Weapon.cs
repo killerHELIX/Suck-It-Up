@@ -248,11 +248,11 @@ public abstract class Weapon : Component, Component.ICollisionListener
 						if (lastTraceResult.Hitbox.Tags.Contains("head"))
                         {
 							Log.Info("Headshot!");
-							lastTraceResult.Component.GameObject.Components.Get<SIUUnit>().takeDamage(Damage * HEADSHOT_MULTIPLIER);
+							lastTraceResult.Component.GameObject.Components.Get<SIUUnit>().takeDamage(Damage * HEADSHOT_MULTIPLIER, GameObject.Parent.Parent);
                         }
                         else
                         {
-							lastTraceResult.Component.GameObject.Components.Get<SIUUnit>().takeDamage(Damage);
+							lastTraceResult.Component.GameObject.Components.Get<SIUUnit>().takeDamage(Damage, GameObject.Parent.Parent);
 						}
                     }
                 }

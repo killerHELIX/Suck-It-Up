@@ -67,7 +67,7 @@ public class SkinnedRTSObject : SelectableObject, IScalable, IDamageable, ISelec
 		}
 	}
 
-	private void setHealth(int newHealth)
+	protected void setHealth(int newHealth)
 	{
 		currentHealthPoints = newHealth;
 		ThisHealthBar.setHealth(newHealth, MaxHealth);

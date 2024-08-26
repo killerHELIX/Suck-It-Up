@@ -276,6 +276,26 @@ class SIUUnit : Unit
 		PhysicalModelRenderer.addToCorpsePile();
 	}
 
+	public void takeDamage(int damage, GameObject source)
+	{
+		//Log.Info( this.GameObject.Name + " takes " + damage + " damage!");
+		PhysicalModelRenderer.animateDamageTaken();
+		setHealth(currentHealthPoints - damage);
+		if (currentHealthPoints <= 0)
+		{
+			die();
+		}
+		else
+		{
+			if(tempTargetObject == null && targetObject == null)
+			{
+				Log.Info(GameObject.Name + ": I've been shot! Fuck you, " + source.Name);
+				tempTargetObject = source;
+				homeTargetLocation = source.Transform.Position;
+			}
+		}
+	}
+
 	[Broadcast]
 	private void directMeleeAttack(GameObject targetPlayer)
 	{

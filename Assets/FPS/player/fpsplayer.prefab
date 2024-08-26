@@ -1,0 +1,162 @@
+{
+  "RootObject": {
+    "__guid": "0a3d43ee-19a7-4e0f-a008-88f7e6c0ec2e",
+    "Flags": 0,
+    "Name": "fpsplayer",
+    "Tags": "player",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "OwnerTransfer": 0,
+    "Components": [
+      {
+        "__type": "Sandbox.CharacterController",
+        "__guid": "82f97dc4-5381-49d1-8513-71101206a841",
+        "Acceleration": 10,
+        "Bounciness": 0.3,
+        "GroundAngle": 45,
+        "Height": 64,
+        "IgnoreLayers": "player",
+        "Radius": 16,
+        "StepHeight": 18,
+        "UseCollisionRules": true
+      },
+      {
+        "__type": "Sandbox.Citizen.CitizenAnimationHelper",
+        "__guid": "93cf183d-80a5-4d7c-adaf-99231c474dab",
+        "BodyWeight": 1,
+        "EyesWeight": 1,
+        "HeadWeight": 1,
+        "LookAtEnabled": false,
+        "Target": {
+          "_type": "component",
+          "component_id": "d8b8a70b-dfda-49be-b17d-f29cb3da96ef",
+          "go": "f6341e54-9a94-4a77-904b-d8fc9e1d9c01",
+          "component_type": "SkinnedModelRenderer"
+        }
+      },
+      {
+        "__type": "FPSPlayerMovementController",
+        "__guid": "4b7324b2-45f7-4877-8d3d-bb88cb7e09ae",
+        "AirControl": 0.1,
+        "AnimationHelper": {
+          "_type": "component",
+          "component_id": "93cf183d-80a5-4d7c-adaf-99231c474dab",
+          "go": "0a3d43ee-19a7-4e0f-a008-88f7e6c0ec2e",
+          "component_type": "CitizenAnimationHelper"
+        },
+        "BodyObject": {
+          "_type": "gameobject",
+          "go": "f6341e54-9a94-4a77-904b-d8fc9e1d9c01"
+        },
+        "BodyRenderer": {
+          "_type": "component",
+          "component_id": "d8b8a70b-dfda-49be-b17d-f29cb3da96ef",
+          "go": "f6341e54-9a94-4a77-904b-d8fc9e1d9c01",
+          "component_type": "SkinnedModelRenderer"
+        },
+        "CharacterController": {
+          "_type": "component",
+          "component_id": "82f97dc4-5381-49d1-8513-71101206a841",
+          "go": "0a3d43ee-19a7-4e0f-a008-88f7e6c0ec2e",
+          "component_type": "CharacterController"
+        },
+        "CrouchSpeed": 90,
+        "GroundControl": 4,
+        "HeadObject": {
+          "_type": "gameobject",
+          "go": "19f10a6a-30ec-42c4-b7cd-32843fe1ca04"
+        },
+        "JumpForce": 400,
+        "MaxForce": 50,
+        "RunSpeed": 290,
+        "Speed": 160
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "89daad0d-9383-4c6a-b806-26bede26e40f",
+        "Center": "0,0,36.10001",
+        "IsTrigger": false,
+        "Scale": "15.59997,51.89999,72.9",
+        "Static": false
+      },
+      {
+        "__type": "FPSWeaponController",
+        "__guid": "0be6af03-17cc-4d7c-8b70-126bc738101b",
+        "Body": {
+          "_type": "gameobject",
+          "go": "f6341e54-9a94-4a77-904b-d8fc9e1d9c01"
+        },
+        "Head": {
+          "_type": "gameobject",
+          "go": "19f10a6a-30ec-42c4-b7cd-32843fe1ca04"
+        },
+        "Weapons": []
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "19f10a6a-30ec-42c4-b7cd-32843fe1ca04",
+        "Flags": 0,
+        "Name": "Player Head",
+        "Position": "0,0,62.85746",
+        "Tags": "playerhead",
+        "Enabled": true,
+        "NetworkOrphaned": 3,
+        "OwnerTransfer": 0
+      },
+      {
+        "__guid": "f6341e54-9a94-4a77-904b-d8fc9e1d9c01",
+        "Flags": 0,
+        "Name": "Player Body",
+        "Tags": "playerbody",
+        "Enabled": true,
+        "OwnerTransfer": 0,
+        "Components": [
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "d8b8a70b-dfda-49be-b17d-f29cb3da96ef",
+            "BodyGroups": 341,
+            "CreateBoneObjects": false,
+            "Model": "models/citizen/citizen.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ]
+      },
+      {
+        "__guid": "e02d3743-f7f2-42e1-8cf0-b0ed7c559a8d",
+        "Flags": 0,
+        "Name": "Player HUD",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ScreenPanel",
+            "__guid": "267ebbc9-0e4a-43f7-b64b-81cbb97d14bc",
+            "AutoScreenScale": true,
+            "Opacity": 1,
+            "Scale": 1,
+            "ZIndex": 100
+          },
+          {
+            "__type": "FPSHud",
+            "__guid": "9604e978-7f81-4f39-9da7-c2532fe8f2c3",
+            "fpsWeaponController": {
+              "_type": "component",
+              "component_id": "0be6af03-17cc-4d7c-8b70-126bc738101b",
+              "go": "0a3d43ee-19a7-4e0f-a008-88f7e6c0ec2e",
+              "component_type": "FPSWeaponController"
+            }
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

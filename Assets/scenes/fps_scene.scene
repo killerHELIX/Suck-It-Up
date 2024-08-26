@@ -1,0 +1,536 @@
+{
+  "__guid": "b364eda7-2551-48da-9195-ef0f073dd50a",
+  "GameObjects": [
+    {
+      "__guid": "e6074452-500a-4256-bf3e-725254e3cac6",
+      "Flags": 0,
+      "Name": "Environment",
+      "Enabled": true,
+      "Children": [
+        {
+          "__guid": "97635ec7-6e91-4e4c-bcaf-33c084fd8823",
+          "Flags": 0,
+          "Name": "Directional Light (1)",
+          "Position": "298.8745,-130.426,285.7899",
+          "Rotation": "0,0.9238796,0,0.3826835",
+          "Tags": "light_directional,light,light_point",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.DirectionalLight",
+              "__guid": "716b9bfa-adfb-4452-bd17-16a60c40184f",
+              "FogMode": "Enabled",
+              "FogStrength": 1,
+              "LightColor": "0.91373,0.98039,1,1",
+              "Shadows": true,
+              "SkyColor": "0,0,0,0"
+            }
+          ]
+        },
+        {
+          "__guid": "ec7e7c12-491a-43e9-bada-499d3e90c9d0",
+          "Flags": 0,
+          "Name": "Directional Light",
+          "Position": "-507.099,-130.426,282.0089",
+          "Rotation": "0,0.5,0,0.8660254",
+          "Tags": "light_directional,light,light_point",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.DirectionalLight",
+              "__guid": "93a9e50d-5f9f-41fc-b167-04d65246f129",
+              "FogMode": "Enabled",
+              "FogStrength": 1,
+              "LightColor": "0.91373,0.98039,1,1",
+              "Shadows": true,
+              "SkyColor": "0,0,0,0"
+            }
+          ]
+        },
+        {
+          "__guid": "de4b0981-d4a7-4dc6-9ce9-37ce7b9a854c",
+          "Flags": 0,
+          "Name": "Ground",
+          "Scale": "40,40,1",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "3c09a5a5-faa0-4850-a235-d7a7a93d7923",
+              "BodyGroups": 18446744073709551615,
+              "MaterialOverride": "materials/default/white.vmat",
+              "Model": "models/dev/box.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "7d15e079-407a-410c-988f-faef9b467317",
+              "Center": "0,0,0",
+              "IsTrigger": false,
+              "Scale": "49.99999,50,50",
+              "Static": false
+            }
+          ]
+        },
+        {
+          "__guid": "7cde79bf-fd6d-408a-b481-1587a71115ac",
+          "Flags": 0,
+          "Name": "Cube (2)",
+          "Position": "75.50637,-176.8589,146.953",
+          "Scale": "1,1,2",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "4191e918-45c1-4c52-a5e6-ba55068763ac",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/dev/box.vmdl",
+              "RenderType": "On",
+              "Tint": "1,0,0,1"
+            },
+            {
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "87eff500-bfb9-4478-9fe6-a4b931ab3819",
+              "Center": "0,0,0",
+              "IsTrigger": false,
+              "Scale": "50,50,50",
+              "Static": false
+            },
+            {
+              "__type": "Sandbox.Rigidbody",
+              "__guid": "2fc61970-be58-45a7-b8d6-e29308bf0294",
+              "AngularDamping": 0,
+              "Gravity": true,
+              "LinearDamping": 0,
+              "Locking": {},
+              "MassCenterOverride": "0,0,0",
+              "MassOverride": 0,
+              "MotionEnabled": true,
+              "OverrideMassCenter": false,
+              "RigidbodyFlags": 0,
+              "StartAsleep": false
+            }
+          ]
+        },
+        {
+          "__guid": "aa155f86-ccb2-4f4c-aaa4-26221505ab40",
+          "Flags": 0,
+          "Name": "Cube (1)",
+          "Position": "75.50637,-206.0587,70.43097",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "27c02324-0988-43c9-aa61-7afd3554a1cf",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/dev/box.vmdl",
+              "RenderType": "On",
+              "Tint": "0.21667,1,0,1"
+            },
+            {
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "bf070251-51b3-493d-ba58-f0371c4b9a29",
+              "Center": "0,0,0",
+              "IsTrigger": false,
+              "Scale": "50,50,50",
+              "Static": false
+            },
+            {
+              "__type": "Sandbox.Rigidbody",
+              "__guid": "09e51361-69e0-465a-8a7d-30a3831e43b8",
+              "AngularDamping": 0,
+              "Gravity": true,
+              "LinearDamping": 0,
+              "Locking": {},
+              "MassCenterOverride": "0,0,0",
+              "MassOverride": 0,
+              "MotionEnabled": true,
+              "OverrideMassCenter": false,
+              "RigidbodyFlags": 0,
+              "StartAsleep": false
+            }
+          ]
+        },
+        {
+          "__guid": "25953437-7abf-4f29-9a1c-61c91ad6b7b9",
+          "Flags": 0,
+          "Name": "Cube",
+          "Position": "75.35748,-137.8555,70.38515",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "9a80e046-e331-420e-9992-cc5a21b1cd57",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/dev/box.vmdl",
+              "RenderType": "On",
+              "Tint": "0,0.08333,1,1"
+            },
+            {
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "9141eecb-1663-47ce-a1f2-467451280bd6",
+              "Center": "0,0,0",
+              "IsTrigger": false,
+              "Scale": "50,50,50",
+              "Static": false
+            },
+            {
+              "__type": "Sandbox.Rigidbody",
+              "__guid": "e4f5955a-13b5-4576-990c-a352cc3914af",
+              "AngularDamping": 0,
+              "Gravity": true,
+              "LinearDamping": 0,
+              "Locking": {},
+              "MassCenterOverride": "0,0,0",
+              "MassOverride": 0,
+              "MotionEnabled": true,
+              "OverrideMassCenter": false,
+              "RigidbodyFlags": 0,
+              "StartAsleep": false
+            }
+          ]
+        },
+        {
+          "__guid": "9cbb8ea1-79c6-4fc1-a188-efdaa3dcd5d8",
+          "Flags": 0,
+          "Name": "Cube (3)",
+          "Position": "-35.79565,-393.4168,74.96223",
+          "Scale": "1,1,2",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "9598f814-d640-4592-9e62-060420b4a156",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/dev/box.vmdl",
+              "RenderType": "On",
+              "Tint": "1,0,0,1"
+            },
+            {
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "f45638bb-49fd-47c1-8431-94848986dd17",
+              "Center": "0,0,0",
+              "IsTrigger": false,
+              "Scale": "50,50,50",
+              "Static": false
+            },
+            {
+              "__type": "Sandbox.Rigidbody",
+              "__guid": "e6124491-3faf-4198-80e6-e91ce25c5312",
+              "AngularDamping": 0,
+              "Gravity": false,
+              "LinearDamping": 0,
+              "Locking": {},
+              "MassCenterOverride": "0,0,0",
+              "MassOverride": 0,
+              "MotionEnabled": false,
+              "OverrideMassCenter": false,
+              "RigidbodyFlags": 0,
+              "StartAsleep": false
+            }
+          ]
+        },
+        {
+          "__guid": "51ea859c-9a0d-477c-9ecf-caa2d51bf209",
+          "Flags": 0,
+          "Name": "Cube (5)",
+          "Position": "-35.79565,-443.2897,128.4916",
+          "Scale": "1,1,2",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "74f718ee-0929-4f4a-a6c0-ec15e02001ad",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/dev/box.vmdl",
+              "RenderType": "On",
+              "Tint": "1,0,0,1"
+            },
+            {
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "ebc2cec9-a614-4ddc-b860-046e6db944f4",
+              "Center": "0,0,0",
+              "IsTrigger": false,
+              "Scale": "50,50,50",
+              "Static": false
+            },
+            {
+              "__type": "Sandbox.Rigidbody",
+              "__guid": "93646554-221f-475e-a3bb-706f9aae19ac",
+              "AngularDamping": 0,
+              "Gravity": false,
+              "LinearDamping": 0,
+              "Locking": {},
+              "MassCenterOverride": "0,0,0",
+              "MassOverride": 0,
+              "MotionEnabled": false,
+              "OverrideMassCenter": false,
+              "RigidbodyFlags": 0,
+              "StartAsleep": false
+            }
+          ]
+        },
+        {
+          "__guid": "c7b49504-6a35-4175-9470-f82c9ff5eb84",
+          "Flags": 0,
+          "Name": "Cube (4)",
+          "Position": "-35.79565,-493.5708,74.96223",
+          "Scale": "1,1,2",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "52043c2c-4b8f-4c21-bb59-c552de75310e",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/dev/box.vmdl",
+              "RenderType": "On",
+              "Tint": "1,0,0,1"
+            },
+            {
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "40d69ed4-1fb3-41c5-b383-fb18aa4b6084",
+              "Center": "0,0,0",
+              "IsTrigger": false,
+              "Scale": "50,50,50",
+              "Static": false
+            },
+            {
+              "__type": "Sandbox.Rigidbody",
+              "__guid": "8b830790-5807-4aeb-8fb5-b021bd073277",
+              "AngularDamping": 0,
+              "Gravity": false,
+              "LinearDamping": 0,
+              "Locking": {},
+              "MassCenterOverride": "0,0,0",
+              "MassOverride": 0,
+              "MotionEnabled": false,
+              "OverrideMassCenter": false,
+              "RigidbodyFlags": 0,
+              "StartAsleep": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "a35230b8-766c-4b0a-90f1-156f72a324b8",
+      "Flags": 0,
+      "Name": "Network",
+      "Position": "-56.10849,-16.71288,108.8857",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "Components": [
+        {
+          "__type": "Sandbox.NetworkHelper",
+          "__guid": "b1377d30-e00d-4acc-9af1-e1a8d94b6c77",
+          "PlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "fps/player/fpsplayer.prefab"
+          },
+          "SpawnPoints": [
+            {
+              "_type": "gameobject",
+              "go": "52094ed3-85c1-4ec0-9b84-26611e0ab6e2"
+            }
+          ],
+          "StartServer": true
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "52094ed3-85c1-4ec0-9b84-26611e0ab6e2",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "-186.8602,-200.0041,-46.53906",
+          "Enabled": true
+        }
+      ]
+    },
+    {
+      "__guid": "5681a214-b822-4a7a-a66e-3bf346951fff",
+      "Flags": 0,
+      "Name": "Camera",
+      "Position": "-207.5286,0,69.43201",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.CameraComponent",
+          "__guid": "ca55b686-2c93-47a8-a2d6-716e9ebf60bc",
+          "BackgroundColor": "0.33333,0.46275,0.52157,1",
+          "ClearFlags": "All",
+          "FieldOfView": 90,
+          "IsMainCamera": true,
+          "Orthographic": false,
+          "OrthographicHeight": 1204,
+          "Priority": 1,
+          "RenderExcludeTags": "",
+          "RenderTags": "",
+          "TargetEye": "None",
+          "Viewport": "0,0,1,1",
+          "ZFar": 10000,
+          "ZNear": 10
+        },
+        {
+          "__type": "FPSCameraController",
+          "__guid": "2fa69a1d-936b-4a3b-a0ad-6f540b6c2349",
+          "Camera": {
+            "_type": "component",
+            "component_id": "ca55b686-2c93-47a8-a2d6-716e9ebf60bc",
+            "go": "5681a214-b822-4a7a-a66e-3bf346951fff",
+            "component_type": "CameraComponent"
+          },
+          "Distance": 0,
+          "ThirdPersonHorizontalDistance": 30
+        }
+      ]
+    },
+    {
+      "__guid": "35711c85-dcf8-48bd-acb4-2c858ca98892",
+      "Flags": 0,
+      "Name": "pistol (1)",
+      "Position": "-101.3939,-311.5093,34.74518",
+      "Rotation": "-0.4785534,0.4873725,-0.5164565,0.5164568",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "fps/weapons/pistol/pistol.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "8f6514b8-d9d2-4407-ba64-becee74af91c",
+      "Flags": 0,
+      "Name": "pistol (3)",
+      "Position": "-69.46691,-311.8008,36.88637",
+      "Rotation": "-0.4785534,0.4873725,-0.5164565,0.5164568",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "fps/weapons/pistol/pistol.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "61d2c261-ae71-441f-b521-5008598dd2b5",
+      "Flags": 0,
+      "Name": "pistol (4)",
+      "Position": "-37.53996,-312.0922,39.02756",
+      "Rotation": "-0.4785534,0.4873725,-0.5164565,0.5164568",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "fps/weapons/pistol/pistol.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "a234aba5-f448-4b21-a7da-e152cf3bbc3b",
+      "Flags": 0,
+      "Name": "pistol (5)",
+      "Position": "-5.612995,-312.3836,41.16874",
+      "Rotation": "-0.4785534,0.4873725,-0.5164565,0.5164568",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "fps/weapons/pistol/pistol.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "88c79c1d-7c0f-4046-acbe-a0390b4e27a9",
+      "Flags": 0,
+      "Name": "pistol (6)",
+      "Position": "-5.135747,-256.3559,41.67923",
+      "Rotation": "-0.4785534,0.4873725,-0.5164565,0.5164568",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "fps/weapons/pistol/pistol.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "473564fa-1aa5-46a1-aafc-be83aa0cdd9c",
+      "Flags": 0,
+      "Name": "pistol (7)",
+      "Position": "-37.06266,-256.0643,39.5382",
+      "Rotation": "-0.4785534,0.4873725,-0.5164565,0.5164568",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "fps/weapons/pistol/pistol.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "a03bbe42-b4a4-4664-a105-516a55c62791",
+      "Flags": 0,
+      "Name": "pistol (8)",
+      "Position": "-68.98964,-255.7727,37.39718",
+      "Rotation": "-0.4785534,0.4873725,-0.5164565,0.5164568",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "fps/weapons/pistol/pistol.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "f273c7c8-3c76-493e-8ac2-bdecb0398c58",
+      "Flags": 0,
+      "Name": "pistol (9)",
+      "Position": "-100.9166,-255.4811,35.25616",
+      "Rotation": "-0.4785534,0.4873725,-0.5164565,0.5164568",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "fps/weapons/pistol/pistol.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "4af9470f-d49b-4c67-8854-e2eb8a106ec1",
+      "Flags": 0,
+      "Name": "pistol (10)",
+      "Position": "-132.8436,-255.1895,33.11515",
+      "Rotation": "-0.4785534,0.4873725,-0.5164565,0.5164568",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "fps/weapons/pistol/pistol.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "10d42338-96a8-471d-a88e-0fbb5545fa89",
+      "Flags": 0,
+      "Name": "pistol (2)",
+      "Position": "-133.3208,-311.2177,32.60419",
+      "Rotation": "-0.4785534,0.4873725,-0.5164565,0.5164568",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "fps/weapons/pistol/pistol.prefab",
+      "__PrefabVariables": {}
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 30,
+    "NetworkInterpolation": true,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "Title": "fps_scene",
+  "Description": "",
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

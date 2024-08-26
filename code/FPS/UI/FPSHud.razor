@@ -1,0 +1,58 @@
+﻿@using Sandbox;
+@using Sandbox.UI;
+@using System;
+@inherits PanelComponent;
+
+<root class="fps-hud debug">
+
+	<div class="crosshair debug">+</div>
+
+	<div class="player-info">
+		<div class="healthbar"></div>
+	</div>
+
+	<div class="weapon-info debug @(GetWeaponInfoClass())">
+		<div class="name">
+			@(GetName())
+		</div>
+		<div class="info">
+			<div class="ammo">@(GetAmmo())</div>
+			<div class="reserves">@(GetReserves())</div>
+		</div>
+
+	</div>	
+
+</root>
+
+@code {
+
+	[Property] public FPSWeaponController fpsWeaponController { get; set; }
+
+	protected String GetWeaponInfoClass()
+	{
+		var selectedWep = fpsWeaponController.SelectedWeapon;
+		return (selectedWep == null) ? "hidden" : "";
+	}
+	protected String GetName()
+	{
+		var selectedWep = fpsWeaponController.SelectedWeapon;
+		return (selectedWep != null) ? $"{selectedWep.Name}" : "Holstered";
+
+	}
+
+	protected String GetAmmo()
+	{
+		var selectedWep = fpsWeaponController.SelectedWeapon;
+		return (selectedWep != null) ? $"{selectedWep.CurrentAmmo}" : "0";
+
+	}
+
+	protected String GetReserves()
+	{
+		var selectedWep = fpsWeaponController.SelectedWeapon;
+		return (selectedWep != null) ? $"{selectedWep.CurrentReserves}" : "0";
+
+	}
+
+	protected override int BuildHash() => System.HashCode.Combine($"{fpsWeaponController.SelectedWeapon?.CurrentAmmo}");
+}

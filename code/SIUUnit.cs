@@ -5,11 +5,10 @@ class SIUUnit : Unit
 {
 
 	[Property] public float IndividualModelScale { get; set; }
+	[Property] public Vector3 localEyeBallPosition { get; set; }
 
 	// This will be a factor of the unit size I imagine
-	private float maxChaseDistanceFromHome = 600f;
 	private float lastMeleeTime = Time.Now;
-	private float lastMoveOrderTime = Time.Now;
 	private Vector3 oldPosition = new Vector3();
 	private float stuckTime = -1;
 
@@ -18,9 +17,7 @@ class SIUUnit : Unit
 	private bool canSeeTempTarget = false;
 
 	// Unit Constants
-	private const float MOVE_ORDER_FREQUENCY = .1f;
-	private const float CHASE_DIST_MULTIPLIER = 90f;
-	private const float AUTO_MELEE_RAD_MULTIPLIER = 90f;
+	private const float AUTO_MELEE_RAD_DIST = 65f;
 	private const float NAV_AGENT_RAD_MULTIPLIER = .5f;
 	private const float CLICK_HITBOX_RADIUS_MULTIPLIER = .5f;
 	private const float GLOBAL_UNIT_SCALE = 15f;
@@ -172,9 +169,9 @@ class SIUUnit : Unit
 					{
 						var playerCollidedWith = collision.GameObject;
 						Log.Info("Detected Player: " + playerCollidedWith.Name + ". Can I see him?");
-						Log.Info("Ray from " + Transform.Position + "to " + playerCollidedWith.Transform.Position);
+						Log.Info("Ray from " + Transform.Position + localEyeBallPosition + "to " + playerCollidedWith.Transform.Position);
 						// Draw a ray here to detect whether or not we can see the unit
-						var sightRay = Scene.Trace.Ray(Transform.Position, playerCollidedWith.Transform.Position);
+						var sightRay = Scene.Trace.Ray(Transform.Position + localEyeBallPosition, playerCollidedWith.Transform.Position);
 						//sightRay.UseHitboxes(true);
 						//sightRay.HitTriggers();
 						sightRay.WithTag(PLAYER_TAG);
@@ -322,7 +319,7 @@ class SIUUnit : Unit
 
 		// Auto calculate unit's auto melee collider size
 		UnitAutoMeleeCollider.Center = Vector3.Zero;
-		UnitAutoMeleeCollider.Radius = AUTO_MELEE_RAD_MULTIPLIER * targetxyMax;
+		UnitAutoMeleeCollider.Radius = AUTO_MELEE_RAD_DIST + targetxyMin;
 
 		// Auto calculate unit's ranged attack range collider size
 
@@ -330,9 +327,6 @@ class SIUUnit : Unit
 		// Auto calculate unit's Selection Collider scaling and relative position
 		SelectionHitbox.Center = new Vector3(0, 0, defaultModelSize.z / 2);
 		SelectionHitbox.Scale = new Vector3(defaultxyMin * CLICK_HITBOX_RADIUS_MULTIPLIER, defaultxyMin * CLICK_HITBOX_RADIUS_MULTIPLIER, defaultModelSize.z);
-
-		// Auto calculate unit's chase distance
-		maxChaseDistanceFromHome = CHASE_DIST_MULTIPLIER * targetxyMax;
 
 		// Auto Calculate other visual element sizes
 		PhysicalModelRenderer.setModelSize(BASE_STAND_SIZE_MULTIPLIER * defaultModelSize);

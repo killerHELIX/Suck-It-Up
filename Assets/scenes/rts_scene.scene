@@ -189,6 +189,7 @@
           "HasMeleeAttack": true,
           "HasRangedAttack": false,
           "IndividualModelScale": 0,
+          "localEyeBallPosition": "0,0,0",
           "MaxHealth": 1000,
           "MeleeAttackDamage": 20,
           "MeleeAttackSpeed": 1.5,

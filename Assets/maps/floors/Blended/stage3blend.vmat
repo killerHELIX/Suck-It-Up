@@ -1,0 +1,45 @@
+// THIS FILE IS AUTO-GENERATED
+
+Layer0
+{
+	shader "shaders/blendable.shader"
+
+	F_MULTIBLEND 2 // 3 Layers
+
+	//---- Fog ----
+	g_bFogEnabled "1"
+
+	//---- Material A ----
+	g_flTintColorA "[1.000000 1.000000 1.000000 0.000000]"
+	TextureAmbientOcclusionA "materials/default/default_ao.tga"
+	TextureBlendMaskA "maps/floors/assets/floor2/floor2_pixel_rough.jpg"
+	TextureColorA "maps/floors/assets/floor4/floor4_pixel_color.jpg"
+	TextureMetalnessA "materials/default/default_metal.tga"
+	TextureNormalA "maps/floors/assets/floor4/floor4_pixel_normal.jpg"
+	TextureRoughnessA "maps/floors/assets/floor4/floor4_pixel_rough.jpg"
+	TextureTintMaskA "materials/default/default.tga"
+
+	//---- Material B ----
+	g_flBlendSoftnessB "0.454"
+	g_flTintColorB "[1.000000 1.000000 1.000000 0.000000]"
+	g_vTexCoordScale2 "[1.000 1.000]"
+	TextureAmbientOcclusionB "materials/default/default_ao.tga"
+	TextureBlendMaskB "maps/floors/assets/floor2/floor2_pixel_rough.jpg"
+	TextureColorB "maps/floors/assets/floor2/floor2_pixel_color.jpg"
+	TextureMetalnessB "materials/default/default_metal.tga"
+	TextureNormalB "maps/floors/assets/floor2/floor2_pixel_normal.jpg"
+	TextureRoughnessB "maps/floors/assets/floor2/floor2_pixel_rough.jpg"
+	TextureTintMaskB "materials/default/default.tga"
+
+	//---- Material C ----
+	g_flBlendSoftnessC "0.480"
+	g_flTintColorC "[1.000000 1.000000 1.000000 0.000000]"
+	g_vTexCoordScale3 "[1.000 1.000]"
+	TextureAmbientOcclusionC "materials/default/default_ao.tga"
+	TextureBlendMaskC "maps/floors/assets/floor2/floor2_pixel_rough.jpg"
+	TextureColorC "maps/floors/assets/floor5/floor5_pixel_color.jpg"
+	TextureMetalnessC "materials/default/default_metal.tga"
+	TextureNormalC "maps/floors/assets/floor5/floor5_pixel_normal.jpg"
+	TextureRoughnessC "[0.302000 0.302000 0.302000 0.000000]"
+	TextureTintMaskC "materials/default/default.tga"
+}

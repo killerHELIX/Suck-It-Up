@@ -1,0 +1,60 @@
+{
+  "__guid": "a189dda8-e2b5-41c4-94d1-7643a021b9ab",
+  "GameObjects": [
+    {
+      "__guid": "c7e59875-a331-4309-bff7-2c7bce562710",
+      "Flags": 0,
+      "Name": "Map",
+      "Position": "2353.467,109.6876,-68.01694",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MapInstance",
+          "__guid": "7ba9696b-4bf1-4d53-b7d2-15a1ae5867cc",
+          "__version": 1,
+          "EnableCollision": true,
+          "MapName": "maps/map blockout.vmap",
+          "NoOrigin": false,
+          "UseMapFromLaunch": false
+        }
+      ],
+      "Children": []
+    },
+    {
+      "__guid": "e53fedfb-4361-4ec4-a009-3c6550ee64c7",
+      "Flags": 0,
+      "Name": "playercontroller",
+      "Position": "-69.23866,-285.8395,85.81084",
+      "Rotation": "-0.00000244379,0,0.707108,0.7071056",
+      "Enabled": true,
+      "__Prefab": "prefabs/playercontroller.prefab",
+      "__PrefabVariables": {}
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 30,
+    "NetworkInterpolation": true,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "Title": "roomb_map",
+  "Description": "",
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

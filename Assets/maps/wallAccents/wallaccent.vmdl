@@ -13,7 +13,7 @@
 						_class = "DefaultMaterialGroup"
 						remaps = [  ]
 						use_global_default = true
-						global_default_material = "materials/default.vmat"
+						global_default_material = "maps/wallaccents/assets/wallaccent1_pixel.vmat"
 					},
 				]
 			},
@@ -23,21 +23,18 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "maps/wallaccents/assets/wallaccent.fbx"
+						filename = "maps/wallAccents/assets/wallAccent/wallAccent.fbx"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
-						import_scale = 1.0
+						import_scale = 100.0
 						align_origin_x_type = "None"
 						align_origin_y_type = "None"
 						align_origin_z_type = "None"
 						parent_bone = ""
 						import_filter = 
 						{
-							exclude_by_default = true
-							exception_list = 
-							[
-								"Plane_003",
-							]
+							exclude_by_default = false
+							exception_list = [  ]
 						}
 					},
 				]

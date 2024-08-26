@@ -17,7 +17,7 @@ class SIUUnit : Unit
 	private bool canSeeTempTarget = false;
 
 	// Unit Constants
-	private const float AUTO_MELEE_RAD_DIST = 65f;
+	private const float AUTO_MELEE_RAD_DIST = 650f;
 	private const float NAV_AGENT_RAD_MULTIPLIER = .5f;
 	private const float CLICK_HITBOX_RADIUS_MULTIPLIER = .5f;
 	private const float GLOBAL_UNIT_SCALE = 15f;
@@ -248,7 +248,10 @@ class SIUUnit : Unit
 	public override void die()
 	{
 		//Log.Info( this.GameObject.Name + " dies!" );
-		RTSPlayer.Local.UnitControl.unitHasDied(this);
+		if(RTSPlayer.Local != null)
+		{
+			RTSPlayer.Local.UnitControl.unitHasDied(this);
+		}
 		PhysicalModelRenderer.animateDeath();
 		UnitNavAgent.Enabled = false;
 		UnitMeleeCollider.Enabled = false;
@@ -261,7 +264,10 @@ class SIUUnit : Unit
 		ThisHealthBar.Enabled = false;
 		ThisHealthBar.setEnabled(false);
 		PhysicalModelRenderer.baseStand.setEnabled(false);
-		RTSPlayer.Local.removeUnit(this.GameObject, CapacityCost);
+		if (RTSPlayer.Local != null)
+		{
+			RTSPlayer.Local.removeUnit(this.GameObject, CapacityCost);
+		}
 		Enabled = false;
 
 		//This will be fully destroyed later when the corpse dissapears

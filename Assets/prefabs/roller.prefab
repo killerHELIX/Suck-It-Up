@@ -23,6 +23,12 @@
         "MeleeAttackSpeed": 1,
         "ModelFile": "models/enemies/roller.vmdl",
         "ModelMaterial": "materials/enemies/roller_pixel.vmat",
+        "myHitBoxes": {
+          "_type": "component",
+          "component_id": "ad2713a1-81fa-4fe6-a8f5-12eb2231d700",
+          "go": "cdf08c0f-f6a7-4f96-a32f-a7f36cb69e56",
+          "component_type": "ModelHitboxes"
+        },
         "name": "Normal",
         "PhysicalModelRenderer": {
           "_type": "component",
@@ -470,32 +476,32 @@
             "__guid": "86c7055e-ae32-4d50-b629-ace127a99806",
             "Flags": 4,
             "Name": "Wheel",
-            "Position": "-0.00000004228579,0.00001162291,0.4492556",
-            "Rotation": "0.00104991,-0.001049845,0.7071058,0.7071061",
+            "Position": "-0.0000006342211,0.0001743454,6.738835",
+            "Rotation": "0.001049909,-0.001049845,0.7071057,0.7071062",
             "Enabled": true
           },
           {
             "__guid": "6f5fabe6-3881-4187-9c1b-301c4f0523da",
             "Flags": 4,
             "Name": "Body",
-            "Position": "-0.00000004339612,0,0.7280661",
-            "Rotation": "0.4999999,-0.4999999,0.5000001,0.5000002",
+            "Position": "-0.0000006509424,0,10.921",
+            "Rotation": "0.4999996,-0.4999999,0.5,0.5000004",
             "Enabled": true,
             "Children": [
               {
                 "__guid": "ce8db042-2ae2-4877-911b-9d88c85cbd99",
                 "Flags": 4,
                 "Name": "Arm_L",
-                "Position": "2.262855,0.4643444,0.1848324",
-                "Rotation": "0.08500262,-0.056672,0.8528532,0.5120587",
+                "Position": "33.94288,6.965173,2.772475",
+                "Rotation": "0.08500291,-0.05667188,0.8528532,0.5120587",
                 "Enabled": true
               },
               {
                 "__guid": "75589632-f838-4373-a1f0-349b57f2adba",
                 "Flags": 4,
                 "Name": "Arm_R",
-                "Position": "2.269057,-0.4581344,0.1941151",
-                "Rotation": "0.3438951,-0.4104823,0.7486012,-0.3909432",
+                "Position": "34.03586,-6.87202,2.911731",
+                "Rotation": "0.3438952,-0.4104822,0.7486011,-0.3909437",
                 "Enabled": true
               }
             ]

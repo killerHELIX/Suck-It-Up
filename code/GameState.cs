@@ -3,6 +3,8 @@
 public class GameState : Component
 {
 
+	[Property] public CorpseList GameCorpseList { get; set; }
+
 	public const int MAX_RTS_PLAYERS = 1;
 	public const int MAX_SPECTATOR_PLAYERS = 99;
 	public const int MAX_SURVIVOR_PLAYERS = 10;
@@ -58,6 +60,8 @@ public class GameState : Component
 			survivorPlayerList.Add("balls");
 			//rtsPlayerList.Add("Grundle");
 			// DEBUG
+			Log.Info(Network.OwnerConnection);
+			Log.Info(Network.OwnerConnection.DisplayName);
 			spectatorPlayerList.Add(Network.OwnerConnection.DisplayName);
 			GameObject.NetworkSpawn(Network.OwnerConnection);
 		}
@@ -105,11 +109,11 @@ public class GameState : Component
 
 	private void pullCurrentGameStateFromHost()
 	{
-		Log.Info("Getting active scene directory: " + Game.ActiveScene.Directory);
-		Log.Info("Game State objects found: " + Game.ActiveScene.Directory.FindByName(OBJECT_NAME).Count());
-		Log.Info("Am I the owner?: " + (Game.ActiveScene.Directory.FindByName(OBJECT_NAME).First().Network.IsOwner));
-		Log.Info("Owner Connection: " + (Game.ActiveScene.Directory.FindByName(OBJECT_NAME).First().Network.OwnerConnection));
-		Log.Info("Game State objects found: " + Game.ActiveScene.Directory.FindByName(OBJECT_NAME).FirstOrDefault(x => x.Network.OwnerConnection.IsHost));
+		//Log.Info("Getting active scene directory: " + Game.ActiveScene.Directory);
+		//Log.Info("Game State objects found: " + Game.ActiveScene.Directory.FindByName(OBJECT_NAME).Count());
+		//Log.Info("Am I the owner?: " + (Game.ActiveScene.Directory.FindByName(OBJECT_NAME).First().Network.IsOwner));
+		//Log.Info("Owner Connection: " + (Game.ActiveScene.Directory.FindByName(OBJECT_NAME).First().Network.OwnerConnection));
+		//Log.Info("Game State objects found: " + Game.ActiveScene.Directory.FindByName(OBJECT_NAME).FirstOrDefault(x => x.Network.OwnerConnection.IsHost));
 		if(!Networking.IsHost)
 		{
 			Log.Info("I am not the host, but I got the hosts game state");

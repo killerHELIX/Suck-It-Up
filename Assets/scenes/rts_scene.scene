@@ -27,6 +27,7 @@
       "Name": "NetworkFPS",
       "Position": "408.021,344.2917,387.9409",
       "Enabled": true,
+      "NetworkMode": 1,
       "Components": [
         {
           "__type": "Sandbox.NetworkHelper",
@@ -673,7 +674,7 @@
       "__guid": "4c329369-56bd-4399-9ac2-ba6900b6425d",
       "Flags": 0,
       "Name": "Normal",
-      "Position": "-545.7505,1242.737,58.63085",
+      "Position": "-772.2017,1343.585,58.63093",
       "Tags": "unit",
       "Enabled": true,
       "NetworkMode": 1,
@@ -686,7 +687,7 @@
       "__guid": "cdf08c0f-f6a7-4f96-a32f-a7f36cb69e56",
       "Flags": 0,
       "Name": "Roller",
-      "Position": "-451.1378,1226.515,68.06158",
+      "Position": "-530.3559,1287.84,68.06164",
       "Tags": "unit",
       "Enabled": true,
       "NetworkMode": 1,
@@ -699,7 +700,7 @@
       "__guid": "5508d319-e56f-44cf-b066-957f5ae801c8",
       "Flags": 0,
       "Name": "Giant",
-      "Position": "-616.0447,1067.585,61.67672",
+      "Position": "-784.6994,1067.585,61.67672",
       "Tags": "unit",
       "Enabled": true,
       "NetworkMode": 1,
@@ -712,7 +713,7 @@
       "__guid": "17310faf-4192-4a8f-8a22-9fc0489361b9",
       "Flags": 0,
       "Name": "Critter",
-      "Position": "-429.0755,1079.923,63.60697",
+      "Position": "-56.79288,2097.97,63.60701",
       "Tags": "unit",
       "Enabled": true,
       "NetworkMode": 1,
@@ -1166,6 +1167,34 @@
               ]
             }
           ]
+        }
+      ]
+    },
+    {
+      "__guid": "407598a2-a37a-4d9d-93a8-bba1a61852b4",
+      "Flags": 0,
+      "Name": "Game State",
+      "Position": "-360.9762,923.1888,231.3388",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "GameState",
+          "__guid": "a8e28dc8-84f4-4ae7-9a43-768531973279",
+          "GameCorpseList": {
+            "_type": "component",
+            "component_id": "f3ce57a5-68a0-4646-8016-397cd04ba00d",
+            "go": "407598a2-a37a-4d9d-93a8-bba1a61852b4",
+            "component_type": "CorpseList"
+          }
+        },
+        {
+          "__type": "CorpseList",
+          "__guid": "f3ce57a5-68a0-4646-8016-397cd04ba00d",
+          "CorpseLimit": 50,
+          "CorpseTimeoutTime": 600,
+          "ImposeCorpseLimit": false,
+          "ImposeCorpseTimeout": true
         }
       ]
     }

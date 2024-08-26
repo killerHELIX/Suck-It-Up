@@ -6,6 +6,7 @@ class SIUUnit : Unit
 
 	[Property] public float IndividualModelScale { get; set; }
 	[Property] public Vector3 localEyeBallPosition { get; set; }
+	[Property] public ModelHitboxes myHitBoxes { get; set; }
 
 	// This will be a factor of the unit size I imagine
 	private float lastMeleeTime = Time.Now;
@@ -247,7 +248,7 @@ class SIUUnit : Unit
 	[Broadcast]
 	public override void die()
 	{
-		//Log.Info( this.GameObject.Name + " dies!" );
+		Log.Info( this.GameObject.Name + " dies!" );
 		if(RTSPlayer.Local != null)
 		{
 			RTSPlayer.Local.UnitControl.unitHasDied(this);
@@ -264,6 +265,7 @@ class SIUUnit : Unit
 		ThisHealthBar.Enabled = false;
 		ThisHealthBar.setEnabled(false);
 		PhysicalModelRenderer.baseStand.setEnabled(false);
+		myHitBoxes.Enabled = false;
 		if (RTSPlayer.Local != null)
 		{
 			RTSPlayer.Local.removeUnit(this.GameObject, CapacityCost);

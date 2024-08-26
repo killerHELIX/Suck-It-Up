@@ -114,17 +114,13 @@ class SIUUnit : Unit
 		// Move To closeby enemy that we can see
 		else if (tempTargetObject != null && tempTargetObject.Components.Get<FPSHealthController>().IsAlive)
 		{
-			Log.Info("Chasing seen unit " + this.GameObject);
+			//Log.Info("Chasing seen unit " + this.GameObject);
 			homeTargetLocation = tempTargetObject.Transform.Position;
 			move(homeTargetLocation, false);
 		}
 		else
 		{
-			Log.Info("Lost unit or no target, continuing to last known location " + this.GameObject);
-			if (tempTargetObject != null)
-			{
-				Log.Info("Is it alive? " + tempTargetObject.Components.Get<FPSHealthController>().IsAlive);
-			}
+			//Log.Info("Lost unit or no target, continuing to last known location " + this.GameObject);
 			//stopMoving();
 		}
 
@@ -152,24 +148,24 @@ class SIUUnit : Unit
 		if (UnitAutoMeleeCollider != null && isInAttackMode && commandGiven==UnitModelUtils.CommandType.None)
 		{
 			var validPlayerFound = false;
-			Log.Info("In auto melee collider");
+			//Log.Info("In auto melee collider");
 
 			// We have no current target
 			if (tempTargetObject == null)
 			{
 				// Get touching trigger colliders
 				var collidersInAutoMeleeRange = UnitAutoMeleeCollider.Touching;
-				Log.Info("Colliders in range " + collidersInAutoMeleeRange.Count());
+				//Log.Info("Colliders in range " + collidersInAutoMeleeRange.Count());
 				// Select colliders belonging to Units
 				if (collidersInAutoMeleeRange.Where(col => col.Tags.Has(PLAYER_TAG)).Any())
 				{
-					Log.Info("Player Colliders in range " + collidersInAutoMeleeRange.Where(col => col.Tags.Has(PLAYER_TAG)).Count());
+					//Log.Info("Player Colliders in range " + collidersInAutoMeleeRange.Where(col => col.Tags.Has(PLAYER_TAG)).Count());
 					// Select only melee colliders
 					foreach (var collision in collidersInAutoMeleeRange.Where(col => col.Tags.Has(PLAYER_TAG)))
 					{
 						var playerCollidedWith = collision.GameObject;
-						Log.Info("Detected Player: " + playerCollidedWith.Name + ". Can I see him?");
-						Log.Info("Ray from " + Transform.Position + localEyeBallPosition + "to " + playerCollidedWith.Transform.Position);
+						//Log.Info("Detected Player: " + playerCollidedWith.Name + ". Can I see him?");
+						//Log.Info("Ray from " + Transform.Position + localEyeBallPosition + "to " + playerCollidedWith.Transform.Position);
 						// Draw a ray here to detect whether or not we can see the unit
 						var sightRay = Scene.Trace.Ray(Transform.Position + localEyeBallPosition, playerCollidedWith.Transform.Position);
 						//sightRay.UseHitboxes(true);
@@ -178,10 +174,10 @@ class SIUUnit : Unit
 						var sightRayTrace = sightRay.RunAll();
 						if (sightRayTrace.Any())
 						{
-							foreach (var hit in sightRayTrace)
-							{
-								Log.Info("Hit: " + hit.GameObject);
-							}
+							//foreach (var hit in sightRayTrace)
+							//{
+								//Log.Info("Hit: " + hit.GameObject);
+							//}
 							// I can see it
 							if (sightRayTrace.First().GameObject == playerCollidedWith)
 							{
@@ -193,7 +189,7 @@ class SIUUnit : Unit
 						}
 						else
 						{
-							Log.Info("Can't see anything");
+							//Log.Info("Can't see anything");
 						}
 					}
 				}
@@ -217,13 +213,13 @@ class SIUUnit : Unit
 					// I can see it
 					if (sightRayTrace.First().GameObject != tempTargetObject)
 					{
-						Log.Info( this.GameObject.Name + " will cease attacking " + tempTargetObject.Name + "!" );
+						//Log.Info( this.GameObject.Name + " will cease attacking " + tempTargetObject.Name + "!" );
 						removeTempTarget = true;
 					}
 				}
 				if (removeTempTarget)
 				{
-					Log.Info("Removing Temp Target");
+					//Log.Info("Removing Temp Target");
 					tempTargetObject = null;
 				}
 			}
@@ -294,14 +290,14 @@ class SIUUnit : Unit
 		float targetxyMax = float.Max(targetModelSize.x, targetModelSize.y);
 		float defaultxyMin = float.Min(defaultModelSize.x, defaultModelSize.y);
 		float defaultxyMax = float.Max(defaultModelSize.x, defaultModelSize.y);
-		Log.Info("global modifier" + globalScaleModifier);
-		Log.Info("defaultModelSize: " +  defaultModelSize);
-		Log.Info("Target Model Size: " + targetModelSize );
-		Log.Info( "Calculated Scale: " + new Vector3(
-		((unitSize.x * globalScaleModifier.x) / defaultModelSize.x),
-		((unitSize.y * globalScaleModifier.y) / defaultModelSize.y),
-		((unitSize.z * globalScaleModifier.z) / defaultModelSize.z)
-		));
+		//Log.Info("global modifier" + globalScaleModifier);
+		//Log.Info("defaultModelSize: " +  defaultModelSize);
+		//Log.Info("Target Model Size: " + targetModelSize );
+		//Log.Info( "Calculated Scale: " + new Vector3(
+		//((unitSize.x * globalScaleModifier.x) / defaultModelSize.x),
+		//((unitSize.y * globalScaleModifier.y) / defaultModelSize.y),
+		//((unitSize.z * globalScaleModifier.z) / defaultModelSize.z)
+		//));
 		Transform.LocalScale = new Vector3(
 			(targetModelSize.x / defaultModelSize.x),
 			(targetModelSize.y / defaultModelSize.y),

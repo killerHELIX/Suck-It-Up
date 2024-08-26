@@ -26,6 +26,7 @@
       "Flags": 0,
       "Name": "NetworkFPS",
       "Position": "408.021,344.2917,387.9409",
+      "Enabled": true,
       "Components": [
         {
           "__type": "Sandbox.NetworkHelper",
@@ -49,7 +50,6 @@
       "Flags": 0,
       "Name": "NetworkRTS",
       "Position": "408.021,344.2917,387.9409",
-      "Enabled": true,
       "Components": [
         {
           "__type": "Sandbox.NetworkHelper",
@@ -72,7 +72,8 @@
       "__guid": "0058073b-536a-4b1b-bb61-375e2280b0b2",
       "Flags": 0,
       "Name": "Spawn",
-      "Position": "0,993.0723,487.0792",
+      "Position": "851.694,2175.784,487.0792",
+      "Rotation": "0,0,0.9396926,-0.3420201",
       "Tags": "particles,skybox",
       "Enabled": true
     },
@@ -669,12 +670,6 @@
       ]
     },
     {
-      "__guid": "65e6d12e-89b1-4727-ae83-2470647ea850",
-      "Flags": 0,
-      "Name": "GameObject",
-      "Enabled": true
-    },
-    {
       "__guid": "4c329369-56bd-4399-9ac2-ba6900b6425d",
       "Flags": 0,
       "Name": "Normal",
@@ -756,7 +751,6 @@
       "Name": "fpsplayer",
       "Position": "859.4801,2299.877,152.0326",
       "Tags": "player",
-      "Enabled": true,
       "NetworkMode": 1,
       "OwnerTransfer": 0,
       "Components": [
@@ -950,6 +944,28 @@
           ]
         }
       ]
+    },
+    {
+      "__guid": "5d33a986-a466-4d6e-ad5c-c7782821d93f",
+      "Flags": 0,
+      "Name": "pistol",
+      "Position": "638.2452,2058.577,179.1465",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "prefabs/fps/pistol.prefab",
+      "__PrefabVariables": {
+        "vmpos": "15,5,-6",
+        "hpos": "1,-9,30",
+        "hrot": "0,0.6755902,0,0.7372773",
+        "dropdistance": 20,
+        "dropspeedup": 500,
+        "dropspeedforward": 1000,
+        "maxammo": 8,
+        "maxreserves": 64,
+        "firerate": 0.5,
+        "reloadspeed": 3
+      }
     }
   ],
   "SceneProperties": {

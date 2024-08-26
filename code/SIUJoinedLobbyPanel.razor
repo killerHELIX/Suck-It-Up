@@ -12,7 +12,7 @@
 
 	protected override void OnStart()
 	{
-		if (!GameNetworkSystem.IsActive)
+		if (!MainMenuComponent.Local.joinedGame)
 		{
 			LoadingScreen.Title = "Creating Lobby";
 			//await Task.DelayRealtimeSeconds(0.1f);
@@ -39,6 +39,7 @@
 
 	public void returnToMain()
 	{
+		MainMenuComponent.Local.joinedGame = false;
 		MainMenuComponent.Local.setActivePanel(MainMenuComponent.MenuPanelType.MAIN);
 		GameNetworkSystem.Disconnect();
 	}

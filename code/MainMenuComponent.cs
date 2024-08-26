@@ -27,6 +27,8 @@ public class MainMenuComponent : Component, Component.INetworkListener
 
 	private static MainMenuComponent _local = null;
 
+	public bool joinedGame = false;
+
 	public static MainMenuComponent Local
 	{
 		get

@@ -91,6 +91,18 @@
           "go": "19f10a6a-30ec-42c4-b7cd-32843fe1ca04"
         },
         "Weapons": []
+      },
+      {
+        "__type": "FPSCameraController",
+        "__guid": "a309f54c-c382-4d7e-8702-abe7304a50fc",
+        "Camera": {
+          "_type": "component",
+          "component_id": "d85da349-f5f5-4c1d-bb38-7b4a6352136d",
+          "go": "6abaaad3-1b0c-4e2a-8ea4-a8c7e377d34e",
+          "component_type": "CameraComponent"
+        },
+        "Distance": 0,
+        "ThirdPersonHorizontalDistance": 30
       }
     ],
     "Children": [
@@ -147,6 +159,32 @@
               "go": "0a3d43ee-19a7-4e0f-a008-88f7e6c0ec2e",
               "component_type": "FPSWeaponController"
             }
+          }
+        ]
+      },
+      {
+        "__guid": "6abaaad3-1b0c-4e2a-8ea4-a8c7e377d34e",
+        "Flags": 0,
+        "Name": "Camera",
+        "Tags": "maincamera",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.CameraComponent",
+            "__guid": "d85da349-f5f5-4c1d-bb38-7b4a6352136d",
+            "BackgroundColor": "0.33333,0.46275,0.52157,1",
+            "ClearFlags": "All",
+            "FieldOfView": 90,
+            "IsMainCamera": true,
+            "Orthographic": false,
+            "OrthographicHeight": 1204,
+            "Priority": 1,
+            "RenderExcludeTags": "",
+            "RenderTags": "",
+            "TargetEye": "None",
+            "Viewport": "0,0,1,1",
+            "ZFar": 10000,
+            "ZNear": 10
           }
         ]
       }

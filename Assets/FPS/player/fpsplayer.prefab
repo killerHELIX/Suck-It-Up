@@ -103,6 +103,13 @@
         },
         "Distance": 0,
         "ThirdPersonHorizontalDistance": 30
+      },
+      {
+        "__type": "FPSHealthController",
+        "__guid": "225acc55-b82c-40f7-922b-9208678a26a3",
+        "CurrentHealth": 100,
+        "IsAlive": false,
+        "MaxHealth": 100
       }
     ],
     "Children": [

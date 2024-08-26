@@ -238,6 +238,18 @@
           "KeyboardCode": "ALT",
           "GamepadCode": "None",
           "GroupName": "Other"
+        },
+        {
+          "Name": "Damage",
+          "KeyboardCode": "[",
+          "GamepadCode": "None",
+          "GroupName": "Other"
+        },
+        {
+          "Name": "Heal",
+          "KeyboardCode": "]",
+          "GamepadCode": "None",
+          "GroupName": "Other"
         }
       ],
       "__guid": "1195d4ab-6850-4341-beb4-37dc0db83b19"

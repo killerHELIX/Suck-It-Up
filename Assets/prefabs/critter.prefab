@@ -16,6 +16,7 @@
         "CapacityCost": 3,
         "HasMeleeAttack": true,
         "HasRangedAttack": false,
+        "IndividualMeleeRangeScale": 1.2,
         "IndividualModelScale": 0.5,
         "localEyeBallPosition": "0,0,40",
         "MaxHealth": 15,

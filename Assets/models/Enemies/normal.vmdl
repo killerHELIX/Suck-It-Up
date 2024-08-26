@@ -58,6 +58,22 @@
 					{
 						_class = "AnimFile"
 						name = "normal_attack"
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_GENERIC_EVENT"
+								event_frame = 29
+								event_keys = 
+								{
+									TypeName = "DoDamage"
+									Int = 0
+									Float = 0.0
+									Vector = [ 0.0, 0.0, 0.0 ]
+									StringData = ""
+								}
+							},
+						]
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""

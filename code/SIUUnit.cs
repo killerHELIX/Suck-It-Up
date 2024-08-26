@@ -5,6 +5,7 @@ class SIUUnit : Unit
 {
 
 	[Property] public float IndividualModelScale { get; set; }
+	[Property] public float IndividualMeleeRangeScale { get; set; }
 	[Property] public Vector3 localEyeBallPosition { get; set; }
 	[Property] public ModelHitboxes myHitBoxes { get; set; }
 
@@ -16,6 +17,8 @@ class SIUUnit : Unit
 	private DynamicToggleButton unitStanceButton;
 
 	private bool canSeeTempTarget = false;
+
+	private GameObject currentAttackTarget = null;
 
 	// Unit Constants
 	private const float AUTO_MELEE_RAD_DIST = 650f;
@@ -35,6 +38,12 @@ class SIUUnit : Unit
 	private const string AttackStanceImagePath = "materials/attack_stance.png";
 	private const string DefendStanceImagePath = "materials/defend_stance.png";
 
+	protected override void OnStart()
+	{
+		base.OnStart();
+		PhysicalModelRenderer.skinnedModel.OnGenericEvent += HandleGenericAnimEvent;
+	}
+	
 	protected override void OnUpdate()
 	{
 		if (!Network.IsOwner) { 
@@ -245,6 +254,14 @@ class SIUUnit : Unit
 		}
 	}
 
+	private void HandleGenericAnimEvent(SceneModel.GenericEvent eventData)
+	{
+		if(eventData.Type == "DoDamage")
+		{
+			doDamage();
+		}
+	}
+
 	[Broadcast]
 	public override void die()
 	{
@@ -299,9 +316,22 @@ class SIUUnit : Unit
 	[Broadcast]
 	private void directMeleeAttack(GameObject targetPlayer)
 	{
+		currentAttackTarget = targetPlayer;
 		this.PhysicalModelRenderer.animateMeleeAttack();
-		targetPlayer.Components.Get<FPSHealthController>().Damage(MeleeAttackDamage);
 		lastMeleeTime = Time.Now;
+	}
+
+	// This should be called by the animevent set during the attack animation
+	private void doDamage()
+	{
+		if(currentAttackTarget != null)
+		{
+			if(currentAttackTarget.Transform.Position.Distance(Transform.Position) <= UnitMeleeCollider.Radius)
+			{
+				currentAttackTarget.Components.Get<FPSHealthController>().Damage(MeleeAttackDamage);
+				currentAttackTarget = null;
+			}
+		}
 	}
 
 	public override void setRelativeSizeHelper(Vector3 unitSize)
@@ -337,7 +367,7 @@ class SIUUnit : Unit
 		UnitNavAgent.Radius = targetxyMin * NAV_AGENT_RAD_MULTIPLIER;
 
 		// Auto calculate unit's melee collider size
-		UnitMeleeCollider.Radius = defaultxyMax;
+		UnitMeleeCollider.Radius = defaultxyMax * IndividualMeleeRangeScale;
 		UnitMeleeCollider.Start = Vector3.Zero;
 		UnitMeleeCollider.End = new Vector3(0, 0, defaultModelSize.z);
 

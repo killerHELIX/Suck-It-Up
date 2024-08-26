@@ -368,10 +368,10 @@ public class Unit : SkinnedRTSObject
 		homeTargetLocation = targetLocation;
 	}
 
-	public void setAttackCommand(SkinnedRTSObject newTargetObject)
+	public void setAttackCommand(GameObject newTargetObject)
 	{
 		commandGiven = UnitModelUtils.CommandType.Attack;
 		isNewCommand= true;
-		targetObject = newTargetObject.GameObject;
+		targetObject = newTargetObject;
 	}
 }

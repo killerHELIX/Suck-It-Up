@@ -24,9 +24,8 @@
     {
       "__guid": "775b0ff0-11c8-4da7-8139-bee10a3d79f7",
       "Flags": 0,
-      "Name": "Network",
+      "Name": "NetworkFPS",
       "Position": "408.021,344.2917,387.9409",
-      "Enabled": true,
       "Components": [
         {
           "__type": "Sandbox.NetworkHelper",
@@ -34,6 +33,30 @@
           "PlayerPrefab": {
             "_type": "gameobject",
             "prefab": "fps/player/fpsplayer.prefab"
+          },
+          "SpawnPoints": [
+            {
+              "_type": "gameobject",
+              "go": "0058073b-536a-4b1b-bb61-375e2280b0b2"
+            }
+          ],
+          "StartServer": true
+        }
+      ]
+    },
+    {
+      "__guid": "d00630cd-62bd-411d-ad64-00fc098170b1",
+      "Flags": 0,
+      "Name": "NetworkRTS",
+      "Position": "408.021,344.2917,387.9409",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.NetworkHelper",
+          "__guid": "5bced8e6-0951-470b-af5c-5d6babbf2507",
+          "PlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/rts_player.prefab"
           },
           "SpawnPoints": [
             {
@@ -730,8 +753,9 @@
       "__guid": "28291765-76f3-46c0-bb4d-59216d39f1fe",
       "Flags": 0,
       "Name": "fpsplayer",
-      "Position": "-131.9079,1745.938,68",
+      "Position": "859.4801,2299.877,152.0326",
       "Tags": "player",
+      "Enabled": true,
       "NetworkMode": 1,
       "OwnerTransfer": 0,
       "Components": [

@@ -7,7 +7,7 @@ public sealed class FPSHealthController : Component
 	public bool IsAlive
 	{
 		get {
-			return CurrentHealth <= 0;
+			return CurrentHealth > 0;
 		}
 	}
 

@@ -27,7 +27,7 @@ public sealed class FPSHealthController : Component
 
 	protected override void OnUpdate()
 	{
-		Log.Info($"Health: [ {CurrentHealth} / {MaxHealth} ]");
+		//Log.Info($"Health: [ {CurrentHealth} / {MaxHealth} ]");
 
 		if (Input.Pressed("Damage")) Damage(1);
 

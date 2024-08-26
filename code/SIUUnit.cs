@@ -181,7 +181,7 @@ class SIUUnit : Unit
 							// I can see it
 							if (sightRayTrace.First().GameObject == playerCollidedWith)
 							{
-								Log.Info( this.GameObject.Name + " will attack " + playerCollidedWith.Name + "!" );
+								//Log.Info( this.GameObject.Name + " will attack " + playerCollidedWith.Name + "!" );
 								validPlayerFound = true;
 								canSeeTempTarget = true;
 								tempTargetObject = playerCollidedWith;
@@ -298,11 +298,11 @@ class SIUUnit : Unit
 		//((unitSize.y * globalScaleModifier.y) / defaultModelSize.y),
 		//((unitSize.z * globalScaleModifier.z) / defaultModelSize.z)
 		//));
-		Transform.LocalScale = new Vector3(
+		/*Transform.LocalScale = new Vector3(
 			(targetModelSize.x / defaultModelSize.x),
 			(targetModelSize.y / defaultModelSize.y),
 			(targetModelSize.z / defaultModelSize.z)
-			);
+			);*/
 
 		// Auto calculate unit's nav agent size
 		UnitNavAgent.Height = targetModelSize.z;

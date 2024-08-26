@@ -120,6 +120,7 @@ public class SkinnedRTSObject : SelectableObject, IScalable, IDamageable, ISelec
 			PhysicalModelRenderer.setOutlineState(UnitModelUtils.OutlineState.Neutral);
 			ThisHealthBar.setBarColor("#ffffff");
 			ThisHealthBar.setShowHealthBar(false);
+			SelectionHitbox.Enabled = false;
 			return;
 		}
 		if (team == RTSPlayer.Local.Team)

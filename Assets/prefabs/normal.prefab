@@ -113,6 +113,20 @@
         "IsTrigger": false,
         "Scale": "110,110,200",
         "Static": false
+      },
+      {
+        "__type": "Sandbox.ModelHitboxes",
+        "__guid": "4778bbc7-7d87-4ad7-b07a-e029c5e264eb",
+        "Renderer": {
+          "_type": "component",
+          "component_id": "2b32d11e-673b-4780-b1e9-cb63176d594c",
+          "go": "fef6a3a3-eff6-432a-80b4-af7695729605",
+          "component_type": "SkinnedModelRenderer"
+        },
+        "Target": {
+          "_type": "gameobject",
+          "go": "4c329369-56bd-4399-9ac2-ba6900b6425d"
+        }
       }
     ],
     "Children": [
@@ -151,9 +165,10 @@
           {
             "__type": "Sandbox.SkinnedModelRenderer",
             "__guid": "2b32d11e-673b-4780-b1e9-cb63176d594c",
-            "AnimationGraph": "animgraphs/sk_light_infantry_a.vanmgrph",
+            "AnimationGraph": "animgraphs/normal.vanmgrph",
             "BodyGroups": 18446744073709551615,
             "CreateBoneObjects": true,
+            "Model": "models/enemies/normal.vmdl",
             "RenderType": "On",
             "Tint": "1,1,1,1",
             "UseAnimGraph": true
@@ -450,6 +465,96 @@
             "Name": "Bip001",
             "Position": "-5.798613,0.0000000000006856566,86.79321",
             "Enabled": true
+          },
+          {
+            "__guid": "06254133-0c07-4e6f-808e-4cb8ab22b9ad",
+            "Flags": 4,
+            "Name": "Root",
+            "Position": "0.001840226,-0.03385132,2.599541",
+            "Rotation": "0.5000002,0.4999998,0.5000002,-0.4999998",
+            "Enabled": true,
+            "Children": [
+              {
+                "__guid": "d3a30d37-d9c2-4316-80d3-804608c549e8",
+                "Flags": 4,
+                "Name": "Arm_001_L",
+                "Position": "1.399837,-0.5977058,-0.003183063",
+                "Rotation": "0.1230326,0.8719927,0.306987,-0.3609024",
+                "Enabled": true
+              },
+              {
+                "__guid": "89fca40d-8053-459f-8ce2-5a713e35aec3",
+                "Flags": 4,
+                "Name": "Leg_001_L",
+                "Position": "-0.000001907349,-0.4019502,-0.0000001788139",
+                "Rotation": "0.04946822,0.6985673,0.7121813,-0.0485229",
+                "Enabled": true,
+                "Children": [
+                  {
+                    "__guid": "1e4e7184-756c-4f6f-893f-0df2666e30e3",
+                    "Flags": 4,
+                    "Name": "Leg_002_L",
+                    "Position": "1.11571,-0.0000004768372,0.0000003278255",
+                    "Rotation": "0.002304147,0.0267797,-0.1372315,0.9901742",
+                    "Enabled": true,
+                    "Children": [
+                      {
+                        "__guid": "0edd73cf-25ac-4f2d-a70c-92f13261856e",
+                        "Flags": 4,
+                        "Name": "Leg_003_L",
+                        "Position": "1.24727,-0.0000001639128,0.0000002980232",
+                        "Rotation": "0.628383,0.5283568,-0.3531187,-0.4486434",
+                        "Enabled": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "__guid": "4ac18c1e-022e-403e-951f-40fb47e3f810",
+                "Flags": 4,
+                "Name": "Arm_001_R",
+                "Position": "1.399839,0.5977076,-0.003181554",
+                "Rotation": "0.1291267,0.8729013,0.304394,-0.3587673",
+                "Enabled": true
+              },
+              {
+                "__guid": "fbedd0e7-c6e2-44d3-a891-bf8e0b7d4c72",
+                "Flags": 4,
+                "Name": "Leg_001_R",
+                "Position": "0,0.4019511,0.0000009983778",
+                "Rotation": "-0.04852292,0.7121813,-0.6985673,-0.04946823",
+                "Enabled": true,
+                "Children": [
+                  {
+                    "__guid": "f2fb7f28-154d-456d-be26-c21285545f4a",
+                    "Flags": 4,
+                    "Name": "Leg_002_R",
+                    "Position": "1.115709,0.0000001490116,0.00000002980232",
+                    "Rotation": "-0.004929481,0.02346798,0.1382519,0.9901068",
+                    "Enabled": true,
+                    "Children": [
+                      {
+                        "__guid": "7392d516-05ae-4087-8ab1-8149b5fd9e7f",
+                        "Flags": 4,
+                        "Name": "Leg_003_R",
+                        "Position": "1.247568,0.0000001490116,0.0000005662441",
+                        "Rotation": "0.608965,-0.5056821,0.3849189,-0.4746419",
+                        "Enabled": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "__guid": "21733a48-a0dc-4418-acbe-3e0d0e51507e",
+                "Flags": 4,
+                "Name": "Head",
+                "Position": "1.899455,0.000001414563,-0.5470178",
+                "Rotation": "0.7071064,-0.00000010677,0.7071072,0.0000002121372",
+                "Enabled": true
+              }
+            ]
           }
         ]
       },
@@ -493,6 +598,12 @@
             "__guid": "40d1190e-8ae9-46c8-81d0-0ee057e9c4c2"
           }
         ]
+      },
+      {
+        "__guid": "70c40be2-2d5e-4bb8-9623-3d32e85d7f79",
+        "Flags": 0,
+        "Name": "Selection Collider",
+        "Enabled": true
       }
     ],
     "__variables": []

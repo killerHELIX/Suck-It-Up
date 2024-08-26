@@ -113,6 +113,20 @@
         "IsTrigger": false,
         "Scale": "110,110,200",
         "Static": false
+      },
+      {
+        "__type": "Sandbox.ModelHitboxes",
+        "__guid": "ad2713a1-81fa-4fe6-a8f5-12eb2231d700",
+        "Renderer": {
+          "_type": "component",
+          "component_id": "1df1687a-97b8-4ede-be2d-d4e61c77586f",
+          "go": "72783acf-5f77-44b2-bdac-045d1c3bcdce",
+          "component_type": "SkinnedModelRenderer"
+        },
+        "Target": {
+          "_type": "gameobject",
+          "go": "cdf08c0f-f6a7-4f96-a32f-a7f36cb69e56"
+        }
       }
     ],
     "Children": [
@@ -151,9 +165,10 @@
           {
             "__type": "Sandbox.SkinnedModelRenderer",
             "__guid": "1df1687a-97b8-4ede-be2d-d4e61c77586f",
-            "AnimationGraph": "animgraphs/sk_light_infantry_a.vanmgrph",
+            "AnimationGraph": "animgraphs/roller.vanmgrph",
             "BodyGroups": 18446744073709551615,
             "CreateBoneObjects": true,
+            "Model": "models/enemies/roller.vmdl",
             "RenderType": "On",
             "Tint": "1,1,1,1",
             "UseAnimGraph": true
@@ -450,6 +465,40 @@
             "Name": "Bip001",
             "Position": "-5.798613,0.0000000000006856566,86.79321",
             "Enabled": true
+          },
+          {
+            "__guid": "86c7055e-ae32-4d50-b629-ace127a99806",
+            "Flags": 4,
+            "Name": "Wheel",
+            "Position": "-0.00000004228579,0.00001162291,0.4492556",
+            "Rotation": "0.00104991,-0.001049845,0.7071058,0.7071061",
+            "Enabled": true
+          },
+          {
+            "__guid": "6f5fabe6-3881-4187-9c1b-301c4f0523da",
+            "Flags": 4,
+            "Name": "Body",
+            "Position": "-0.00000004339612,0,0.7280661",
+            "Rotation": "0.4999999,-0.4999999,0.5000001,0.5000002",
+            "Enabled": true,
+            "Children": [
+              {
+                "__guid": "ce8db042-2ae2-4877-911b-9d88c85cbd99",
+                "Flags": 4,
+                "Name": "Arm_L",
+                "Position": "2.262855,0.4643444,0.1848324",
+                "Rotation": "0.08500262,-0.056672,0.8528532,0.5120587",
+                "Enabled": true
+              },
+              {
+                "__guid": "75589632-f838-4373-a1f0-349b57f2adba",
+                "Flags": 4,
+                "Name": "Arm_R",
+                "Position": "2.269057,-0.4581344,0.1941151",
+                "Rotation": "0.3438951,-0.4104823,0.7486012,-0.3909432",
+                "Enabled": true
+              }
+            ]
           }
         ]
       },

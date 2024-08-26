@@ -673,7 +673,7 @@
       "__guid": "4c329369-56bd-4399-9ac2-ba6900b6425d",
       "Flags": 0,
       "Name": "Normal",
-      "Position": "-592.1092,1182.528,129.8806",
+      "Position": "-545.7505,1242.737,58.63085",
       "Tags": "unit",
       "Enabled": true,
       "NetworkMode": 1,
@@ -686,7 +686,7 @@
       "__guid": "cdf08c0f-f6a7-4f96-a32f-a7f36cb69e56",
       "Flags": 0,
       "Name": "Roller",
-      "Position": "-1139.46,1182.528,129.8806",
+      "Position": "-451.1378,1226.515,68.06158",
       "Tags": "unit",
       "Enabled": true,
       "NetworkMode": 1,
@@ -699,7 +699,7 @@
       "__guid": "5508d319-e56f-44cf-b066-957f5ae801c8",
       "Flags": 0,
       "Name": "Giant",
-      "Position": "-960.5023,1182.528,129.8806",
+      "Position": "-616.0447,1067.585,61.67672",
       "Tags": "unit",
       "Enabled": true,
       "NetworkMode": 1,
@@ -712,7 +712,7 @@
       "__guid": "17310faf-4192-4a8f-8a22-9fc0489361b9",
       "Flags": 0,
       "Name": "Critter",
-      "Position": "-776.0456,1182.528,107.2065",
+      "Position": "-429.0755,1079.923,63.60697",
       "Tags": "unit",
       "Enabled": true,
       "NetworkMode": 1,
@@ -724,7 +724,7 @@
     {
       "__guid": "da569660-c0ef-40b9-a834-6df12d76e3d9",
       "Flags": 0,
-      "Name": "GameObject",
+      "Name": "testObstacle",
       "Position": "-335.3478,1522.445,89.99657",
       "Enabled": true,
       "Components": [
@@ -748,7 +748,7 @@
     {
       "__guid": "28291765-76f3-46c0-bb4d-59216d39f1fe",
       "Flags": 0,
-      "Name": "fpsplayer",
+      "Name": "testfpsplayer",
       "Position": "859.4801,2299.877,152.0326",
       "Tags": "player",
       "NetworkMode": 1,
@@ -946,14 +946,14 @@
       ]
     },
     {
-      "__guid": "5d33a986-a466-4d6e-ad5c-c7782821d93f",
+      "__guid": "c1983aa8-342e-486a-8aaa-1b75b823a9ed",
       "Flags": 0,
       "Name": "pistol",
-      "Position": "638.2452,2058.577,179.1465",
+      "Position": "589.0928,2037.051,173.8319",
       "Enabled": true,
       "NetworkMode": 1,
       "OwnerTransfer": 0,
-      "__Prefab": "prefabs/fps/pistol.prefab",
+      "__Prefab": "fps/weapons/pistol/pistol.prefab",
       "__PrefabVariables": {
         "vmpos": "15,5,-6",
         "hpos": "1,-9,30",
@@ -966,6 +966,208 @@
         "firerate": 0.5,
         "reloadspeed": 3
       }
+    },
+    {
+      "__guid": "40a1d9bb-443b-4c7a-b9e8-ba7e85a50cfa",
+      "Flags": 0,
+      "Name": "Hitbox-Test",
+      "Position": "973.1028,2461.84,144.5528",
+      "Rotation": "0,0,-0.9238797,-0.3826833",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SkinnedModelRenderer",
+          "__guid": "94c0d2a8-b4ac-4084-9f15-ce5a4f2406a6",
+          "AnimationGraph": "animgraphs/giant.vanmgrph",
+          "BodyGroups": 18446744073709551615,
+          "CreateBoneObjects": false,
+          "MaterialOverride": "materials/enemies/giant_pixel.vmat",
+          "Model": "models/enemies/giant.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1",
+          "UseAnimGraph": true
+        },
+        {
+          "__type": "Sandbox.ManualHitbox",
+          "__guid": "a9bbd48d-9cc9-468f-b6bf-72c9208fd1d5",
+          "__enabled": false,
+          "CenterA": "0,0,12.50001",
+          "CenterB": "10.1,5.099995,2.5",
+          "HitboxTags": "body",
+          "Radius": 10,
+          "Shape": "Box",
+          "Target": {
+            "_type": "gameobject",
+            "go": "40a1d9bb-443b-4c7a-b9e8-ba7e85a50cfa"
+          }
+        },
+        {
+          "__type": "Sandbox.ManualHitbox",
+          "__guid": "e32eab92-ed94-4b33-8512-7657c14774f4",
+          "__enabled": false,
+          "CenterA": "0,0,9.500001",
+          "CenterB": "5.199998,3.699997,3.499998",
+          "HitboxTags": "body",
+          "Radius": 10,
+          "Shape": "Box",
+          "Target": {
+            "_type": "gameobject",
+            "go": "40a1d9bb-443b-4c7a-b9e8-ba7e85a50cfa"
+          }
+        },
+        {
+          "__type": "Sandbox.ManualHitbox",
+          "__guid": "74994081-1f7d-4483-b5ef-fbb102df2250",
+          "__enabled": false,
+          "CenterA": "0,3.3,10.8",
+          "CenterB": "3.399998,1.999998,2.9",
+          "HitboxTags": "head",
+          "Radius": 10,
+          "Shape": "Box",
+          "Target": {
+            "_type": "gameobject",
+            "go": "40a1d9bb-443b-4c7a-b9e8-ba7e85a50cfa"
+          }
+        },
+        {
+          "__type": "Sandbox.ModelHitboxes",
+          "__guid": "8498bf9b-b917-452e-a54a-64484ebb6550",
+          "Renderer": {
+            "_type": "component",
+            "component_id": "94c0d2a8-b4ac-4084-9f15-ce5a4f2406a6",
+            "go": "40a1d9bb-443b-4c7a-b9e8-ba7e85a50cfa",
+            "component_type": "SkinnedModelRenderer"
+          },
+          "Target": {
+            "_type": "gameobject",
+            "go": "40a1d9bb-443b-4c7a-b9e8-ba7e85a50cfa"
+          }
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "b388f0bd-0ed2-46af-82ad-b69c539ad40e",
+          "Flags": 0,
+          "Name": "Root",
+          "Position": "0.0000006676126,-0.000001337854,6.729226",
+          "Rotation": "0.4999999,-0.4999999,0.4999999,0.5000003",
+          "Enabled": true,
+          "Children": [
+            {
+              "__guid": "b1d07b6c-6d5a-4e86-9080-1895ee3dd88e",
+              "Flags": 0,
+              "Name": "ArmRotator_L",
+              "Position": "2.730777,5.22581,0.4030644",
+              "Rotation": "0.0000001376787,0.7071064,-0.0000000112383,0.7071071",
+              "Enabled": true,
+              "Children": [
+                {
+                  "__guid": "95d29e33-7c46-4964-8284-3540da483b71",
+                  "Flags": 0,
+                  "Name": "Arm_L",
+                  "Position": "0.244875,0.05250883,-0.3252811",
+                  "Rotation": "-0.00000008273221,0.5055453,-0.000000159294,0.8628001",
+                  "Enabled": true
+                }
+              ]
+            },
+            {
+              "__guid": "86c1d7c4-7a9d-47b1-921d-359c443a971d",
+              "Flags": 0,
+              "Name": "LegRotator_L",
+              "Position": "-1.256906,0.7269211,0.3993844",
+              "Rotation": "0.0000001376787,0.7071064,-0.0000000112383,0.7071071",
+              "Enabled": true,
+              "Children": [
+                {
+                  "__guid": "10b205cc-71c7-448a-8e13-181735d0ce9e",
+                  "Flags": 0,
+                  "Name": "Leg_001_L",
+                  "Position": "0.3767147,0.916462,-0.08423424",
+                  "Rotation": "-0.000000224092,0.6989303,-0.0000001718022,0.7151898",
+                  "Enabled": true,
+                  "Children": [
+                    {
+                      "__guid": "a80ac6b6-4867-4a1f-b093-0d8624a8dcb3",
+                      "Flags": 0,
+                      "Name": "Leg_002_L",
+                      "Position": "1.971867,-0.000001072884,-0.0000005960464",
+                      "Rotation": "-0.000000001039714,0.01149684,-0.000000002752041,0.999934",
+                      "Enabled": true,
+                      "Children": [
+                        {
+                          "__guid": "0b15ca7a-9ba3-43ce-a28b-a95026a3a209",
+                          "Flags": 0,
+                          "Name": "Leg_003_L",
+                          "Position": "2.587697,0.0000002384186,0.0000002160668",
+                          "Rotation": "-0.00000002224717,-0.5361429,0.00000003453147,0.8441272",
+                          "Enabled": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "__guid": "16ab2e82-32dc-4287-824f-fbeb84838a7a",
+              "Flags": 0,
+              "Name": "ArmRotator_R",
+              "Position": "2.730781,-5.22708,0.4041247",
+              "Rotation": "-0.5000002,0.4999994,0.5000005,0.4999998",
+              "Enabled": true,
+              "Children": [
+                {
+                  "__guid": "c37ae991-6529-4e88-8fd1-c52329ffb308",
+                  "Flags": 0,
+                  "Name": "Arm_R",
+                  "Position": "0.2430503,0.3240509,-0.05251074",
+                  "Rotation": "-0.6100914,-0.357475,0.3574741,0.610092",
+                  "Enabled": true
+                }
+              ]
+            },
+            {
+              "__guid": "9dda7982-9241-479d-92d3-f87aa3af3dbe",
+              "Flags": 0,
+              "Name": "LegRotator_R",
+              "Position": "-1.256905,-0.7281889,0.3964523",
+              "Rotation": "-0.5000002,0.4999994,0.5000005,0.4999998",
+              "Enabled": true,
+              "Children": [
+                {
+                  "__guid": "7c542529-6df7-48dc-be31-b8eef0659124",
+                  "Flags": 0,
+                  "Name": "Leg_001_R",
+                  "Position": "0.3767146,0.08423471,-0.9164627",
+                  "Rotation": "-0.5057152,-0.4942191,0.4942179,0.5057157",
+                  "Enabled": true,
+                  "Children": [
+                    {
+                      "__guid": "a9d99e35-58db-4943-8d31-7212e0007329",
+                      "Flags": 0,
+                      "Name": "Leg_002_R",
+                      "Position": "1.971867,-0.000001311302,0.0000006258488",
+                      "Rotation": "0.0000001333678,-0.0114968,-0.0000000006981372,0.999934",
+                      "Enabled": true,
+                      "Children": [
+                        {
+                          "__guid": "cac5ec60-ed08-487f-a2cc-f0586cf4cce1",
+                          "Flags": 0,
+                          "Name": "Leg_003_R",
+                          "Position": "2.587698,-0.00000166893,0.00000009872019",
+                          "Rotation": "0.0000008024801,0.5361429,-0.0000003347238,0.8441272",
+                          "Enabled": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "SceneProperties": {

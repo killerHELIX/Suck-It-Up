@@ -11,5 +11,6 @@ public class Pistol : Weapon
     [Property] public override int MaxReserves { get; set; } = 36;
     [Property] public override float FireRate { get; set; } = 0.5f;
     [Property] public override float ReloadSpeed { get; set; } = 3.0f;
+	[Property] public override int Damage { get; set; } = 5;
 
 }

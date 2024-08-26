@@ -4,6 +4,7 @@ public abstract class Weapon : Component, Component.ICollisionListener
 {
     private const string PLAYER_OWNED_WEAPON = "playerweapon";
     private const string UNOWNED_WEAPON = "weapon";
+    private const int HEADSHOT_MULTIPLIER = 2;
 
 
 
@@ -59,7 +60,11 @@ public abstract class Weapon : Component, Component.ICollisionListener
     [Description("The reload speed of this weapon in seconds.")]
     public abstract float ReloadSpeed { get; set; }
 
-    [Sync]
+	[Property]
+	[Description("The health point damage this weapon does.")]
+	public abstract int Damage { get; set; }
+
+	[Sync]
     [Description("The current ammo in the weapon.")]
     public int CurrentAmmo { get; set; }
 
@@ -214,11 +219,42 @@ public abstract class Weapon : Component, Component.ICollisionListener
 
                 // If the parent has a head shoot out of that. Otherwise shoot out of this gun directly.
                 var origin = (head != null) ? head.Transform.Position : head.Transform.Position;
-                lastTraceResult = Scene.Trace.Ray(new Ray(origin, Transform.Rotation.Forward * dist), dist).Run();
+                var lastTraceResult = Scene.Trace.Ray(new Ray(origin, Transform.Rotation.Forward * dist), dist).UseHitboxes().Run();
+				var lastTraceResults = Scene.Trace.Ray(new Ray(origin, Transform.Rotation.Forward * dist), dist).UseHitboxes().RunAll();
+				//lastTrace.UseHitboxes(true);
+				//lastTrace.WithAnyTags("unit");
+				//lastTrace.ig
+				//lastTraceResult = lastTrace.Run();
 
-                if (lastTraceResult.Hit)
+
+				if (lastTraceResult.Hit)
                 {
                     Log.Info($"Hit: {lastTraceResult.GameObject} at {lastTraceResult.EndPosition}");
+                    Log.Info(lastTraceResult.Hitbox);
+
+                    foreach(var i in lastTraceResults)
+                    {
+                        Log.Info(i.Component);
+                    }
+
+					if (lastTraceResult.Hitbox != null)
+                    {
+                        Log.Info("This is a Unit");
+						Log.Info("His this component: " + lastTraceResult.Component);
+                        foreach(string tag in lastTraceResult.Hitbox.Tags)
+                        {
+                            Log.Info(tag);
+                        }
+						if (lastTraceResult.Hitbox.Tags.Contains("head"))
+                        {
+							Log.Info("Headshot!");
+							lastTraceResult.Component.GameObject.Components.Get<SIUUnit>().takeDamage(Damage * HEADSHOT_MULTIPLIER);
+                        }
+                        else
+                        {
+							lastTraceResult.Component.GameObject.Components.Get<SIUUnit>().takeDamage(Damage);
+						}
+                    }
                 }
             }
         }

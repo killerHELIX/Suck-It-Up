@@ -113,6 +113,20 @@
         "IsTrigger": false,
         "Scale": "110,110,200",
         "Static": false
+      },
+      {
+        "__type": "Sandbox.ModelHitboxes",
+        "__guid": "853b50b6-a03d-4f92-97d7-2a7562f5752e",
+        "Renderer": {
+          "_type": "component",
+          "component_id": "f80d4f61-81f2-4e43-bacb-85307dbfa0d2",
+          "go": "e90840cd-cf76-46cc-829a-7a34103ad6fc",
+          "component_type": "SkinnedModelRenderer"
+        },
+        "Target": {
+          "_type": "gameobject",
+          "go": "5508d319-e56f-44cf-b066-957f5ae801c8"
+        }
       }
     ],
     "Children": [
@@ -154,6 +168,7 @@
             "AnimationGraph": "animgraphs/sk_light_infantry_a.vanmgrph",
             "BodyGroups": 18446744073709551615,
             "CreateBoneObjects": true,
+            "Model": "models/enemies/giant.vmdl",
             "RenderType": "On",
             "Tint": "1,1,1,1",
             "UseAnimGraph": true
@@ -450,6 +465,128 @@
             "Name": "Bip001",
             "Position": "-5.798613,0.0000000000006856566,86.79321",
             "Enabled": true
+          },
+          {
+            "__guid": "70c3482f-a737-4391-9631-0a6a49499b0a",
+            "Flags": 4,
+            "Name": "Root",
+            "Position": "0.0000006597077,-0.000009367606,67.29227",
+            "Rotation": "0.4999997,-0.4999999,0.4999999,0.5000004",
+            "Enabled": true,
+            "Children": [
+              {
+                "__guid": "fbf0d6a2-00a8-4667-923d-8deeba469dde",
+                "Flags": 4,
+                "Name": "ArmRotator_L",
+                "Position": "27.30783,52.25809,4.030616",
+                "Rotation": "0.00000005882708,0.7071063,0.000000004392891,0.7071072",
+                "Enabled": true,
+                "Children": [
+                  {
+                    "__guid": "23e6c7c1-5f70-410d-a618-cc3de184fbcd",
+                    "Flags": 4,
+                    "Name": "Arm_L",
+                    "Position": "2.448772,0.5251312,-3.252792",
+                    "Rotation": "-0.0000001327817,0.5055452,-0.0000001440679,0.8628002",
+                    "Enabled": true
+                  }
+                ]
+              },
+              {
+                "__guid": "3db32fa4-9ea4-4d10-aa78-b0ec6a726b9b",
+                "Flags": 4,
+                "Name": "LegRotator_L",
+                "Position": "-12.56903,7.269214,3.993822",
+                "Rotation": "0.00000005882708,0.7071063,0.000000004392891,0.7071072",
+                "Enabled": true,
+                "Children": [
+                  {
+                    "__guid": "58506f59-e759-48a8-89b1-3731cc1e78e9",
+                    "Flags": 4,
+                    "Name": "Leg_001_L",
+                    "Position": "3.767151,9.164629,-0.8423119",
+                    "Rotation": "-0.0000003106132,0.6989302,-0.0000002478873,0.7151899",
+                    "Enabled": true,
+                    "Children": [
+                      {
+                        "__guid": "b4385b4c-38b2-4e58-9d63-9834d36d8cd4",
+                        "Flags": 4,
+                        "Name": "Leg_002_L",
+                        "Position": "19.71865,0.000005722046,-0.00004220009",
+                        "Rotation": "0.0000000888851,0.01149676,-0.0000000900863,0.999934",
+                        "Enabled": true,
+                        "Children": [
+                          {
+                            "__guid": "b5642577-1991-4610-9114-0cb80f0703bd",
+                            "Flags": 4,
+                            "Name": "Leg_003_L",
+                            "Position": "25.87695,0.00001144409,-0.00003100932",
+                            "Rotation": "0.000000007011496,-0.5361427,0.0000001955476,0.8441274",
+                            "Enabled": true
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "__guid": "47eca9d3-7bc5-425f-98fd-fb7d386f6f12",
+                "Flags": 4,
+                "Name": "ArmRotator_R",
+                "Position": "27.30785,-52.2708,4.041193",
+                "Rotation": "-0.4999999,0.4999992,0.5000005,0.5000004",
+                "Enabled": true,
+                "Children": [
+                  {
+                    "__guid": "39f9fbe5-af1c-4e83-9332-ffdd4348fc73",
+                    "Flags": 4,
+                    "Name": "Arm_R",
+                    "Position": "2.430493,3.240417,-0.5252495",
+                    "Rotation": "-0.6100914,-0.357475,0.3574738,0.6100923",
+                    "Enabled": true
+                  }
+                ]
+              },
+              {
+                "__guid": "31e48c48-5591-4ecc-95f5-2d65793f801b",
+                "Flags": 4,
+                "Name": "LegRotator_R",
+                "Position": "-12.56903,-7.281893,3.964488",
+                "Rotation": "-0.4999999,0.4999992,0.5000005,0.5000004",
+                "Enabled": true,
+                "Children": [
+                  {
+                    "__guid": "384567ca-1572-4b33-bffd-234e69cd56f3",
+                    "Flags": 4,
+                    "Name": "Leg_001_R",
+                    "Position": "3.76715,0.8423271,-9.164666",
+                    "Rotation": "-0.5057151,-0.4942189,0.4942175,0.5057162",
+                    "Enabled": true,
+                    "Children": [
+                      {
+                        "__guid": "34f1892a-f798-48b7-9abd-08397c9713c7",
+                        "Flags": 4,
+                        "Name": "Leg_002_R",
+                        "Position": "19.71858,0.00002670288,-0.00006473064",
+                        "Rotation": "0.0000001177363,-0.01149682,0.000000504993,0.999934",
+                        "Enabled": true,
+                        "Children": [
+                          {
+                            "__guid": "51cc1cc7-335f-4e47-abcf-3bcf20090d98",
+                            "Flags": 4,
+                            "Name": "Leg_003_R",
+                            "Position": "25.87691,0,-0.00003701448",
+                            "Rotation": "0.0000009451821,0.5361428,-0.0000004833491,0.8441273",
+                            "Enabled": true
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           }
         ]
       },

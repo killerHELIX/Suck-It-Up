@@ -105,7 +105,7 @@ public class GameState : Component
 				if (!playerGameStateObject.Network.IsOwner)
 				{
 					GameState playerGameState = playerGameStateObject.Components.Get<GameState>();
-					Log.Info("Trying to update " + playerGameState.GameObject.Name + " for player " + playerGameState.Network.OwnerConnection.DisplayName);
+					//Log.Info("Trying to update " + playerGameState.GameObject.Name + " for player " + playerGameState.Network.OwnerConnection.DisplayName);
 					playerGameState.addPlayerToList(player, listType, false);
 				}
 			}

@@ -32,12 +32,23 @@ class SIUUnit : Unit
 	private const float CLOSE_ENOUGH_DISTANCE = .5f;
 	private const float STUCK_DISTANCE = .1f;
 
+	private const string PLAYER_TAG = "player";
+
 	private const string AttackStanceImagePath = "materials/attack_stance.png";
 	private const string DefendStanceImagePath = "materials/defend_stance.png";
 
 	protected override void OnUpdate()
 	{
-		if (!Network.IsOwner) { return; }
+		if (!Network.IsOwner) { 
+			if(Network.OwnerConnection == null)
+			{
+				Network.TakeOwnership();
+			}
+			else
+			{
+				return;
+			} 
+		}
 		// Handle Player Commands
 		if (commandGiven != UnitModelUtils.CommandType.None)
 		{
@@ -90,7 +101,7 @@ class SIUUnit : Unit
 			// Attack Command
 			if (commandGiven == UnitModelUtils.CommandType.Attack)
 			{
-				if (targetObject.isAlive == true)
+				if (targetObject.Components.Get<FPSHealthController>().IsAlive == true)
 				{
 					move(targetObject.Transform.Position, true);
 				}
@@ -102,18 +113,21 @@ class SIUUnit : Unit
 					stopMoving();
 				}
 			}
-
 		}
 		// Move To closeby enemy that we can see
-		else if (tempTargetObject != null && tempTargetObject.isAlive)
+		else if (tempTargetObject != null && tempTargetObject.Components.Get<FPSHealthController>().IsAlive)
 		{
-			//Log.Info("Chasing seen unit " + this.GameObject);
+			Log.Info("Chasing seen unit " + this.GameObject);
 			homeTargetLocation = tempTargetObject.Transform.Position;
 			move(homeTargetLocation, false);
 		}
 		else
 		{
-			//Log.Info("Lost unit or no target, continuing to last known location " + this.GameObject);
+			Log.Info("Lost unit or no target, continuing to last known location " + this.GameObject);
+			if (tempTargetObject != null)
+			{
+				Log.Info("Is it alive? " + tempTargetObject.Components.Get<FPSHealthController>().IsAlive);
+			}
 			//stopMoving();
 		}
 
@@ -124,23 +138,15 @@ class SIUUnit : Unit
 			// Get touching trigger colliders
 			var collidersInMeleeRange = UnitMeleeCollider.Touching;
 			// Select colliders belonging to Units
-			if (collidersInMeleeRange.Where(col => (col.Tags.Has(UNIT_TAG) || col.Tags.Has(Building.BUILDING_TAG))).Any())
+			if (collidersInMeleeRange.Where(col => col.Tags.Has(PLAYER_TAG)).Any())
 			{
 				// Select only melee colliders
-				foreach (var collision in collidersInMeleeRange.Where(col => (col.Tags.Has(UNIT_TAG) || col.Tags.Has(Building.BUILDING_TAG))))
+				foreach (var collision in collidersInMeleeRange.Where(col => col.Tags.Has(PLAYER_TAG)))
 				{
-					//Collider belongs to unit
-					if (collision.Tags.Has(UNIT_TAG))
+					if (Time.Now - lastMeleeTime > MeleeAttackSpeed)
 					{
-						var unitCollidedWith = collision.GameObject.Components.GetAll().OfType<Unit>().First();
-						if (collision == unitCollidedWith.UnitMeleeCollider && unitCollidedWith.team != team)
-						{
-							if (Time.Now - lastMeleeTime > MeleeAttackSpeed)
-							{
-								//Log.Info( this.GameObject.Name + " attacks " + collision.GameObject.Name + " for " + MeleeAttackDamage + " damage!" );
-								directMeleeAttack(unitCollidedWith);
-							}
-						}
+						Log.Info( this.GameObject.Name + " attacks " + collision.GameObject.Name + " for " + MeleeAttackDamage + " damage!" );
+						directMeleeAttack(collision.GameObject);
 					}
 				}
 			}
@@ -149,41 +155,48 @@ class SIUUnit : Unit
 		if (UnitAutoMeleeCollider != null && isInAttackMode && commandGiven==UnitModelUtils.CommandType.None)
 		{
 			var validPlayerFound = false;
+			Log.Info("In auto melee collider");
 
 			// We have no current target
 			if (tempTargetObject == null)
 			{
 				// Get touching trigger colliders
 				var collidersInAutoMeleeRange = UnitAutoMeleeCollider.Touching;
+				Log.Info("Colliders in range " + collidersInAutoMeleeRange.Count());
 				// Select colliders belonging to Units
-				if (collidersInAutoMeleeRange.Where(col => col.Tags.Has(UNIT_TAG)).Any())
+				if (collidersInAutoMeleeRange.Where(col => col.Tags.Has(PLAYER_TAG)).Any())
 				{
+					Log.Info("Player Colliders in range " + collidersInAutoMeleeRange.Where(col => col.Tags.Has(PLAYER_TAG)).Count());
 					// Select only melee colliders
-					foreach (var collision in collidersInAutoMeleeRange.Where(col => col.Tags.Has(UNIT_TAG)))
+					foreach (var collision in collidersInAutoMeleeRange.Where(col => col.Tags.Has(PLAYER_TAG)))
 					{
-						var unitCollidedWith = collision.GameObject.Components.GetAll().OfType<Unit>().First();
-						// If it is a unit of the opposite team
-						if (unitCollidedWith.team != team)
+						var playerCollidedWith = collision.GameObject;
+						Log.Info("Detected Player: " + playerCollidedWith.Name + ". Can I see him?");
+						Log.Info("Ray from " + Transform.Position + "to " + playerCollidedWith.Transform.Position);
+						// Draw a ray here to detect whether or not we can see the unit
+						var sightRay = Scene.Trace.Ray(Transform.Position, playerCollidedWith.Transform.Position);
+						//sightRay.UseHitboxes(true);
+						//sightRay.HitTriggers();
+						sightRay.WithTag(PLAYER_TAG);
+						var sightRayTrace = sightRay.RunAll();
+						if (sightRayTrace.Any())
 						{
-							// Draw a ray here to detect whether or not we can see the unit
-							var sightRay = Scene.Trace.Ray(Transform.Position, unitCollidedWith.Transform.Position);
-							//sightRay.UseHitboxes(true);
-							var sightRayTrace = sightRay.RunAll();
-							if (sightRayTrace.Any())
+							foreach (var hit in sightRayTrace)
 							{
-								//foreach (var hit in sightRayTrace)
-								//{
-								//	Log.Info(hit.GameObject);
-								//}
-								// I can see it
-								if (sightRayTrace.First().GameObject == unitCollidedWith.GameObject)
-								{
-									//Log.Info( this.GameObject.Name + " will attack " + unitCollidedWith.GameObject.Name + "!" );
-									validPlayerFound = true;
-									canSeeTempTarget = true;
-									tempTargetObject = unitCollidedWith;
-								}
+								Log.Info("Hit: " + hit.GameObject);
 							}
+							// I can see it
+							if (sightRayTrace.First().GameObject == playerCollidedWith)
+							{
+								Log.Info( this.GameObject.Name + " will attack " + playerCollidedWith.Name + "!" );
+								validPlayerFound = true;
+								canSeeTempTarget = true;
+								tempTargetObject = playerCollidedWith;
+							}
+						}
+						else
+						{
+							Log.Info("Can't see anything");
 						}
 					}
 				}
@@ -205,14 +218,15 @@ class SIUUnit : Unit
 				if (sightRayTrace.Any())
 				{
 					// I can see it
-					if (sightRayTrace.First().GameObject != tempTargetObject.GameObject)
+					if (sightRayTrace.First().GameObject != tempTargetObject)
 					{
-						//Log.Info( this.GameObject.Name + " will cease attacking " + tempTargetObject.GameObject.Name + "!" );
+						Log.Info( this.GameObject.Name + " will cease attacking " + tempTargetObject.Name + "!" );
 						removeTempTarget = true;
 					}
 				}
 				if (removeTempTarget)
 				{
+					Log.Info("Removing Temp Target");
 					tempTargetObject = null;
 				}
 			}
@@ -262,10 +276,10 @@ class SIUUnit : Unit
 	}
 
 	[Broadcast]
-	private void directMeleeAttack(SkinnedRTSObject targetUnit)
+	private void directMeleeAttack(GameObject targetPlayer)
 	{
 		this.PhysicalModelRenderer.animateMeleeAttack();
-		targetUnit.takeDamage(MeleeAttackDamage);
+		targetPlayer.Components.Get<FPSHealthController>().Damage(MeleeAttackDamage);
 		lastMeleeTime = Time.Now;
 	}
 

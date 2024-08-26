@@ -33,7 +33,7 @@
           "__guid": "d5142296-d96e-453a-8d26-18da905ff46f",
           "PlayerPrefab": {
             "_type": "gameobject",
-            "prefab": "prefabs/rts_player.prefab"
+            "prefab": "fps/player/fpsplayer.prefab"
           },
           "SpawnPoints": [
             {
@@ -693,38 +693,238 @@
       "__guid": "17310faf-4192-4a8f-8a22-9fc0489361b9",
       "Flags": 0,
       "Name": "Critter",
-      "Position": "-776.0456,1182.528,129.8806",
+      "Position": "-776.0456,1182.528,107.2065",
       "Tags": "unit",
       "Enabled": true,
       "NetworkMode": 1,
       "NetworkOrphaned": 1,
-      "OwnerTransfer": 2,
+      "OwnerTransfer": 0,
       "__Prefab": "prefabs/critter.prefab",
       "__PrefabVariables": {}
     },
     {
-      "__guid": "d7d9df8b-5d99-4559-9794-a39a5903c179",
+      "__guid": "da569660-c0ef-40b9-a834-6df12d76e3d9",
       "Flags": 0,
-      "Name": "Cube",
-      "Position": "-366.5123,1173.574,100.7308",
-      "Scale": "0.4239242,0.7168595,1.463112",
+      "Name": "GameObject",
+      "Position": "-335.3478,1522.445,89.99657",
       "Enabled": true,
       "Components": [
         {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "f6e61fb1-421d-426b-91ab-89ab4429c45c",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": false
+        },
+        {
           "__type": "Sandbox.ModelRenderer",
-          "__guid": "c85e9754-e510-4a87-a93c-738bb594afcc",
+          "__guid": "97802228-15e1-4623-81e7-5450e3c12ce6",
           "BodyGroups": 18446744073709551615,
-          "Model": "models/dev/box.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
         }
       ]
     },
     {
-      "__guid": "da569660-c0ef-40b9-a834-6df12d76e3d9",
+      "__guid": "28291765-76f3-46c0-bb4d-59216d39f1fe",
       "Flags": 0,
-      "Name": "GameObject",
-      "Enabled": true
+      "Name": "fpsplayer",
+      "Position": "-131.9079,1745.938,68",
+      "Tags": "player",
+      "NetworkMode": 1,
+      "OwnerTransfer": 0,
+      "Components": [
+        {
+          "__type": "Sandbox.CharacterController",
+          "__guid": "6cdcb309-1257-4ee5-9820-0bc798e299a1",
+          "Acceleration": 10,
+          "Bounciness": 0.3,
+          "GroundAngle": 45,
+          "Height": 64,
+          "IgnoreLayers": "player",
+          "Radius": 16,
+          "StepHeight": 18,
+          "UseCollisionRules": true
+        },
+        {
+          "__type": "Sandbox.Citizen.CitizenAnimationHelper",
+          "__guid": "7dc73af8-327a-406f-a5e3-ad4e34e593b7",
+          "BodyWeight": 1,
+          "EyesWeight": 1,
+          "HeadWeight": 1,
+          "LookAtEnabled": false,
+          "Target": {
+            "_type": "component",
+            "component_id": "5ec265da-bdb6-4d18-baca-337401b20df3",
+            "go": "954c2613-8e83-464d-9381-c27119c975bc",
+            "component_type": "SkinnedModelRenderer"
+          }
+        },
+        {
+          "__type": "FPSPlayerMovementController",
+          "__guid": "8509f225-28aa-4890-8a9c-82aaec1e2c86",
+          "__enabled": false,
+          "AirControl": 0.1,
+          "AnimationHelper": {
+            "_type": "component",
+            "component_id": "7dc73af8-327a-406f-a5e3-ad4e34e593b7",
+            "go": "28291765-76f3-46c0-bb4d-59216d39f1fe",
+            "component_type": "CitizenAnimationHelper"
+          },
+          "BodyObject": {
+            "_type": "gameobject",
+            "go": "954c2613-8e83-464d-9381-c27119c975bc"
+          },
+          "BodyRenderer": {
+            "_type": "component",
+            "component_id": "5ec265da-bdb6-4d18-baca-337401b20df3",
+            "go": "954c2613-8e83-464d-9381-c27119c975bc",
+            "component_type": "SkinnedModelRenderer"
+          },
+          "CharacterController": {
+            "_type": "component",
+            "component_id": "6cdcb309-1257-4ee5-9820-0bc798e299a1",
+            "go": "28291765-76f3-46c0-bb4d-59216d39f1fe",
+            "component_type": "CharacterController"
+          },
+          "CrouchSpeed": 90,
+          "GroundControl": 4,
+          "HeadObject": {
+            "_type": "gameobject",
+            "go": "4a7c9c31-0d3d-4ade-9eaa-9f2516587f8c"
+          },
+          "JumpForce": 400,
+          "MaxForce": 50,
+          "RunSpeed": 290,
+          "Speed": 160
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "8f93cbc5-bc6a-44f0-810b-2c7d7c7bae2c",
+          "Center": "0,0,36.10001",
+          "IsTrigger": false,
+          "Scale": "15.59997,51.89999,72.9",
+          "Static": false
+        },
+        {
+          "__type": "FPSWeaponController",
+          "__guid": "c7014f33-e80c-4395-893d-17128862517c",
+          "Body": {
+            "_type": "gameobject",
+            "go": "954c2613-8e83-464d-9381-c27119c975bc"
+          },
+          "Head": {
+            "_type": "gameobject",
+            "go": "4a7c9c31-0d3d-4ade-9eaa-9f2516587f8c"
+          },
+          "Weapons": []
+        },
+        {
+          "__type": "FPSCameraController",
+          "__guid": "851d84f7-2bec-481d-b7b0-15c3574fb38f",
+          "__enabled": false,
+          "Camera": {
+            "_type": "component",
+            "component_id": "dd1c0ab6-0791-4367-b3c4-e9d46a640695",
+            "go": "5de435c3-eb10-4120-8934-b2c1d215a272",
+            "component_type": "CameraComponent"
+          },
+          "Distance": 0,
+          "ThirdPersonHorizontalDistance": 30
+        },
+        {
+          "__type": "FPSHealthController",
+          "__guid": "c1522350-4cac-4fa4-b1c2-74bab99dbed6",
+          "CurrentHealth": 100,
+          "MaxHealth": 100
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "4a7c9c31-0d3d-4ade-9eaa-9f2516587f8c",
+          "Flags": 0,
+          "Name": "Player Head",
+          "Position": "0,0,62.85746",
+          "Tags": "playerhead",
+          "Enabled": true,
+          "NetworkOrphaned": 3,
+          "OwnerTransfer": 0
+        },
+        {
+          "__guid": "954c2613-8e83-464d-9381-c27119c975bc",
+          "Flags": 0,
+          "Name": "Player Body",
+          "Position": "0,0,0",
+          "Tags": "playerbody",
+          "Enabled": true,
+          "OwnerTransfer": 0,
+          "Components": [
+            {
+              "__type": "Sandbox.SkinnedModelRenderer",
+              "__guid": "5ec265da-bdb6-4d18-baca-337401b20df3",
+              "BodyGroups": 341,
+              "CreateBoneObjects": false,
+              "Model": "models/citizen/citizen.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1",
+              "UseAnimGraph": true
+            }
+          ]
+        },
+        {
+          "__guid": "581be763-1576-4af3-8b6b-6c10729f95d3",
+          "Flags": 0,
+          "Name": "Player HUD",
+          "Position": "0,0,0",
+          "Components": [
+            {
+              "__type": "Sandbox.ScreenPanel",
+              "__guid": "d8903659-89ce-4e5b-9773-6154d624557f",
+              "AutoScreenScale": true,
+              "Opacity": 1,
+              "Scale": 1,
+              "ZIndex": 100
+            },
+            {
+              "__type": "FPSHud",
+              "__guid": "19b6d120-0191-4038-9b91-dd86f03db4c9",
+              "fpsWeaponController": {
+                "_type": "component",
+                "component_id": "c7014f33-e80c-4395-893d-17128862517c",
+                "go": "28291765-76f3-46c0-bb4d-59216d39f1fe",
+                "component_type": "FPSWeaponController"
+              }
+            }
+          ]
+        },
+        {
+          "__guid": "5de435c3-eb10-4120-8934-b2c1d215a272",
+          "Flags": 0,
+          "Name": "Camera",
+          "Position": "0,0,0",
+          "Tags": "maincamera",
+          "Components": [
+            {
+              "__type": "Sandbox.CameraComponent",
+              "__guid": "dd1c0ab6-0791-4367-b3c4-e9d46a640695",
+              "BackgroundColor": "0.33333,0.46275,0.52157,1",
+              "ClearFlags": "All",
+              "FieldOfView": 90,
+              "IsMainCamera": true,
+              "Orthographic": false,
+              "OrthographicHeight": 1204,
+              "Priority": 1,
+              "RenderExcludeTags": "",
+              "RenderTags": "",
+              "TargetEye": "None",
+              "Viewport": "0,0,1,1",
+              "ZFar": 10000,
+              "ZNear": 10
+            }
+          ]
+        }
+      ]
     }
   ],
   "SceneProperties": {

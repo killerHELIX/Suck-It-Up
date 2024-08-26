@@ -39,8 +39,8 @@ public class Unit : SkinnedRTSObject
 	bool selected { get; set; }
 	public UnitModelUtils.CommandType commandGiven { get; set; }
 	public Vector3 homeTargetLocation { get; set; }
-	public SkinnedRTSObject targetObject { get; set; }
-	public SkinnedRTSObject tempTargetObject { get; set; }
+	public GameObject targetObject { get; set; }
+	public GameObject tempTargetObject { get; set; }
 
 	// This will be a factor of the unit size I imagine
 	private float maxChaseDistanceFromHome = 600f;
@@ -194,7 +194,7 @@ public class Unit : SkinnedRTSObject
 							if ( unitCollidedWith.team != team )
 							{
 								//Log.Info( this.GameObject.Name + " will attack " + collisions.GameObject.Name + "!" );
-								tempTargetObject = unitCollidedWith;
+								tempTargetObject = unitCollidedWith.GameObject;
 								validUnitFound = true;
 							}
 						}
@@ -372,6 +372,6 @@ public class Unit : SkinnedRTSObject
 	{
 		commandGiven = UnitModelUtils.CommandType.Attack;
 		isNewCommand= true;
-		targetObject = newTargetObject;
+		targetObject = newTargetObject.GameObject;
 	}
 }

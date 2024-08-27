@@ -19,6 +19,7 @@
       {
         "__type": "Rifle",
         "__guid": "0429e363-d855-494b-8ae4-dfbd161c20c7",
+        "Damage": 20,
         "DropDistance": 30,
         "DropSpeedForward": 5000,
         "DropSpeedUp": 1000,
@@ -151,11 +152,6 @@
             "Property": "MaxReserves"
           }
         ]
-      },
-      {
-        "Id": "firerate",
-        "Title": "firerate",
-        "Targets": []
       },
       {
         "Id": "firerate",

@@ -39,7 +39,7 @@
           "SpawnPoints": [
             {
               "_type": "gameobject",
-              "go": "0058073b-536a-4b1b-bb61-375e2280b0b2"
+              "go": "d6cc9abf-c93b-4b1f-9a1b-9d110e0c8409"
             }
           ],
           "StartServer": true
@@ -72,8 +72,17 @@
     {
       "__guid": "0058073b-536a-4b1b-bb61-375e2280b0b2",
       "Flags": 0,
-      "Name": "Spawn",
-      "Position": "851.694,2175.784,487.0792",
+      "Name": "RTS Spawn",
+      "Position": "851.6938,2175.785,487.0793",
+      "Rotation": "0,0,0.9396926,-0.3420201",
+      "Tags": "particles,skybox",
+      "Enabled": true
+    },
+    {
+      "__guid": "d6cc9abf-c93b-4b1f-9a1b-9d110e0c8409",
+      "Flags": 0,
+      "Name": "FPS Spawn",
+      "Position": "851.6935,2175.785,192",
       "Rotation": "0,0,0.9396926,-0.3420201",
       "Tags": "particles,skybox",
       "Enabled": true
@@ -910,7 +919,7 @@
             {
               "__type": "FPSHud",
               "__guid": "19b6d120-0191-4038-9b91-dd86f03db4c9",
-              "fpsWeaponController": {
+              "FpsWeaponController": {
                 "_type": "component",
                 "component_id": "c7014f33-e80c-4395-893d-17128862517c",
                 "go": "28291765-76f3-46c0-bb4d-59216d39f1fe",
@@ -946,28 +955,6 @@
           ]
         }
       ]
-    },
-    {
-      "__guid": "c1983aa8-342e-486a-8aaa-1b75b823a9ed",
-      "Flags": 0,
-      "Name": "pistol",
-      "Position": "589.0928,2037.051,173.8319",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "OwnerTransfer": 0,
-      "__Prefab": "fps/weapons/pistol/pistol.prefab",
-      "__PrefabVariables": {
-        "vmpos": "15,5,-6",
-        "hpos": "1,-9,30",
-        "hrot": "0,0.6755902,0,0.7372773",
-        "dropdistance": 20,
-        "dropspeedup": 500,
-        "dropspeedforward": 1000,
-        "maxammo": 8,
-        "maxreserves": 64,
-        "firerate": 0.5,
-        "reloadspeed": 3
-      }
     },
     {
       "__guid": "40a1d9bb-443b-4c7a-b9e8-ba7e85a50cfa",
@@ -1198,6 +1185,29 @@
           "ImposeCorpseTimeout": true
         }
       ]
+    },
+    {
+      "__guid": "f946008a-130e-4651-9354-bf048c8e6093",
+      "Flags": 0,
+      "Name": "pistol (1)",
+      "Position": "725.5687,2202.041,167.4232",
+      "Rotation": "0.7071067,0,0,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "fps/weapons/pistol/pistol.prefab",
+      "__PrefabVariables": {
+        "vmpos": "15,5,-6",
+        "hpos": "1,-9,30",
+        "hrot": "0,0.6755902,0,0.7372773",
+        "dropdistance": 20,
+        "dropspeedup": 500,
+        "dropspeedforward": 1000,
+        "maxammo": 8,
+        "maxreserves": 64,
+        "firerate": 0.35,
+        "reloadspeed": 1.8
+      }
     }
   ],
   "SceneProperties": {

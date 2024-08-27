@@ -323,19 +323,39 @@
       "NetworkOrphaned": 1,
       "Components": [
         {
-          "__type": "Sandbox.NetworkHelper",
-          "__guid": "b1377d30-e00d-4acc-9af1-e1a8d94b6c77",
-          "PlayerPrefab": {
+          "__type": "Sandbox.SIUNetworkHelper",
+          "__guid": "22f377e3-9e67-44cd-9ae2-92ba6ece782e",
+          "RTSPlayerPrefab": {
             "_type": "gameobject",
             "prefab": "fps/player/fpsplayer.prefab"
           },
-          "SpawnPoints": [
+          "RTSSpawnPoints": [
             {
               "_type": "gameobject",
               "go": "52094ed3-85c1-4ec0-9b84-26611e0ab6e2"
             }
           ],
-          "StartServer": true
+          "SpectatorPlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "fps/player/fpsplayer.prefab"
+          },
+          "SpectatorSpawnPoints": [
+            {
+              "_type": "gameobject",
+              "go": "52094ed3-85c1-4ec0-9b84-26611e0ab6e2"
+            }
+          ],
+          "StartServer": true,
+          "SurvivorPlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "fps/player/fpsplayer.prefab"
+          },
+          "SurvivorSpawnPoints": [
+            {
+              "_type": "gameobject",
+              "go": "52094ed3-85c1-4ec0-9b84-26611e0ab6e2"
+            }
+          ]
         }
       ],
       "Children": [
@@ -349,124 +369,162 @@
       ]
     },
     {
-      "__guid": "35711c85-dcf8-48bd-acb4-2c858ca98892",
+      "__guid": "8b134749-a760-4ec3-8244-b65c759c38db",
+      "Flags": 0,
+      "Name": "Game State",
+      "Position": "-606.2842,907.3502,160.9013",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "GameState",
+          "__guid": "74d3dfe4-f19a-4010-ab7d-c72173220694"
+        }
+      ]
+    },
+    {
+      "__guid": "cf45624b-6d0d-4ea6-9517-c2fb42aff08c",
+      "Flags": 0,
+      "Name": "rifle",
+      "Position": "-108.0471,-182.3727,32",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "fps/weapons/rifle/rifle.prefab",
+      "__PrefabVariables": {
+        "vmpos": "30.00003,10,-11",
+        "hpos": "-10,0,45",
+        "hrot": "0.4055798,0.4055798,-0.579228,0.579228",
+        "dropdistance": 30,
+        "dropspeedup": 1000,
+        "dropspeedforward": 5000,
+        "maxammo": 5,
+        "maxreserves": 25,
+        "firerate": 1,
+        "reloadspeed": 2,
+        "damage": 20,
+        "firesoundevent": "rifleraw2"
+      }
+    },
+    {
+      "__guid": "9b5e610a-c63d-4884-aab5-7cfd9d8df3df",
+      "Flags": 0,
+      "Name": "rifle (1)",
+      "Position": "-108.0471,-208,32",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "fps/weapons/rifle/rifle.prefab",
+      "__PrefabVariables": {
+        "vmpos": "30.00003,10,-11",
+        "hpos": "-10,0,45",
+        "hrot": "0.4055798,0.4055798,-0.579228,0.579228",
+        "dropdistance": 30,
+        "dropspeedup": 1000,
+        "dropspeedforward": 5000,
+        "maxammo": 5,
+        "maxreserves": 25,
+        "firerate": 1,
+        "reloadspeed": 2,
+        "damage": 20,
+        "firesoundevent": "rifleraw2"
+      }
+    },
+    {
+      "__guid": "c98b38fb-8fa7-4fd0-a409-3ca12326a725",
+      "Flags": 0,
+      "Name": "rifle (2)",
+      "Position": "-108.0471,-160,32",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "fps/weapons/rifle/rifle.prefab",
+      "__PrefabVariables": {
+        "vmpos": "30.00003,10,-11",
+        "hpos": "-10,0,45",
+        "hrot": "0.4055798,0.4055798,-0.579228,0.579228",
+        "dropdistance": 30,
+        "dropspeedup": 1000,
+        "dropspeedforward": 5000,
+        "maxammo": 5,
+        "maxreserves": 25,
+        "firerate": 1,
+        "reloadspeed": 2,
+        "damage": 20,
+        "firesoundevent": "rifleraw2"
+      }
+    },
+    {
+      "__guid": "cc4dd7d8-bca9-4f7e-bf72-6b304661c077",
+      "Flags": 0,
+      "Name": "pistol",
+      "Position": "-120.4822,-261.1396,31",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "fps/weapons/pistol/pistol.prefab",
+      "__PrefabVariables": {
+        "vmpos": "15,5,-6",
+        "hpos": "1,-9,30",
+        "hrot": "0,0.6755902,0,0.7372773",
+        "dropdistance": 20,
+        "dropspeedup": 500,
+        "dropspeedforward": 1000,
+        "maxammo": 8,
+        "maxreserves": 64,
+        "firerate": 0.35,
+        "reloadspeed": 1.8,
+        "damage": 5,
+        "firesoundevent": "pistolraw4"
+      }
+    },
+    {
+      "__guid": "87916cc0-eefd-4680-9194-fce87b0c4a01",
       "Flags": 0,
       "Name": "pistol (1)",
-      "Position": "-101.3939,-311.5093,34.74518",
-      "Rotation": "-0.4785534,0.4873725,-0.5164565,0.5164568",
+      "Position": "-120.4822,-288,31",
       "Enabled": true,
       "NetworkMode": 1,
       "OwnerTransfer": 0,
       "__Prefab": "fps/weapons/pistol/pistol.prefab",
-      "__PrefabVariables": {}
+      "__PrefabVariables": {
+        "vmpos": "15,5,-6",
+        "hpos": "1,-9,30",
+        "hrot": "0,0.6755902,0,0.7372773",
+        "dropdistance": 20,
+        "dropspeedup": 500,
+        "dropspeedforward": 1000,
+        "maxammo": 8,
+        "maxreserves": 64,
+        "firerate": 0.35,
+        "reloadspeed": 1.8,
+        "damage": 5,
+        "firesoundevent": "pistolraw4"
+      }
     },
     {
-      "__guid": "8f6514b8-d9d2-4407-ba64-becee74af91c",
-      "Flags": 0,
-      "Name": "pistol (3)",
-      "Position": "-69.46691,-311.8008,36.88637",
-      "Rotation": "-0.4785534,0.4873725,-0.5164565,0.5164568",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "OwnerTransfer": 0,
-      "__Prefab": "fps/weapons/pistol/pistol.prefab",
-      "__PrefabVariables": {}
-    },
-    {
-      "__guid": "61d2c261-ae71-441f-b521-5008598dd2b5",
-      "Flags": 0,
-      "Name": "pistol (4)",
-      "Position": "-37.53996,-312.0922,39.02756",
-      "Rotation": "-0.4785534,0.4873725,-0.5164565,0.5164568",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "OwnerTransfer": 0,
-      "__Prefab": "fps/weapons/pistol/pistol.prefab",
-      "__PrefabVariables": {}
-    },
-    {
-      "__guid": "a234aba5-f448-4b21-a7da-e152cf3bbc3b",
-      "Flags": 0,
-      "Name": "pistol (5)",
-      "Position": "-5.612995,-312.3836,41.16874",
-      "Rotation": "-0.4785534,0.4873725,-0.5164565,0.5164568",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "OwnerTransfer": 0,
-      "__Prefab": "fps/weapons/pistol/pistol.prefab",
-      "__PrefabVariables": {}
-    },
-    {
-      "__guid": "88c79c1d-7c0f-4046-acbe-a0390b4e27a9",
-      "Flags": 0,
-      "Name": "pistol (6)",
-      "Position": "-5.135747,-256.3559,41.67923",
-      "Rotation": "-0.4785534,0.4873725,-0.5164565,0.5164568",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "OwnerTransfer": 0,
-      "__Prefab": "fps/weapons/pistol/pistol.prefab",
-      "__PrefabVariables": {}
-    },
-    {
-      "__guid": "473564fa-1aa5-46a1-aafc-be83aa0cdd9c",
-      "Flags": 0,
-      "Name": "pistol (7)",
-      "Position": "-37.06266,-256.0643,39.5382",
-      "Rotation": "-0.4785534,0.4873725,-0.5164565,0.5164568",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "OwnerTransfer": 0,
-      "__Prefab": "fps/weapons/pistol/pistol.prefab",
-      "__PrefabVariables": {}
-    },
-    {
-      "__guid": "a03bbe42-b4a4-4664-a105-516a55c62791",
-      "Flags": 0,
-      "Name": "pistol (8)",
-      "Position": "-68.98964,-255.7727,37.39718",
-      "Rotation": "-0.4785534,0.4873725,-0.5164565,0.5164568",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "OwnerTransfer": 0,
-      "__Prefab": "fps/weapons/pistol/pistol.prefab",
-      "__PrefabVariables": {}
-    },
-    {
-      "__guid": "f273c7c8-3c76-493e-8ac2-bdecb0398c58",
-      "Flags": 0,
-      "Name": "pistol (9)",
-      "Position": "-100.9166,-255.4811,35.25616",
-      "Rotation": "-0.4785534,0.4873725,-0.5164565,0.5164568",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "OwnerTransfer": 0,
-      "__Prefab": "fps/weapons/pistol/pistol.prefab",
-      "__PrefabVariables": {}
-    },
-    {
-      "__guid": "4af9470f-d49b-4c67-8854-e2eb8a106ec1",
-      "Flags": 0,
-      "Name": "pistol (10)",
-      "Position": "-132.8436,-255.1895,33.11515",
-      "Rotation": "-0.4785534,0.4873725,-0.5164565,0.5164568",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "OwnerTransfer": 0,
-      "__Prefab": "fps/weapons/pistol/pistol.prefab",
-      "__PrefabVariables": {}
-    },
-    {
-      "__guid": "10d42338-96a8-471d-a88e-0fbb5545fa89",
+      "__guid": "b7bee10d-ef7c-43d1-a224-1dc091dcb3b2",
       "Flags": 0,
       "Name": "pistol (2)",
-      "Position": "-133.3208,-311.2177,32.60419",
-      "Rotation": "-0.4785534,0.4873725,-0.5164565,0.5164568",
+      "Position": "-120.4822,-320,31",
       "Enabled": true,
       "NetworkMode": 1,
       "OwnerTransfer": 0,
       "__Prefab": "fps/weapons/pistol/pistol.prefab",
-      "__PrefabVariables": {}
+      "__PrefabVariables": {
+        "vmpos": "15,5,-6",
+        "hpos": "1,-9,30",
+        "hrot": "0,0.6755902,0,0.7372773",
+        "dropdistance": 20,
+        "dropspeedup": 500,
+        "dropspeedforward": 1000,
+        "maxammo": 8,
+        "maxreserves": 64,
+        "firerate": 0.35,
+        "reloadspeed": 1.8,
+        "damage": 5,
+        "firesoundevent": "pistolraw4"
+      }
     }
   ],
   "SceneProperties": {

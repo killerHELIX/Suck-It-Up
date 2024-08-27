@@ -21,7 +21,7 @@
         "MaxAmmo": 8,
         "MaxReserves": 64,
         "Name": "9mm - \u0022The Scrapshot\u0022",
-        "ReloadSpeed": 3,
+        "ReloadSpeed": 1.8,
         "ViewmodelPosition": "15,5,-6",
         "ViewmodelRenderer": {
           "_type": "component",

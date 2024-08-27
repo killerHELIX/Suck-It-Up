@@ -96,7 +96,8 @@ public class MainMenuComponent : Component, Component.INetworkListener
 			//return; 
 		//}
 		Log.Info("Menu start");
-		if(joinedGame)
+		
+		if((Connection.Host != Connection.Local && Connection.Host != null )|| joinedGame)
 		{
 			setActivePanel(MenuPanelType.JOINEDLOBBY);
 		}

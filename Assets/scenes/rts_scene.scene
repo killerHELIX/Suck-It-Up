@@ -1556,6 +1556,35 @@
           "Tint": "1,1,0,0.50196"
         }
       ]
+    },
+    {
+      "__guid": "81375574-4e83-42e8-94b6-1d1e5353a38e",
+      "Flags": 0,
+      "Name": "Phase Trigger",
+      "Position": "-1.520462,2247.177,91.70945",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "StaticSUIGameTrigger",
+          "__guid": "689033b2-7a90-4154-9dfd-f7ff635a514b",
+          "GameFinish": false,
+          "GamePhase": 1,
+          "TriggerCollider": {
+            "_type": "component",
+            "component_id": "b5f0bdd3-221e-40c9-a337-b294ff7c40d0",
+            "go": "81375574-4e83-42e8-94b6-1d1e5353a38e",
+            "component_type": "BoxCollider"
+          }
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "b5f0bdd3-221e-40c9-a337-b294ff7c40d0",
+          "Center": "0,0,0",
+          "IsTrigger": true,
+          "Scale": "100,100,100",
+          "Static": false
+        }
+      ]
     }
   ],
   "SceneProperties": {

@@ -62,7 +62,7 @@ public class GameState : Component
 			//pullCurrentGameStateFromHost();
 			// DEBUG
 			//survivorPlayerList.Add("balls");
-			rtsPlayerList.Add("Grundle");
+			//rtsPlayerList.Add("Grundle");
 			// DEBUG
 			//Log.Info(Network.OwnerConnection);
 			//Log.Info(Network.OwnerConnection.DisplayName);

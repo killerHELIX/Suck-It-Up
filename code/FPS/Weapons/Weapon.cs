@@ -178,8 +178,14 @@ public abstract class Weapon : Component, Component.ICollisionListener
 
     public void OnCollisionStart(Collision collision)
     {
-        var otherObj = collision.Other.Collider.GameObject;
-        TryToPickup(otherObj);
+		if (collision.Other.Collider != null)
+		{
+			if (collision.Other.Collider.GameObject != null)
+			{
+				var otherObj = collision.Other.Collider.GameObject;
+				TryToPickup(otherObj);
+			}
+		}
     }
 
     public void OnCollisionUpdate(Collision collision)

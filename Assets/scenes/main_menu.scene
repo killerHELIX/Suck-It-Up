@@ -56,6 +56,7 @@
             "go": "c918b060-a76c-4cd1-8a5f-43685fb2b7bf",
             "component_type": "CorpseList"
           },
+          "rtsPlayerList": [],
           "ScreenPanel": {
             "_type": "component",
             "component_id": "e2b9ccea-bca0-4d1b-b49b-d78f275849bc",

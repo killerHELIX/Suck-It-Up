@@ -88,8 +88,6 @@ public class RTSPlayer : Component
 		//Log.Info(Time.Now + " - " + lastRPTickTime);
 		if (Time.Now - lastRPTickTime > 1 / (DEFAULT_RP_RATE + (PER_PLAYER_RESOURCE_MULT * GameState.Local.survivorPlayerList.Count) + (PER_PHASE_RESOURCE_MULT * GameState.Local.matchPhase)))
 		{
-			Log.Info(Time.Now + " - " + lastRPTickTime);
-			Log.Info(DEFAULT_RP_RATE + (PER_PLAYER_RESOURCE_MULT * GameState.Local.survivorPlayerList.Count) + (PER_PHASE_RESOURCE_MULT * GameState.Local.matchPhase));
 			if(ResourceCap > resourcePoints)
 			{
 				resourcePoints++;

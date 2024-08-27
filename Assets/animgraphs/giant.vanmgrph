@@ -85,7 +85,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -232.964859, 101.020157 ]
+					m_vecPosition = [ -224.0, 96.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1053292646
@@ -163,7 +163,7 @@
 							{
 								m_nodeID = 
 								{
-									m_id = 1491223629
+									m_id = 1562794882
 								}
 								m_outputID = 
 								{
@@ -551,7 +551,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -240.0, 48.0 ]
+					m_vecPosition = [ -224.0, 352.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1491223629
@@ -582,6 +582,27 @@
 					m_sequenceName = "giant_death"
 					m_playbackSpeed = 0.5
 					m_bLoop = false
+				}
+			},
+			{
+				key = 
+				{
+					m_id = 1562794882
+				}
+				value = 
+				{
+					_class = "CSequenceAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ -224.0, 32.0 ]
+					m_nNodeID = 
+					{
+						m_id = 1562794882
+					}
+					m_sNote = ""
+					m_tagSpans = [  ]
+					m_sequenceName = "giant_idle"
+					m_playbackSpeed = 1.0
+					m_bLoop = true
 				}
 			},
 		]

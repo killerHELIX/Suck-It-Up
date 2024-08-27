@@ -1,0 +1,20 @@
+{
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "lightbar_warm_med",
+      "Type": "map",
+      "Org": "local",
+      "Ident": "lightbar_warm_med",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": [],
+      "EditorReferences": [],
+      "IsWhitelistDisabled": false,
+      "Metadata": {
+        "SingleAssetSource": "maps/prefabs/lightbar_warm_med.vmap"
+      }
+    }
+  }
+}

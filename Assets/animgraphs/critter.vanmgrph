@@ -79,27 +79,6 @@
 			{
 				key = 
 				{
-					m_id = 765021842
-				}
-				value = 
-				{
-					_class = "CSequenceAnimNode"
-					m_sName = "Unnamed"
-					m_vecPosition = [ -144.0, 16.0 ]
-					m_nNodeID = 
-					{
-						m_id = 765021842
-					}
-					m_sNote = ""
-					m_tagSpans = [  ]
-					m_sequenceName = "critter_walk"
-					m_playbackSpeed = 0.01
-					m_bLoop = true
-				}
-			},
-			{
-				key = 
-				{
 					m_id = 877923405
 				}
 				value = 
@@ -184,7 +163,7 @@
 							{
 								m_nodeID = 
 								{
-									m_id = 765021842
+									m_id = 1289364593
 								}
 								m_outputID = 
 								{
@@ -587,6 +566,27 @@
 					]
 					m_bBlockWaningTags = false
 					m_bLockStateWhenWaning = false
+				}
+			},
+			{
+				key = 
+				{
+					m_id = 1289364593
+				}
+				value = 
+				{
+					_class = "CSequenceAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ -160.0, 16.0 ]
+					m_nNodeID = 
+					{
+						m_id = 1289364593
+					}
+					m_sNote = ""
+					m_tagSpans = [  ]
+					m_sequenceName = "critter_idle"
+					m_playbackSpeed = 1.0
+					m_bLoop = true
 				}
 			},
 			{

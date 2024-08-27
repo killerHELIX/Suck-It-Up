@@ -68,7 +68,7 @@
         "__guid": "01e7d5c7-ea9e-4852-9d35-799fef49bd6e",
         "PhaseUnlocked": 2,
         "UnitCapacityCost": 10,
-        "UnitPortraitImage": "materials/skeltal_portrait.PNG",
+        "UnitPortraitImage": "materials/enemies/portraits/roller_portrait.png",
         "UnitPrefab": {
           "_type": "gameobject",
           "prefab": "prefabs/roller.prefab"
@@ -80,7 +80,7 @@
         "__guid": "557c08d0-9b17-499a-a9ba-bd56ac36336b",
         "PhaseUnlocked": 0,
         "UnitCapacityCost": 3,
-        "UnitPortraitImage": "materials/skeltal_portrait.PNG",
+        "UnitPortraitImage": "materials/enemies/portraits/critter_portrait.png",
         "UnitPrefab": {
           "_type": "gameobject",
           "prefab": "prefabs/critter.prefab"
@@ -92,7 +92,7 @@
         "__guid": "3c81f041-d634-497b-8007-4ee1fdf62c92",
         "PhaseUnlocked": 1,
         "UnitCapacityCost": 5,
-        "UnitPortraitImage": "materials/skeltal_portrait.PNG",
+        "UnitPortraitImage": "materials/enemies/portraits/normal_portrait.png",
         "UnitPrefab": {
           "_type": "gameobject",
           "prefab": "prefabs/normal.prefab"
@@ -104,7 +104,7 @@
         "__guid": "19e9b742-d460-4133-9e55-e0207446fe22",
         "PhaseUnlocked": 3,
         "UnitCapacityCost": 15,
-        "UnitPortraitImage": "materials/skeltal_portrait.PNG",
+        "UnitPortraitImage": "materials/enemies/portraits/giant_portrait.png",
         "UnitPrefab": {
           "_type": "gameobject",
           "prefab": "prefabs/giant.prefab"

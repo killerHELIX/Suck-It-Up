@@ -37,7 +37,7 @@
           "go": "fef6a3a3-eff6-432a-80b4-af7695729605",
           "component_type": "UnitModel"
         },
-        "PortraitImage": "materials/skeltal_portrait.PNG",
+        "PortraitImage": "materials/enemies/portraits/normal_portrait.png",
         "RangedAttackDamage": 0,
         "RangedAttackRange": 0,
         "RangedAttackSpeed": 0,

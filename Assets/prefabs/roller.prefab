@@ -37,7 +37,7 @@
           "go": "72783acf-5f77-44b2-bdac-045d1c3bcdce",
           "component_type": "UnitModel"
         },
-        "PortraitImage": "materials/skeltal_portrait.PNG",
+        "PortraitImage": "materials/enemies/portraits/roller_portrait.png",
         "RangedAttackDamage": 0,
         "RangedAttackRange": 0,
         "RangedAttackSpeed": 0,

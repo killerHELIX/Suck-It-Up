@@ -820,14 +820,14 @@
       "__guid": "64c59ad3-2fa1-40c3-88da-5a103ac8df3d",
       "Flags": 0,
       "Name": "Phase Trigger (4)",
-      "Position": "1822.32,2085.392,-92.50864",
+      "Position": "1822.32,2085.392,-10.769",
       "Enabled": true,
       "Components": [
         {
           "__type": "StaticSUIGameTrigger",
           "__guid": "6bcebc92-9626-452c-8e9f-e41d46e45d61",
-          "GameFinish": false,
-          "GamePhase": 4,
+          "GameFinish": true,
+          "GamePhase": 5,
           "TriggerCollider": {
             "_type": "component",
             "component_id": "4a6f0bf5-5944-4dab-9b37-6e1ef30547ef",

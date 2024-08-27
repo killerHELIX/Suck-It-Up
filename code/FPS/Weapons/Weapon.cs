@@ -166,6 +166,10 @@ public abstract class Weapon : Component, Component.ICollisionListener
 
     public void OnCollisionStart(Collision collision)
     {
+        // if (IsProxy) return;
+        // if (collision.Other != null)
+        // collision.Other
+        // Log.Info($"{Network.OwnerConnection.DisplayName} {collision}");
         var otherObj = collision.Other.Collider.GameObject;
         TryToPickup(otherObj);
     }

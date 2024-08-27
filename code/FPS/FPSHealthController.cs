@@ -29,9 +29,9 @@ public sealed class FPSHealthController : Component
 	{
 		//Log.Info($"Health: [ {CurrentHealth} / {MaxHealth} ]");
 
-		// if (Input.Pressed("Damage")) Damage(1);
+		if (Input.Down("Damage")) Damage(1);
 
-		// if (Input.Pressed("Heal")) Heal(1);
+		if (Input.Down("Heal")) Heal(1);
 
 	}
 }

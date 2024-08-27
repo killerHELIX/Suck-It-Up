@@ -1,0 +1,22 @@
+{
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "map_final",
+      "Type": "map",
+      "Org": "local",
+      "Ident": "map_final",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": [],
+      "EditorReferences": [
+        "facepunch.floor_wood_laminated#18686"
+      ],
+      "IsWhitelistDisabled": false,
+      "Metadata": {
+        "SingleAssetSource": "maps/map_final.vmap"
+      }
+    }
+  }
+}

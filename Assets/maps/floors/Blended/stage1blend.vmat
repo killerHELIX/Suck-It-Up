@@ -1,0 +1,36 @@
+// THIS FILE IS AUTO-GENERATED
+
+Layer0
+{
+	shader "shaders/blendable.shader"
+
+	F_MULTIBLEND 1 // 2 Layers
+
+	//---- Use Tint Masks In Vertex Paint ----
+	F_USE_TINT_MASKS_IN_VERTEX_PAINT 1
+
+	//---- Fog ----
+	g_bFogEnabled "1"
+
+	//---- Material A ----
+	g_flTintColorA "[0.309804 0.309804 0.305882 1.000000]"
+	TextureAmbientOcclusionA "materials/default/default_ao.tga"
+	TextureBlendMaskA "materials/default/default_blend.tga"
+	TextureColorA "maps/floors/assets/floor2/floor2_pixel_color.jpg"
+	TextureMetalnessA "materials/default/default_metal.tga"
+	TextureNormalA "maps/floors/assets/floor2/floor2_pixel_normal.jpg"
+	TextureRoughnessA "maps/floors/assets/floor2/floor2_pixel_rough.jpg"
+	TextureTintMaskA "materials/default/default.tga"
+
+	//---- Material B ----
+	g_flBlendSoftnessB "0.159"
+	g_flTintColorB "[0.219608 0.215686 0.215686 1.000000]"
+	g_vTexCoordScale2 "[1.000 1.000]"
+	TextureAmbientOcclusionB "materials/default/default_ao.tga"
+	TextureBlendMaskB "maps/floors/assets/floor2/floor2_pixel_rough.jpg"
+	TextureColorB "maps/floors/assets/floor3/floor3_pixel_color.jpg"
+	TextureMetalnessB "materials/default/default_metal.tga"
+	TextureNormalB "maps/floors/assets/floor3/floor3_pixel_normal.jpg"
+	TextureRoughnessB "maps/floors/assets/floor3/floor3_pixel_rough.jpg"
+	TextureTintMaskB "materials/default/default.tga"
+}

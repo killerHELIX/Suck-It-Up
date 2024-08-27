@@ -1,0 +1,22 @@
+{
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "map blockout",
+      "Type": "map",
+      "Org": "local",
+      "Ident": "mapblockout",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": [],
+      "EditorReferences": [
+        "sboxmp.stalker_dolg#58092"
+      ],
+      "IsWhitelistDisabled": false,
+      "Metadata": {
+        "SingleAssetSource": "maps/map blockout.vmap"
+      }
+    }
+  }
+}

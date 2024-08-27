@@ -91,13 +91,6 @@ public abstract class Weapon : Component, Component.ICollisionListener
 
 
 
-    public Weapon()
-    {
-        // Start gun loaded.
-        CurrentAmmo = MaxAmmo;
-        CurrentReserves = MaxReserves;
-    }
-
     [Broadcast]
     public void Pickup(GameObject player, FPSWeaponController playerWeaponController, FPSCameraController playerCameraController)
     {
@@ -113,8 +106,20 @@ public abstract class Weapon : Component, Component.ICollisionListener
         }
         Components.Get<Rigidbody>().Enabled = false;
         GameObject.Tags.Add(PLAYER_OWNED_WEAPON);
-        playerWeaponController.Weapons.Add(this);
-        Holster();
+
+        var existingWep = PlayerWeaponController.Weapons.FirstOrDefault(x => x.Name == Name);
+        if (existingWep is not null)
+        {
+            existingWep.CurrentReserves += CurrentAmmo + CurrentReserves;
+            existingWep.CurrentReserves = existingWep.CurrentReserves.Clamp(0, existingWep.MaxReserves);
+            GameObject.Destroy();
+        }
+        else
+        {
+            playerWeaponController.Weapons.Add(this);
+            Holster();
+        }
+
     }
 
     public void Holster()
@@ -127,7 +132,6 @@ public abstract class Weapon : Component, Component.ICollisionListener
     public void Aim()
     {
         if (!IsProxy) ShowViewmodel();
-        // WeaponRenderer.SceneModel.SetAnimParameter("isFiring", true);
 
         var head = PlayerWeaponController.Head;
         var targetPos = head.Transform.Position
@@ -137,9 +141,6 @@ public abstract class Weapon : Component, Component.ICollisionListener
 
         Transform.Position = Vector3.Lerp(Transform.Position, targetPos, Time.Delta * 10f);
         Transform.Rotation = Rotation.Slerp(Transform.Rotation, head.Transform.Rotation, Time.Delta * 20f);
-
-        // Transform.Position = targetPos;
-        // Transform.Rotation = head.Transform.Rotation;
     }
 
     [Broadcast]
@@ -177,10 +178,6 @@ public abstract class Weapon : Component, Component.ICollisionListener
 
     public void OnCollisionStart(Collision collision)
     {
-        // if (IsProxy) return;
-        // if (collision.Other != null)
-        // collision.Other
-        // Log.Info($"{Network.OwnerConnection.DisplayName} {collision}");
         var otherObj = collision.Other.Collider.GameObject;
         TryToPickup(otherObj);
     }
@@ -196,7 +193,9 @@ public abstract class Weapon : Component, Component.ICollisionListener
     }
     protected override void OnStart()
     {
-
+        // Start gun loaded.
+        CurrentAmmo = MaxAmmo;
+        CurrentReserves = MaxReserves;
     }
 
     protected override void OnUpdate()

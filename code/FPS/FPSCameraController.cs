@@ -40,9 +40,12 @@ public sealed class FPSCameraController : Component
 
 	protected override void OnUpdate()
 	{
+		// Recoil feeds the final Rotation Slerp and goes from a low number (slow lerp) to a high number (fast lerp). 
+		// Time.Delta naturally pushes the cam rotation toward fast lerp, AKA responsive cam.
+		// This makes recoil smoother than pitching up instantly.
 		CurrentRecoil = CurrentRecoil + Time.Delta * RecoilRecovery;
 		CurrentRecoil = CurrentRecoil.Clamp(MaxRecoil, NoRecoil);
-		Log.Info($"Current Recoil: {CurrentRecoil}");
+
 		if (IsProxy) return; 
 		if (Player is null)
 		{
@@ -72,18 +75,17 @@ public sealed class FPSCameraController : Component
 
 			// Set position of the camera to the calculated position
 			Camera.Transform.Position = camPos;
-			// Camera.Transform.Rotation = Rotation.From(EyeAngles);
 			Camera.Transform.Rotation = Rotation.Slerp(Camera.Transform.Rotation, Rotation.From(EyeAngles), Time.Delta * CurrentRecoil);
 		}
 	}
 
     public void Recoil(float strength)
     {
+		if (IsProxy) return;
 		EyeAngles = PlayerHeadRef.Transform.Rotation.Angles();
 		EyeAngles.pitch -= strength;
 
 		CurrentRecoil = MaxRecoil;
-		// PlayerHeadRef.Transform.Rotation = Rotation.Slerp(PlayerHeadRef.Transform.Rotation, Rotation.From(EyeAngles), Time.Delta * 100f);
     }
 
 }

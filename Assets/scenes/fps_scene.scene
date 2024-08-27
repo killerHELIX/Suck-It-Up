@@ -403,7 +403,8 @@
         "firerate": 1,
         "reloadspeed": 2,
         "damage": 20,
-        "firesoundevent": "rifleraw2"
+        "firesoundevent": "rifleraw2",
+        "recoilstrength": 10
       }
     },
     {
@@ -427,7 +428,8 @@
         "firerate": 1,
         "reloadspeed": 2,
         "damage": 20,
-        "firesoundevent": "rifleraw2"
+        "firesoundevent": "rifleraw2",
+        "recoilstrength": 10
       }
     },
     {
@@ -451,7 +453,8 @@
         "firerate": 1,
         "reloadspeed": 2,
         "damage": 20,
-        "firesoundevent": "rifleraw2"
+        "firesoundevent": "rifleraw2",
+        "recoilstrength": 10
       }
     },
     {
@@ -475,7 +478,8 @@
         "firerate": 0.35,
         "reloadspeed": 1.8,
         "damage": 5,
-        "firesoundevent": "pistolraw4"
+        "firesoundevent": "pistolraw4",
+        "recoilstrength": 5
       }
     },
     {
@@ -499,7 +503,8 @@
         "firerate": 0.35,
         "reloadspeed": 1.8,
         "damage": 5,
-        "firesoundevent": "pistolraw4"
+        "firesoundevent": "pistolraw4",
+        "recoilstrength": 5
       }
     },
     {
@@ -523,7 +528,8 @@
         "firerate": 0.35,
         "reloadspeed": 1.8,
         "damage": 5,
-        "firesoundevent": "pistolraw4"
+        "firesoundevent": "pistolraw4",
+        "recoilstrength": 5
       }
     }
   ],

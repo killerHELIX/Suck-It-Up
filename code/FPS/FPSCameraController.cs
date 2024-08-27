@@ -1,3 +1,5 @@
+using System;
+
 public sealed class FPSCameraController : Component
 {
 
@@ -10,10 +12,22 @@ public sealed class FPSCameraController : Component
 	private FPSPlayerMovementController Player { get; set; }
 	private GameObject PlayerBodyRef { get; set; }
 	private GameObject PlayerHeadRef { get; set; }
+	private Angles EyeAngles = Angles.Zero;
+	private float NoRecoil = 100f;
+	private float MaxRecoil = 30f;
+	private float RecoilRecovery = 100f;
+	private float CurrentRecoil;
+
+	public bool IsRecoiling {
+		get {
+			return CurrentRecoil < NoRecoil;
+		}
+	}
 
 
 	protected override void OnStart()
 	{
+		CurrentRecoil = NoRecoil;
 
 		if (IsProxy) 
 		{
@@ -26,6 +40,9 @@ public sealed class FPSCameraController : Component
 
 	protected override void OnUpdate()
 	{
+		CurrentRecoil = CurrentRecoil + Time.Delta * RecoilRecovery;
+		CurrentRecoil = CurrentRecoil.Clamp(MaxRecoil, NoRecoil);
+		Log.Info($"Current Recoil: {CurrentRecoil}");
 		if (IsProxy) return; 
 		if (Player is null)
 		{
@@ -36,12 +53,13 @@ public sealed class FPSCameraController : Component
 		}
 
 
-		var eyeAngles = PlayerHeadRef.Transform.Rotation.Angles();
-		eyeAngles.pitch += Input.MouseDelta.y * 0.1f;
-		eyeAngles.yaw -= Input.MouseDelta.x * 0.1f;
-		eyeAngles.roll = 0f;
-		eyeAngles.pitch = eyeAngles.pitch.Clamp(-89.9f, 89.9f);
-		PlayerHeadRef.Transform.Rotation = Rotation.From(eyeAngles);
+		if (EyeAngles == Angles.Zero) EyeAngles = PlayerHeadRef.Transform.Rotation.Angles();
+
+		EyeAngles.pitch += Input.MouseDelta.y * 0.1f;
+		EyeAngles.yaw -= Input.MouseDelta.x * 0.1f;
+		EyeAngles.roll = 0f;
+		EyeAngles.pitch = EyeAngles.pitch.Clamp(-89.9f, 89.9f);
+		PlayerHeadRef.Transform.Rotation = Rotation.From(EyeAngles);
 
 		// Set the current camera offset
 		var targetOffset = Vector3.Zero;
@@ -54,7 +72,18 @@ public sealed class FPSCameraController : Component
 
 			// Set position of the camera to the calculated position
 			Camera.Transform.Position = camPos;
-			Camera.Transform.Rotation = Rotation.From(eyeAngles);
+			// Camera.Transform.Rotation = Rotation.From(EyeAngles);
+			Camera.Transform.Rotation = Rotation.Slerp(Camera.Transform.Rotation, Rotation.From(EyeAngles), Time.Delta * CurrentRecoil);
 		}
 	}
+
+    public void Recoil(float strength)
+    {
+		EyeAngles = PlayerHeadRef.Transform.Rotation.Angles();
+		EyeAngles.pitch -= strength;
+
+		CurrentRecoil = MaxRecoil;
+		// PlayerHeadRef.Transform.Rotation = Rotation.Slerp(PlayerHeadRef.Transform.Rotation, Rotation.From(EyeAngles), Time.Delta * 100f);
+    }
+
 }

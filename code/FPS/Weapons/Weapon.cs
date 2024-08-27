@@ -68,6 +68,10 @@ public abstract class Weapon : Component, Component.ICollisionListener
 	[Description("The name of the sound event that should play when this weapon fires.")]
 	public abstract string FireSoundEvent { get; set; }
 
+	[Property]
+	[Description("The strength of this weapon's recoil.")]
+	public abstract float RecoilStrength { get; set; }
+
 	[Sync]
     [Description("The current ammo in the weapon.")]
     public int CurrentAmmo { get; set; }
@@ -81,6 +85,7 @@ public abstract class Weapon : Component, Component.ICollisionListener
     private SceneTraceResult lastTraceResult;
 
     private FPSWeaponController PlayerWeaponController;
+    private FPSCameraController PlayerCameraController;
 
     private bool ShouldDropOwnershipOnCollide = false;
 
@@ -94,10 +99,12 @@ public abstract class Weapon : Component, Component.ICollisionListener
     }
 
     [Broadcast]
-    public void Pickup(GameObject player, FPSWeaponController playerWeaponController)
+    public void Pickup(GameObject player, FPSWeaponController playerWeaponController, FPSCameraController playerCameraController)
     {
 
         PlayerWeaponController = playerWeaponController;
+        PlayerCameraController = playerCameraController;
+
         Log.Info($"{player} picking up {this}");
         GameObject.SetParent(PlayerWeaponController.Body, keepWorldPosition: false);
         if (!player.IsProxy)
@@ -222,6 +229,7 @@ public abstract class Weapon : Component, Component.ICollisionListener
 
                 AnimateFire();
                 FireSound();
+                PlayerCameraController.Recoil(RecoilStrength);
 
                 float dist = 10000.0f;
                 var head = PlayerWeaponController.Head;
@@ -347,9 +355,10 @@ public abstract class Weapon : Component, Component.ICollisionListener
         }
 
         var playerWeaponController = other.Components.Get<FPSWeaponController>();
-        if (playerWeaponController != null)
+        var playerCameraController = other.Components.Get<FPSCameraController>();
+        if (playerWeaponController != null && playerCameraController != null)
         {
-            Pickup(other, playerWeaponController);
+            Pickup(other, playerWeaponController, playerCameraController);
         }
     }
 

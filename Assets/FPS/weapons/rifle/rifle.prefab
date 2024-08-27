@@ -21,6 +21,7 @@
         "MaxAmmo": 5,
         "MaxReserves": 25,
         "Name": ".357 - \u0022The Rusty Repeater\u0022",
+        "RecoilStrength": 10,
         "ReloadSpeed": 2,
         "ViewmodelPosition": "30.00003,10,-11",
         "ViewmodelRenderer": {
@@ -240,6 +241,16 @@
           {
             "Id": "0429e363-d855-494b-8ae4-dfbd161c20c7",
             "Property": "FireSoundEvent"
+          }
+        ]
+      },
+      {
+        "Id": "recoilstrength",
+        "Title": "recoilstrength",
+        "Targets": [
+          {
+            "Id": "0429e363-d855-494b-8ae4-dfbd161c20c7",
+            "Property": "RecoilStrength"
           }
         ]
       }

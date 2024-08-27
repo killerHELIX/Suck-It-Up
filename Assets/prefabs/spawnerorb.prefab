@@ -66,7 +66,7 @@
       {
         "__type": "UnitPortraitTuple",
         "__guid": "01e7d5c7-ea9e-4852-9d35-799fef49bd6e",
-        "PhaseUnlocked": 0,
+        "PhaseUnlocked": 2,
         "UnitCapacityCost": 10,
         "UnitPortraitImage": "materials/skeltal_portrait.PNG",
         "UnitPrefab": {
@@ -90,7 +90,7 @@
       {
         "__type": "UnitPortraitTuple",
         "__guid": "3c81f041-d634-497b-8007-4ee1fdf62c92",
-        "PhaseUnlocked": 0,
+        "PhaseUnlocked": 1,
         "UnitCapacityCost": 5,
         "UnitPortraitImage": "materials/skeltal_portrait.PNG",
         "UnitPrefab": {
@@ -102,7 +102,7 @@
       {
         "__type": "UnitPortraitTuple",
         "__guid": "19e9b742-d460-4133-9e55-e0207446fe22",
-        "PhaseUnlocked": 0,
+        "PhaseUnlocked": 3,
         "UnitCapacityCost": 15,
         "UnitPortraitImage": "materials/skeltal_portrait.PNG",
         "UnitPrefab": {

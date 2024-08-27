@@ -12,7 +12,7 @@
 	//public int team = 0;
 	bool selected { get; set; }
 
-	private bool iswaitingForPhase = true;
+	protected bool iswaitingForPhase = true;
 
 	System.Guid oldOwner { get; set; }
 
@@ -68,7 +68,7 @@
 		setDefaultColor();
 	}
 
-	private void setNonInteractable(bool isNonInteractable)
+	protected void setNonInteractable(bool isNonInteractable)
 	{
 		if(isNonInteractable)
 		{

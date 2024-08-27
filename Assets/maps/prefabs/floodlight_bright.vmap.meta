@@ -1,0 +1,20 @@
+{
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "floodlight_bright",
+      "Type": "map",
+      "Org": "local",
+      "Ident": "floodlight_bright",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": [],
+      "EditorReferences": [],
+      "IsWhitelistDisabled": false,
+      "Metadata": {
+        "SingleAssetSource": "maps/prefabs/floodlight_bright.vmap"
+      }
+    }
+  }
+}

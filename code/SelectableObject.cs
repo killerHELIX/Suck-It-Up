@@ -1,6 +1,4 @@
 ﻿
-using Sandbox.UI;
-using System.Drawing;
 
 public class SelectableObject : Component, IScalable, ISelectable
 {

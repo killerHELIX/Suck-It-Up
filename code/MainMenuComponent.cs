@@ -1,6 +1,4 @@
 ﻿using Sandbox.Network;
-using Sandbox.UI;
-using System.Threading;
 using System.Threading.Tasks;
 
 public class MainMenuComponent : Component, Component.INetworkListener
@@ -81,6 +79,13 @@ public class MainMenuComponent : Component, Component.INetworkListener
 	{
 	}
 
+	void OnDisconnected(Connection channel)
+	{
+		GameState.Local.rtsPlayerList.Remove(channel.DisplayName);
+		GameState.Local.spectatorPlayerList.Remove(channel.DisplayName);
+		GameState.Local.survivorPlayerList.Remove(channel.DisplayName);
+	}
+
 	protected override void OnStart()
 	{
 		//if (Network.IsProxy){
@@ -91,7 +96,8 @@ public class MainMenuComponent : Component, Component.INetworkListener
 			//return; 
 		//}
 		Log.Info("Menu start");
-		if(joinedGame)
+		
+		if((Connection.Host != Connection.Local && Connection.Host != null )|| joinedGame)
 		{
 			setActivePanel(MenuPanelType.JOINEDLOBBY);
 		}

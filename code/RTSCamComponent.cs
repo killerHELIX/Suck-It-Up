@@ -61,16 +61,16 @@ public class RTSCamComponent : Component
 		// Handle Zoom Level
 		if ( Input.MouseWheel.x < 0 || Input.MouseWheel.y < 0 )
 		{
-			currentCamHeight += CamZoomSpeed;
+			movement.z = CamZoomSpeed;
 		}
 		if ( Input.MouseWheel.x > 0 || Input.MouseWheel.y > 0 )
 		{
-			currentCamHeight -= CamZoomSpeed;
+			movement.z = -CamZoomSpeed;
 		}
 		// Cam Height must mandatorily stay above the floor by some amount
-		if(currentCamHeight < 100) currentCamHeight = 100;
+		//if(currentCamHeight < 100) currentCamHeight = 100;
 		// If we fly above a gigantic pitt or off the map, don't launch us to hell
-		if (float.Abs( tr.EndPosition.z - Transform.Position.z) >  4000.0)
+		/*if (float.Abs( tr.EndPosition.z - Transform.Position.z) >  4000.0)
 		{
 			movement.z = 0;
 		}
@@ -78,7 +78,8 @@ public class RTSCamComponent : Component
 		{
 			// Calculated z value
 			movement.z = ((tr.EndPosition.z + currentCamHeight) - Transform.Position.z);
-		}
+		}*/
+		//movement.z = Transform.Position.z;
 
 		// Rotate Camera
 		camYaw = Transform.Rotation.Yaw();
@@ -86,7 +87,7 @@ public class RTSCamComponent : Component
 
 		// Add to current position
 		var rot = GameObject.Transform.Rotation;
-		var pos = GameObject.Transform.Position + movement;
+		var pos = GameObject.Transform.Position + new Vector3(movement.x, movement.y, -movement.z);
 
 		//Handle Horizontal Rotation
 		if ( Input.Down( "Rotate Left" ) )

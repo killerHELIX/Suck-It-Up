@@ -43,7 +43,47 @@
       "Components": [
         {
           "__type": "GameState",
-          "__guid": "5b62a30f-8480-4cfe-a49b-46d29807cf70"
+          "__guid": "5b62a30f-8480-4cfe-a49b-46d29807cf70",
+          "EndGamePanel": {
+            "_type": "component",
+            "component_id": "289984cd-e4f9-4445-a74b-234633f30a71",
+            "go": "c918b060-a76c-4cd1-8a5f-43685fb2b7bf",
+            "component_type": "EndGamePanel"
+          },
+          "GameCorpseList": {
+            "_type": "component",
+            "component_id": "2c44dea2-b30d-44df-aa55-50034b217e1b",
+            "go": "c918b060-a76c-4cd1-8a5f-43685fb2b7bf",
+            "component_type": "CorpseList"
+          },
+          "rtsPlayerList": [],
+          "ScreenPanel": {
+            "_type": "component",
+            "component_id": "e2b9ccea-bca0-4d1b-b49b-d78f275849bc",
+            "go": "c918b060-a76c-4cd1-8a5f-43685fb2b7bf",
+            "component_type": "ScreenPanel"
+          }
+        },
+        {
+          "__type": "CorpseList",
+          "__guid": "2c44dea2-b30d-44df-aa55-50034b217e1b",
+          "CorpseLimit": 50,
+          "CorpseTimeoutTime": 2000,
+          "ImposeCorpseLimit": true,
+          "ImposeCorpseTimeout": false
+        },
+        {
+          "__type": "EndGamePanel",
+          "__guid": "289984cd-e4f9-4445-a74b-234633f30a71"
+        },
+        {
+          "__type": "Sandbox.ScreenPanel",
+          "__guid": "e2b9ccea-bca0-4d1b-b49b-d78f275849bc",
+          "__enabled": false,
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ZIndex": 100
         }
       ]
     },

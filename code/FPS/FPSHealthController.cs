@@ -37,8 +37,8 @@ public sealed class FPSHealthController : Component
 				rotation: Transform.Rotation, 
 				scale: Vector3.One);
 
-			spec.Name = $"Spectator - {Network.OwnerConnection.DisplayName}";
-			spec.NetworkSpawn();
+			spec.Name = $"Spectator - {Network.OwnerConnection.DisplayName}, has died";
+			//spec.NetworkSpawn();
 		}
 
 		GameObject.Destroy();

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 public class UnitModelUtils
 {
 	public const uint COLOR_MINE = 0x8000FF00;

@@ -1206,7 +1206,9 @@
         "maxammo": 8,
         "maxreserves": 64,
         "firerate": 0.35,
-        "reloadspeed": 1.8
+        "reloadspeed": 1.8,
+        "damage": 5,
+        "firesoundevent": "pistolraw4"
       }
     },
     {
@@ -1229,7 +1231,9 @@
         "maxammo": 8,
         "maxreserves": 64,
         "firerate": 0.35,
-        "reloadspeed": 1.8
+        "reloadspeed": 1.8,
+        "damage": 5,
+        "firesoundevent": "pistolraw4"
       }
     },
     {
@@ -1252,7 +1256,33 @@
         "maxammo": 8,
         "maxreserves": 64,
         "firerate": 0.35,
-        "reloadspeed": 1.8
+        "reloadspeed": 1.8,
+        "damage": 5,
+        "firesoundevent": "pistolraw4"
+      }
+    },
+    {
+      "__guid": "4cbbc132-662e-422a-811f-dfc7b79f9c44",
+      "Flags": 0,
+      "Name": "rifle",
+      "Position": "731.6993,2283.144,192.491",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "fps/weapons/rifle/rifle.prefab",
+      "__PrefabVariables": {
+        "vmpos": "30.00003,10,-11",
+        "hpos": "-10,0,45",
+        "hrot": "0.4055798,0.4055798,-0.579228,0.579228",
+        "dropdistance": 30,
+        "dropspeedup": 1000,
+        "dropspeedforward": 5000,
+        "maxammo": 5,
+        "maxreserves": 25,
+        "firerate": 1.5,
+        "reloadspeed": 5,
+        "damage": 20,
+        "firesoundevent": "rifleraw2"
       }
     }
   ],

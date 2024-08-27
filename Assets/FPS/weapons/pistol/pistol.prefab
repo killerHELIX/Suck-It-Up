@@ -75,6 +75,8 @@
         "Rotation": "0,-0,-0.7071068,0.7071068",
         "Scale": "2.2,2.2,2.2",
         "Enabled": true,
+        "NetworkMode": 1,
+        "OwnerTransfer": 0,
         "Components": [
           {
             "__type": "Sandbox.SkinnedModelRenderer",
@@ -97,6 +99,8 @@
         "Rotation": "0,-0,-0.7071068,0.7071068",
         "Scale": "2.2,2.2,2.2",
         "Enabled": true,
+        "NetworkMode": 1,
+        "OwnerTransfer": 0,
         "Components": [
           {
             "__type": "Sandbox.SkinnedModelRenderer",

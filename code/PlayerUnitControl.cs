@@ -12,7 +12,7 @@ public class PlayerUnitControl : Component
 	const int INITIAL_UNIT_CIRCLE_NUMBER = 6;
 	const float INITIAL_UNIT_CIRCLE_DISTANCE = 90f;
 
-	[Property]	RTSCamComponent RTSCam {  get; set; }
+	[Property] public RTSCamComponent RTSCam {  get; set; }
 	[Property] SelectionPanel selectionPanel { get; set; }
 	public List<SelectableObject> SelectedObjects { get; set; }
 

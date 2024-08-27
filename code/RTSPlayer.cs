@@ -39,7 +39,10 @@ public class RTSPlayer : Component
 	protected override void OnStart()
 	{
 		if(Network.IsProxy) 
-		{ 
+		{
+			UnitControl.RTSCam.CamView.IsMainCamera = false;
+			UnitControl.RTSCam.CamView.Enabled = false;
+			UnitControl.RTSCam.Enabled = false;
 			UnitControl.Enabled = false;
 			LocalGame.ThisScreen.Enabled = false;
 			LocalGame.GameHud.Enabled = false;

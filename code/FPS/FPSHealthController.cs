@@ -16,6 +16,7 @@ public sealed class FPSHealthController : Component
 
 		Log.Info($"Damaging {amount}");
 		CurrentHealth = (CurrentHealth - amount).Clamp(0, MaxHealth);
+		if (CurrentHealth == 0) Die();
 
 	}
 
@@ -25,11 +26,30 @@ public sealed class FPSHealthController : Component
 		CurrentHealth = (CurrentHealth + amount).Clamp(0, MaxHealth);
 	}
 
+	public void Die()
+	{
+		var spawner = Game.ActiveScene.GetAllComponents<SIUNetworkHelper>()?.ElementAt(0);
+		if (spawner != null)
+		{
+			var spec = spawner.SpectatorPlayerPrefab.Clone(
+				parent: Scene, 
+				position: Transform.Position + (Transform.Rotation.Up * 3f), 
+				rotation: Transform.Rotation, 
+				scale: Vector3.One);
+
+			spec.Name = $"Spectator - {Network.OwnerConnection.DisplayName}";
+			spec.NetworkSpawn();
+		}
+
+		GameObject.Destroy();
+
+	}
+
 	protected override void OnUpdate()
 	{
-		//Log.Info($"Health: [ {CurrentHealth} / {MaxHealth} ]");
+		if (IsProxy) return;
 
-		if (Input.Down("Damage")) Damage(1);
+		if (Input.Pressed("Damage")) Damage(51);
 
 		if (Input.Down("Heal")) Heal(1);
 

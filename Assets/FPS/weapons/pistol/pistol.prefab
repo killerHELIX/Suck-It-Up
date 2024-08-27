@@ -21,7 +21,8 @@
         "MaxAmmo": 8,
         "MaxReserves": 64,
         "Name": "9mm - \u0022The Scrapshot\u0022",
-        "ReloadSpeed": 3,
+        "RecoilStrength": 5,
+        "ReloadSpeed": 1.8,
         "ViewmodelPosition": "15,5,-6",
         "ViewmodelRenderer": {
           "_type": "component",
@@ -234,6 +235,16 @@
           {
             "Id": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
             "Property": "FireSoundEvent"
+          }
+        ]
+      },
+      {
+        "Id": "recoilstrength",
+        "Title": "recoilstrength",
+        "Targets": [
+          {
+            "Id": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
+            "Property": "RecoilStrength"
           }
         ]
       }

@@ -13,4 +13,5 @@ public class Pistol : Weapon
     [Property] public override float ReloadSpeed { get; set; } = 1.8f;
 	[Property] public override int Damage { get; set; } = 5;
 	[Property] public override string FireSoundEvent { get; set; } = "pistolraw4";
+	[Property] public override float RecoilStrength { get; set; } = 5f;
 }

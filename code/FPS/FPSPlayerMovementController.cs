@@ -161,15 +161,18 @@ public sealed class FPSPlayerMovementController : Component
 
 		if (Input.Released("crouch") && IsCrouching)
 		{
-			var trace = Scene.Trace.Ray(Transform.Position, Transform.Rotation.Up * (CharacterController.Height * 2f))
-				.WithoutTags("player", "trigger")
-				.Run();
+			// var trace = Scene.Trace.Ray(Transform.Position, Transform.Rotation.Up * (CharacterController.Height * 2f))
+			// 	.WithoutTags("player", "trigger")
+			// 	.Run();
 
-			if (!trace.Hit)
-			{
-				IsCrouching = false;
-				CharacterController.Height *= 2f;
-			}
+			// if (!trace.Hit)
+			// {
+			// 	IsCrouching = false;
+			// 	CharacterController.Height *= 2f;
+			// }
+
+			IsCrouching = false;
+			CharacterController.Height *= 2f;
 		}
 	}
 

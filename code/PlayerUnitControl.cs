@@ -12,7 +12,7 @@ public class PlayerUnitControl : Component
 	const int INITIAL_UNIT_CIRCLE_NUMBER = 6;
 	const float INITIAL_UNIT_CIRCLE_DISTANCE = 90f;
 
-	[Property]	RTSCamComponent RTSCam {  get; set; }
+	[Property] public RTSCamComponent RTSCam {  get; set; }
 	[Property] SelectionPanel selectionPanel { get; set; }
 	public List<SelectableObject> SelectedObjects { get; set; }
 
@@ -222,7 +222,7 @@ public class PlayerUnitControl : Component
 		{
 			// Init command vars
 			UnitModelUtils.CommandType commandType = UnitModelUtils.CommandType.None;
-			SkinnedRTSObject commandTarget = null;
+			GameObject commandTarget = null;
 			Vector3 moveTarget = new Vector3();
 			// Draw mouse ray
 			var mouseScreenPos = Mouse.Position;
@@ -230,18 +230,18 @@ public class PlayerUnitControl : Component
 			var mouseRay = Scene.Trace.Ray( mouseDirection, 5000f );
 			var tr = mouseRay.Run();
 			// Get hit components
-			var hitRtsObjects = tr.GameObject.Components.GetAll().OfType<SkinnedRTSObject>();
+			var hitPlayerObjects = tr.GameObject.Components.GetAll().OfType<FPSHealthController>();
 			//Log.Info(tr.GameObject.Name);
 			var hitWorldObjects = tr.GameObject.Components.GetAll().OfType<MapCollider>();
 			
 			// Set Up Attack Command if we hit an enemy unit
 			// TODO Probably make sure that if we hit friendly units instead that it goes to a move, actually just test this code
 			// TODO Cleanup generic command code with tags
-			if ( hitRtsObjects.Any() && hitRtsObjects.First().team != RTSPlayer.Local.Team)
+			if ( hitPlayerObjects.Any())
 			{
 				commandType = UnitModelUtils.CommandType.Attack;
 				//Log.Info( "Team " + RTSPlayer.Local.Team + " " + ((SkinnedRTSObject)(hitRtsObjects.First())).GameObject.Name + " Selected to be attacked!" );
-				commandTarget = (SkinnedRTSObject)(hitRtsObjects.First());
+				commandTarget = hitPlayerObjects.First().GameObject;
 			}
 			// Otherwise Set Up Move Command
 			else
@@ -262,7 +262,7 @@ public class PlayerUnitControl : Component
 			}
 			else if(commandType == UnitModelUtils.CommandType.Attack)
 			{
-				RTSPlayer.Local.LocalGame.GameCommandIndicator.PlayAttackIndicatorHere(commandTarget.GameObject);
+				RTSPlayer.Local.LocalGame.GameCommandIndicator.PlayAttackIndicatorHere(commandTarget);
 			}
 			int unitNum = 0;
 			// Issue Command
@@ -274,31 +274,16 @@ public class PlayerUnitControl : Component
 					{
 						case UnitModelUtils.CommandType.Move:
 							Log.Info("Unit Number " + unitNum + " moving to position: " + positionList.ElementAt(unitNum));
-							((Unit)unit).setMoveCommand(positionList.ElementAt(unitNum));
+							((SIUUnit)unit).setMoveCommand(positionList.ElementAt(unitNum));
 							break;
 						case UnitModelUtils.CommandType.Attack:
-							((Unit)unit).setAttackCommand(commandTarget);
+							((SIUUnit)unit).setAttackCommand(commandTarget);
 							break;
 					}
 					//((Unit)unit).commandGiven = commandType;
 				}
 				unitNum++;
 			}
-		}
-
-		if(Input.Pressed("spawn_skeltal"))
-		{
-			// Set up and run mouse ray to find what we're now selecting
-			var mouseScreenPos = Mouse.Position;
-			var mouseDirection = RTSCam.CamView.ScreenPixelToRay( mouseScreenPos );
-			var mouseRay = Scene.Trace.Ray( mouseDirection, 5000f );
-			var tr = mouseRay.Run();
-
-			//Call Unit Factory Here.
-			//Log.Info( "Spawning Skeltal!" );
-			RTSPlayer.Local.myUnitFactory.spawnUnit(RTSPlayer.Local.skeltalPrefab, RTSPlayer.Local.Team, tr.EndPosition);
-			//Log.Info( "Spawning Skeltal House!" );
-			//RTSGame.Instance.ThisPlayer.myUnitFactory.spawnUnit( RTSGame.Instance.ThisPlayer.skeltalHousePrefab, tr.EndPosition );
 		}
 	}
 

@@ -1,0 +1,254 @@
+{
+  "RootObject": {
+    "__guid": "29f4dcb9-bb57-41dc-8243-a73d5409e7f9",
+    "Flags": 0,
+    "Name": "rifle",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "OwnerTransfer": 0,
+    "Components": [
+      {
+        "__type": "Rifle",
+        "__guid": "0429e363-d855-494b-8ae4-dfbd161c20c7",
+        "Damage": 20,
+        "DropDistance": 30,
+        "DropSpeedForward": 5000,
+        "DropSpeedUp": 1000,
+        "FireRate": 1.5,
+        "FireSoundEvent": "rifleraw2",
+        "HolsterPosition": "-10,0,45",
+        "HolsterRotation": "0.4055798,0.4055798,-0.579228,0.579228",
+        "MaxAmmo": 5,
+        "MaxReserves": 25,
+        "Name": ".357 - \u0022The Rusty Repeater\u0022",
+        "ReloadSpeed": 5,
+        "ViewmodelPosition": "30.00003,10,-11",
+        "ViewmodelRenderer": {
+          "_type": "component",
+          "component_id": "b5d07c37-3208-4e50-9ea4-9c011edf9b0b",
+          "go": "53377769-ee86-4b67-b699-8d0968397cb5",
+          "component_type": "SkinnedModelRenderer"
+        },
+        "WorldmodelRenderer": {
+          "_type": "component",
+          "component_id": "63047b31-74ca-46ab-8b5d-8b0ae4363d13",
+          "go": "f4dc891e-5091-4da5-a543-c591947060d5",
+          "component_type": "SkinnedModelRenderer"
+        }
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "ce8c45fa-5fd1-43ab-a9df-a26d1071c877",
+        "Center": "-3.999983,-0.4,2.5",
+        "IsTrigger": false,
+        "Scale": "42.49977,1.899981,0.8999234",
+        "Static": false
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "28dd07a3-56e2-45e9-bb34-b2a3ce1bc865",
+        "Center": "-6.099938,0.2,-1.499998",
+        "IsTrigger": false,
+        "Scale": "29.89991,2.299985,6.699946",
+        "Static": false
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "2666d14f-93a2-493c-ac39-3738685352fa",
+        "Center": "-23.29995,-0.2,-0.8999981",
+        "IsTrigger": false,
+        "Scale": "4.999959,2.49999,7.999928",
+        "Static": false
+      },
+      {
+        "__type": "Sandbox.Rigidbody",
+        "__guid": "7e94ff15-91c9-43ea-9514-90b7b052d408",
+        "AngularDamping": 0,
+        "Gravity": true,
+        "LinearDamping": 0,
+        "Locking": {},
+        "MassCenterOverride": "0,0,0",
+        "MassOverride": 0,
+        "MotionEnabled": true,
+        "OverrideMassCenter": false,
+        "RigidbodyFlags": 0,
+        "StartAsleep": false
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "53377769-ee86-4b67-b699-8d0968397cb5",
+        "Flags": 0,
+        "Name": "Viewmodel",
+        "Position": "-9,0,0",
+        "Rotation": "0,-0,-0.7071068,0.7071068",
+        "Scale": "3.5,3.5,3.5",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "b5d07c37-3208-4e50-9ea4-9c011edf9b0b",
+            "__enabled": false,
+            "AnimationGraph": "fps/weapons/rifle/rifle_viewmodel.vanmgrph",
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "Model": "fps/weapons/rifle/rifle_viewmodel.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ]
+      },
+      {
+        "__guid": "f4dc891e-5091-4da5-a543-c591947060d5",
+        "Flags": 0,
+        "Name": "Worldmodel",
+        "Position": "-9,0,0",
+        "Rotation": "0,-0,-0.7071068,0.7071068",
+        "Scale": "3.5,3.5,3.5",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "63047b31-74ca-46ab-8b5d-8b0ae4363d13",
+            "AnimationGraph": "fps/weapons/rifle/rifle_viewmodel.vanmgrph",
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "Model": "fps/weapons/rifle/rifle_worldmodel.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ]
+      }
+    ],
+    "__variables": [
+      {
+        "Id": "vmpos",
+        "Title": "vmpos",
+        "Targets": [
+          {
+            "Id": "0429e363-d855-494b-8ae4-dfbd161c20c7",
+            "Property": "ViewmodelPosition"
+          }
+        ]
+      },
+      {
+        "Id": "hpos",
+        "Title": "hpos",
+        "Targets": [
+          {
+            "Id": "0429e363-d855-494b-8ae4-dfbd161c20c7",
+            "Property": "HolsterPosition"
+          }
+        ]
+      },
+      {
+        "Id": "hrot",
+        "Title": "hrot",
+        "Targets": [
+          {
+            "Id": "0429e363-d855-494b-8ae4-dfbd161c20c7",
+            "Property": "HolsterRotation"
+          }
+        ]
+      },
+      {
+        "Id": "dropdistance",
+        "Title": "dropdistance",
+        "Targets": [
+          {
+            "Id": "0429e363-d855-494b-8ae4-dfbd161c20c7",
+            "Property": "DropDistance"
+          }
+        ]
+      },
+      {
+        "Id": "dropspeedup",
+        "Title": "dropspeedup",
+        "Targets": [
+          {
+            "Id": "0429e363-d855-494b-8ae4-dfbd161c20c7",
+            "Property": "DropSpeedUp"
+          }
+        ]
+      },
+      {
+        "Id": "dropspeedforward",
+        "Title": "dropspeedforward",
+        "Targets": [
+          {
+            "Id": "0429e363-d855-494b-8ae4-dfbd161c20c7",
+            "Property": "DropSpeedForward"
+          }
+        ]
+      },
+      {
+        "Id": "maxammo",
+        "Title": "maxammo",
+        "Targets": [
+          {
+            "Id": "0429e363-d855-494b-8ae4-dfbd161c20c7",
+            "Property": "MaxAmmo"
+          }
+        ]
+      },
+      {
+        "Id": "maxreserves",
+        "Title": "maxreserves",
+        "Targets": [
+          {
+            "Id": "0429e363-d855-494b-8ae4-dfbd161c20c7",
+            "Property": "MaxReserves"
+          }
+        ]
+      },
+      {
+        "Id": "firerate",
+        "Title": "firerate",
+        "Targets": [
+          {
+            "Id": "0429e363-d855-494b-8ae4-dfbd161c20c7",
+            "Property": "FireRate"
+          }
+        ]
+      },
+      {
+        "Id": "reloadspeed",
+        "Title": "reloadspeed",
+        "Targets": [
+          {
+            "Id": "0429e363-d855-494b-8ae4-dfbd161c20c7",
+            "Property": "ReloadSpeed"
+          }
+        ]
+      },
+      {
+        "Id": "damage",
+        "Title": "damage",
+        "Targets": [
+          {
+            "Id": "0429e363-d855-494b-8ae4-dfbd161c20c7",
+            "Property": "Damage"
+          }
+        ]
+      },
+      {
+        "Id": "firesoundevent",
+        "Title": "firesoundevent",
+        "Targets": [
+          {
+            "Id": "0429e363-d855-494b-8ae4-dfbd161c20c7",
+            "Property": "FireSoundEvent"
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

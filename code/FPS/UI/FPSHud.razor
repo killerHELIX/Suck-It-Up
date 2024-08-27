@@ -1,0 +1,34 @@
+﻿@using Sandbox;
+@using Sandbox.UI;
+@using System;
+@inherits PanelComponent;
+
+<root class="fps-hud debug">
+
+	<div class="crosshair">+</div>
+
+	<div class="player-info">
+		<div class="healthbar" >
+			<div class="value" style="width: @(FpsHealthController.CurrentHealth)%"></div>
+			<div class="text"><span class="current">@(FpsHealthController.CurrentHealth)</span> / @(FpsHealthController.MaxHealth)</div>
+		</div>
+	</div>
+
+	<div class="weapon-info @(GetWeaponInfoClass())">
+		<div class="text">@(FpsWeaponController.SelectedWeapon?.CurrentAmmo) / @(FpsWeaponController.SelectedWeapon?.CurrentReserves)</div>
+	</div>	
+
+</root>
+
+@code {
+
+	[Property] public FPSWeaponController FpsWeaponController { get; set; }
+	[Property] public FPSHealthController FpsHealthController { get; set; }
+
+	protected String GetWeaponInfoClass()
+	{
+		var selectedWep = FpsWeaponController.SelectedWeapon;
+		return (selectedWep == null) ? "hidden" : "";
+	}
+	protected override int BuildHash() => System.HashCode.Combine($"{FpsHealthController.CurrentHealth} {FpsWeaponController.SelectedWeapon?.CurrentAmmo}");
+}

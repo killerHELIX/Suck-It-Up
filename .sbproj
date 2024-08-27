@@ -5,7 +5,7 @@
   "Ident": "suckitup",
   "Schema": 1,
   "IncludeSourceFiles": true,
-  "Resources": "\nmaterials/temple_portrait.PNG\nmaterials/skeltal_portrait.PNG\nmaterials/attack_stance.png\nmaterials/defend_stance.png\nmaterials/resource_icon.png\nmaterials/spawner_icon.png\nmaterials/trap_icon.png\nmaterials/capacity_icon.png\nmaterials/circle.png\nmodels/Enemies/critter.fbx\nmodels/Enemies/giant.fbx\nmodels/Enemies/normal.fbx\nmodels/Enemies/TPose/critter_tpose.fbx\nmodels/Enemies/TPose/giant_tpose.fbx\nmodels/Enemies/TPose/roller_tpose.fbx\nanimations/Enemies/critter2.fbx\nanimations/Enemies/roller.fbx",
+  "Resources": "\nmaterials/temple_portrait.PNG\nmaterials/skeltal_portrait.PNG\nmaterials/attack_stance.png\nmaterials/defend_stance.png",
   "PackageReferences": [],
   "EditorReferences": null,
   "IsWhitelistDisabled": false,
@@ -214,6 +214,30 @@
           "KeyboardCode": "MOUSE3",
           "GamepadCode": "None",
           "GroupName": "Actions"
+        },
+        {
+          "Name": "Jump",
+          "KeyboardCode": "SPACE",
+          "GamepadCode": "None",
+          "GroupName": "Other"
+        },
+        {
+          "Name": "Crouch",
+          "KeyboardCode": "CTRL",
+          "GamepadCode": "None",
+          "GroupName": "Other"
+        },
+        {
+          "Name": "Run",
+          "KeyboardCode": "SHIFT",
+          "GamepadCode": "None",
+          "GroupName": "Other"
+        },
+        {
+          "Name": "Walk",
+          "KeyboardCode": "ALT",
+          "GamepadCode": "None",
+          "GroupName": "Other"
         }
       ],
       "__guid": "1195d4ab-6850-4341-beb4-37dc0db83b19"

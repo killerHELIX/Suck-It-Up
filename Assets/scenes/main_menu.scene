@@ -4,10 +4,13 @@
     {
       "__guid": "36ef4334-e091-43de-b302-4812907671e6",
       "Flags": 0,
-      "Name": "Main Menu",
+      "Name": "Menu",
       "Position": "-414.3859,-2111.661,1010.93",
       "Tags": "main_menu",
+      "Enabled": true,
+      "NetworkMode": 1,
       "NetworkInterpolation": false,
+      "NetworkOrphaned": 1,
       "__Prefab": "prefabs/mainmenu.prefab",
       "__PrefabVariables": {}
     },
@@ -15,7 +18,7 @@
       "__guid": "10cd86b0-9600-4941-9893-b2f99479ee75",
       "Flags": 0,
       "Name": "Network",
-      "Enabled": true,
+      "NetworkMode": 1,
       "Components": [
         {
           "__type": "Sandbox.NetworkHelper",
@@ -103,6 +106,69 @@
         }
       ],
       "Children": []
+    },
+    {
+      "__guid": "e2d2f089-3704-443b-ae12-47b4e583c403",
+      "Flags": 0,
+      "Name": "Object",
+      "Position": "-202.8357,-6.977242,13.11959",
+      "Rotation": "0,0,-0.7071067,0.7071068",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SkinnedModelRenderer",
+          "__guid": "97281f35-8123-4f14-af07-8cbb55801d36",
+          "AnimationGraph": "animgraphs/giant.vanmgrph",
+          "BodyGroups": 18446744073709551615,
+          "CreateBoneObjects": false,
+          "Model": "models/enemies/giant.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1",
+          "UseAnimGraph": true
+        }
+      ]
+    },
+    {
+      "__guid": "8a20e8f2-661f-43d1-95a2-1daa0a15c806",
+      "Flags": 0,
+      "Name": "Object (1)",
+      "Position": "-105.4072,135.7198,-19.59553",
+      "Rotation": "0,0,-0.8660255,0.5000002",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SkinnedModelRenderer",
+          "__guid": "540c664f-d0cc-48b4-bd51-84ae7f818715",
+          "AnimationGraph": "animgraphs/giant.vanmgrph",
+          "BodyGroups": 18446744073709551615,
+          "CreateBoneObjects": false,
+          "Model": "models/enemies/normal.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1",
+          "UseAnimGraph": true
+        }
+      ]
+    },
+    {
+      "__guid": "119f2993-b313-438a-83d9-a741e07cb1e0",
+      "Flags": 0,
+      "Name": "Object (2)",
+      "Position": "-265.5456,-176.1461,-19.59565",
+      "Rotation": "0,0,-0.5000001,0.8660256",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SkinnedModelRenderer",
+          "__guid": "a45fccd1-3edc-4957-9539-565982793cf5",
+          "AnimationGraph": "animgraphs/giant.vanmgrph",
+          "BodyGroups": 18446744073709551615,
+          "CreateBoneObjects": false,
+          "Model": "models/enemies/normal.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1",
+          "UseAnimGraph": true
+        }
+      ]
     }
   ],
   "SceneProperties": {

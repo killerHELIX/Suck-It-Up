@@ -2,8 +2,7 @@
   "RootObject": {
     "__guid": "cdf08c0f-f6a7-4f96-a32f-a7f36cb69e56",
     "Flags": 0,
-    "Name": "Roller (1)",
-    "Position": "-1139.46,1182.528,129.8806",
+    "Name": "roller",
     "Tags": "unit",
     "Enabled": true,
     "NetworkMode": 1,
@@ -17,12 +16,20 @@
         "CapacityCost": 10,
         "HasMeleeAttack": true,
         "HasRangedAttack": false,
+        "IndividualMeleeRangeScale": 0.7,
         "IndividualModelScale": 0.4,
+        "localEyeBallPosition": "0,0,60",
         "MaxHealth": 60,
         "MeleeAttackDamage": 10,
         "MeleeAttackSpeed": 1,
         "ModelFile": "models/enemies/roller.vmdl",
-        "ModelMaterial": "materials/default.vmat",
+        "ModelMaterial": "materials/enemies/roller_pixel.vmat",
+        "myHitBoxes": {
+          "_type": "component",
+          "component_id": "ad2713a1-81fa-4fe6-a8f5-12eb2231d700",
+          "go": "cdf08c0f-f6a7-4f96-a32f-a7f36cb69e56",
+          "component_type": "ModelHitboxes"
+        },
         "name": "Normal",
         "PhysicalModelRenderer": {
           "_type": "component",
@@ -113,6 +120,20 @@
         "IsTrigger": false,
         "Scale": "110,110,200",
         "Static": false
+      },
+      {
+        "__type": "Sandbox.ModelHitboxes",
+        "__guid": "ad2713a1-81fa-4fe6-a8f5-12eb2231d700",
+        "Renderer": {
+          "_type": "component",
+          "component_id": "1df1687a-97b8-4ede-be2d-d4e61c77586f",
+          "go": "72783acf-5f77-44b2-bdac-045d1c3bcdce",
+          "component_type": "SkinnedModelRenderer"
+        },
+        "Target": {
+          "_type": "gameobject",
+          "go": "cdf08c0f-f6a7-4f96-a32f-a7f36cb69e56"
+        }
       }
     ],
     "Children": [
@@ -120,7 +141,6 @@
         "__guid": "72783acf-5f77-44b2-bdac-045d1c3bcdce",
         "Flags": 0,
         "Name": "UnitModel",
-        "Position": "0,0,0",
         "Rotation": "0,-0,-0.7071068,0.7071068",
         "Enabled": true,
         "NetworkOrphaned": 1,
@@ -152,9 +172,10 @@
           {
             "__type": "Sandbox.SkinnedModelRenderer",
             "__guid": "1df1687a-97b8-4ede-be2d-d4e61c77586f",
-            "AnimationGraph": "animgraphs/sk_light_infantry_a.vanmgrph",
+            "AnimationGraph": "animgraphs/roller.vanmgrph",
             "BodyGroups": 18446744073709551615,
             "CreateBoneObjects": true,
+            "Model": "models/enemies/roller.vmdl",
             "RenderType": "On",
             "Tint": "1,1,1,1",
             "UseAnimGraph": true
@@ -451,6 +472,40 @@
             "Name": "Bip001",
             "Position": "-5.798613,0.0000000000006856566,86.79321",
             "Enabled": true
+          },
+          {
+            "__guid": "86c7055e-ae32-4d50-b629-ace127a99806",
+            "Flags": 4,
+            "Name": "Wheel",
+            "Position": "-0.0000006342211,0.0001743454,6.738835",
+            "Rotation": "0.001049909,-0.001049845,0.7071057,0.7071062",
+            "Enabled": true
+          },
+          {
+            "__guid": "6f5fabe6-3881-4187-9c1b-301c4f0523da",
+            "Flags": 4,
+            "Name": "Body",
+            "Position": "-0.0000006509424,0,10.921",
+            "Rotation": "0.4999996,-0.4999999,0.5,0.5000004",
+            "Enabled": true,
+            "Children": [
+              {
+                "__guid": "ce8db042-2ae2-4877-911b-9d88c85cbd99",
+                "Flags": 4,
+                "Name": "Arm_L",
+                "Position": "33.94288,6.965173,2.772475",
+                "Rotation": "0.08500291,-0.05667188,0.8528532,0.5120587",
+                "Enabled": true
+              },
+              {
+                "__guid": "75589632-f838-4373-a1f0-349b57f2adba",
+                "Flags": 4,
+                "Name": "Arm_R",
+                "Position": "34.03586,-6.87202,2.911731",
+                "Rotation": "0.3438952,-0.4104822,0.7486011,-0.3909437",
+                "Enabled": true
+              }
+            ]
           }
         ]
       },
@@ -495,7 +550,8 @@
           }
         ]
       }
-    ]
+    ],
+    "__variables": []
   },
   "ShowInMenu": false,
   "MenuPath": null,

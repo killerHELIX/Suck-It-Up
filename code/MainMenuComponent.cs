@@ -1,6 +1,9 @@
-﻿using Sandbox.UI;
+﻿using Sandbox.Network;
+using Sandbox.UI;
+using System.Threading;
+using System.Threading.Tasks;
 
-public class MainMenuComponent : Component
+public class MainMenuComponent : Component, Component.INetworkListener
 {
 	public enum MenuPanelType
 	{
@@ -17,11 +20,17 @@ public class MainMenuComponent : Component
 	[Property] public SIUSettingsPanel SettingsPanel { get; set; }
 	[Property] ScreenPanel myScreenPanel { get; set; }
 
-	[Property] public ulong MyServID { get; set; }
+	[Property] public ulong MyServID { get; set; } = 0;
+
+	[Property] public bool startServer { get; set; } = false;
 
 	private MenuPanelType activePanel = MenuPanelType.MAIN;
 
 	private static MainMenuComponent _local = null;
+
+	private Task<List<LobbyInformation>> currentLobbies = null; 
+
+	public bool joinedGame = false;
 
 	public static MainMenuComponent Local
 	{
@@ -29,23 +38,67 @@ public class MainMenuComponent : Component
 		{
 			if (!_local.IsValid())
 			{
-				//_local = Game.ActiveScene.Directory.FindByName("Main Menu").First().Components.Get<MainMenuComponent>();
-				_local = Game.ActiveScene.GetAllComponents<MainMenuComponent>().FirstOrDefault(x => x.Network.IsOwner);
+				var localFirstTry = Game.ActiveScene.Directory.FindByName("Menu").First().Components.Get<MainMenuComponent>();
+				var localSecondTry = Game.ActiveScene.GetAllComponents<MainMenuComponent>().FirstOrDefault(x => x.Network.IsOwner);
+
+				if (localFirstTry != null)
+				{
+					_local = localFirstTry;
+				}
+				else if (localSecondTry != null)
+				{
+					Log.Info("Didn't find correct component inside name=Menu, but did we find the object at all?\n");
+					if(Game.ActiveScene.Directory.FindByName("Menu").Count() > 0)
+					{
+						Log.Info("Yes");
+					}
+					else
+					{
+						Log.Info("No");
+					}
+					_local = localSecondTry;
+				}
+				else
+				{
+					Log.Info("Still couldn't find the main menu component for some reason, here's a dump of enabled GameObjects: \n");
+					var goList = Game.ActiveScene.GetAllObjects(true);
+					foreach(GameObject obj in goList)
+					{
+						Log.Info(obj.Name);
+					}
+				}
 				Log.Info("Tried getting local main menu, found this: " + _local);
 			}
 			return _local;
 		}
 	}
 
+	protected override async Task OnLoad()
+	{
+	}
+
+	public void OnActive(Connection channel)
+	{
+	}
+
 	protected override void OnStart()
 	{
-		if (Network.IsProxy){ 
-			myScreenPanel.Enabled = false;
-			JoinedLobbyPanel.Enabled = true;
+		//if (Network.IsProxy){
+			//Log.Info("Found a Proxy Menu");
+			//myScreenPanel.Enabled = false;
+			//JoinedLobbyPanel.Enabled = true;
 			//Enabled = false;
-			return; 
+			//return; 
+		//}
+		Log.Info("Menu start");
+		if(joinedGame)
+		{
+			setActivePanel(MenuPanelType.JOINEDLOBBY);
 		}
-		setActivePanel(MenuPanelType.MAIN);
+		else
+		{
+			setActivePanel(MenuPanelType.MAIN);
+		}
 	}
 
 	//protected override void OnUpdate()
@@ -53,25 +106,43 @@ public class MainMenuComponent : Component
 	//	getPanelFromEnum(activePanel).StateHasChanged();
 	//}
 
-	protected override async void OnUpdate()
+	protected override void OnUpdate()
 	{
-		//Log.Info("Networking ID: " Networking.Id);
-
-
-		if (MyServID == 0)
+		//Log.Info("serv id: " + MyServID + ", activePanel: " + activePanel);
+		if (Scene.IsEditor)
 		{
-			var lobbies = await Networking.QueryLobbies();
-			foreach (Sandbox.Network.LobbyInformation lobby in lobbies)
+			Log.Info("isEditor");
+			return;
+		}
+
+
+		if (MyServID == 0 && activePanel == MenuPanelType.JOINEDLOBBY)
+		{
+			if(currentLobbies == null)
 			{
-				//Log.Info("Lobby ID: " + lobby.LobbyId);
-				//Log.Info("Lobby Owner ID: " + lobby.OwnerId);
-				if (lobby.OwnerId == Connection.Local.SteamId)
+				Log.Info("Querying lobbies");
+				currentLobbies = Networking.QueryLobbies();
+			}
+			else if(currentLobbies.IsCompleted)
+			{
+				Log.Info("Got this many lobbies: " + currentLobbies.Result.Count());
+				var lobbies = currentLobbies.Result;
+				foreach (Sandbox.Network.LobbyInformation lobby in lobbies)
 				{
-					this.MyServID = lobby.LobbyId;
-					Log.Info(MyServID);
+					Log.Info("Lobby ID: " + lobby.LobbyId);
+					Log.Info("Lobby Owner ID: " + lobby.OwnerId);
+					if (lobby.OwnerId == Connection.Local.SteamId)
+					{
+						this.MyServID = lobby.LobbyId;
+						Log.Info(MyServID);
+					}
 				}
 			}
-		}
+            else
+            {
+				Log.Info("Awaiting query");
+            }
+        }
 		getPanelFromEnum(activePanel).StateHasChanged();
 	}
 

@@ -67,7 +67,7 @@ public class SkinnedRTSObject : SelectableObject, IScalable, IDamageable, ISelec
 		}
 	}
 
-	private void setHealth(int newHealth)
+	protected void setHealth(int newHealth)
 	{
 		currentHealthPoints = newHealth;
 		ThisHealthBar.setHealth(newHealth, MaxHealth);
@@ -120,6 +120,7 @@ public class SkinnedRTSObject : SelectableObject, IScalable, IDamageable, ISelec
 			PhysicalModelRenderer.setOutlineState(UnitModelUtils.OutlineState.Neutral);
 			ThisHealthBar.setBarColor("#ffffff");
 			ThisHealthBar.setShowHealthBar(false);
+			SelectionHitbox.Enabled = false;
 			return;
 		}
 		if (team == RTSPlayer.Local.Team)

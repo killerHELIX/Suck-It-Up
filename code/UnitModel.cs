@@ -38,6 +38,9 @@ class UnitModel : UnitModelBase
 	[Broadcast]
 	public override void animateDeath()
 	{
+		Log.Info("Setting death parameter");
+		skinnedModel.SceneModel.SetAnimParameter("isMoving", false);
+		skinnedModel.SceneModel.SetAnimParameter("isDead", true);
 		skinnedModel.SceneModel.SetAnimParameter( "onDeath", true );
 		addToCorpsePile();
 	}

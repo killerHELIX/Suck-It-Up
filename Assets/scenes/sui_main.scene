@@ -2,29 +2,9 @@
   "__guid": "fcf446b4-2b9a-4c42-9b8e-9bb3b8d03c72",
   "GameObjects": [
     {
-      "__guid": "fc185265-8967-4952-8861-2358b08ca999",
-      "Flags": 0,
-      "Name": "Light",
-      "Position": "-1579.018,-2159.697,1364.377",
-      "Rotation": "0,0.7071067,0,0.7071068",
-      "Tags": "light_directional,light",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.DirectionalLight",
-          "__guid": "fbff37ab-0ca9-4357-88c6-9799e65dae4a",
-          "FogMode": "Enabled",
-          "FogStrength": 1,
-          "LightColor": "0.91373,0.98039,1,1",
-          "Shadows": true,
-          "SkyColor": "0,0,0,0"
-        }
-      ]
-    },
-    {
       "__guid": "b9fe8bd6-8aaa-4199-95e4-8b078fabec26",
       "Flags": 0,
-      "Name": "Object",
+      "Name": "Map",
       "Position": "1461.385,-254.4269,303.357",
       "Tags": "map_geom",
       "Enabled": true,
@@ -34,7 +14,7 @@
           "__guid": "457a33d8-f3e9-49ae-b7a5-94a89671401f",
           "__version": 1,
           "EnableCollision": true,
-          "MapName": "maps/sui_main.vmap",
+          "MapName": "maps/map_final.vmap",
           "NoOrigin": false,
           "UseMapFromLaunch": false
         }
@@ -44,46 +24,119 @@
     {
       "__guid": "0a0c0087-7f20-47fa-8840-617b14b82e91",
       "Flags": 0,
-      "Name": "Spawn",
-      "Position": "1049.648,5755.143,1647.499",
+      "Name": "RTSSpawn",
+      "Position": "-1068.313,-762.5475,595.8965",
       "Tags": "particles,skybox",
       "Enabled": true
     },
     {
-      "__guid": "8dc28175-0b01-498e-8b1d-97b0fba89300",
+      "__guid": "f8c0d978-59ab-4a1a-a627-9ee5a75653d0",
       "Flags": 0,
-      "Name": "Network",
-      "Position": "408.021,344.2917,387.9409",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.NetworkHelper",
-          "__guid": "d13bf3b7-db4f-4d94-be45-d0c9522ac8ff",
-          "PlayerPrefab": {
-            "_type": "gameobject",
-            "prefab": "prefabs/rts_player.prefab"
-          },
-          "SpawnPoints": [
-            {
-              "_type": "gameobject",
-              "go": "0a0c0087-7f20-47fa-8840-617b14b82e91"
-            }
-          ],
-          "StartServer": true
-        }
-      ]
+      "Name": "SpectatorSpawn",
+      "Position": "-944.4943,-845.8246,556.9944",
+      "Tags": "particles,skybox",
+      "Enabled": true
+    },
+    {
+      "__guid": "80677236-0b71-442d-b3fb-1c097aa71c51",
+      "Flags": 0,
+      "Name": "SurvivorSpawn",
+      "Position": "-398.0192,-593.4041,459.9134",
+      "Tags": "particles,skybox",
+      "Enabled": true
     },
     {
       "__guid": "323bd1de-4589-4fff-8a55-e55ca64a3bca",
       "Flags": 0,
       "Name": "Spawner Orb",
-      "Position": "950.1219,5688.347,1583.225",
+      "Position": "-994.8743,-715.7263,515.9583",
       "Enabled": true,
-      "NetworkMode": 1,
       "NetworkOrphaned": 3,
       "OwnerTransfer": 2,
       "__Prefab": "prefabs/spawnerorb.prefab",
       "__PrefabVariables": {}
+    },
+    {
+      "__guid": "2a475ac1-855f-4e3e-8b82-0f5f7ec48759",
+      "Flags": 0,
+      "Name": "Network Helper",
+      "Position": "-301.7107,4004.419,1770.225",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SIUNetworkHelper",
+          "__guid": "8b6edd51-8db7-4700-8b79-2be79a8405b6",
+          "RTSPlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/rts_player.prefab"
+          },
+          "RTSSpawnPoints": [
+            {
+              "_type": "gameobject",
+              "go": "0a0c0087-7f20-47fa-8840-617b14b82e91"
+            }
+          ],
+          "SpectatorPlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/spectatorplayer.prefab"
+          },
+          "SpectatorSpawnPoints": [
+            {
+              "_type": "gameobject",
+              "go": "f8c0d978-59ab-4a1a-a627-9ee5a75653d0"
+            }
+          ],
+          "StartServer": true,
+          "SurvivorPlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "fps/player/fpsplayer.prefab"
+          },
+          "SurvivorSpawnPoints": [
+            {
+              "_type": "gameobject",
+              "go": "80677236-0b71-442d-b3fb-1c097aa71c51"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "651867d6-82a0-497d-a4e3-a0c1c213ba45",
+      "Flags": 0,
+      "Name": "pistol",
+      "Position": "-549.4735,-721.9655,414.2192",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "fps/weapons/pistol/pistol.prefab",
+      "__PrefabVariables": {
+        "vmpos": "15,5,-6",
+        "hpos": "1,-9,30",
+        "hrot": "0,0.6755902,0,0.7372773",
+        "dropdistance": 20,
+        "dropspeedup": 500,
+        "dropspeedforward": 1000,
+        "maxammo": 8,
+        "maxreserves": 64,
+        "firerate": 0.5,
+        "reloadspeed": 3,
+        "damage": 5,
+        "firesoundevent": "pistolraw4"
+      }
+    },
+    {
+      "__guid": "d0c792c7-a8c4-4715-a9ed-91fc1e9441ec",
+      "Flags": 0,
+      "Name": "Game State",
+      "Position": "-606.2842,907.3502,160.9013",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "GameState",
+          "__guid": "30ef5a1a-7824-43bd-a595-17591fb9421b"
+        }
+      ]
     }
   ],
   "SceneProperties": {

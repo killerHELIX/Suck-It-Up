@@ -62,15 +62,21 @@ public class ControlOrb : SelectableObject, IScalable, ISelectable
 	{
 		if(isNonInteractable)
 		{
-			this.PhysicalModelRenderer.skinnedModel.Enabled = false;
-			this.PhysicalModelRenderer.Enabled = false;
+			if(PhysicalModelRenderer != null)
+			{
+				this.PhysicalModelRenderer.skinnedModel.Enabled = false;
+				this.PhysicalModelRenderer.Enabled = false;
+			}
 			this.SelectionHitbox.Enabled = false;
 			this.OrbHighlight.Enabled = false;
 		}
 		else
 		{
-			this.PhysicalModelRenderer.skinnedModel.Enabled = true;
-			this.PhysicalModelRenderer.Enabled = true;
+			if (PhysicalModelRenderer != null)
+			{
+				this.PhysicalModelRenderer.skinnedModel.Enabled = true;
+				this.PhysicalModelRenderer.Enabled = true;
+			}
 			this.SelectionHitbox.Enabled = true;
 			this.OrbHighlight.Enabled = true;
 		}
@@ -92,19 +98,22 @@ public class ControlOrb : SelectableObject, IScalable, ISelectable
 
 	private void setDefaultColor()
 	{
-		if (ThisOrbType == OrbType.Spawner)
+		if(PhysicalModelRenderer != null)
 		{
-			var spawnerColor = new Color(COLOR_SPAWNER);
-			PhysicalModelRenderer.skinnedModel.Tint = spawnerColor;
-			OrbHighlight.InsideObscuredColor = spawnerColor;
-			OrbHighlight.ObscuredColor = spawnerColor;
-		}
-		else
-		{
-			var spawnerColor = new Color(COLOR_TRAP);
-			PhysicalModelRenderer.skinnedModel.Tint = spawnerColor;
-			OrbHighlight.InsideObscuredColor = spawnerColor;
-			OrbHighlight.ObscuredColor = spawnerColor;
+			if (ThisOrbType == OrbType.Spawner)
+			{
+				var spawnerColor = new Color(COLOR_SPAWNER);
+				PhysicalModelRenderer.skinnedModel.Tint = spawnerColor;
+				OrbHighlight.InsideObscuredColor = spawnerColor;
+				OrbHighlight.ObscuredColor = spawnerColor;
+			}
+			else
+			{
+				var spawnerColor = new Color(COLOR_TRAP);
+				PhysicalModelRenderer.skinnedModel.Tint = spawnerColor;
+				OrbHighlight.InsideObscuredColor = spawnerColor;
+				OrbHighlight.ObscuredColor = spawnerColor;
+			}
 		}
 	}
 

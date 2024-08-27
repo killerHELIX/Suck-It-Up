@@ -4,6 +4,7 @@ public abstract class Weapon : Component, Component.ICollisionListener
 {
     private const string PLAYER_OWNED_WEAPON = "playerweapon";
     private const string UNOWNED_WEAPON = "weapon";
+    private const int HEADSHOT_MULTIPLIER = 2;
 
 
 
@@ -59,7 +60,15 @@ public abstract class Weapon : Component, Component.ICollisionListener
     [Description("The reload speed of this weapon in seconds.")]
     public abstract float ReloadSpeed { get; set; }
 
-    [Sync]
+	[Property]
+	[Description("The health point damage this weapon does.")]
+	public abstract int Damage { get; set; }
+
+	[Property]
+	[Description("The name of the sound event that should play when this weapon fires.")]
+	public abstract string FireSoundEvent { get; set; }
+
+	[Sync]
     [Description("The current ammo in the weapon.")]
     public int CurrentAmmo { get; set; }
 
@@ -161,6 +170,10 @@ public abstract class Weapon : Component, Component.ICollisionListener
 
     public void OnCollisionStart(Collision collision)
     {
+        // if (IsProxy) return;
+        // if (collision.Other != null)
+        // collision.Other
+        // Log.Info($"{Network.OwnerConnection.DisplayName} {collision}");
         var otherObj = collision.Other.Collider.GameObject;
         TryToPickup(otherObj);
     }
@@ -208,23 +221,65 @@ public abstract class Weapon : Component, Component.ICollisionListener
                 Info("Fired!");
 
                 AnimateFire();
+                FireSound();
 
                 float dist = 10000.0f;
                 var head = PlayerWeaponController.Head;
 
                 // If the parent has a head shoot out of that. Otherwise shoot out of this gun directly.
                 var origin = (head != null) ? head.Transform.Position : head.Transform.Position;
-                lastTraceResult = Scene.Trace.Ray(new Ray(origin, Transform.Rotation.Forward * dist), dist).Run();
+                var lastTraceResult = Scene.Trace.Ray(new Ray(origin, Transform.Rotation.Forward * dist), dist).UseHitboxes().Run();
+				var lastTraceResults = Scene.Trace.Ray(new Ray(origin, Transform.Rotation.Forward * dist), dist).UseHitboxes().RunAll();
+				//lastTrace.UseHitboxes(true);
+				//lastTrace.WithAnyTags("unit");
+				//lastTrace.ig
+				//lastTraceResult = lastTrace.Run();
 
-                if (lastTraceResult.Hit)
+
+				if (lastTraceResult.Hit)
                 {
                     Log.Info($"Hit: {lastTraceResult.GameObject} at {lastTraceResult.EndPosition}");
+                    Log.Info(lastTraceResult.Hitbox);
+
+                    foreach(var i in lastTraceResults)
+                    {
+                        Log.Info(i.Component);
+                    }
+
+					if (lastTraceResult.Hitbox != null)
+                    {
+                        Log.Info("This is a Unit");
+						Log.Info("His this component: " + lastTraceResult.Component);
+                        foreach(string tag in lastTraceResult.Hitbox.Tags)
+                        {
+                            Log.Info(tag);
+                        }
+						if (lastTraceResult.Hitbox.Tags.Contains("head"))
+                        {
+							Log.Info("Headshot!");
+							lastTraceResult.Component.GameObject.Components.Get<SIUUnit>().takeDamage(Damage * HEADSHOT_MULTIPLIER, GameObject.Parent.Parent);
+                        }
+                        else
+                        {
+							lastTraceResult.Component.GameObject.Components.Get<SIUUnit>().takeDamage(Damage, GameObject.Parent.Parent);
+						}
+                    }
                 }
             }
         }
     }
 
+    private void FireSound()
+    {
+        Sound.Play(FireSoundEvent, Transform.Position);
+    }
+
+
+
     // HL2 Style reloading. Pool of reserve bullets that refill a fixed magazine size. 
+
+
+
     [Broadcast]
     public async void Reload()
     {

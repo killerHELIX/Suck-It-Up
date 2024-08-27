@@ -44,8 +44,24 @@
     {
       "__guid": "0a0c0087-7f20-47fa-8840-617b14b82e91",
       "Flags": 0,
-      "Name": "Spawn",
-      "Position": "1049.648,5755.143,1647.499",
+      "Name": "RTSSpawn",
+      "Position": "117.2101,5662.682,1647.499",
+      "Tags": "particles,skybox",
+      "Enabled": true
+    },
+    {
+      "__guid": "f8c0d978-59ab-4a1a-a627-9ee5a75653d0",
+      "Flags": 0,
+      "Name": "SpectatorSpawn",
+      "Position": "1067.056,5662.682,1647.499",
+      "Tags": "particles,skybox",
+      "Enabled": true
+    },
+    {
+      "__guid": "80677236-0b71-442d-b3fb-1c097aa71c51",
+      "Flags": 0,
+      "Name": "SurvivorSpawn",
+      "Position": "2043.402,5662.682,1550.418",
       "Tags": "particles,skybox",
       "Enabled": true
     },
@@ -55,7 +71,6 @@
       "Name": "Spawner Orb",
       "Position": "950.1219,5688.347,1583.225",
       "Enabled": true,
-      "NetworkMode": 1,
       "NetworkOrphaned": 3,
       "OwnerTransfer": 2,
       "__Prefab": "prefabs/spawnerorb.prefab",
@@ -88,20 +103,56 @@
           "SpectatorSpawnPoints": [
             {
               "_type": "gameobject",
-              "go": "0a0c0087-7f20-47fa-8840-617b14b82e91"
+              "go": "f8c0d978-59ab-4a1a-a627-9ee5a75653d0"
             }
           ],
           "StartServer": true,
           "SurvivorPlayerPrefab": {
             "_type": "gameobject",
-            "prefab": "prefabs/rts_player.prefab"
+            "prefab": "fps/player/fpsplayer.prefab"
           },
           "SurvivorSpawnPoints": [
             {
               "_type": "gameobject",
-              "go": "0a0c0087-7f20-47fa-8840-617b14b82e91"
+              "go": "80677236-0b71-442d-b3fb-1c097aa71c51"
             }
           ]
+        }
+      ]
+    },
+    {
+      "__guid": "651867d6-82a0-497d-a4e3-a0c1c213ba45",
+      "Flags": 0,
+      "Name": "pistol",
+      "Position": "1640.389,5698.019,1556.205",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "fps/weapons/pistol/pistol.prefab",
+      "__PrefabVariables": {
+        "vmpos": "15,5,-6",
+        "hpos": "1,-9,30",
+        "hrot": "0,0.6755902,0,0.7372773",
+        "dropdistance": 20,
+        "dropspeedup": 500,
+        "dropspeedforward": 1000,
+        "maxammo": 8,
+        "maxreserves": 64,
+        "firerate": 0.5,
+        "reloadspeed": 3
+      }
+    },
+    {
+      "__guid": "d0c792c7-a8c4-4715-a9ed-91fc1e9441ec",
+      "Flags": 0,
+      "Name": "Game State",
+      "Position": "-606.2842,907.3502,160.9013",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "GameState",
+          "__guid": "30ef5a1a-7824-43bd-a595-17591fb9421b"
         }
       ]
     }

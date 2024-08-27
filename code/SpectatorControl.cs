@@ -7,7 +7,7 @@ using System.Linq;
 public class SpectatorControl : Component
 {
 
-	[Property]	RTSCamComponent RTSCam {  get; set; }
+	[Property]	public RTSCamComponent RTSCam {  get; set; }
 
 	protected override void OnStart()
 	{

@@ -50,7 +50,6 @@ public sealed class SIUNetworkHelper : Component, Component.INetworkListener
 	/// </summary>
 	public void OnActive(Connection channel)
 	{
-		Log.Info($"Player '{channel.DisplayName}' has joined the game");
 
 		if (RTSPlayerPrefab is null || SurvivorPlayerPrefab is null || SpectatorPlayerPrefab is null)
 			return;
@@ -68,12 +67,15 @@ public sealed class SIUNetworkHelper : Component, Component.INetworkListener
 		switch (pType)
 		{
 			case GameState.PlayerType.RTS:
+				Log.Info($"Player '{channel.DisplayName}' has joined the game, spawning as a " + RTSPlayerPrefab);
 				player = RTSPlayerPrefab.Clone(startLocation, name: $"Player - {channel.DisplayName}");
 				break;
 			case GameState.PlayerType.SURVIVOR:
+				Log.Info($"Player '{channel.DisplayName}' has joined the game, spawning as a " + SurvivorPlayerPrefab);
 				player = SurvivorPlayerPrefab.Clone(startLocation, name: $"Player - {channel.DisplayName}");
 				break;
 			case GameState.PlayerType.SPECTATOR:
+				Log.Info($"Player '{channel.DisplayName}' has joined the game, spawning as a " + SpectatorPlayerPrefab);
 				player = SpectatorPlayerPrefab.Clone(startLocation, name: $"Player - {channel.DisplayName}");
 				break;
 		}

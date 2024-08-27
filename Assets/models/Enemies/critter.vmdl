@@ -130,6 +130,22 @@
 					{
 						_class = "AnimFile"
 						name = "critter_attack"
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_GENERIC_EVENT"
+								event_frame = 35
+								event_keys = 
+								{
+									TypeName = "DoDamage"
+									Int = 0
+									Float = 0.0
+									Vector = [ 0.0, 0.0, 0.0 ]
+									StringData = ""
+								}
+							},
+						]
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
@@ -152,6 +168,142 @@
 					},
 				]
 				default_root_bone_name = ""
+			},
+			{
+				_class = "HitboxSetList"
+				children = 
+				[
+					{
+						_class = "HitboxSet"
+						name = "body"
+						children = 
+						[
+							{
+								_class = "Hitbox"
+								parent_bone = "Root"
+								surface_property = ""
+								translation_only = false
+								tags = "body"
+								hitbox_mins = [ -0.075256, -1.192345, -0.451048 ]
+								hitbox_maxs = [ 2.739254, 1.182276, 0.387624 ]
+							},
+							{
+								_class = "Hitbox"
+								parent_bone = "Root"
+								surface_property = ""
+								translation_only = false
+								tags = "body"
+								hitbox_mins = [ 0.59534, -1.454094, -0.404273 ]
+								hitbox_maxs = [ 2.171463, 1.452963, 0.38179 ]
+							},
+							{
+								_class = "Hitbox"
+								parent_bone = "Arm_001_L"
+								surface_property = ""
+								translation_only = false
+								tags = "body"
+								hitbox_mins = [ -0.174647, -0.150512, -0.134689 ]
+								hitbox_maxs = [ 1.0, 0.12168, 0.154155 ]
+							},
+							{
+								_class = "Hitbox"
+								parent_bone = "Arm_001_R"
+								surface_property = ""
+								translation_only = false
+								tags = "body"
+								hitbox_mins = [ -0.011946, -0.157277, -0.161431 ]
+								hitbox_maxs = [ 1.0, 0.197071, 0.136027 ]
+							},
+							{
+								_class = "Hitbox"
+								parent_bone = "Arm_002_L"
+								surface_property = ""
+								translation_only = false
+								tags = "body"
+								hitbox_mins = [ -0.202654, -0.142296, -0.107442 ]
+								hitbox_maxs = [ 2.234136, 0.129307, 0.145584 ]
+							},
+							{
+								_class = "Hitbox"
+								parent_bone = "Arm_002_R"
+								surface_property = ""
+								translation_only = false
+								tags = "body"
+								hitbox_mins = [ -0.160724, -0.13253, -0.190066 ]
+								hitbox_maxs = [ 2.234256, 0.138066, 0.151861 ]
+							},
+							{
+								_class = "Hitbox"
+								parent_bone = "Leg_001_L"
+								surface_property = ""
+								translation_only = false
+								tags = "body"
+								hitbox_mins = [ -0.311081, -0.186419, -0.140644 ]
+								hitbox_maxs = [ 0.537798, 0.151187, 0.182018 ]
+							},
+							{
+								_class = "Hitbox"
+								parent_bone = "Leg_001_R"
+								surface_property = ""
+								translation_only = false
+								tags = "body"
+								hitbox_mins = [ -0.19457, -0.140479, -0.1269 ]
+								hitbox_maxs = [ 0.553829, 0.108172, 0.1438 ]
+							},
+							{
+								_class = "Hitbox"
+								parent_bone = "Leg_002_L"
+								surface_property = ""
+								translation_only = false
+								tags = "body"
+								hitbox_mins = [ 0.035517, -0.160093, -0.08691 ]
+								hitbox_maxs = [ 0.715562, 0.141477, 0.15168 ]
+							},
+							{
+								_class = "Hitbox"
+								parent_bone = "Leg_002_R"
+								surface_property = ""
+								translation_only = false
+								tags = "body"
+								hitbox_mins = [ -0.073254, -0.16832, -0.10528 ]
+								hitbox_maxs = [ 0.672774, 0.167906, 0.155013 ]
+							},
+							{
+								_class = "Hitbox"
+								parent_bone = "Leg_003_L"
+								surface_property = ""
+								translation_only = false
+								tags = "body"
+								hitbox_mins = [ -0.054899, -0.092997, -0.072337 ]
+								hitbox_maxs = [ 0.910344, 0.125911, 0.084452 ]
+							},
+							{
+								_class = "Hitbox"
+								parent_bone = "Leg_003_R"
+								surface_property = ""
+								translation_only = false
+								tags = "body"
+								hitbox_mins = [ 0.005076, -0.117698, -0.065902 ]
+								hitbox_maxs = [ 0.904401, 0.0909, 0.071659 ]
+							},
+						]
+					},
+				]
+			},
+			{
+				_class = "ModelModifierList"
+				children = 
+				[
+					{
+						_class = "ModelModifier_ScaleAndMirror"
+						scale = 8.0
+						mirror_x = false
+						mirror_y = false
+						mirror_z = false
+						flip_bone_forward = false
+						swap_left_and_right_bones = false
+					},
+				]
 			},
 		]
 		model_archetype = "animated_model"

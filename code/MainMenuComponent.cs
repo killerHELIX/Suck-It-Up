@@ -1,5 +1,6 @@
 ﻿using Sandbox.Network;
 using Sandbox.UI;
+using System.Threading;
 using System.Threading.Tasks;
 
 public class MainMenuComponent : Component, Component.INetworkListener
@@ -26,6 +27,10 @@ public class MainMenuComponent : Component, Component.INetworkListener
 	private MenuPanelType activePanel = MenuPanelType.MAIN;
 
 	private static MainMenuComponent _local = null;
+
+	private Task<List<LobbyInformation>> currentLobbies = null; 
+
+	public bool joinedGame = false;
 
 	public static MainMenuComponent Local
 	{
@@ -85,8 +90,15 @@ public class MainMenuComponent : Component, Component.INetworkListener
 			//Enabled = false;
 			//return; 
 		//}
-		Log.Info("Found my Menu");
-		setActivePanel(MenuPanelType.MAIN);
+		Log.Info("Menu start");
+		if(joinedGame)
+		{
+			setActivePanel(MenuPanelType.JOINEDLOBBY);
+		}
+		else
+		{
+			setActivePanel(MenuPanelType.MAIN);
+		}
 	}
 
 	//protected override void OnUpdate()
@@ -94,41 +106,43 @@ public class MainMenuComponent : Component, Component.INetworkListener
 	//	getPanelFromEnum(activePanel).StateHasChanged();
 	//}
 
-	protected override async void OnUpdate()
+	protected override void OnUpdate()
 	{
-		//Log.Info("Hello?");
+		//Log.Info("serv id: " + MyServID + ", activePanel: " + activePanel);
 		if (Scene.IsEditor)
 		{
-			//Log.Info("Should be ending up here");
+			Log.Info("isEditor");
 			return;
 		}
-
-		//Log.Info("Why is this running?");
-
-		/*if(startServer && !GameNetworkSystem.IsActive)
-		{
-			LoadingScreen.Title = "Creating Lobby";
-			await Task.DelayRealtimeSeconds(0.1f);
-			GameNetworkSystem.CreateLobby();
-		}*/
 
 
 		if (MyServID == 0 && activePanel == MenuPanelType.JOINEDLOBBY)
 		{
-			var lobbies = await Networking.QueryLobbies();
-			Log.Info("Is my serv id 0?");
-			Log.Info(lobbies.Count());
-			foreach (Sandbox.Network.LobbyInformation lobby in lobbies)
+			if(currentLobbies == null)
 			{
-				Log.Info("Lobby ID: " + lobby.LobbyId);
-				Log.Info("Lobby Owner ID: " + lobby.OwnerId);
-				if (lobby.OwnerId == Connection.Local.SteamId)
+				Log.Info("Querying lobbies");
+				currentLobbies = Networking.QueryLobbies();
+			}
+			else if(currentLobbies.IsCompleted)
+			{
+				Log.Info("Got this many lobbies: " + currentLobbies.Result.Count());
+				var lobbies = currentLobbies.Result;
+				foreach (Sandbox.Network.LobbyInformation lobby in lobbies)
 				{
-					this.MyServID = lobby.LobbyId;
-					Log.Info(MyServID);
+					Log.Info("Lobby ID: " + lobby.LobbyId);
+					Log.Info("Lobby Owner ID: " + lobby.OwnerId);
+					if (lobby.OwnerId == Connection.Local.SteamId)
+					{
+						this.MyServID = lobby.LobbyId;
+						Log.Info(MyServID);
+					}
 				}
 			}
-		}
+            else
+            {
+				Log.Info("Awaiting query");
+            }
+        }
 		getPanelFromEnum(activePanel).StateHasChanged();
 	}
 

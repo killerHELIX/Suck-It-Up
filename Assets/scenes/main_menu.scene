@@ -36,7 +36,7 @@
       "Position": "308.9923,284.8962,110.8963",
       "Enabled": true,
       "NetworkMode": 1,
-      "OwnerTransfer": 0,
+      "NetworkOrphaned": 1,
       "Components": [
         {
           "__type": "GameState",
@@ -186,7 +186,6 @@
       "Name": "Object",
       "Position": "13.24461,12.63725,0.2798235",
       "Rotation": "0,0,-0.6087614,0.7933534",
-      "Scale": "5,5,5",
       "Enabled": true,
       "Components": [
         {
@@ -207,7 +206,6 @@
       "Name": "Object (8)",
       "Position": "-85.80482,8.052815,0.2798177",
       "Rotation": "0,0,-0.6087614,0.7933535",
-      "Scale": "5,5,5",
       "Enabled": true,
       "Components": [
         {
@@ -229,7 +227,6 @@
       "Name": "Object (6)",
       "Position": "-49.51089,114.7775,0.2798117",
       "Rotation": "0,0,-0.8660256,0.5",
-      "Scale": "10,10,10",
       "Enabled": true,
       "Components": [
         {
@@ -251,7 +248,6 @@
       "Name": "Object (7)",
       "Position": "14.69465,-17.42287,0.2798166",
       "Rotation": "0,0,-0.5000002,0.8660255",
-      "Scale": "10,10,10",
       "Enabled": true,
       "Components": [
         {
@@ -273,7 +269,6 @@
       "Name": "Object (4)",
       "Position": "79.92801,-30.47889,0.2798255",
       "Rotation": "0,0,-0.4999999,0.8660255",
-      "Scale": "10,10,10",
       "Enabled": true,
       "Components": [
         {
@@ -295,7 +290,6 @@
       "Name": "Object (5)",
       "Position": "31.12136,54.05665,0.2798255",
       "Rotation": "0,0,-0.9238795,0.3826837",
-      "Scale": "10,10,10",
       "Enabled": true,
       "Components": [
         {
@@ -317,7 +311,6 @@
       "Name": "Object (1)",
       "Position": "35.60487,-63.58617,30.14639",
       "Rotation": "0,0,-0.4999999,0.8660255",
-      "Scale": "5,5,5",
       "Enabled": true,
       "Components": [
         {
@@ -338,7 +331,6 @@
       "Name": "Object (2)",
       "Position": "80.31136,25.67766,0.2798285",
       "Rotation": "0,0,-0.7933534,0.6087615",
-      "Scale": "5,5,5",
       "Enabled": true,
       "Components": [
         {
@@ -359,7 +351,6 @@
       "Name": "Object (3)",
       "Position": "46.70549,92.95575,0.2798249",
       "Rotation": "0,0,-0.8660253,0.5000001",
-      "Scale": "5,5,5",
       "Enabled": true,
       "Components": [
         {

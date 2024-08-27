@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sandbox.VR;
+using System;
 
 public class SpectatorPlayer : Component
 {
@@ -26,7 +27,12 @@ public class SpectatorPlayer : Component
 		this.Team = 2;
 
 		if (Network.IsProxy) 
-		{ 
+		{
+			Controller.RTSCam.CamView.IsMainCamera = false;
+			Controller.RTSCam.CamView.Enabled = false;
+			Controller.RTSCam.Enabled = false;
+			Controller.Enabled = false;
+			Enabled = false;
 			return;
 		}
 

@@ -12,21 +12,24 @@
 
 	protected override void OnStart()
 	{
-		if (!GameNetworkSystem.IsActive)
+		if (!MainMenuComponent.Local.joinedGame && Networking.IsHost)
 		{
 			LoadingScreen.Title = "Creating Lobby";
 			//await Task.DelayRealtimeSeconds(0.1f);
 			GameNetworkSystem.CreateLobby();
 		}
+		else
+		{
+			Log.Info("I have joined a game already");
+			MainMenuComponent.Local.joinedGame = true;
+		}
 	}
 
 	public void startGame()
 	{
-		if (GameState.Local.rtsPlayerList.Count() > 0 && GameState.Local.survivorPlayerList.Count() > 0)
+		if (Networking.IsHost)
 		{
-			GameState.Local.currentGameState = GameState.GameStateType.PLAYING;
-			Game.ActiveScene.LoadFromFile("scenes/sui_main.scene");
-			return;
+			GameState.Local.startGame();
 		}
 	}
 
@@ -39,6 +42,7 @@
 
 	public void returnToMain()
 	{
+		MainMenuComponent.Local.joinedGame = false;
 		MainMenuComponent.Local.setActivePanel(MainMenuComponent.MenuPanelType.MAIN);
 		GameNetworkSystem.Disconnect();
 	}

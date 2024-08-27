@@ -12,10 +12,16 @@ public sealed class FPSCameraController : Component
 	private GameObject PlayerHeadRef { get; set; }
 
 
-	/*protected override void OnAwake()
+	protected override void OnStart()
 	{
-		Camera = Components.Get<CameraComponent>();
-	}*/
+
+		if (IsProxy) 
+		{
+			Camera.Enabled = false;
+			Camera.IsMainCamera = false;
+			Enabled = false;
+		}
+	}
 
 
 	protected override void OnUpdate()

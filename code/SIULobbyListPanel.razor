@@ -24,6 +24,7 @@
 	public void attemptJoinServer(ulong serverID)
 	{
 		GameNetworkSystem.Connect(serverID);
+		MainMenuComponent.Local.joinedGame = true;
 		MainMenuComponent.Local.setActivePanel(MainMenuComponent.MenuPanelType.JOINEDLOBBY);
 	}
 

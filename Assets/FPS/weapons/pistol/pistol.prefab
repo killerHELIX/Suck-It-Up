@@ -10,10 +10,12 @@
       {
         "__type": "Pistol",
         "__guid": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
+        "Damage": 5,
         "DropDistance": 20,
         "DropSpeedForward": 1000,
         "DropSpeedUp": 500,
-        "FireRate": 0.5,
+        "FireRate": 0.35,
+        "FireSoundEvent": "pistolraw4",
         "HolsterPosition": "1,-9,30",
         "HolsterRotation": "0,0.6755902,0,0.7372773",
         "MaxAmmo": 8,
@@ -73,6 +75,8 @@
         "Rotation": "0,-0,-0.7071068,0.7071068",
         "Scale": "2.2,2.2,2.2",
         "Enabled": true,
+        "NetworkMode": 1,
+        "OwnerTransfer": 0,
         "Components": [
           {
             "__type": "Sandbox.SkinnedModelRenderer",
@@ -95,6 +99,8 @@
         "Rotation": "0,-0,-0.7071068,0.7071068",
         "Scale": "2.2,2.2,2.2",
         "Enabled": true,
+        "NetworkMode": 1,
+        "OwnerTransfer": 0,
         "Components": [
           {
             "__type": "Sandbox.SkinnedModelRenderer",
@@ -208,6 +214,26 @@
           {
             "Id": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
             "Property": "ReloadSpeed"
+          }
+        ]
+      },
+      {
+        "Id": "damage",
+        "Title": "damage",
+        "Targets": [
+          {
+            "Id": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
+            "Property": "Damage"
+          }
+        ]
+      },
+      {
+        "Id": "firesoundevent",
+        "Title": "firesoundevent",
+        "Targets": [
+          {
+            "Id": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
+            "Property": "FireSoundEvent"
           }
         ]
       }

@@ -1,6 +1,7 @@
 @using Sandbox;
 @using Sandbox.UI;
-@inherits PanelComponent @attribute [StyleSheet]
+@inherits PanelComponent 
+@attribute [StyleSheet]
 
 @code
 {
@@ -14,7 +15,7 @@
 		}
 		else
 		{
-			return "The Survivors Have Been Processed!";
+			return "The Survivors Have Been Processed";
 		}
 	}
 
@@ -22,11 +23,11 @@
 	{
 		if (survivorsWon)
 		{
-			return "00ff0080";
+			return "#00ff0080";
 		}
 		else
 		{
-			return "ff000080";
+			return "#ff000080";
 		}
 	}
 }

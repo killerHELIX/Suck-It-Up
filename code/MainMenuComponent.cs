@@ -81,6 +81,13 @@ public class MainMenuComponent : Component, Component.INetworkListener
 	{
 	}
 
+	void OnDisconnected(Connection channel)
+	{
+		GameState.Local.rtsPlayerList.Remove(channel.DisplayName);
+		GameState.Local.spectatorPlayerList.Remove(channel.DisplayName);
+		GameState.Local.survivorPlayerList.Remove(channel.DisplayName);
+	}
+
 	protected override void OnStart()
 	{
 		//if (Network.IsProxy){

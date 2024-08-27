@@ -22,8 +22,8 @@
     "PerMapRanking": false,
     "LeaderboardType": "None",
     "CsProjName": "",
-    "StartupScene": "scenes/rts_scene.scene",
-    "MapStartupScene": "scenes/rts_scene.scene",
+    "StartupScene": "scenes/main_menu.scene",
+    "MapStartupScene": "scenes/main_menu.scene",
     "LaunchMode": "Normal",
     "ParentPackage": "",
     "ControlModes": {},
@@ -236,18 +236,6 @@
         {
           "Name": "Walk",
           "KeyboardCode": "ALT",
-          "GamepadCode": "None",
-          "GroupName": "Other"
-        },
-        {
-          "Name": "Damage",
-          "KeyboardCode": "[",
-          "GamepadCode": "None",
-          "GroupName": "Other"
-        },
-        {
-          "Name": "Heal",
-          "KeyboardCode": "]",
           "GamepadCode": "None",
           "GroupName": "Other"
         }

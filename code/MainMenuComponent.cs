@@ -108,7 +108,7 @@ public class MainMenuComponent : Component, Component.INetworkListener
 
 	protected override void OnUpdate()
 	{
-		Log.Info("serv id: " + MyServID + ", activePanel: " + activePanel);
+		//Log.Info("serv id: " + MyServID + ", activePanel: " + activePanel);
 		if (Scene.IsEditor)
 		{
 			Log.Info("isEditor");

@@ -56,13 +56,13 @@ public class GameState : Component
 		{
 			Log.Info("Non proxy gamestate starting...");
 			Network.TakeOwnership();
-			pullCurrentGameStateFromHost();
+			//pullCurrentGameStateFromHost();
 			// DEBUG
-			survivorPlayerList.Add("balls");
+			//survivorPlayerList.Add("balls");
 			//rtsPlayerList.Add("Grundle");
 			// DEBUG
-			Log.Info(Network.OwnerConnection);
-			Log.Info(Network.OwnerConnection.DisplayName);
+			//Log.Info(Network.OwnerConnection);
+			//Log.Info(Network.OwnerConnection.DisplayName);
 			spectatorPlayerList.Add(Network.OwnerConnection.DisplayName);
 			GameObject.NetworkSpawn(Network.OwnerConnection);
 		}
@@ -98,19 +98,6 @@ public class GameState : Component
 
 	[Broadcast] public void addPlayerToList(string player, PlayerType listType, bool fromPlayer)
 	{
-		// If this call comes from the local player, propagate it to all the other players' states as well
-		if (fromPlayer)
-		{
-			foreach (GameObject playerGameStateObject in Game.ActiveScene.Directory.FindByName(OBJECT_NAME))
-			{
-				if (!playerGameStateObject.Network.IsOwner)
-				{
-					GameState playerGameState = playerGameStateObject.Components.Get<GameState>();
-					//Log.Info("Trying to update " + playerGameState.GameObject.Name + " for player " + playerGameState.Network.OwnerConnection.DisplayName);
-					playerGameState.addPlayerToList(player, listType, false);
-				}
-			}
-		}
 		Log.Info(player + " clicked " + listType);
 		// Don't go above the max players
 		if (getPlayerListFromType(listType).Count() >= getMaxPlayerFromType(listType))
@@ -123,35 +110,6 @@ public class GameState : Component
 		survivorPlayerList.Remove(player);
 		// Finally add player to the local list
 		getPlayerListFromType(listType).Add(player);
-	}
-
-	private void pullCurrentGameStateFromHost()
-	{
-		//Log.Info("Getting active scene directory: " + Game.ActiveScene.Directory);
-		//Log.Info("Game State objects found: " + Game.ActiveScene.Directory.FindByName(OBJECT_NAME).Count());
-		//Log.Info("Am I the owner?: " + (Game.ActiveScene.Directory.FindByName(OBJECT_NAME).First().Network.IsOwner));
-		//Log.Info("Owner Connection: " + (Game.ActiveScene.Directory.FindByName(OBJECT_NAME).First().Network.OwnerConnection));
-		//Log.Info("Game State objects found: " + Game.ActiveScene.Directory.FindByName(OBJECT_NAME).FirstOrDefault(x => x.Network.OwnerConnection.IsHost));
-		if(!Networking.IsHost)
-		{
-			Log.Info("I am not the host, but I got the hosts game state");
-			var hostGameStateObject = Game.ActiveScene.Directory.FindByName(OBJECT_NAME).FirstOrDefault(x => x.Network.OwnerConnection.IsHost);
-			var hostGameState = hostGameStateObject.Components.Get<GameState>();
-			rtsPlayerList = hostGameState.rtsPlayerList;
-			spectatorPlayerList = hostGameState.spectatorPlayerList;
-			survivorPlayerList = hostGameState.survivorPlayerList;
-			matchPhase = hostGameState.matchPhase;
-			currentGameState = hostGameState.currentGameState;
-		}
-		else
-		{
-			Log.Info("Creating host gamestate");
-			rtsPlayerList = new List<string>();
-			spectatorPlayerList = new List<string>();
-			survivorPlayerList = new List<string>();
-			matchPhase = 0;
-			currentGameState = GameStateType.MENU;
-		}
 	}
 
 	public void startGame()

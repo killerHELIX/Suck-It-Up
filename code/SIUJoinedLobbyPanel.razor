@@ -12,7 +12,7 @@
 
 	protected override void OnStart()
 	{
-		if (!MainMenuComponent.Local.joinedGame)
+		if (!MainMenuComponent.Local.joinedGame && Networking.IsHost)
 		{
 			LoadingScreen.Title = "Creating Lobby";
 			//await Task.DelayRealtimeSeconds(0.1f);
@@ -21,6 +21,7 @@
 		else
 		{
 			Log.Info("I have joined a game already");
+			MainMenuComponent.Local.joinedGame = true;
 		}
 	}
 

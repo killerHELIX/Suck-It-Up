@@ -32,9 +32,9 @@ public class RTSPlayer : Component
 
 	private static RTSPlayer _local = null;
 
-	private const float DEFAULT_RP_RATE = 1f;
-	private const float PER_PLAYER_RESOURCE_MULT = 1.5f;
-	private const float PER_PHASE_RESOURCE_MULT = 2f;
+	private const float DEFAULT_RP_RATE = .5f;
+	private const float PER_PLAYER_RESOURCE_MULT = .2f;
+	private const float PER_PHASE_RESOURCE_MULT = .4f;
 
 	protected override void OnStart()
 	{
@@ -85,9 +85,15 @@ public class RTSPlayer : Component
 
 	protected override void OnUpdate()
 	{
-		if(Time.Now - lastRPTickTime > DEFAULT_RP_RATE / float.Max(((PER_PLAYER_RESOURCE_MULT * 0) * (PER_PHASE_RESOURCE_MULT * 0)), 1))
+		//Log.Info(Time.Now + " - " + lastRPTickTime);
+		if (Time.Now - lastRPTickTime > 1 / (DEFAULT_RP_RATE + (PER_PLAYER_RESOURCE_MULT * GameState.Local.survivorPlayerList.Count) + (PER_PHASE_RESOURCE_MULT * GameState.Local.matchPhase)))
 		{
-			resourcePoints++;
+			Log.Info(Time.Now + " - " + lastRPTickTime);
+			Log.Info(DEFAULT_RP_RATE + (PER_PLAYER_RESOURCE_MULT * GameState.Local.survivorPlayerList.Count) + (PER_PHASE_RESOURCE_MULT * GameState.Local.matchPhase));
+			if(ResourceCap > resourcePoints)
+			{
+				resourcePoints++;
+			}
 			lastRPTickTime = Time.Now;
 			//Log.Info("Resource Points: " + resourcePoints);
 		}

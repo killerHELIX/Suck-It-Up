@@ -51,6 +51,7 @@ public class Unit : SkinnedRTSObject
 	protected bool isNewCommand = false;
 
 	private DynamicToggleButton unitStanceButton;
+	private DynamicButton recycleUnitButton;
 
 	// Unit Constants
 	public const string UNIT_TAG = "unit";
@@ -63,6 +64,7 @@ public class Unit : SkinnedRTSObject
 
 	private const string AttackStanceImagePath = "materials/attack_stance.png";
 	private const string DefendStanceImagePath = "materials/defend_stance.png";
+	private const string RecycleImagepath = "materials/recycle_icon.png";
 
 	protected override void OnStart()
 	{
@@ -72,7 +74,9 @@ public class Unit : SkinnedRTSObject
 		commandGiven = UnitModelUtils.CommandType.None;
 		homeTargetLocation = Transform.Position;
 		unitStanceButton = new DynamicToggleButton('x', AttackStanceImagePath, DefendStanceImagePath, stanceButtonClicked);
+		recycleUnitButton = new DynamicButton('.', RecycleImagepath, recycleUnit);
 		buttons.Add(unitStanceButton);
+		buttons.Add(recycleUnitButton);
 		UnitNavAgent.MaxSpeed = UnitSpeed;
 		UnitNavAgent.Acceleration = UnitSpeed * 10;
 	}
@@ -358,6 +362,30 @@ public class Unit : SkinnedRTSObject
 			setIsInAttackMode(true);
 		}
 		unitStanceButton.toggleButtonState();
+	}
+
+	public void recycleUnit()
+	{
+		isAlive = false;
+		RTSPlayer.Local.resourcePoints += (int)((float)ResourceCost * ((float)currentHealthPoints / (float)MaxHealth));
+		die();
+
+		var selectedObjList = RTSPlayer.Local.UnitControl.SelectedObjects;
+		if (selectedObjList.Count == 0)
+		{
+			RTSPlayer.Local.LocalGame.GameHud.setSelectionVars(false, false, false);
+		}
+		else if (selectedObjList.Count == 1)
+		{
+			RTSPlayer.Local.LocalGame.GameHud.setSelectionVars(true, true, ((Unit)(selectedObjList[0])).isInAttackMode);
+		}
+		else
+		{
+			RTSPlayer.Local.LocalGame.GameHud.setSelectionVars(true, false, ((Unit)(selectedObjList[0])).isInAttackMode);
+			//focusedUnit = ((Unit)(selectedObjList[0]));
+		}
+
+		this.Destroy();
 	}
 
 	public void setMoveCommand(Vector3 targetLocation)

@@ -39,6 +39,20 @@
 					},
 				]
 			},
+			{
+				_class = "PhysicsShapeList"
+				children = 
+				[
+					{
+						_class = "PhysicsHullFromRender"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_tags = "solid"
+						faceMergeAngle = 5.0
+						maxHullVertices = 0
+					},
+				]
+			},
 		]
 		model_archetype = ""
 		primary_associated_entity = ""

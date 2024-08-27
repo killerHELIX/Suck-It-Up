@@ -30,5 +30,5 @@
 		var selectedWep = FpsWeaponController.SelectedWeapon;
 		return (selectedWep == null) ? "hidden" : "";
 	}
-	protected override int BuildHash() => System.HashCode.Combine($"{FpsHealthController.CurrentHealth} {FpsWeaponController.SelectedWeapon?.CurrentAmmo}");
+	protected override int BuildHash() => System.HashCode.Combine($"{FpsHealthController.CurrentHealth} {FpsWeaponController.SelectedWeapon?.CurrentAmmo} {FpsWeaponController.SelectedWeapon?.CurrentReserves}");
 }

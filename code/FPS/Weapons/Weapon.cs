@@ -68,6 +68,10 @@ public abstract class Weapon : Component, Component.ICollisionListener
 	[Description("The name of the sound event that should play when this weapon fires.")]
 	public abstract string FireSoundEvent { get; set; }
 
+	[Property]
+	[Description("The strength of this weapon's recoil.")]
+	public abstract float RecoilStrength { get; set; }
+
 	[Sync]
     [Description("The current ammo in the weapon.")]
     public int CurrentAmmo { get; set; }
@@ -81,23 +85,19 @@ public abstract class Weapon : Component, Component.ICollisionListener
     private SceneTraceResult lastTraceResult;
 
     private FPSWeaponController PlayerWeaponController;
+    private FPSCameraController PlayerCameraController;
 
     private bool ShouldDropOwnershipOnCollide = false;
 
 
 
-    public Weapon()
-    {
-        // Start gun loaded.
-        CurrentAmmo = MaxAmmo;
-        CurrentReserves = MaxReserves;
-    }
-
     [Broadcast]
-    public void Pickup(GameObject player, FPSWeaponController playerWeaponController)
+    public void Pickup(GameObject player, FPSWeaponController playerWeaponController, FPSCameraController playerCameraController)
     {
 
         PlayerWeaponController = playerWeaponController;
+        PlayerCameraController = playerCameraController;
+
         Log.Info($"{player} picking up {this}");
         GameObject.SetParent(PlayerWeaponController.Body, keepWorldPosition: false);
         if (!player.IsProxy)
@@ -106,8 +106,20 @@ public abstract class Weapon : Component, Component.ICollisionListener
         }
         Components.Get<Rigidbody>().Enabled = false;
         GameObject.Tags.Add(PLAYER_OWNED_WEAPON);
-        playerWeaponController.Weapons.Add(this);
-        Holster();
+
+        var existingWep = PlayerWeaponController.Weapons.FirstOrDefault(x => x.Name == Name);
+        if (existingWep is not null)
+        {
+            existingWep.CurrentReserves += CurrentAmmo + CurrentReserves;
+            existingWep.CurrentReserves = existingWep.CurrentReserves.Clamp(0, existingWep.MaxReserves);
+            GameObject.Destroy();
+        }
+        else
+        {
+            playerWeaponController.Weapons.Add(this);
+            Holster();
+        }
+
     }
 
     public void Holster()
@@ -120,7 +132,6 @@ public abstract class Weapon : Component, Component.ICollisionListener
     public void Aim()
     {
         if (!IsProxy) ShowViewmodel();
-        // WeaponRenderer.SceneModel.SetAnimParameter("isFiring", true);
 
         var head = PlayerWeaponController.Head;
         var targetPos = head.Transform.Position
@@ -130,9 +141,6 @@ public abstract class Weapon : Component, Component.ICollisionListener
 
         Transform.Position = Vector3.Lerp(Transform.Position, targetPos, Time.Delta * 10f);
         Transform.Rotation = Rotation.Slerp(Transform.Rotation, head.Transform.Rotation, Time.Delta * 20f);
-
-        // Transform.Position = targetPos;
-        // Transform.Rotation = head.Transform.Rotation;
     }
 
     [Broadcast]
@@ -170,10 +178,6 @@ public abstract class Weapon : Component, Component.ICollisionListener
 
     public void OnCollisionStart(Collision collision)
     {
-        // if (IsProxy) return;
-        // if (collision.Other != null)
-        // collision.Other
-        // Log.Info($"{Network.OwnerConnection.DisplayName} {collision}");
         var otherObj = collision.Other.Collider.GameObject;
         TryToPickup(otherObj);
     }
@@ -189,7 +193,9 @@ public abstract class Weapon : Component, Component.ICollisionListener
     }
     protected override void OnStart()
     {
-
+        // Start gun loaded.
+        CurrentAmmo = MaxAmmo;
+        CurrentReserves = MaxReserves;
     }
 
     protected override void OnUpdate()
@@ -222,6 +228,7 @@ public abstract class Weapon : Component, Component.ICollisionListener
 
                 AnimateFire();
                 FireSound();
+                PlayerCameraController.Recoil(RecoilStrength);
 
                 float dist = 10000.0f;
                 var head = PlayerWeaponController.Head;
@@ -347,9 +354,10 @@ public abstract class Weapon : Component, Component.ICollisionListener
         }
 
         var playerWeaponController = other.Components.Get<FPSWeaponController>();
-        if (playerWeaponController != null)
+        var playerCameraController = other.Components.Get<FPSCameraController>();
+        if (playerWeaponController != null && playerCameraController != null)
         {
-            Pickup(other, playerWeaponController);
+            Pickup(other, playerWeaponController, playerCameraController);
         }
     }
 

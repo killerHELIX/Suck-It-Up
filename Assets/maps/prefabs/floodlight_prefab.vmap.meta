@@ -1,0 +1,20 @@
+{
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "floodlight_prefab",
+      "Type": "map",
+      "Org": "local",
+      "Ident": "floodlight_prefab",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": [],
+      "EditorReferences": [],
+      "IsWhitelistDisabled": false,
+      "Metadata": {
+        "SingleAssetSource": "maps/prefabs/floodlight_prefab.vmap"
+      }
+    }
+  }
+}

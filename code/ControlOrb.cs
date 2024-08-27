@@ -1,10 +1,4 @@
-﻿
-using Sandbox;
-using Sandbox.UI;
-using System.Drawing;
-using static Sandbox.TextRendering;
-
-public class ControlOrb : SelectableObject, IScalable, ISelectable
+﻿public class ControlOrb : SelectableObject, IScalable, ISelectable
 {
 	[Group("Gameplay")]
 	[Property] public OrbType ThisOrbType { get; set; }

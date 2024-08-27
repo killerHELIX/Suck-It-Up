@@ -1,6 +1,4 @@
-﻿using System;
-using System.Xml.Linq;
-
+﻿
 public class RTSGameComponent : Component
 {
 	[Property] public CorpseList GameCorpseList { get; set; }

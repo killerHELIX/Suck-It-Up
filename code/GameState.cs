@@ -1,5 +1,4 @@
 ﻿using Sandbox.Network;
-using Sandbox.UI;
 using System.Threading;
 
 public class GameState : Component
@@ -138,7 +137,7 @@ public class GameState : Component
 		currentGameState = GameStateType.FINISHED;
 		//PLAY SOUND HERE
 
-		Thread.Sleep(10000);
+		//Thread.Sleep(10000);
 		currentGameState = GameStateType.MENU;
 		GameNetworkSystem.Disconnect();
 		Game.ActiveScene.LoadFromFile("scenes/main_menu.scene");

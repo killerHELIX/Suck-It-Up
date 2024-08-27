@@ -1,6 +1,4 @@
 ﻿using Sandbox.Network;
-using Sandbox.UI;
-using System.Threading;
 using System.Threading.Tasks;
 
 public class MainMenuComponent : Component, Component.INetworkListener

@@ -64,6 +64,10 @@ public abstract class Weapon : Component, Component.ICollisionListener
 	[Description("The health point damage this weapon does.")]
 	public abstract int Damage { get; set; }
 
+	[Property]
+	[Description("The name of the sound event that should play when this weapon fires.")]
+	public abstract string FireSoundEvent { get; set; }
+
 	[Sync]
     [Description("The current ammo in the weapon.")]
     public int CurrentAmmo { get; set; }
@@ -217,6 +221,7 @@ public abstract class Weapon : Component, Component.ICollisionListener
                 Info("Fired!");
 
                 AnimateFire();
+                FireSound();
 
                 float dist = 10000.0f;
                 var head = PlayerWeaponController.Head;
@@ -264,7 +269,17 @@ public abstract class Weapon : Component, Component.ICollisionListener
         }
     }
 
+    private void FireSound()
+    {
+        Sound.Play(FireSoundEvent, Transform.Position);
+    }
+
+
+
     // HL2 Style reloading. Pool of reserve bullets that refill a fixed magazine size. 
+
+
+
     [Broadcast]
     public async void Reload()
     {

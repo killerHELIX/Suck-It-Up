@@ -20,14 +20,15 @@ public class GameState : Component
 	{
 		RTS,
 		SPECTATOR,
-		SURVIVOR
+		SURVIVOR,
+		NONE
 	}
 
 	private static GameState _local = null;
 
-	[Sync] public List<string> rtsPlayerList { get; set; }
-	[Sync] public List<string> spectatorPlayerList { get; set; }
-	[Sync] public List<string> survivorPlayerList { get; set; }
+	[Sync] public List<string> rtsPlayerList { get; set; } = new List<string>();
+	[Sync] public List<string> spectatorPlayerList { get; set; } = new List<string>();
+	[Sync] public List<string> survivorPlayerList { get; set; } = new List<string>();
 	[Sync] public int matchPhase {  get; set; }
 	[Sync] public GameStateType currentGameState {get; set;}
 
@@ -71,7 +72,7 @@ public class GameState : Component
 			if(GameState.Local != null)
 			{
 				string myName = Connection.Local.DisplayName;
-				if (!rtsPlayerList.Contains(myName) && !spectatorPlayerList.Contains(myName) && !survivorPlayerList.Contains(myName))
+				if (getPlayerTypeFromPlayer(Connection.Local.DisplayName) == PlayerType.NONE)
 				{
 					Log.Info("Player is not on any team!");
 					addPlayerToList(myName, PlayerType.SPECTATOR, true);
@@ -153,6 +154,16 @@ public class GameState : Component
 		}
 	}
 
+	public void startGame()
+	{
+		if (rtsPlayerList.Count() > 0 && survivorPlayerList.Count() > 0)
+		{
+			currentGameState = GameStateType.PLAYING;
+			Game.ActiveScene.LoadFromFile("scenes/sui_main.scene");
+			return;
+		}
+	}
+
 	public List<string> getPlayerListFromType(PlayerType pType)
 	{
 		switch (pType)
@@ -193,9 +204,13 @@ public class GameState : Component
 		{
 			return PlayerType.SURVIVOR;
 		}
-		else
+		else if(spectatorPlayerList.Contains(playername))
 		{
 			return PlayerType.SPECTATOR;
+		}
+		else
+		{
+			return PlayerType.NONE;
 		}
 	}
 }

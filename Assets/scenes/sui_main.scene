@@ -71,7 +71,6 @@
       "Name": "Spawner Orb",
       "Position": "950.1219,5688.347,1583.225",
       "Enabled": true,
-      "NetworkMode": 1,
       "NetworkOrphaned": 3,
       "OwnerTransfer": 2,
       "__Prefab": "prefabs/spawnerorb.prefab",
@@ -142,6 +141,20 @@
         "firerate": 0.5,
         "reloadspeed": 3
       }
+    },
+    {
+      "__guid": "d0c792c7-a8c4-4715-a9ed-91fc1e9441ec",
+      "Flags": 0,
+      "Name": "Game State",
+      "Position": "-606.2842,907.3502,160.9013",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "GameState",
+          "__guid": "30ef5a1a-7824-43bd-a595-17591fb9421b"
+        }
+      ]
     }
   ],
   "SceneProperties": {

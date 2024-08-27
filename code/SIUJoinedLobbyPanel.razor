@@ -18,15 +18,17 @@
 			//await Task.DelayRealtimeSeconds(0.1f);
 			GameNetworkSystem.CreateLobby();
 		}
+		else
+		{
+			Log.Info("I have joined a game already");
+		}
 	}
 
 	public void startGame()
 	{
-		if (GameState.Local.rtsPlayerList.Count() > 0 && GameState.Local.survivorPlayerList.Count() > 0)
+		if (Networking.IsHost)
 		{
-			GameState.Local.currentGameState = GameState.GameStateType.PLAYING;
-			Game.ActiveScene.LoadFromFile("scenes/sui_main.scene");
-			return;
+			GameState.Local.startGame();
 		}
 	}
 

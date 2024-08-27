@@ -36,7 +36,7 @@
       "Position": "308.9923,284.8962,110.8963",
       "Enabled": true,
       "NetworkMode": 1,
-      "OwnerTransfer": 0,
+      "NetworkOrphaned": 1,
       "Components": [
         {
           "__type": "GameState",

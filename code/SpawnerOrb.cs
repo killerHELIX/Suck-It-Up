@@ -5,6 +5,16 @@ public class SpawnerOrb : ControlOrb
 	protected override void OnStart()
 	{
 		base.OnStart();
+		if (GameState.Local.getPlayerTypeFromPlayer(Connection.Local.DisplayName) != GameState.PlayerType.RTS)
+		{
+			Log.Info("Fucking hello?");
+			//PhysicalModelRenderer.skinnedModel.Enabled = false;
+			//PhysicalModelRenderer.Enabled = false;
+			//OrbHighlight.Enabled = false;
+
+			Enabled = false;
+			return;
+		}
 		ThisOrbType = OrbType.Spawner;
 		foreach(var unitType in spawnableUnitList) 
 		{

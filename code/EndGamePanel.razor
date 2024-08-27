@@ -1,0 +1,36 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent @attribute [StyleSheet]
+
+@code
+{
+	bool survivorsWon = false;
+
+	public string getEndGameText()
+	{
+		if(survivorsWon)
+		{
+			return "Survivors Have Escaped!";
+		}
+		else
+		{
+			return "The Survivors Have Been Processed!";
+		}
+	}
+
+	public string getEndGameColor()
+	{
+		if (survivorsWon)
+		{
+			return "00ff0080";
+		}
+		else
+		{
+			return "ff000080";
+		}
+	}
+}
+
+<root>
+	<div class="MessageLabel" style="color:@(getEndGameColor())">@(getEndGameText())</div>
+</root>

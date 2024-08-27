@@ -13,7 +13,7 @@
 						_class = "DefaultMaterialGroup"
 						remaps = [  ]
 						use_global_default = true
-						global_default_material = "materials/default.vmat"
+						global_default_material = "materials/enemies/normal_pixel.vmat"
 					},
 				]
 			},
@@ -58,6 +58,22 @@
 					{
 						_class = "AnimFile"
 						name = "normal_attack"
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_GENERIC_EVENT"
+								event_frame = 29
+								event_keys = 
+								{
+									TypeName = "DoDamage"
+									Int = 0
+									Float = 0.0
+									Vector = [ 0.0, 0.0, 0.0 ]
+									StringData = ""
+								}
+							},
+						]
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
@@ -149,6 +165,142 @@
 					},
 				]
 				default_root_bone_name = ""
+			},
+			{
+				_class = "HitboxSetList"
+				children = 
+				[
+					{
+						_class = "HitboxSet"
+						name = "body"
+						children = 
+						[
+							{
+								_class = "Hitbox"
+								parent_bone = "Root"
+								surface_property = ""
+								translation_only = false
+								tags = "body"
+								hitbox_mins = [ 0.15005, -0.400267, -0.161282 ]
+								hitbox_maxs = [ 1.195554, 0.361846, 0.403847 ]
+							},
+							{
+								_class = "Hitbox"
+								parent_bone = "Root"
+								surface_property = ""
+								translation_only = false
+								tags = "body"
+								hitbox_mins = [ -0.155716, -0.44564, -0.175338 ]
+								hitbox_maxs = [ 0.16498, 0.459022, 0.181575 ]
+							},
+							{
+								_class = "Hitbox"
+								parent_bone = "Leg_001_R"
+								surface_property = ""
+								translation_only = false
+								tags = "body"
+								hitbox_mins = [ 0.151213, -0.166347, -0.106484 ]
+								hitbox_maxs = [ 1.107257, 0.159021, 0.125613 ]
+							},
+							{
+								_class = "Hitbox"
+								parent_bone = "Leg_002_R"
+								surface_property = ""
+								translation_only = false
+								tags = "body"
+								hitbox_mins = [ -0.058708, -0.194747, -0.128404 ]
+								hitbox_maxs = [ 1.143317, 0.158933, 0.096638 ]
+							},
+							{
+								_class = "Hitbox"
+								parent_bone = "Leg_003_R"
+								surface_property = ""
+								translation_only = false
+								tags = "body"
+								hitbox_mins = [ -0.242334, -0.209196, -0.128292 ]
+								hitbox_maxs = [ 0.905241, 0.153091, 0.378635 ]
+							},
+							{
+								_class = "Hitbox"
+								parent_bone = "Leg_001_L"
+								surface_property = ""
+								translation_only = false
+								tags = "body"
+								hitbox_mins = [ 0.071988, -0.164733, -0.209664 ]
+								hitbox_maxs = [ 1.156929, 0.170378, 0.126013 ]
+							},
+							{
+								_class = "Hitbox"
+								parent_bone = "Leg_002_L"
+								surface_property = ""
+								translation_only = false
+								tags = "body"
+								hitbox_mins = [ -0.002999, -0.156605, -0.171054 ]
+								hitbox_maxs = [ 1.213495, 0.181781, 0.088183 ]
+							},
+							{
+								_class = "Hitbox"
+								parent_bone = "Leg_003_L"
+								surface_property = ""
+								translation_only = false
+								tags = "body"
+								hitbox_mins = [ -0.253011, -0.116246, -0.368154 ]
+								hitbox_maxs = [ 0.913741, 0.23418, 0.155235 ]
+							},
+							{
+								_class = "Hitbox"
+								parent_bone = "Arm_001_L"
+								surface_property = ""
+								translation_only = false
+								tags = "body"
+								hitbox_mins = [ 0.100088, -0.155758, -0.131431 ]
+								hitbox_maxs = [ 1.942074, 0.210536, 0.18812 ]
+							},
+							{
+								_class = "Hitbox"
+								parent_bone = "Arm_001_R"
+								surface_property = ""
+								translation_only = false
+								tags = "body"
+								hitbox_mins = [ 0.172613, -0.218491, -0.177932 ]
+								hitbox_maxs = [ 1.951365, 0.146273, 0.135227 ]
+							},
+							{
+								_class = "Hitbox"
+								parent_bone = "Root"
+								surface_property = ""
+								translation_only = false
+								tags = "body"
+								hitbox_mins = [ 1.210012, -0.712274, -0.173979 ]
+								hitbox_maxs = [ 1.530149, 0.715025, 0.229557 ]
+							},
+							{
+								_class = "Hitbox"
+								parent_bone = "Head"
+								surface_property = ""
+								translation_only = false
+								tags = "head"
+								hitbox_mins = [ -0.074585, -0.60027, -0.202327 ]
+								hitbox_maxs = [ 1.164437, 0.611889, 0.199185 ]
+							},
+						]
+					},
+				]
+			},
+			{
+				_class = "ModelModifierList"
+				children = 
+				[
+					{
+						_class = "ModelModifier_ScaleAndMirror"
+						scale = 17.0
+						mirror_x = false
+						mirror_y = false
+						mirror_z = false
+						flip_bone_forward = false
+						swap_left_and_right_bones = false
+					},
+				]
 			},
 		]
 		model_archetype = "animated_model"

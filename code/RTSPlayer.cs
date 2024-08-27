@@ -39,26 +39,18 @@ public class RTSPlayer : Component
 	protected override void OnStart()
 	{
 		if(Network.IsProxy) 
-		{ 
+		{
+			UnitControl.RTSCam.CamView.IsMainCamera = false;
+			UnitControl.RTSCam.CamView.Enabled = false;
+			UnitControl.RTSCam.Enabled = false;
 			UnitControl.Enabled = false;
+			LocalGame.ThisScreen.Enabled = false;
 			LocalGame.GameHud.Enabled = false;
 			LocalGame.Enabled = false;
 			return;
 		}
 
 		//Set Team
-		/*if(GameState.Local.rtsPlayerList.Contains(Connection.Local.DisplayName))
-		{
-			this.Team = 0;
-		}
-		else if(GameState.Local.survivorPlayerList.Contains(Connection.Local.DisplayName))
-		{
-			this.Team = 1;
-		}
-		else
-		{
-			this.Team = 2;
-		}*/
 		this.Team = 0;
 
 		//Update display for all units (probably wont work for those it doesnt have ownership of)

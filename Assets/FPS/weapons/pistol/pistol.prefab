@@ -1,0 +1,248 @@
+{
+  "RootObject": {
+    "__guid": "b0bacc6c-ede5-44d4-926b-8966d3a1bf37",
+    "Flags": 0,
+    "Name": "pistol",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "OwnerTransfer": 0,
+    "Components": [
+      {
+        "__type": "Pistol",
+        "__guid": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
+        "Damage": 5,
+        "DropDistance": 20,
+        "DropSpeedForward": 1000,
+        "DropSpeedUp": 500,
+        "FireRate": 0.35,
+        "FireSoundEvent": "pistolraw4",
+        "HolsterPosition": "1,-9,30",
+        "HolsterRotation": "0,0.6755902,0,0.7372773",
+        "MaxAmmo": 8,
+        "MaxReserves": 64,
+        "Name": "9mm - \u0022The Scrapshot\u0022",
+        "ReloadSpeed": 3,
+        "ViewmodelPosition": "15,5,-6",
+        "ViewmodelRenderer": {
+          "_type": "component",
+          "component_id": "5b64e948-ea92-4852-bc23-fef4938014a5",
+          "go": "71247c81-3089-4b29-bec6-aa62cc6250f2",
+          "component_type": "SkinnedModelRenderer"
+        },
+        "WorldmodelRenderer": {
+          "_type": "component",
+          "component_id": "1a812547-9d2d-485f-a1be-563f5b9147b2",
+          "go": "2d47a577-7c50-44c8-b3c4-bf91c87f2262",
+          "component_type": "SkinnedModelRenderer"
+        }
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "e486782c-6bbc-42cd-9166-61eb258ad6d7",
+        "Center": "4.7,0,0.6000062",
+        "IsTrigger": false,
+        "Scale": "11.60005,1.600006,2.49999",
+        "Static": false
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "3817e015-c89a-4500-8985-344c012e8093",
+        "Center": "-0.000003531575,-0.09999999,-2.500005",
+        "IsTrigger": false,
+        "Scale": "4.000061,0.7000064,4.599992",
+        "Static": false
+      },
+      {
+        "__type": "Sandbox.Rigidbody",
+        "__guid": "c9f19364-d231-42e2-92c9-938c735f3c8c",
+        "AngularDamping": 0,
+        "Gravity": true,
+        "LinearDamping": 0,
+        "Locking": {},
+        "MassCenterOverride": "0,0,0",
+        "MassOverride": 0,
+        "MotionEnabled": true,
+        "OverrideMassCenter": false,
+        "RigidbodyFlags": 0,
+        "StartAsleep": false
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "71247c81-3089-4b29-bec6-aa62cc6250f2",
+        "Flags": 0,
+        "Name": "Viewmodel",
+        "Rotation": "0,-0,-0.7071068,0.7071068",
+        "Scale": "2.2,2.2,2.2",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "OwnerTransfer": 0,
+        "Components": [
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "5b64e948-ea92-4852-bc23-fef4938014a5",
+            "__enabled": false,
+            "AnimationGraph": "fps/weapons/pistol/pistol_viewmodel.vanmgrph",
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "Model": "fps/weapons/pistol/pistol_viewmodel.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ]
+      },
+      {
+        "__guid": "2d47a577-7c50-44c8-b3c4-bf91c87f2262",
+        "Flags": 0,
+        "Name": "Worldmodel",
+        "Rotation": "0,-0,-0.7071068,0.7071068",
+        "Scale": "2.2,2.2,2.2",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "OwnerTransfer": 0,
+        "Components": [
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "1a812547-9d2d-485f-a1be-563f5b9147b2",
+            "AnimationGraph": "fps/weapons/pistol/pistol_worldmodel.vanmgrph",
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "Model": "fps/weapons/pistol/pistol_worldmodel.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ]
+      }
+    ],
+    "__variables": [
+      {
+        "Id": "vmpos",
+        "Title": "vmpos",
+        "Targets": [
+          {
+            "Id": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
+            "Property": "ViewmodelPosition"
+          }
+        ]
+      },
+      {
+        "Id": "hpos",
+        "Title": "hpos",
+        "Targets": [
+          {
+            "Id": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
+            "Property": "HolsterPosition"
+          }
+        ]
+      },
+      {
+        "Id": "hrot",
+        "Title": "hrot",
+        "Targets": [
+          {
+            "Id": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
+            "Property": "HolsterRotation"
+          }
+        ]
+      },
+      {
+        "Id": "dropdistance",
+        "Title": "dropdistance",
+        "Targets": [
+          {
+            "Id": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
+            "Property": "DropDistance"
+          }
+        ]
+      },
+      {
+        "Id": "dropspeedup",
+        "Title": "dropspeedup",
+        "Targets": [
+          {
+            "Id": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
+            "Property": "DropSpeedUp"
+          }
+        ]
+      },
+      {
+        "Id": "dropspeedforward",
+        "Title": "dropspeedforward",
+        "Targets": [
+          {
+            "Id": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
+            "Property": "DropSpeedForward"
+          }
+        ]
+      },
+      {
+        "Id": "maxammo",
+        "Title": "maxammo",
+        "Targets": [
+          {
+            "Id": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
+            "Property": "MaxAmmo"
+          }
+        ]
+      },
+      {
+        "Id": "maxreserves",
+        "Title": "maxreserves",
+        "Targets": [
+          {
+            "Id": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
+            "Property": "MaxReserves"
+          }
+        ]
+      },
+      {
+        "Id": "firerate",
+        "Title": "firerate",
+        "Targets": [
+          {
+            "Id": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
+            "Property": "FireRate"
+          }
+        ]
+      },
+      {
+        "Id": "reloadspeed",
+        "Title": "reloadspeed",
+        "Targets": [
+          {
+            "Id": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
+            "Property": "ReloadSpeed"
+          }
+        ]
+      },
+      {
+        "Id": "damage",
+        "Title": "damage",
+        "Targets": [
+          {
+            "Id": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
+            "Property": "Damage"
+          }
+        ]
+      },
+      {
+        "Id": "firesoundevent",
+        "Title": "firesoundevent",
+        "Targets": [
+          {
+            "Id": "abed57f1-84b3-4aa6-a06b-e7aecaeb8ef2",
+            "Property": "FireSoundEvent"
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

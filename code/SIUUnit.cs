@@ -5,11 +5,12 @@ class SIUUnit : Unit
 {
 
 	[Property] public float IndividualModelScale { get; set; }
+	[Property] public float IndividualMeleeRangeScale { get; set; }
+	[Property] public Vector3 localEyeBallPosition { get; set; }
+	[Property] public ModelHitboxes myHitBoxes { get; set; }
 
 	// This will be a factor of the unit size I imagine
-	private float maxChaseDistanceFromHome = 600f;
 	private float lastMeleeTime = Time.Now;
-	private float lastMoveOrderTime = Time.Now;
 	private Vector3 oldPosition = new Vector3();
 	private float stuckTime = -1;
 
@@ -17,10 +18,10 @@ class SIUUnit : Unit
 
 	private bool canSeeTempTarget = false;
 
+	private GameObject currentAttackTarget = null;
+
 	// Unit Constants
-	private const float MOVE_ORDER_FREQUENCY = .1f;
-	private const float CHASE_DIST_MULTIPLIER = 90f;
-	private const float AUTO_MELEE_RAD_MULTIPLIER = 90f;
+	private const float AUTO_MELEE_RAD_DIST = 650f;
 	private const float NAV_AGENT_RAD_MULTIPLIER = .5f;
 	private const float CLICK_HITBOX_RADIUS_MULTIPLIER = .5f;
 	private const float GLOBAL_UNIT_SCALE = 15f;
@@ -32,12 +33,29 @@ class SIUUnit : Unit
 	private const float CLOSE_ENOUGH_DISTANCE = .5f;
 	private const float STUCK_DISTANCE = .1f;
 
+	private const string PLAYER_TAG = "player";
+
 	private const string AttackStanceImagePath = "materials/attack_stance.png";
 	private const string DefendStanceImagePath = "materials/defend_stance.png";
 
+	protected override void OnStart()
+	{
+		base.OnStart();
+		PhysicalModelRenderer.skinnedModel.OnGenericEvent += HandleGenericAnimEvent;
+	}
+	
 	protected override void OnUpdate()
 	{
-		if (!Network.IsOwner) { return; }
+		if (!Network.IsOwner) { 
+			if(Network.OwnerConnection == null)
+			{
+				Network.TakeOwnership();
+			}
+			else
+			{
+				return;
+			} 
+		}
 		// Handle Player Commands
 		if (commandGiven != UnitModelUtils.CommandType.None)
 		{
@@ -90,7 +108,7 @@ class SIUUnit : Unit
 			// Attack Command
 			if (commandGiven == UnitModelUtils.CommandType.Attack)
 			{
-				if (targetObject.isAlive == true)
+				if (targetObject.Components.Get<FPSHealthController>().IsAlive == true)
 				{
 					move(targetObject.Transform.Position, true);
 				}
@@ -102,10 +120,9 @@ class SIUUnit : Unit
 					stopMoving();
 				}
 			}
-
 		}
 		// Move To closeby enemy that we can see
-		else if (tempTargetObject != null && tempTargetObject.isAlive)
+		else if (tempTargetObject != null && tempTargetObject.Components.Get<FPSHealthController>().IsAlive)
 		{
 			//Log.Info("Chasing seen unit " + this.GameObject);
 			homeTargetLocation = tempTargetObject.Transform.Position;
@@ -124,23 +141,15 @@ class SIUUnit : Unit
 			// Get touching trigger colliders
 			var collidersInMeleeRange = UnitMeleeCollider.Touching;
 			// Select colliders belonging to Units
-			if (collidersInMeleeRange.Where(col => (col.Tags.Has(UNIT_TAG) || col.Tags.Has(Building.BUILDING_TAG))).Any())
+			if (collidersInMeleeRange.Where(col => col.Tags.Has(PLAYER_TAG)).Any())
 			{
 				// Select only melee colliders
-				foreach (var collision in collidersInMeleeRange.Where(col => (col.Tags.Has(UNIT_TAG) || col.Tags.Has(Building.BUILDING_TAG))))
+				foreach (var collision in collidersInMeleeRange.Where(col => col.Tags.Has(PLAYER_TAG)))
 				{
-					//Collider belongs to unit
-					if (collision.Tags.Has(UNIT_TAG))
+					if (Time.Now - lastMeleeTime > MeleeAttackSpeed)
 					{
-						var unitCollidedWith = collision.GameObject.Components.GetAll().OfType<Unit>().First();
-						if (collision == unitCollidedWith.UnitMeleeCollider && unitCollidedWith.team != team)
-						{
-							if (Time.Now - lastMeleeTime > MeleeAttackSpeed)
-							{
-								//Log.Info( this.GameObject.Name + " attacks " + collision.GameObject.Name + " for " + MeleeAttackDamage + " damage!" );
-								directMeleeAttack(unitCollidedWith);
-							}
-						}
+						Log.Info( this.GameObject.Name + " attacks " + collision.GameObject.Name + " for " + MeleeAttackDamage + " damage!" );
+						directMeleeAttack(collision.GameObject);
 					}
 				}
 			}
@@ -149,41 +158,48 @@ class SIUUnit : Unit
 		if (UnitAutoMeleeCollider != null && isInAttackMode && commandGiven==UnitModelUtils.CommandType.None)
 		{
 			var validPlayerFound = false;
+			//Log.Info("In auto melee collider");
 
 			// We have no current target
 			if (tempTargetObject == null)
 			{
 				// Get touching trigger colliders
 				var collidersInAutoMeleeRange = UnitAutoMeleeCollider.Touching;
+				//Log.Info("Colliders in range " + collidersInAutoMeleeRange.Count());
 				// Select colliders belonging to Units
-				if (collidersInAutoMeleeRange.Where(col => col.Tags.Has(UNIT_TAG)).Any())
+				if (collidersInAutoMeleeRange.Where(col => col.Tags.Has(PLAYER_TAG)).Any())
 				{
+					//Log.Info("Player Colliders in range " + collidersInAutoMeleeRange.Where(col => col.Tags.Has(PLAYER_TAG)).Count());
 					// Select only melee colliders
-					foreach (var collision in collidersInAutoMeleeRange.Where(col => col.Tags.Has(UNIT_TAG)))
+					foreach (var collision in collidersInAutoMeleeRange.Where(col => col.Tags.Has(PLAYER_TAG)))
 					{
-						var unitCollidedWith = collision.GameObject.Components.GetAll().OfType<Unit>().First();
-						// If it is a unit of the opposite team
-						if (unitCollidedWith.team != team)
+						var playerCollidedWith = collision.GameObject;
+						//Log.Info("Detected Player: " + playerCollidedWith.Name + ". Can I see him?");
+						//Log.Info("Ray from " + Transform.Position + localEyeBallPosition + "to " + playerCollidedWith.Transform.Position);
+						// Draw a ray here to detect whether or not we can see the unit
+						var sightRay = Scene.Trace.Ray(Transform.Position + localEyeBallPosition, playerCollidedWith.Transform.Position);
+						//sightRay.UseHitboxes(true);
+						//sightRay.HitTriggers();
+						sightRay.WithTag(PLAYER_TAG);
+						var sightRayTrace = sightRay.RunAll();
+						if (sightRayTrace.Any())
 						{
-							// Draw a ray here to detect whether or not we can see the unit
-							var sightRay = Scene.Trace.Ray(Transform.Position, unitCollidedWith.Transform.Position);
-							//sightRay.UseHitboxes(true);
-							var sightRayTrace = sightRay.RunAll();
-							if (sightRayTrace.Any())
+							//foreach (var hit in sightRayTrace)
+							//{
+								//Log.Info("Hit: " + hit.GameObject);
+							//}
+							// I can see it
+							if (sightRayTrace.First().GameObject == playerCollidedWith)
 							{
-								//foreach (var hit in sightRayTrace)
-								//{
-								//	Log.Info(hit.GameObject);
-								//}
-								// I can see it
-								if (sightRayTrace.First().GameObject == unitCollidedWith.GameObject)
-								{
-									//Log.Info( this.GameObject.Name + " will attack " + unitCollidedWith.GameObject.Name + "!" );
-									validPlayerFound = true;
-									canSeeTempTarget = true;
-									tempTargetObject = unitCollidedWith;
-								}
+								//Log.Info( this.GameObject.Name + " will attack " + playerCollidedWith.Name + "!" );
+								validPlayerFound = true;
+								canSeeTempTarget = true;
+								tempTargetObject = playerCollidedWith;
 							}
+						}
+						else
+						{
+							//Log.Info("Can't see anything");
 						}
 					}
 				}
@@ -205,14 +221,15 @@ class SIUUnit : Unit
 				if (sightRayTrace.Any())
 				{
 					// I can see it
-					if (sightRayTrace.First().GameObject != tempTargetObject.GameObject)
+					if (sightRayTrace.First().GameObject != tempTargetObject)
 					{
-						//Log.Info( this.GameObject.Name + " will cease attacking " + tempTargetObject.GameObject.Name + "!" );
+						//Log.Info( this.GameObject.Name + " will cease attacking " + tempTargetObject.Name + "!" );
 						removeTempTarget = true;
 					}
 				}
 				if (removeTempTarget)
 				{
+					//Log.Info("Removing Temp Target");
 					tempTargetObject = null;
 				}
 			}
@@ -237,11 +254,22 @@ class SIUUnit : Unit
 		}
 	}
 
+	private void HandleGenericAnimEvent(SceneModel.GenericEvent eventData)
+	{
+		if(eventData.Type == "DoDamage")
+		{
+			doDamage();
+		}
+	}
+
 	[Broadcast]
 	public override void die()
 	{
-		//Log.Info( this.GameObject.Name + " dies!" );
-		RTSPlayer.Local.UnitControl.unitHasDied(this);
+		Log.Info( this.GameObject.Name + " dies!" );
+		if(RTSPlayer.Local != null)
+		{
+			RTSPlayer.Local.UnitControl.unitHasDied(this);
+		}
 		PhysicalModelRenderer.animateDeath();
 		UnitNavAgent.Enabled = false;
 		UnitMeleeCollider.Enabled = false;
@@ -254,19 +282,56 @@ class SIUUnit : Unit
 		ThisHealthBar.Enabled = false;
 		ThisHealthBar.setEnabled(false);
 		PhysicalModelRenderer.baseStand.setEnabled(false);
-		RTSPlayer.Local.removeUnit(this.GameObject, CapacityCost);
+		myHitBoxes.Enabled = false;
+		if (RTSPlayer.Local != null)
+		{
+			RTSPlayer.Local.removeUnit(this.GameObject, CapacityCost);
+		}
 		Enabled = false;
 
 		//This will be fully destroyed later when the corpse dissapears
 		PhysicalModelRenderer.addToCorpsePile();
 	}
 
-	[Broadcast]
-	private void directMeleeAttack(SkinnedRTSObject targetUnit)
+	public void takeDamage(int damage, GameObject source)
 	{
+		//Log.Info( this.GameObject.Name + " takes " + damage + " damage!");
+		PhysicalModelRenderer.animateDamageTaken();
+		setHealth(currentHealthPoints - damage);
+		if (currentHealthPoints <= 0)
+		{
+			die();
+		}
+		else
+		{
+			if(tempTargetObject == null && targetObject == null)
+			{
+				Log.Info(GameObject.Name + ": I've been shot! Fuck you, " + source.Name);
+				tempTargetObject = source;
+				homeTargetLocation = source.Transform.Position;
+			}
+		}
+	}
+
+	[Broadcast]
+	private void directMeleeAttack(GameObject targetPlayer)
+	{
+		currentAttackTarget = targetPlayer;
 		this.PhysicalModelRenderer.animateMeleeAttack();
-		targetUnit.takeDamage(MeleeAttackDamage);
 		lastMeleeTime = Time.Now;
+	}
+
+	// This should be called by the animevent set during the attack animation
+	private void doDamage()
+	{
+		if(currentAttackTarget != null)
+		{
+			if(currentAttackTarget.Transform.Position.Distance(Transform.Position) <= UnitMeleeCollider.Radius)
+			{
+				currentAttackTarget.Components.Get<FPSHealthController>().Damage(MeleeAttackDamage);
+				currentAttackTarget = null;
+			}
+		}
 	}
 
 	public override void setRelativeSizeHelper(Vector3 unitSize)
@@ -283,32 +348,32 @@ class SIUUnit : Unit
 		float targetxyMax = float.Max(targetModelSize.x, targetModelSize.y);
 		float defaultxyMin = float.Min(defaultModelSize.x, defaultModelSize.y);
 		float defaultxyMax = float.Max(defaultModelSize.x, defaultModelSize.y);
-		Log.Info("global modifier" + globalScaleModifier);
-		Log.Info("defaultModelSize: " +  defaultModelSize);
-		Log.Info("Target Model Size: " + targetModelSize );
-		Log.Info( "Calculated Scale: " + new Vector3(
-		((unitSize.x * globalScaleModifier.x) / defaultModelSize.x),
-		((unitSize.y * globalScaleModifier.y) / defaultModelSize.y),
-		((unitSize.z * globalScaleModifier.z) / defaultModelSize.z)
-		));
-		Transform.LocalScale = new Vector3(
+		//Log.Info("global modifier" + globalScaleModifier);
+		//Log.Info("defaultModelSize: " +  defaultModelSize);
+		//Log.Info("Target Model Size: " + targetModelSize );
+		//Log.Info( "Calculated Scale: " + new Vector3(
+		//((unitSize.x * globalScaleModifier.x) / defaultModelSize.x),
+		//((unitSize.y * globalScaleModifier.y) / defaultModelSize.y),
+		//((unitSize.z * globalScaleModifier.z) / defaultModelSize.z)
+		//));
+		/*Transform.LocalScale = new Vector3(
 			(targetModelSize.x / defaultModelSize.x),
 			(targetModelSize.y / defaultModelSize.y),
 			(targetModelSize.z / defaultModelSize.z)
-			);
+			);*/
 
 		// Auto calculate unit's nav agent size
 		UnitNavAgent.Height = targetModelSize.z;
 		UnitNavAgent.Radius = targetxyMin * NAV_AGENT_RAD_MULTIPLIER;
 
 		// Auto calculate unit's melee collider size
-		UnitMeleeCollider.Radius = defaultxyMax;
+		UnitMeleeCollider.Radius = defaultxyMax * IndividualMeleeRangeScale;
 		UnitMeleeCollider.Start = Vector3.Zero;
 		UnitMeleeCollider.End = new Vector3(0, 0, defaultModelSize.z);
 
 		// Auto calculate unit's auto melee collider size
 		UnitAutoMeleeCollider.Center = Vector3.Zero;
-		UnitAutoMeleeCollider.Radius = AUTO_MELEE_RAD_MULTIPLIER * targetxyMax;
+		UnitAutoMeleeCollider.Radius = AUTO_MELEE_RAD_DIST + targetxyMin;
 
 		// Auto calculate unit's ranged attack range collider size
 
@@ -316,9 +381,6 @@ class SIUUnit : Unit
 		// Auto calculate unit's Selection Collider scaling and relative position
 		SelectionHitbox.Center = new Vector3(0, 0, defaultModelSize.z / 2);
 		SelectionHitbox.Scale = new Vector3(defaultxyMin * CLICK_HITBOX_RADIUS_MULTIPLIER, defaultxyMin * CLICK_HITBOX_RADIUS_MULTIPLIER, defaultModelSize.z);
-
-		// Auto calculate unit's chase distance
-		maxChaseDistanceFromHome = CHASE_DIST_MULTIPLIER * targetxyMax;
 
 		// Auto Calculate other visual element sizes
 		PhysicalModelRenderer.setModelSize(BASE_STAND_SIZE_MULTIPLIER * defaultModelSize);

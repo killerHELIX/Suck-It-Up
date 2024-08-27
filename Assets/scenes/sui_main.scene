@@ -44,34 +44,26 @@
     {
       "__guid": "0a0c0087-7f20-47fa-8840-617b14b82e91",
       "Flags": 0,
-      "Name": "Spawn",
-      "Position": "1049.648,5755.143,1647.499",
+      "Name": "RTSSpawn",
+      "Position": "117.2101,5662.682,1647.499",
       "Tags": "particles,skybox",
       "Enabled": true
     },
     {
-      "__guid": "8dc28175-0b01-498e-8b1d-97b0fba89300",
+      "__guid": "f8c0d978-59ab-4a1a-a627-9ee5a75653d0",
       "Flags": 0,
-      "Name": "Network",
-      "Position": "408.021,344.2917,387.9409",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.NetworkHelper",
-          "__guid": "d13bf3b7-db4f-4d94-be45-d0c9522ac8ff",
-          "PlayerPrefab": {
-            "_type": "gameobject",
-            "prefab": "prefabs/rts_player.prefab"
-          },
-          "SpawnPoints": [
-            {
-              "_type": "gameobject",
-              "go": "0a0c0087-7f20-47fa-8840-617b14b82e91"
-            }
-          ],
-          "StartServer": true
-        }
-      ]
+      "Name": "SpectatorSpawn",
+      "Position": "1067.056,5662.682,1647.499",
+      "Tags": "particles,skybox",
+      "Enabled": true
+    },
+    {
+      "__guid": "80677236-0b71-442d-b3fb-1c097aa71c51",
+      "Flags": 0,
+      "Name": "SurvivorSpawn",
+      "Position": "2043.402,5662.682,1550.418",
+      "Tags": "particles,skybox",
+      "Enabled": true
     },
     {
       "__guid": "323bd1de-4589-4fff-8a55-e55ca64a3bca",
@@ -79,11 +71,90 @@
       "Name": "Spawner Orb",
       "Position": "950.1219,5688.347,1583.225",
       "Enabled": true,
-      "NetworkMode": 1,
       "NetworkOrphaned": 3,
       "OwnerTransfer": 2,
       "__Prefab": "prefabs/spawnerorb.prefab",
       "__PrefabVariables": {}
+    },
+    {
+      "__guid": "2a475ac1-855f-4e3e-8b82-0f5f7ec48759",
+      "Flags": 0,
+      "Name": "Network Helper",
+      "Position": "1766.853,5585.244,1770.225",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SIUNetworkHelper",
+          "__guid": "8b6edd51-8db7-4700-8b79-2be79a8405b6",
+          "RTSPlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/rts_player.prefab"
+          },
+          "RTSSpawnPoints": [
+            {
+              "_type": "gameobject",
+              "go": "0a0c0087-7f20-47fa-8840-617b14b82e91"
+            }
+          ],
+          "SpectatorPlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/spectatorplayer.prefab"
+          },
+          "SpectatorSpawnPoints": [
+            {
+              "_type": "gameobject",
+              "go": "f8c0d978-59ab-4a1a-a627-9ee5a75653d0"
+            }
+          ],
+          "StartServer": true,
+          "SurvivorPlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "fps/player/fpsplayer.prefab"
+          },
+          "SurvivorSpawnPoints": [
+            {
+              "_type": "gameobject",
+              "go": "80677236-0b71-442d-b3fb-1c097aa71c51"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "651867d6-82a0-497d-a4e3-a0c1c213ba45",
+      "Flags": 0,
+      "Name": "pistol",
+      "Position": "1640.389,5698.019,1556.205",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "fps/weapons/pistol/pistol.prefab",
+      "__PrefabVariables": {
+        "vmpos": "15,5,-6",
+        "hpos": "1,-9,30",
+        "hrot": "0,0.6755902,0,0.7372773",
+        "dropdistance": 20,
+        "dropspeedup": 500,
+        "dropspeedforward": 1000,
+        "maxammo": 8,
+        "maxreserves": 64,
+        "firerate": 0.5,
+        "reloadspeed": 3
+      }
+    },
+    {
+      "__guid": "d0c792c7-a8c4-4715-a9ed-91fc1e9441ec",
+      "Flags": 0,
+      "Name": "Game State",
+      "Position": "-606.2842,907.3502,160.9013",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "GameState",
+          "__guid": "30ef5a1a-7824-43bd-a595-17591fb9421b"
+        }
+      ]
     }
   ],
   "SceneProperties": {

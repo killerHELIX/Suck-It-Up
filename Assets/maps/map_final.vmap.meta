@@ -10,7 +10,9 @@
       "IncludeSourceFiles": false,
       "Resources": null,
       "PackageReferences": [],
-      "EditorReferences": [],
+      "EditorReferences": [
+        "facepunch.floor_wood_laminated#18686"
+      ],
       "IsWhitelistDisabled": false,
       "Metadata": {
         "SingleAssetSource": "maps/map_final.vmap"

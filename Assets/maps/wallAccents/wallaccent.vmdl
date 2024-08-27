@@ -24,7 +24,7 @@
 					{
 						_class = "RenderMeshFile"
 						filename = "maps/wallAccents/assets/wallAccent/wallAccent.fbx"
-						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_translation = [ 0.0, -2.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 100.0
 						align_origin_x_type = "None"

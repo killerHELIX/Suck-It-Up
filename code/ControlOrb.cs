@@ -3,12 +3,16 @@
 	[Group("Gameplay")]
 	[Property] public OrbType ThisOrbType { get; set; }
 
+	[Property] public int PhaseOrbUnlocked { get; set; }
+
 	[Group("Visuals")]
 	[Property] public HighlightOutline OrbHighlight { get; set; }
 
 	// Class Vars
 	//public int team = 0;
 	bool selected { get; set; }
+
+	private bool iswaitingForPhase = true;
 
 	System.Guid oldOwner { get; set; }
 
@@ -33,6 +37,18 @@
 		setTeam(0);
 		Tags.Add(objectTypeTag);
 		setNonInteractable(true);
+	}
+
+	protected override void OnUpdate()
+	{
+		if(iswaitingForPhase)
+		{
+			if(PhaseOrbUnlocked <= GameState.Local.matchPhase)
+			{
+				iswaitingForPhase=false;
+				setNonInteractable(false);
+			}
+		}
 	}
 
 	public override void select()
@@ -79,14 +95,26 @@
 
 	public void onOwnerJoin()
 	{
+		Log.Info("OnOwnerJoin");
 		if (!(team==RTSPlayer.Local.Team))
 		{
+			Log.Info("Not on my team");
 			setNonInteractable(true);
 		}
 		else
 		{
-			setNonInteractable(false);
-			setDefaultColor();
+			if (PhaseOrbUnlocked == 0)
+			{
+				Log.Info("starter orb");
+				setNonInteractable(false);
+				iswaitingForPhase = false;
+				setDefaultColor();
+			}
+			else
+			{
+				Log.Info("non starter orb");
+				iswaitingForPhase = true;
+			}
 		}
 	}
 

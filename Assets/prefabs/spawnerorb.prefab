@@ -2,8 +2,7 @@
   "RootObject": {
     "__guid": "d0f4beb4-098e-47db-b02f-43ab206eb349",
     "Flags": 0,
-    "Name": "Spawner Orb",
-    "Position": "244.691,1014.956,150.9806",
+    "Name": "spawnerorb",
     "Enabled": true,
     "NetworkMode": 1,
     "NetworkOrphaned": 3,
@@ -21,6 +20,7 @@
           "go": "d0f4beb4-098e-47db-b02f-43ab206eb349",
           "component_type": "HighlightOutline"
         },
+        "PhaseOrbUnlocked": 0,
         "PhysicalModelRenderer": {
           "_type": "component",
           "component_id": "44598e56-6826-4709-a9e8-18f28f9ea6e9",
@@ -66,6 +66,7 @@
       {
         "__type": "UnitPortraitTuple",
         "__guid": "01e7d5c7-ea9e-4852-9d35-799fef49bd6e",
+        "PhaseUnlocked": 0,
         "UnitCapacityCost": 10,
         "UnitPortraitImage": "materials/skeltal_portrait.PNG",
         "UnitPrefab": {
@@ -77,6 +78,7 @@
       {
         "__type": "UnitPortraitTuple",
         "__guid": "557c08d0-9b17-499a-a9ba-bd56ac36336b",
+        "PhaseUnlocked": 0,
         "UnitCapacityCost": 3,
         "UnitPortraitImage": "materials/skeltal_portrait.PNG",
         "UnitPrefab": {
@@ -88,6 +90,7 @@
       {
         "__type": "UnitPortraitTuple",
         "__guid": "3c81f041-d634-497b-8007-4ee1fdf62c92",
+        "PhaseUnlocked": 0,
         "UnitCapacityCost": 5,
         "UnitPortraitImage": "materials/skeltal_portrait.PNG",
         "UnitPrefab": {
@@ -99,6 +102,7 @@
       {
         "__type": "UnitPortraitTuple",
         "__guid": "19e9b742-d460-4133-9e55-e0207446fe22",
+        "PhaseUnlocked": 0,
         "UnitCapacityCost": 15,
         "UnitPortraitImage": "materials/skeltal_portrait.PNG",
         "UnitPrefab": {
@@ -149,6 +153,19 @@
         "InsideObscuredColor": "0,0,0,0",
         "ObscuredColor": "0,0,0,0.4",
         "Width": 0.25
+      }
+    ],
+    "Children": [],
+    "__variables": [
+      {
+        "Id": "PhaseOrbUnlocked",
+        "Title": "PhaseOrbUnlocked",
+        "Targets": [
+          {
+            "Id": "0d82a996-ee31-4b97-9b10-f1348d58030a",
+            "Property": "PhaseOrbUnlocked"
+          }
+        ]
       }
     ]
   },

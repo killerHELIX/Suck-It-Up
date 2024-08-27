@@ -29,7 +29,7 @@ public class GameState : Component
 
 	private static GameState _local = null;
 
-	[Sync] public List<string> rtsPlayerList { get; set; } = new List<string>();
+	[Sync] [Property] public List<string> rtsPlayerList { get; set; } = new List<string>();
 	[Sync] public List<string> spectatorPlayerList { get; set; } = new List<string>();
 	[Sync] public List<string> survivorPlayerList { get; set; } = new List<string>();
 	[Sync] public int matchPhase {  get; set; }
@@ -127,6 +127,7 @@ public class GameState : Component
 
 	[Broadcast] public void setPhase(int phase)
 	{
+		Log.Info("Set phase to: " + phase);
 		matchPhase = phase;
 	}
 
@@ -136,7 +137,7 @@ public class GameState : Component
 		EndGamePanel.Enabled = true;
 		currentGameState = GameStateType.FINISHED;
 		//PLAY SOUND HERE
-
+		//Implement wait somehow
 		//Thread.Sleep(10000);
 		currentGameState = GameStateType.MENU;
 		GameNetworkSystem.Disconnect();

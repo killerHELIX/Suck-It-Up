@@ -26,7 +26,6 @@
       "Flags": 0,
       "Name": "NetworkFPS",
       "Position": "408.021,344.2917,387.9409",
-      "Enabled": true,
       "NetworkMode": 1,
       "Components": [
         {
@@ -51,6 +50,8 @@
       "Flags": 0,
       "Name": "NetworkRTS",
       "Position": "408.021,344.2917,387.9409",
+      "Enabled": true,
+      "NetworkMode": 1,
       "Components": [
         {
           "__type": "Sandbox.NetworkHelper",
@@ -109,6 +110,7 @@
             "go": "3456dd03-a89b-4534-a1db-cd7acbdf5d17",
             "component_type": "HighlightOutline"
           },
+          "PhaseOrbUnlocked": 0,
           "PhysicalModelRenderer": {
             "_type": "component",
             "component_id": "bdb81736-0fbf-4dfa-8e26-addfadcf4acc",
@@ -174,13 +176,71 @@
       "__guid": "d0f4beb4-098e-47db-b02f-43ab206eb349",
       "Flags": 0,
       "Name": "Spawner Orb",
-      "Position": "244.691,1014.956,150.9806",
+      "Position": "244.691,1883.238,150.9806",
       "Enabled": true,
       "NetworkMode": 1,
       "NetworkOrphaned": 3,
       "OwnerTransfer": 2,
       "__Prefab": "prefabs/spawnerorb.prefab",
-      "__PrefabVariables": {}
+      "__PrefabVariables": {
+        "PhaseOrbUnlocked": 0
+      }
+    },
+    {
+      "__guid": "84d45fd2-f7fb-40ae-9bcd-81e96ba54ec6",
+      "Flags": 0,
+      "Name": "Spawner Orb (1)",
+      "Position": "-61.43091,2147.156,150.9806",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 3,
+      "OwnerTransfer": 2,
+      "__Prefab": "prefabs/spawnerorb.prefab",
+      "__PrefabVariables": {
+        "PhaseOrbUnlocked": 1
+      }
+    },
+    {
+      "__guid": "f6de08f4-18ef-45fc-888a-45fa8fe6d3a1",
+      "Flags": 0,
+      "Name": "Spawner Orb (2)",
+      "Position": "-258.8374,2147.156,150.9806",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 3,
+      "OwnerTransfer": 2,
+      "__Prefab": "prefabs/spawnerorb.prefab",
+      "__PrefabVariables": {
+        "PhaseOrbUnlocked": 2
+      }
+    },
+    {
+      "__guid": "31311123-31dc-46b7-b0c1-8940b0479406",
+      "Flags": 0,
+      "Name": "Spawner Orb (3)",
+      "Position": "-468.7603,2147.156,150.9806",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 3,
+      "OwnerTransfer": 2,
+      "__Prefab": "prefabs/spawnerorb.prefab",
+      "__PrefabVariables": {
+        "PhaseOrbUnlocked": 3
+      }
+    },
+    {
+      "__guid": "ac95f31b-6293-45fd-ba20-b28e64c83e5e",
+      "Flags": 0,
+      "Name": "Spawner Orb (4)",
+      "Position": "-672.4806,2147.156,150.9806",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 3,
+      "OwnerTransfer": 2,
+      "__Prefab": "prefabs/spawnerorb.prefab",
+      "__PrefabVariables": {
+        "PhaseOrbUnlocked": 4
+      }
     },
     {
       "__guid": "a0ff0c40-72bf-4cc8-93c4-eeeb81e7fb86",
@@ -723,7 +783,7 @@
       "__guid": "17310faf-4192-4a8f-8a22-9fc0489361b9",
       "Flags": 0,
       "Name": "Critter",
-      "Position": "-56.79288,2097.97,63.60701",
+      "Position": "-484.1262,1461.166,63.60703",
       "Tags": "unit",
       "Enabled": true,
       "NetworkMode": 1,
@@ -1169,11 +1229,26 @@
         {
           "__type": "GameState",
           "__guid": "a8e28dc8-84f4-4ae7-9a43-768531973279",
+          "EndGamePanel": {
+            "_type": "component",
+            "component_id": "34a77d81-7cbd-46a2-8a90-029188c74889",
+            "go": "407598a2-a37a-4d9d-93a8-bba1a61852b4",
+            "component_type": "EndGamePanel"
+          },
           "GameCorpseList": {
             "_type": "component",
             "component_id": "f3ce57a5-68a0-4646-8016-397cd04ba00d",
             "go": "407598a2-a37a-4d9d-93a8-bba1a61852b4",
             "component_type": "CorpseList"
+          },
+          "rtsPlayerList": [
+            "crush3000"
+          ],
+          "ScreenPanel": {
+            "_type": "component",
+            "component_id": "46702603-bd6f-49fa-88b1-9d6be4613cf3",
+            "go": "407598a2-a37a-4d9d-93a8-bba1a61852b4",
+            "component_type": "ScreenPanel"
           }
         },
         {
@@ -1183,6 +1258,19 @@
           "CorpseTimeoutTime": 600,
           "ImposeCorpseLimit": false,
           "ImposeCorpseTimeout": true
+        },
+        {
+          "__type": "EndGamePanel",
+          "__guid": "34a77d81-7cbd-46a2-8a90-029188c74889"
+        },
+        {
+          "__type": "Sandbox.ScreenPanel",
+          "__guid": "46702603-bd6f-49fa-88b1-9d6be4613cf3",
+          "__enabled": false,
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ZIndex": 100
         }
       ]
     },
@@ -1208,7 +1296,8 @@
         "firerate": 0.35,
         "reloadspeed": 1.8,
         "damage": 5,
-        "firesoundevent": "pistolraw4"
+        "firesoundevent": "pistolraw4",
+        "recoilstrength": 5
       }
     },
     {
@@ -1233,7 +1322,8 @@
         "firerate": 0.35,
         "reloadspeed": 1.8,
         "damage": 5,
-        "firesoundevent": "pistolraw4"
+        "firesoundevent": "pistolraw4",
+        "recoilstrength": 5
       }
     },
     {
@@ -1258,7 +1348,8 @@
         "firerate": 0.35,
         "reloadspeed": 1.8,
         "damage": 5,
-        "firesoundevent": "pistolraw4"
+        "firesoundevent": "pistolraw4",
+        "recoilstrength": 5
       }
     },
     {
@@ -1282,8 +1373,189 @@
         "firerate": 1.5,
         "reloadspeed": 5,
         "damage": 20,
-        "firesoundevent": "rifleraw2"
+        "firesoundevent": "rifleraw2",
+        "recoilstrength": 10
       }
+    },
+    {
+      "__guid": "a80732f9-3b0a-42ae-ba83-87b4d699cdbe",
+      "Flags": 0,
+      "Name": "Object",
+      "Position": "-941.0959,2425.99,91.70945",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "StaticSUIGameTrigger",
+          "__guid": "cdca11ee-9d80-48b9-ae30-ba55a9f1190b",
+          "GameFinish": true,
+          "GamePhase": 1,
+          "TriggerCollider": {
+            "_type": "component",
+            "component_id": "fb775b63-2982-48ba-a7c0-29049fc189b3",
+            "go": "a80732f9-3b0a-42ae-ba83-87b4d699cdbe",
+            "component_type": "BoxCollider"
+          }
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "fb775b63-2982-48ba-a7c0-29049fc189b3",
+          "Center": "0,0,0",
+          "IsTrigger": true,
+          "Scale": "50,50,50",
+          "Static": false
+        },
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "9f490a17-21a4-4dfd-b34e-153455b6204d",
+          "BodyGroups": 18446744073709551615,
+          "RenderType": "On",
+          "Tint": "0,1,1,0.50196"
+        }
+      ]
+    },
+    {
+      "__guid": "0788e3bc-1854-4b58-88d0-540dedf12d96",
+      "Flags": 0,
+      "Name": "Object (1)",
+      "Position": "-702.4413,2425.99,91.70945",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "StaticSUIGameTrigger",
+          "__guid": "9ae9e070-7b53-4da1-b128-1a8283a793ed",
+          "GameFinish": false,
+          "GamePhase": 4,
+          "TriggerCollider": {
+            "_type": "component",
+            "component_id": "9ff23724-a9df-45b5-a99c-5e25865dc0b5",
+            "go": "0788e3bc-1854-4b58-88d0-540dedf12d96",
+            "component_type": "BoxCollider"
+          }
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "9ff23724-a9df-45b5-a99c-5e25865dc0b5",
+          "Center": "0,0,0",
+          "IsTrigger": true,
+          "Scale": "50,50,50",
+          "Static": false
+        },
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "03fbd961-6878-444b-a629-6c5116457358",
+          "BodyGroups": 18446744073709551615,
+          "RenderType": "On",
+          "Tint": "1,0,1,0.50196"
+        }
+      ]
+    },
+    {
+      "__guid": "70a69863-d3c3-49e4-9d47-7d686598373c",
+      "Flags": 0,
+      "Name": "Object (2)",
+      "Position": "-477.7056,2425.99,91.70945",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "StaticSUIGameTrigger",
+          "__guid": "9b49a665-41b2-4a4b-a9dd-4d256bfd3a9c",
+          "GameFinish": false,
+          "GamePhase": 3,
+          "TriggerCollider": {
+            "_type": "component",
+            "component_id": "110ef9ef-3b22-448c-b883-7f2106ffedbd",
+            "go": "70a69863-d3c3-49e4-9d47-7d686598373c",
+            "component_type": "BoxCollider"
+          }
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "110ef9ef-3b22-448c-b883-7f2106ffedbd",
+          "Center": "0,0,0",
+          "IsTrigger": true,
+          "Scale": "50,50,50",
+          "Static": false
+        },
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "d326f819-93ef-4187-bb3d-1d7bafe9bdeb",
+          "BodyGroups": 18446744073709551615,
+          "RenderType": "On",
+          "Tint": "0,1,0,0.50196"
+        }
+      ]
+    },
+    {
+      "__guid": "812e8499-35ca-43f4-80bd-78b3c6cd824e",
+      "Flags": 0,
+      "Name": "Object (3)",
+      "Position": "-238.2634,2425.99,91.70945",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "StaticSUIGameTrigger",
+          "__guid": "cebd990a-372f-469f-904a-f01bf2ffd38d",
+          "GameFinish": false,
+          "GamePhase": 2,
+          "TriggerCollider": {
+            "_type": "component",
+            "component_id": "cb863569-dc73-43a8-aa2c-e3cff194120b",
+            "go": "812e8499-35ca-43f4-80bd-78b3c6cd824e",
+            "component_type": "BoxCollider"
+          }
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "cb863569-dc73-43a8-aa2c-e3cff194120b",
+          "Center": "0,0,0",
+          "IsTrigger": true,
+          "Scale": "50,50,50",
+          "Static": true
+        },
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "37b508e3-f796-4b39-b1e6-27fe9473522d",
+          "BodyGroups": 18446744073709551615,
+          "RenderType": "On",
+          "Tint": "1,0,0,0.50196"
+        }
+      ]
+    },
+    {
+      "__guid": "2f883c5a-f883-437e-ad18-12021ee91c7a",
+      "Flags": 0,
+      "Name": "Object (4)",
+      "Position": "-1.520462,2425.99,91.70945",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "StaticSUIGameTrigger",
+          "__guid": "506b371e-f3dd-4bda-a7e2-eb584058a0da",
+          "GameFinish": false,
+          "GamePhase": 1,
+          "TriggerCollider": {
+            "_type": "component",
+            "component_id": "b2ac3d7e-3c86-49b6-aec6-09f27a4cf19e",
+            "go": "2f883c5a-f883-437e-ad18-12021ee91c7a",
+            "component_type": "BoxCollider"
+          }
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "b2ac3d7e-3c86-49b6-aec6-09f27a4cf19e",
+          "Center": "0,0,0",
+          "IsTrigger": true,
+          "Scale": "50,50,50",
+          "Static": false
+        },
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "38f3c65a-9e7a-4e3e-a900-44b012ddf21b",
+          "BodyGroups": 18446744073709551615,
+          "RenderType": "On",
+          "Tint": "1,1,0,0.50196"
+        }
+      ]
     }
   ],
   "SceneProperties": {

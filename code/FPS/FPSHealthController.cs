@@ -31,6 +31,7 @@ public sealed class FPSHealthController : Component
 		var spawner = Game.ActiveScene.GetAllComponents<SIUNetworkHelper>()?.ElementAt(0);
 		if (spawner != null)
 		{
+			GameState.Local.addPlayerToList(Connection.Local.DisplayName, GameState.PlayerType.SPECTATOR, true);
 			var spec = spawner.SpectatorPlayerPrefab.Clone(
 				parent: Scene, 
 				position: Transform.Position + (Transform.Rotation.Up * 3f), 

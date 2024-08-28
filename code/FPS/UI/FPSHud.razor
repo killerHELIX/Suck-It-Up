@@ -25,6 +25,11 @@
 	[Property] public FPSWeaponController FpsWeaponController { get; set; }
 	[Property] public FPSHealthController FpsHealthController { get; set; }
 
+	protected override void OnStart()
+	{
+		Panel.PlaySound("sounds/atmosphere.sound");
+	}
+
 	protected String GetWeaponInfoClass()
 	{
 		var selectedWep = FpsWeaponController.SelectedWeapon;

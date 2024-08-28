@@ -12,7 +12,7 @@ public class MainMenuComponent : Component, Component.INetworkListener
 		NULL
 	}
 
-	[Property] MainMenu MainPanel { get; set; }
+	[Property] public MainMenu MainPanel { get; set; }
 	[Property] public SIUJoinedLobbyPanel JoinedLobbyPanel { get; set; }
 	[Property] public SIULobbyListPanel LobbyListPanel { get; set; }
 	[Property] public SIUSettingsPanel SettingsPanel { get; set; }
@@ -105,6 +105,7 @@ public class MainMenuComponent : Component, Component.INetworkListener
 		{
 			setActivePanel(MenuPanelType.MAIN);
 		}
+		getPanelFromEnum(activePanel).Panel.PlaySound("sounds/enterthevaccuum.sound");
 	}
 
 	//protected override void OnUpdate()

@@ -29,6 +29,25 @@ public sealed class SIUNetworkHelper : Component, Component.INetworkListener
 	[Property] public List<GameObject> SurvivorSpawnPoints { get; set; }
 	[Property] public List<GameObject> SpectatorSpawnPoints { get; set; }
 
+	private static SIUNetworkHelper _local = null;
+
+	public const string OBJECT_NAME = "Network Helper";
+
+
+	public static SIUNetworkHelper Local
+	{
+		get
+		{
+			if (!_local.IsValid())
+			{
+				Log.Info("Attempting get local game state");
+				_local = Game.ActiveScene.Directory.FindByName(OBJECT_NAME).FirstOrDefault(x => x.Network.IsOwner).Components.Get<SIUNetworkHelper>();
+				Log.Info("Tried getting local game state, found this: " + _local);
+			}
+			return _local;
+		}
+	}
+
 	protected override async Task OnLoad()
 	{
 		if (Scene.IsEditor)

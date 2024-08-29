@@ -11,7 +11,8 @@
       "Resources": null,
       "PackageReferences": [],
       "EditorReferences": [
-        "facepunch.floor_wood_laminated#18686"
+        "facepunch.floor_wood_laminated#18686",
+        "rust.portacabin_300_600_b#25247"
       ],
       "IsWhitelistDisabled": false,
       "Metadata": {

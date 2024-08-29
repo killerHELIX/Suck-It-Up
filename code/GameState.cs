@@ -109,18 +109,37 @@ public class GameState : Component
 
 	[Broadcast] public void addPlayerToList(string player, PlayerType listType, bool fromPlayer)
 	{
-		Log.Info(player + " clicked " + listType);
-		// Don't go above the max players
-		if (getPlayerListFromType(listType).Count() >= getMaxPlayerFromType(listType))
+		if(currentGameState == GameStateType.MENU)
 		{
-			return;
+			Log.Info(player + " clicked " + listType);
+			// Don't go above the max players
+			if (getPlayerListFromType(listType).Count() >= getMaxPlayerFromType(listType))
+			{
+				return;
+			}
+			// Remove the player from each list before adding so we don't have double
+			rtsPlayerList.Remove(player);
+			spectatorPlayerList.Remove(player);
+			survivorPlayerList.Remove(player);
+			// Finally add player to the local list
+			getPlayerListFromType(listType).Add(player);
 		}
-		// Remove the player from each list before adding so we don't have double
-		rtsPlayerList.Remove(player);
-		spectatorPlayerList.Remove(player);
-		survivorPlayerList.Remove(player);
-		// Finally add player to the local list
-		getPlayerListFromType(listType).Add(player);
+		else
+		{
+			if (listType == PlayerType.SPECTATOR)
+			{
+				// Remove the player from each list before adding so we don't have double
+				rtsPlayerList.Remove(player);
+				spectatorPlayerList.Remove(player);
+				survivorPlayerList.Remove(player);
+				// Finally add player to the local list
+				getPlayerListFromType(listType).Add(player);
+
+				// Respawn player as a spectator
+				//var newPlayer = SIUNetworkHelper.Local.SpectatorPlayerPrefab.Clone();
+				//newPlayer.NetworkSpawn();
+			}
+		}
 	}
 
 	public void startGame()

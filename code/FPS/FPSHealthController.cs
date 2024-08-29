@@ -28,10 +28,10 @@ public sealed class FPSHealthController : Component
 
 	public void Die()
 	{
-		var spawner = Game.ActiveScene.GetAllComponents<SIUNetworkHelper>()?.ElementAt(0);
+		GameState.Local.addPlayerToList(Connection.Local.DisplayName, GameState.PlayerType.SPECTATOR, true);
+		var spawner = SIUNetworkHelper.Local;
 		if (spawner != null)
 		{
-			GameState.Local.addPlayerToList(Connection.Local.DisplayName, GameState.PlayerType.SPECTATOR, true);
 			var spec = spawner.SpectatorPlayerPrefab.Clone(
 				parent: Scene, 
 				position: Transform.Position + (Transform.Rotation.Up * 3f), 
@@ -49,10 +49,5 @@ public sealed class FPSHealthController : Component
 	protected override void OnUpdate()
 	{
 		if (IsProxy) return;
-
-		if (Input.Pressed("Damage")) Damage(51);
-
-		if (Input.Down("Heal")) Heal(1);
-
 	}
 }

@@ -18,6 +18,8 @@ public class StaticSUIGameTrigger : Component, Component.ITriggerListener
 			Log.Info("Player Entered Trigger");
 			if (GameFinish)
 			{
+				GameState.Local.EndGamePanel.survivorsWon = true;
+				GameState.Local.EndGamePanel.StateHasChanged();
 				GameState.Local.finishGame();
 				return;
 			}

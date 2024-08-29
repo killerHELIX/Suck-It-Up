@@ -2,7 +2,7 @@ EndGamePanel {
     height: 100%;
     width: 100%;
     background-color: transparent;
-    pointer-events: all;
+    pointer-events: none;
 }
 
 .MessageLabel {
@@ -15,4 +15,5 @@ EndGamePanel {
     align-items: center;
     position: absolute;
     background-color: #30303030;
+    pointer-events: none;
 }

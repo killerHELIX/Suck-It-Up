@@ -99,6 +99,14 @@ public class GameState : Component
 		//spectatorPlayerList.Add(Network.OwnerConnection.DisplayName);
 	}
 
+	protected override void OnUpdate()
+	{
+		if(survivorPlayerList.Count == 0 && currentGameState == GameStateType.PLAYING)
+		{
+			finishGame();
+		}
+	}
+
 	[Broadcast] public void addPlayerToList(string player, PlayerType listType, bool fromPlayer)
 	{
 		Log.Info(player + " clicked " + listType);
@@ -119,10 +127,18 @@ public class GameState : Component
 	{
 		if (rtsPlayerList.Count() > 0 && survivorPlayerList.Count() > 0)
 		{
+			setMood("sounds/atmosphere.sound");
+			//MainMenuComponent.Local.MainPanel.Panel.Soun
 			currentGameState = GameStateType.PLAYING;
 			Game.ActiveScene.LoadFromFile("scenes/sui_main.scene");
 			return;
 		}
+	}
+
+	[Broadcast] public void setMood(string newSound)
+	{
+		Sound.StopAll(1.5f);
+		Sound.Play(newSound);
 	}
 
 	[Broadcast] public void setPhase(int phase)
@@ -141,6 +157,7 @@ public class GameState : Component
 		//Thread.Sleep(10000);
 		currentGameState = GameStateType.MENU;
 		GameNetworkSystem.Disconnect();
+		setMood("sounds/enterthevaccuum.sound");
 		Game.ActiveScene.LoadFromFile("scenes/main_menu.scene");
 
 	}

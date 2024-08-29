@@ -88,13 +88,28 @@
 
 	public string getUnitHealthString(SelectableObject unit)
 	{
-		if(unit.Tags.Has("unit") && unit != null)
+		if(unit != null)
 		{
-			//var specificUnit = (SkinnedModelRenderer)unit;
-			return ((SkinnedRTSObject)unit).currentHealthPoints + "/" + ((SkinnedRTSObject)unit).MaxHealth;
+			if(unit.Tags != null)
+			{
+				if (unit.Tags.Has("unit"))
+				{
+					//var specificUnit = (SkinnedModelRenderer)unit;
+					return ((SkinnedRTSObject)unit).currentHealthPoints + "/" + ((SkinnedRTSObject)unit).MaxHealth;
+				}
+				else
+				{
+					return "";
+				}
+			}
+			else
+			{
+				return "";
+			}
 		}
 		else
 		{
+			refocus();
 			return " ";
 		}
 	}
@@ -114,6 +129,24 @@
 		else
 		{
 			return focusedUnit.PortraitImage;
+		}
+	}
+
+	private void refocus()
+	{
+		var selectedObjList = RTSPlayer.Local.UnitControl.SelectedObjects;
+		if(selectedObjList.Count == 0)
+		{
+			setSelectionVars(false, false, false);
+		}
+		else if (selectedObjList.Count == 1)
+		{
+			setSelectionVars(true, true, ((Unit)(selectedObjList[0])).isInAttackMode);
+		}
+		else
+		{
+			setSelectionVars(true, false, ((Unit)(selectedObjList[0])).isInAttackMode);
+			focusedUnit = ((Unit)(selectedObjList[0]));
 		}
 	}
 

@@ -80,18 +80,20 @@ public abstract class Weapon : Component, Component.ICollisionListener
     [Description("The current reserve ammo pool of this weapon.")]
     public int CurrentReserves { get; set; }
 
-    private float LastFireTime = 0f;
-    private float LastReloadTime = 0f;
     private SceneTraceResult lastTraceResult;
 
     private FPSWeaponController PlayerWeaponController;
     private FPSCameraController PlayerCameraController;
 
     private bool ShouldDropOwnershipOnCollide = false;
+    private bool isFiring = false;
+	private bool isReloading = false;
+
+    private bool animsInited = false;
 
 
 
-    [Broadcast]
+	[Broadcast]
     public void Pickup(GameObject player, FPSWeaponController playerWeaponController, FPSCameraController playerCameraController)
     {
 
@@ -120,10 +122,38 @@ public abstract class Weapon : Component, Component.ICollisionListener
             Holster();
         }
 
-    }
+        if(!player.IsProxy)
+        {
+            return;
+        }
+
+		if (!animsInited)
+		{
+			if (ViewmodelRenderer != null)
+			{
+                animsInited = true;
+				ViewmodelRenderer.OnGenericEvent += HandleGenericAnimEvent;
+				if (ViewmodelRenderer.SceneModel != null)
+				{
+					ViewmodelRenderer.SceneModel.SetAnimParameter("FireRate", FireRate);
+				}
+				else
+				{
+					Log.Info("No Scenemodel!");
+				}
+			}
+			else
+			{
+				Log.Info("No viewmodel renderer!");
+			}
+		}
+
+	}
 
     public void Holster()
     {
+        isFiring = false;
+        isReloading = false;
         ShowWorldmodel();
 
         Transform.LocalPosition = HolsterPosition;
@@ -199,13 +229,26 @@ public abstract class Weapon : Component, Component.ICollisionListener
     }
     protected override void OnStart()
     {
+        base.OnStart();
         // Start gun loaded.
         CurrentAmmo = MaxAmmo;
         CurrentReserves = MaxReserves;
-    }
+	}
 
     protected override void OnUpdate()
     {
+        if(!animsInited)
+        {
+			if (ViewmodelRenderer != null)
+			{
+				animsInited = true;
+				ViewmodelRenderer.OnGenericEvent += HandleGenericAnimEvent;
+				if (ViewmodelRenderer.SceneModel != null)
+				{
+					ViewmodelRenderer.SceneModel.SetAnimParameter("FireRate", FireRate);
+				}
+			}
+		}
         if (!IsProxy)
         {
             // Debug draw the last projectile fired.
@@ -213,23 +256,64 @@ public abstract class Weapon : Component, Component.ICollisionListener
         }
     }
 
+	private void HandleGenericAnimEvent(SceneModel.GenericEvent eventData)
+	{
+		if (eventData.Type == "ShootEnd")
+		{
+            isFiring = false;
+		}
+		if (eventData.Type == "ReloadEnd")
+		{
+			var ammoDiff = MaxAmmo - CurrentAmmo;
+
+			// If ammoDiff is less than reserves, reload full mag.
+			if (ammoDiff <= CurrentReserves)
+			{
+				CurrentReserves -= ammoDiff;
+				CurrentAmmo = MaxAmmo;
+			}
+			// Else, ammoDiff is greater than reserves, so load mag with whatever is left in reserves.
+			else
+			{
+				CurrentAmmo += CurrentReserves;
+				CurrentReserves -= CurrentReserves;
+			}
+			isReloading = false;
+			Info("Reloaded!");
+		}
+	}
 
 
 
-    [Broadcast]
-    public virtual void Fire()
+	public virtual void Fire()
     {
-        if (!IsPaused())
-        {
-            LastFireTime = Time.Now;
+		if (ViewmodelRenderer != null)
+		{
+			if (ViewmodelRenderer.SceneModel != null)
+			{
+				ViewmodelRenderer.SceneModel.SetAnimParameter("FireRate", FireRate);
+				ViewmodelRenderer.SceneModel.SetAnimParameter("ReloadRate", ReloadSpeed);
+			}
+			else
+			{
+				Log.Info("No Scenemodel!");
+			}
+		}
+		else
+		{
+			Log.Info("No viewmodel renderer!");
+		}
 
+        if (!isFiring && !isReloading)
+        {
             if (CurrentAmmo <= 0)
             {
                 Info("Empty!");
             }
             else
             {
-                CurrentAmmo--;
+				isFiring = true;
+				CurrentAmmo--;
                 Info("Fired!");
 
                 AnimateFire();
@@ -282,7 +366,7 @@ public abstract class Weapon : Component, Component.ICollisionListener
         }
     }
 
-    private void FireSound()
+    [Broadcast] private void FireSound()
     {
         Sound.Play(FireSoundEvent, Transform.Position);
     }
@@ -292,11 +376,25 @@ public abstract class Weapon : Component, Component.ICollisionListener
     // HL2 Style reloading. Pool of reserve bullets that refill a fixed magazine size. 
 
 
-
-    [Broadcast]
-    public async void Reload()
+    public void Reload()
     {
-        if (!IsPaused())
+		if (ViewmodelRenderer != null)
+		{
+			if (ViewmodelRenderer.SceneModel != null)
+			{
+				ViewmodelRenderer.SceneModel.SetAnimParameter("ReloadRate", ReloadSpeed);
+			}
+			else
+			{
+				Log.Info("No Scenemodel!");
+			}
+		}
+		else
+		{
+			Log.Info("No viewmodel renderer!");
+		}
+
+		if (!isReloading && !isFiring)
         {
             if (CurrentAmmo == MaxAmmo)
             {
@@ -309,27 +407,8 @@ public abstract class Weapon : Component, Component.ICollisionListener
             else
             {
                 Info("Reloading...");
+                isReloading = true;
                 AnimateReload();
-
-                LastReloadTime = Time.Now;
-                await GameTask.Delay((ReloadSpeed * 1000f).CeilToInt()); // Wait for reload time (in ms) prior to actually updating ammo/reserves.
-
-                var ammoDiff = MaxAmmo - CurrentAmmo;
-
-                // If ammoDiff is less than reserves, reload full mag.
-                if (ammoDiff <= CurrentReserves)
-                {
-                    CurrentReserves -= ammoDiff;
-                    CurrentAmmo = MaxAmmo;
-                }
-                // Else, ammoDiff is greater than reserves, so load mag with whatever is left in reserves.
-                else
-                {
-                    CurrentAmmo += CurrentReserves;
-                    CurrentReserves -= CurrentReserves;
-                }
-
-                Info("Reloaded!");
             }
         }
     }
@@ -339,16 +418,6 @@ public abstract class Weapon : Component, Component.ICollisionListener
     protected void Info(string str)
     {
         Log.Info($"{str} [{CurrentAmmo} / {CurrentReserves} ]");
-    }
-
-
-
-    // The Gun is "Paused", i.e. ignoring player input, while certain actions are occurring like fire rate cooldown and reloading.
-    private bool IsPaused()
-    {
-        bool firing = Time.Now - LastFireTime < FireRate;
-        bool reloading = Time.Now - LastReloadTime < ReloadSpeed;
-        return firing || reloading;
     }
 
     private void TryToPickup(GameObject other)

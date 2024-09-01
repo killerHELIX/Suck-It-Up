@@ -10,8 +10,8 @@ public class Rifle : Weapon
     [Property] public override float DropSpeedForward { get; set; } = 3000f;
     [Property] public override int MaxAmmo { get; set; } = 5;
     [Property] public override int MaxReserves { get; set; } = 25;
-    [Property] public override float FireRate { get; set; } = 1.5f;
-    [Property] public override float ReloadSpeed { get; set; } = 4.0f;
+    [Property] public override float FireRate { get; set; } = .5f;
+    [Property] public override float ReloadSpeed { get; set; } = 1f;
 	[Property] public override int Damage { get; set; } = 20;
 	[Property] public override string FireSoundEvent { get; set; } = "rifleraw2";
 	[Property] public override float RecoilStrength { get; set; } = 10f;

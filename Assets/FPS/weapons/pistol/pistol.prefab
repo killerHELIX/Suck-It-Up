@@ -14,7 +14,7 @@
         "DropDistance": 20,
         "DropSpeedForward": 1000,
         "DropSpeedUp": 500,
-        "FireRate": 0.35,
+        "FireRate": 2,
         "FireSoundEvent": "pistolraw4",
         "HolsterPosition": "1,-9,30",
         "HolsterRotation": "0,0.6755902,0,0.7372773",
@@ -22,7 +22,7 @@
         "MaxReserves": 64,
         "Name": "9mm - \u0022The Scrapshot\u0022",
         "RecoilStrength": 5,
-        "ReloadSpeed": 1.8,
+        "ReloadSpeed": 1,
         "ViewmodelPosition": "15,5,-6",
         "ViewmodelRenderer": {
           "_type": "component",

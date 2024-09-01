@@ -59,7 +59,7 @@ public sealed class FPSWeaponController : Component
 				return;
 			}
 			if (Input.Down("select")) SelectedWeapon.Fire(); // Fire the weapon as long as the input is held. The weapon knows its own rate of fire.
-			if (Input.Pressed("reload")) SelectedWeapon.Reload();
+			if (Input.Pressed("reload")) /*|| Input.Down("reload"))*/ SelectedWeapon.Reload();
 
 			SelectedWeapon.Aim();
 		}

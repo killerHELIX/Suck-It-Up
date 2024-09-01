@@ -84,6 +84,22 @@
 					{
 						_class = "AnimFile"
 						name = "Rifle_reload"
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_GENERIC_EVENT"
+								event_frame = 136
+								event_keys = 
+								{
+									TypeName = "ReloadEnd"
+									Int = 0
+									Float = 0.0
+									Vector = [ 0.0, 0.0, 0.0 ]
+									StringData = ""
+								}
+							},
+						]
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
@@ -144,6 +160,22 @@
 					{
 						_class = "AnimFile"
 						name = "Rifle_shoot"
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_GENERIC_EVENT"
+								event_frame = 35
+								event_keys = 
+								{
+									TypeName = "ShootEnd"
+									Int = 0
+									Float = 0.0
+									Vector = [ 0.0, 0.0, 0.0 ]
+									StringData = ""
+								}
+							},
+						]
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""

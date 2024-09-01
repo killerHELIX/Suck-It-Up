@@ -974,6 +974,7 @@
               "AutoScreenScale": true,
               "Opacity": 1,
               "Scale": 1,
+              "ScaleStrategy": "ConsistentHeight",
               "ZIndex": 100
             },
             {
@@ -1270,6 +1271,7 @@
           "AutoScreenScale": true,
           "Opacity": 1,
           "Scale": 1,
+          "ScaleStrategy": "ConsistentHeight",
           "ZIndex": 100
         }
       ]
@@ -1293,8 +1295,8 @@
         "dropspeedforward": 1000,
         "maxammo": 8,
         "maxreserves": 64,
-        "firerate": 0.35,
-        "reloadspeed": 1.8,
+        "firerate": 2,
+        "reloadspeed": 1,
         "damage": 5,
         "firesoundevent": "pistolraw4",
         "recoilstrength": 5
@@ -1319,8 +1321,8 @@
         "dropspeedforward": 1000,
         "maxammo": 8,
         "maxreserves": 64,
-        "firerate": 0.35,
-        "reloadspeed": 1.8,
+        "firerate": 2,
+        "reloadspeed": 1,
         "damage": 5,
         "firesoundevent": "pistolraw4",
         "recoilstrength": 5
@@ -1345,8 +1347,8 @@
         "dropspeedforward": 1000,
         "maxammo": 8,
         "maxreserves": 64,
-        "firerate": 0.35,
-        "reloadspeed": 1.8,
+        "firerate": 2,
+        "reloadspeed": 1,
         "damage": 5,
         "firesoundevent": "pistolraw4",
         "recoilstrength": 5
@@ -1371,7 +1373,7 @@
         "maxammo": 5,
         "maxreserves": 25,
         "firerate": 1.5,
-        "reloadspeed": 5,
+        "reloadspeed": 1,
         "damage": 20,
         "firesoundevent": "rifleraw2",
         "recoilstrength": 10

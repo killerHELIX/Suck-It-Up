@@ -30,13 +30,45 @@
 			{
 				key = 
 				{
+					m_id = 380315235
+				}
+				value = 
+				{
+					_class = "CSpeedScaleAnimNode"
+					m_sName = "ReloadRate Scaler"
+					m_vecPosition = [ -272.0, -64.0 ]
+					m_nNodeID = 
+					{
+						m_id = 380315235
+					}
+					m_sNote = ""
+					m_inputConnection = 
+					{
+						m_nodeID = 
+						{
+							m_id = 475949318
+						}
+						m_outputID = 
+						{
+							m_id = 4294967295
+						}
+					}
+					m_param = 
+					{
+						m_id = 1771030406
+					}
+				}
+			},
+			{
+				key = 
+				{
 					m_id = 475949318
 				}
 				value = 
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -272.0, -64.0 ]
+					m_vecPosition = [ -464.0, -64.0 ]
 					m_nNodeID = 
 					{
 						m_id = 475949318
@@ -46,6 +78,38 @@
 					m_sequenceName = "Rifle_reload"
 					m_playbackSpeed = 1.0
 					m_bLoop = false
+				}
+			},
+			{
+				key = 
+				{
+					m_id = 547190458
+				}
+				value = 
+				{
+					_class = "CSpeedScaleAnimNode"
+					m_sName = "FireRate Scaler"
+					m_vecPosition = [ -272.0, -16.0 ]
+					m_nNodeID = 
+					{
+						m_id = 547190458
+					}
+					m_sNote = ""
+					m_inputConnection = 
+					{
+						m_nodeID = 
+						{
+							m_id = 1602630503
+						}
+						m_outputID = 
+						{
+							m_id = 4294967295
+						}
+					}
+					m_param = 
+					{
+						m_id = 522326446
+					}
 				}
 			},
 			{
@@ -278,7 +342,7 @@
 							{
 								m_nodeID = 
 								{
-									m_id = 475949318
+									m_id = 380315235
 								}
 								m_outputID = 
 								{
@@ -338,7 +402,7 @@
 							{
 								m_nodeID = 
 								{
-									m_id = 1602630503
+									m_id = 547190458
 								}
 								m_outputID = 
 								{
@@ -611,7 +675,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -272.0, -16.0 ]
+					m_vecPosition = [ -464.0, -16.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1602630503
@@ -677,6 +741,34 @@
 				m_bUseMostRecentValue = false
 				m_bAutoReset = false
 				m_bDefaultValue = false
+			},
+			{
+				_class = "CFloatAnimParameter"
+				m_name = "FireRate"
+				m_id = 
+				{
+					m_id = 522326446
+				}
+				m_previewButton = "ANIMPARAM_BUTTON_NONE"
+				m_bUseMostRecentValue = false
+				m_bAutoReset = false
+				m_fDefaultValue = 1.0
+				m_fMinValue = 0.1
+				m_fMaxValue = 10.0
+			},
+			{
+				_class = "CFloatAnimParameter"
+				m_name = "ReloadRate"
+				m_id = 
+				{
+					m_id = 1771030406
+				}
+				m_previewButton = "ANIMPARAM_BUTTON_NONE"
+				m_bUseMostRecentValue = false
+				m_bAutoReset = false
+				m_fDefaultValue = 1.0
+				m_fMinValue = 0.1
+				m_fMaxValue = 10.0
 			},
 		]
 	}

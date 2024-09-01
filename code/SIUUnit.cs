@@ -293,6 +293,7 @@ class SIUUnit : Unit
 		PhysicalModelRenderer.addToCorpsePile();
 	}
 
+	[Broadcast]
 	public void takeDamage(int damage, GameObject source)
 	{
 		//Log.Info( this.GameObject.Name + " takes " + damage + " damage!");

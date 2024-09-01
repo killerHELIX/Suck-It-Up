@@ -15,7 +15,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -368.0, 240.0 ]
+					m_vecPosition = [ -368.0, 144.0 ]
 					m_nNodeID = 
 					{
 						m_id = 144331711
@@ -57,7 +57,7 @@
 				{
 					_class = "CStateMachineAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -128.0, -112.0 ]
+					m_vecPosition = [ 48.0, -112.0 ]
 					m_nNodeID = 
 					{
 						m_id = 295533047
@@ -315,7 +315,7 @@
 							{
 								m_nodeID = 
 								{
-									m_id = 1852275013
+									m_id = 1137927288
 								}
 								m_outputID = 
 								{
@@ -509,7 +509,7 @@
 							{
 								m_nodeID = 
 								{
-									m_id = 407916484
+									m_id = 2003998691
 								}
 								m_outputID = 
 								{
@@ -541,7 +541,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -368.0, 80.0 ]
+					m_vecPosition = [ -544.0, 208.0 ]
 					m_nNodeID = 
 					{
 						m_id = 407916484
@@ -562,7 +562,7 @@
 				{
 					_class = "CRootAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ 112.0, -112.0 ]
+					m_vecPosition = [ 240.0, -96.0 ]
 					m_nNodeID = 
 					{
 						m_id = 793582258
@@ -584,13 +584,45 @@
 			{
 				key = 
 				{
+					m_id = 1137927288
+				}
+				value = 
+				{
+					_class = "CSpeedScaleAnimNode"
+					m_sName = "FireRateScaler"
+					m_vecPosition = [ -368.0, 0.0 ]
+					m_nNodeID = 
+					{
+						m_id = 1137927288
+					}
+					m_sNote = ""
+					m_inputConnection = 
+					{
+						m_nodeID = 
+						{
+							m_id = 1852275013
+						}
+						m_outputID = 
+						{
+							m_id = 4294967295
+						}
+					}
+					m_param = 
+					{
+						m_id = 476538010
+					}
+				}
+			},
+			{
+				key = 
+				{
 					m_id = 1842219898
 				}
 				value = 
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -368.0, 160.0 ]
+					m_vecPosition = [ -368.0, 64.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1842219898
@@ -611,7 +643,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -368.0, 16.0 ]
+					m_vecPosition = [ -544.0, 0.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1852275013
@@ -621,6 +653,38 @@
 					m_sequenceName = "Pistol_shoot"
 					m_playbackSpeed = 1.0
 					m_bLoop = false
+				}
+			},
+			{
+				key = 
+				{
+					m_id = 2003998691
+				}
+				value = 
+				{
+					_class = "CSpeedScaleAnimNode"
+					m_sName = "ReloadRateScaler"
+					m_vecPosition = [ -368.0, 208.0 ]
+					m_nNodeID = 
+					{
+						m_id = 2003998691
+					}
+					m_sNote = ""
+					m_inputConnection = 
+					{
+						m_nodeID = 
+						{
+							m_id = 407916484
+						}
+						m_outputID = 
+						{
+							m_id = 4294967295
+						}
+					}
+					m_param = 
+					{
+						m_id = 226245179
+					}
 				}
 			},
 		]
@@ -677,6 +741,34 @@
 				m_bUseMostRecentValue = false
 				m_bAutoReset = false
 				m_bDefaultValue = false
+			},
+			{
+				_class = "CFloatAnimParameter"
+				m_name = "FireRate"
+				m_id = 
+				{
+					m_id = 476538010
+				}
+				m_previewButton = "ANIMPARAM_BUTTON_NONE"
+				m_bUseMostRecentValue = false
+				m_bAutoReset = false
+				m_fDefaultValue = 1.0
+				m_fMinValue = 0.1
+				m_fMaxValue = 10.0
+			},
+			{
+				_class = "CFloatAnimParameter"
+				m_name = "ReloadRate"
+				m_id = 
+				{
+					m_id = 226245179
+				}
+				m_previewButton = "ANIMPARAM_BUTTON_NONE"
+				m_bUseMostRecentValue = false
+				m_bAutoReset = false
+				m_fDefaultValue = 1.0
+				m_fMinValue = 0.1
+				m_fMaxValue = 10.0
 			},
 		]
 	}

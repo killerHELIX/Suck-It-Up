@@ -1,11 +1,11 @@
 {
-  "Title": "Suck It Up",
+  "Title": "VacuuMaster",
   "Type": "game",
   "Org": "crush",
   "Ident": "suckitup",
   "Schema": 1,
   "IncludeSourceFiles": true,
-  "Resources": "\nmaterials/temple_portrait.PNG\nmaterials/skeltal_portrait.PNG\nmaterials/attack_stance.png\nmaterials/defend_stance.png",
+  "Resources": "\nmaterials/temple_portrait.PNG\nmaterials/skeltal_portrait.PNG\nmaterials/attack_stance.png\nmaterials/defend_stance.png\nmaterials/enemies/portraits/roller_portrait.png\nmaterials/enemies/portraits/normal_portrait.png\nmaterials/enemies/portraits/giant_portrait.png\nmaterials/enemies/portraits/critter_portrait.png\nmaterials/resource_icon.png\nmaterials/spawner_icon.png\nmaterials/trap_icon.png\nmaterials/capacity_icon.png\nmaterials/recycle_icon.png",
   "PackageReferences": [],
   "EditorReferences": null,
   "IsWhitelistDisabled": false,

@@ -41,7 +41,15 @@ public sealed class SIUNetworkHelper : Component, Component.INetworkListener
 			if (!_local.IsValid())
 			{
 				Log.Info("Attempting get local game state");
-				_local = Game.ActiveScene.Directory.FindByName(OBJECT_NAME).FirstOrDefault(x => x.Network.IsOwner).Components.Get<SIUNetworkHelper>();
+				if(Game.ActiveScene.Directory.FindByName(OBJECT_NAME).FirstOrDefault(x => x.Network.IsOwner) != null)
+				{
+					_local = Game.ActiveScene.Directory.FindByName(OBJECT_NAME).FirstOrDefault(x => x.Network.IsOwner).Components.Get<SIUNetworkHelper>();
+				}
+				else
+				{
+					Log.Info("No network helper found! We must have aborted the game");
+					return null;
+				}
 				Log.Info("Tried getting local game state, found this: " + _local);
 			}
 			return _local;

@@ -122,7 +122,7 @@ class SIUUnit : Unit
 			}
 		}
 		// Move To closeby enemy that we can see
-		else if (tempTargetObject != null && tempTargetObject.Components.Get<FPSHealthController>().IsAlive)
+		else if (tempTargetObject != null && tempTargetObject.Components.Get<FPSHealthController>() != null && tempTargetObject.Components.Get<FPSHealthController>().IsAlive)
 		{
 			//Log.Info("Chasing seen unit " + this.GameObject);
 			homeTargetLocation = tempTargetObject.Transform.Position;

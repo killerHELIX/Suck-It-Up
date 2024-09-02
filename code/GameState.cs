@@ -67,7 +67,7 @@ public class GameState : Component
 			//Log.Info(Network.OwnerConnection);
 			//Log.Info(Network.OwnerConnection.DisplayName);
 			spectatorPlayerList.Add(Network.OwnerConnection.DisplayName);
-			GameObject.NetworkSpawn(Network.OwnerConnection);
+			//GameObject.NetworkSpawn(Network.OwnerConnection);
 		}
 		else 
 		{
@@ -170,13 +170,17 @@ public class GameState : Component
 	{
 		ScreenPanel.Enabled = true;
 		EndGamePanel.Enabled = true;
+		EndGamePanel.StateHasChanged();
 		currentGameState = GameStateType.FINISHED;
+		setMood("sounds/enterthevaccuum.sound");
 		//PLAY SOUND HERE
 		//Implement wait somehow
 		//Thread.Sleep(10000);
+		//Task.DelayRealtimeSeconds(10f).Wait();
+		//while (!Task.DelayRealtimeSeconds(10f).IsCompleted);
 		currentGameState = GameStateType.MENU;
 		GameNetworkSystem.Disconnect();
-		setMood("sounds/enterthevaccuum.sound");
+		GameObject.Flags &= ~(GameObjectFlags.DontDestroyOnLoad);
 		Game.ActiveScene.LoadFromFile("scenes/main_menu.scene");
 
 	}

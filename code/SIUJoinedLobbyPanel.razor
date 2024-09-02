@@ -15,7 +15,7 @@
 		if (!MainMenuComponent.Local.joinedGame && Networking.IsHost)
 		{
 			LoadingScreen.Title = "Creating Lobby";
-			//await Task.DelayRealtimeSeconds(0.1f);
+			Task.DelayRealtimeSeconds(0.1f).Wait();
 			GameNetworkSystem.CreateLobby();
 		}
 		else

@@ -39,6 +39,7 @@
       "Position": "308.9923,284.8962,110.8963",
       "Enabled": true,
       "NetworkMode": 1,
+      "NetworkOrphaned": 1,
       "OwnerTransfer": 0,
       "Components": [
         {

@@ -30,6 +30,8 @@ public class MainMenuComponent : Component, Component.INetworkListener
 
 	public bool joinedGame = false;
 
+	private float lastReqTime = 5f;
+
 	public static MainMenuComponent Local
 	{
 		get
@@ -127,22 +129,36 @@ public class MainMenuComponent : Component, Component.INetworkListener
 		{
 			if(currentLobbies == null)
 			{
-				Log.Info("Querying lobbies");
-				currentLobbies = Networking.QueryLobbies();
+				if(Time.Now - lastReqTime >= 5f)
+				{
+					Log.Info("Querying lobbies");
+					currentLobbies = Networking.QueryLobbies();
+					lastReqTime = Time.Now;
+				}
 			}
 			else if(currentLobbies.IsCompleted)
 			{
 				Log.Info("Got this many lobbies: " + currentLobbies.Result.Count());
-				var lobbies = currentLobbies.Result;
-				foreach (Sandbox.Network.LobbyInformation lobby in lobbies)
+				if(currentLobbies.Result.Count > 0)
 				{
-					Log.Info("Lobby ID: " + lobby.LobbyId);
-					Log.Info("Lobby Owner ID: " + lobby.OwnerId);
-					if (lobby.OwnerId == Connection.Local.SteamId)
+					var lobbies = currentLobbies.Result;
+					foreach (Sandbox.Network.LobbyInformation lobby in lobbies)
 					{
-						this.MyServID = lobby.LobbyId;
-						Log.Info(MyServID);
+						Log.Info("Lobby ID: " + lobby.LobbyId);
+						Log.Info("Lobby Owner ID: " + lobby.OwnerId);
+						if (lobby.OwnerId == Connection.Local.SteamId)
+						{
+							this.MyServID = lobby.LobbyId;
+							Log.Info(MyServID);
+						}
 					}
+				}
+				else
+				{
+					currentLobbies = null;
+					GameNetworkSystem.Disconnect();
+					Task.DelayRealtimeSeconds(0.1f).Wait();
+					GameNetworkSystem.CreateLobby();
 				}
 			}
             else

@@ -162,50 +162,53 @@ public class PlayerUnitControl : Component
 				var mouseRay = Scene.Trace.Ray( mouseDirection, 5000f );
 				var tr = mouseRay.Run();
 
-				// Get unit under ray
-				//FIX WHEN YOU CLICK ON THE SKY
-				var hitUnitComponents = tr.GameObject.Components.GetAll().OfType<Unit>();
-				var hitOrbComponents = tr.GameObject.Components.GetAll().OfType<ControlOrb>();
-				//var hitBuildingComponents = tr.GameObject.Components.GetAll().OfType<Building>();
-				var hitSomethingValid = false;
-
-				if ( hitUnitComponents.Any() != false || hitOrbComponents.Any() != false )
+				if(tr.Hit)
 				{
-					// Select unit if one is hit
-					if ( hitUnitComponents.Any() )
+					// Get unit under ray
+					//FIX WHEN YOU CLICK ON THE SKY
+					var hitUnitComponents = tr.GameObject.Components.GetAll().OfType<Unit>();
+					var hitOrbComponents = tr.GameObject.Components.GetAll().OfType<ControlOrb>();
+					//var hitBuildingComponents = tr.GameObject.Components.GetAll().OfType<Building>();
+					var hitSomethingValid = false;
+
+					if (hitUnitComponents.Any() != false || hitOrbComponents.Any() != false)
 					{
-						var selectedUnit = hitUnitComponents.First();
-						// Make sure the unit is ours
-						if ( selectedUnit.team == RTSPlayer.Local.Team)
+						// Select unit if one is hit
+						if (hitUnitComponents.Any())
 						{
-							//Log.Info( "Team " + team + " " + selectedUnit.GameObject.Name + " Selected from team " + selectedUnit.team );
-							// Select Unit
-							SelectedObjects.Add( selectedUnit );
-							selectedUnit.select();
-							RTSPlayer.Local.LocalGame.GameHud.setSelectionVars( true, true, selectedUnit.isInAttackMode );
+							var selectedUnit = hitUnitComponents.First();
+							// Make sure the unit is ours
+							if (selectedUnit.team == RTSPlayer.Local.Team)
+							{
+								//Log.Info( "Team " + team + " " + selectedUnit.GameObject.Name + " Selected from team " + selectedUnit.team );
+								// Select Unit
+								SelectedObjects.Add(selectedUnit);
+								selectedUnit.select();
+								RTSPlayer.Local.LocalGame.GameHud.setSelectionVars(true, true, selectedUnit.isInAttackMode);
+								hitSomethingValid = true;
+							}
+						}
+
+						// Select orb if one is hit
+						if (hitOrbComponents.Any())
+						{
+							var selectedOrb = hitOrbComponents.First();
+							//Log.Info("Hit Orb!");
+							// Select Orb
+							SelectedObjects.Add(selectedOrb);
+							selectedOrb.select();
+							RTSPlayer.Local.LocalGame.GameHud.setSelectionVars(true, true, false);
 							hitSomethingValid = true;
 						}
+						if (!hitSomethingValid)
+						{
+							RTSPlayer.Local.LocalGame.GameHud.setSelectionVars(false, false, false);
+						}
 					}
-
-					// Select orb if one is hit
-					if (hitOrbComponents.Any() )
+					else
 					{
-						var selectedOrb = hitOrbComponents.First();
-						//Log.Info("Hit Orb!");
-						// Select Orb
-						SelectedObjects.Add( selectedOrb );
-						selectedOrb.select();
-						RTSPlayer.Local.LocalGame.GameHud.setSelectionVars( true, true, false );
-						hitSomethingValid = true;
+						RTSPlayer.Local.LocalGame.GameHud.setSelectionVars(false, false, false);
 					}
-					if (! hitSomethingValid )
-					{
-						RTSPlayer.Local.LocalGame.GameHud.setSelectionVars( false, false, false );
-					}
-				}
-				else
-				{
-					RTSPlayer.Local.LocalGame.GameHud.setSelectionVars( false, false, false );
 				}
 			}
 		}

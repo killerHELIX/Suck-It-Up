@@ -1,0 +1,511 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:modeldoc29:version{3cec427c-1b0e-4d48-a90a-0436f33a6041} -->
+{
+	rootNode = 
+	{
+		_class = "RootNode"
+		children = 
+		[
+			{
+				_class = "MaterialGroupList"
+				children = 
+				[
+					{
+						_class = "DefaultMaterialGroup"
+						remaps = 
+						[
+							{
+								from = "baked.001.vmat"
+								to = "character/player01_fps_pixel.vmat"
+							},
+							{
+								from = "baked.vmat"
+								to = "character/player01_world_pixel.vmat"
+							},
+						]
+						use_global_default = false
+						global_default_material = "character/player01_world_pixel.vmat"
+					},
+				]
+			},
+			{
+				_class = "RenderMeshList"
+				children = 
+				[
+					{
+						_class = "RenderMeshFile"
+						filename = "character/player_01_tpose.fbx"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"Cube",
+							]
+						}
+					},
+				]
+			},
+			{
+				_class = "AnimationList"
+				children = 
+				[
+					{
+						_class = "AnimFile"
+						name = "Player_01_Rifle_idle"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						disable_interpolation = false
+						enable_scale = false
+						source_filename = "Character/animations/rifle/Player_01_Rifle_idle.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Player_01_Rifle_reload"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						disable_interpolation = false
+						enable_scale = false
+						source_filename = "Character/animations/rifle/Player_01_Rifle_reload.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Player_01_Rifle_run"
+						children = 
+						[
+							{
+								_class = "ExtractMotion"
+								extract_tx = true
+								extract_ty = true
+								extract_tz = false
+								extract_rz = false
+								linear = false
+								quadratic = false
+								root_bone_name = ""
+								motion_type = "Single"
+							},
+						]
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						disable_interpolation = false
+						enable_scale = false
+						source_filename = "Character/animations/rifle/Player_01_Rifle_run.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Player_01_Rifle_shoot"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						disable_interpolation = false
+						enable_scale = false
+						source_filename = "Character/animations/rifle/Player_01_Rifle_shoot.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Player_01_Rifle_strafeLeft"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						disable_interpolation = false
+						enable_scale = false
+						source_filename = "Character/animations/rifle/Player_01_Rifle_strafeLeft.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Player_01_Rifle_strafeRight"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						disable_interpolation = false
+						enable_scale = false
+						source_filename = "Character/animations/rifle/Player_01_Rifle_strafeRight.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Player_01_Rifle_walkBackward"
+						children = 
+						[
+							{
+								_class = "ExtractMotion"
+								extract_tx = true
+								extract_ty = true
+								extract_tz = false
+								extract_rz = false
+								linear = false
+								quadratic = false
+								root_bone_name = ""
+								motion_type = "Single"
+							},
+						]
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						disable_interpolation = false
+						enable_scale = false
+						source_filename = "Character/animations/rifle/Player_01_Rifle_walkBackward.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Player_01_Rifle_walkForward"
+						children = 
+						[
+							{
+								_class = "ExtractMotion"
+								extract_tx = true
+								extract_ty = true
+								extract_tz = false
+								extract_rz = false
+								linear = false
+								quadratic = false
+								root_bone_name = ""
+								motion_type = "Single"
+							},
+						]
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						disable_interpolation = false
+						enable_scale = false
+						source_filename = "Character/animations/rifle/Player_01_Rifle_walkForward.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Player_01_meleeHit"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						disable_interpolation = false
+						enable_scale = false
+						source_filename = "Character/animations/rifle/Player_01_meleeHit.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+				]
+				default_root_bone_name = ""
+			},
+			{
+				_class = "GameDataList"
+				children = 
+				[
+					{
+						_class = "MovementSettings"
+						movementsettings = 
+						{
+							name = ""
+							speeds = 
+							[
+								{
+									name = "Crouch speed"
+									speed = 100.0
+								},
+							]
+							runspeed = 150.0
+							walkspeed = 75.0
+							maxSpringTension = 150.0
+							springConstant = 6.0
+							useSmoothPaths = true
+							useMotionDamping = true
+							sharpStartAngle = 180.0
+							m_vTraceScale = [ 1.0, 1.0, 1.0 ]
+						}
+					},
+				]
+			},
+			{
+				_class = "WeightListList"
+				children = 
+				[
+					{
+						_class = "WeightList"
+						name = "UpperBody"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "Core_2"
+								weight = 1.0
+							},
+							{
+								bone = "L_arm_forearm"
+								weight = 1.0
+							},
+							{
+								bone = "L_arm_hand"
+								weight = 1.0
+							},
+							{
+								bone = "L_arm_shoulder"
+								weight = 1.0
+							},
+							{
+								bone = "L_leg_foot"
+								weight = 0.0
+							},
+							{
+								bone = "L_leg_hip"
+								weight = 0.0
+							},
+							{
+								bone = "L_leg_shin"
+								weight = 0.0
+							},
+							{
+								bone = "L_leg_thigh"
+								weight = 0.0
+							},
+							{
+								bone = "Larm_bicep"
+								weight = 1.0
+							},
+							{
+								bone = "R_arm_bicep"
+								weight = 1.0
+							},
+							{
+								bone = "R_arm_forearm"
+								weight = 1.0
+							},
+							{
+								bone = "R_arm_hand"
+								weight = 1.0
+							},
+							{
+								bone = "R_arm_shoulder"
+								weight = 1.0
+							},
+							{
+								bone = "R_leg_foot"
+								weight = 0.0
+							},
+							{
+								bone = "R_leg_hip"
+								weight = 0.0
+							},
+							{
+								bone = "R_leg_shin_"
+								weight = 0.0
+							},
+							{
+								bone = "R_leg_thigh"
+								weight = 0.0
+							},
+							{
+								bone = "pistol_bone"
+								weight = 1.0
+							},
+							{
+								bone = "slider_bone"
+								weight = 1.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+					{
+						_class = "WeightList"
+						name = "Lower_Body"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "Core_2"
+								weight = 0.0
+							},
+							{
+								bone = "L_arm_forearm"
+								weight = 0.0
+							},
+							{
+								bone = "L_arm_hand"
+								weight = 0.0
+							},
+							{
+								bone = "L_arm_shoulder"
+								weight = 0.0
+							},
+							{
+								bone = "L_leg_hip"
+								weight = 1.0
+							},
+							{
+								bone = "Larm_bicep"
+								weight = 0.0
+							},
+							{
+								bone = "R_arm_bicep"
+								weight = 0.0
+							},
+							{
+								bone = "R_arm_forearm"
+								weight = 0.0
+							},
+							{
+								bone = "R_arm_hand"
+								weight = 0.0
+							},
+							{
+								bone = "R_arm_shoulder"
+								weight = 0.0
+							},
+							{
+								bone = "R_leg_foot"
+								weight = 1.0
+							},
+							{
+								bone = "R_leg_hip"
+								weight = 1.0
+							},
+							{
+								bone = "R_leg_shin_"
+								weight = 1.0
+							},
+							{
+								bone = "R_leg_thigh"
+								weight = 1.0
+							},
+							{
+								bone = "pistol_bone"
+								weight = 0.0
+							},
+							{
+								bone = "slider_bone"
+								weight = 0.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+				]
+			},
+		]
+		model_archetype = ""
+		primary_associated_entity = ""
+		anim_graph_name = "animgraphs/player_01.vanmgrph"
+		base_model_name = ""
+	}
+}

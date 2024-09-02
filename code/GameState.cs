@@ -1,9 +1,12 @@
-﻿using Sandbox.UI;
+﻿using Sandbox.Network;
+using System.Threading;
 
 public class GameState : Component
 {
 
 	[Property] public CorpseList GameCorpseList { get; set; }
+	[Property] public EndGamePanel EndGamePanel { get; set; }
+	[Property] public ScreenPanel ScreenPanel { get; set; }
 
 	public const int MAX_RTS_PLAYERS = 1;
 	public const int MAX_SPECTATOR_PLAYERS = 99;
@@ -26,7 +29,7 @@ public class GameState : Component
 
 	private static GameState _local = null;
 
-	[Sync] public List<string> rtsPlayerList { get; set; } = new List<string>();
+	[Sync] [Property] public List<string> rtsPlayerList { get; set; } = new List<string>();
 	[Sync] public List<string> spectatorPlayerList { get; set; } = new List<string>();
 	[Sync] public List<string> survivorPlayerList { get; set; } = new List<string>();
 	[Sync] public int matchPhase {  get; set; }
@@ -96,6 +99,14 @@ public class GameState : Component
 		//spectatorPlayerList.Add(Network.OwnerConnection.DisplayName);
 	}
 
+	protected override void OnUpdate()
+	{
+		if(survivorPlayerList.Count == 0 && currentGameState == GameStateType.PLAYING)
+		{
+			finishGame();
+		}
+	}
+
 	[Broadcast] public void addPlayerToList(string player, PlayerType listType, bool fromPlayer)
 	{
 		Log.Info(player + " clicked " + listType);
@@ -116,10 +127,39 @@ public class GameState : Component
 	{
 		if (rtsPlayerList.Count() > 0 && survivorPlayerList.Count() > 0)
 		{
+			setMood("sounds/atmosphere.sound");
+			//MainMenuComponent.Local.MainPanel.Panel.Soun
 			currentGameState = GameStateType.PLAYING;
 			Game.ActiveScene.LoadFromFile("scenes/sui_main.scene");
 			return;
 		}
+	}
+
+	[Broadcast] public void setMood(string newSound)
+	{
+		Sound.StopAll(1.5f);
+		Sound.Play(newSound);
+	}
+
+	[Broadcast] public void setPhase(int phase)
+	{
+		Log.Info("Set phase to: " + phase);
+		matchPhase = phase;
+	}
+
+	[Broadcast] public void finishGame()
+	{
+		ScreenPanel.Enabled = true;
+		EndGamePanel.Enabled = true;
+		currentGameState = GameStateType.FINISHED;
+		//PLAY SOUND HERE
+		//Implement wait somehow
+		//Thread.Sleep(10000);
+		currentGameState = GameStateType.MENU;
+		GameNetworkSystem.Disconnect();
+		setMood("sounds/enterthevaccuum.sound");
+		Game.ActiveScene.LoadFromFile("scenes/main_menu.scene");
+
 	}
 
 	public List<string> getPlayerListFromType(PlayerType pType)

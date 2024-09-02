@@ -70,15 +70,15 @@
       {
         "__type": "RTSCamComponent",
         "__guid": "4587917f-8749-473b-896d-d4f735f0583e",
-        "CamMoveSpeed": 60,
-        "CamRotateSpeed": 400,
+        "CamMoveSpeed": 80,
+        "CamRotateSpeed": 600,
         "CamView": {
           "_type": "component",
           "component_id": "4d2dfad5-8ebd-46e7-b67a-cb67ee079709",
           "go": "8528f3f8-a612-4849-91df-7e5381f61e6a",
           "component_type": "CameraComponent"
         },
-        "CamZoomSpeed": 60
+        "CamZoomSpeed": 600
       },
       {
         "__type": "PlayerUnitControl",

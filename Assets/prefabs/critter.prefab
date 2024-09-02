@@ -37,7 +37,7 @@
           "go": "fdd2f36b-7275-4fd4-840c-7e5d05e223d5",
           "component_type": "UnitModel"
         },
-        "PortraitImage": "materials/skeltal_portrait.PNG",
+        "PortraitImage": "materials/enemies/portraits/critter_portrait.png",
         "RangedAttackDamage": 0,
         "RangedAttackRange": 0,
         "RangedAttackSpeed": 0,

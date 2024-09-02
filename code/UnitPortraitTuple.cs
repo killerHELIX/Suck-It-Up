@@ -11,4 +11,6 @@ public class UnitPortraitTuple : Component
 
 	[Property] public int UnitCapacityCost { get; set; }
 
+	[Property] public int PhaseUnlocked {  get; set; }
+
 }

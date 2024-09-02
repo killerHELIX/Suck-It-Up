@@ -1,0 +1,19 @@
+EndGamePanel {
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    pointer-events: none;
+}
+
+.MessageLabel {
+    height: 30%;
+    width: 100%;
+    top: 20%;
+    font-family: sans-serif, Arial;
+    font-size: 100px;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color: #30303030;
+    pointer-events: none;
+}

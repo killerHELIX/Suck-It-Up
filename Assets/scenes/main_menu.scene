@@ -2,6 +2,21 @@
   "__guid": "a5742acf-ba61-4925-9be6-093cf63341c8",
   "GameObjects": [
     {
+      "__guid": "b23eceda-7dc7-41c1-8136-f8ce06f6dcc5",
+      "Flags": 0,
+      "Name": "Scene Information",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SceneInformation",
+          "__guid": "8661b1d0-44a0-41ed-b787-4fbc4b4ecbbf",
+          "Description": "",
+          "SceneTags": "",
+          "Title": "main_menu"
+        }
+      ]
+    },
+    {
       "__guid": "36ef4334-e091-43de-b302-4812907671e6",
       "Flags": 0,
       "Name": "Menu",
@@ -120,7 +135,9 @@
           "BackBlur": true,
           "BlurSize": 100,
           "FocalDistance": 448.72,
-          "FrontBlur": false
+          "FocusRange": 500,
+          "FrontBlur": false,
+          "QualityLevel": "High"
         },
         {
           "__type": "Sandbox.FilmGrain",
@@ -144,6 +161,8 @@
           "EnableCollision": true,
           "MapName": "maps/mainmenu.vmap",
           "NoOrigin": false,
+          "OnMapLoaded": null,
+          "OnMapUnloaded": null,
           "UseMapFromLaunch": false
         }
       ],
@@ -162,8 +181,23 @@
           "__guid": "97281f35-8123-4f14-af07-8cbb55801d36",
           "AnimationGraph": "animgraphs/giant.vanmgrph",
           "BodyGroups": 18446744073709551615,
+          "CreateAttachments": false,
           "CreateBoneObjects": false,
           "Model": "models/enemies/giant.vmdl",
+          "Morphs": {},
+          "Parameters": {
+            "bools": {},
+            "ints": {},
+            "floats": {},
+            "vectors": {},
+            "rotations": {}
+          },
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
           "RenderType": "On",
           "Tint": "1,1,1,1",
           "UseAnimGraph": true
@@ -181,10 +215,25 @@
         {
           "__type": "Sandbox.SkinnedModelRenderer",
           "__guid": "540c664f-d0cc-48b4-bd51-84ae7f818715",
-          "AnimationGraph": "animgraphs/giant.vanmgrph",
+          "AnimationGraph": "animgraphs/normal.vanmgrph",
           "BodyGroups": 18446744073709551615,
+          "CreateAttachments": false,
           "CreateBoneObjects": false,
           "Model": "models/enemies/normal.vmdl",
+          "Morphs": {},
+          "Parameters": {
+            "bools": {},
+            "ints": {},
+            "floats": {},
+            "vectors": {},
+            "rotations": {}
+          },
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
           "RenderType": "On",
           "Tint": "1,1,1,1",
           "UseAnimGraph": true
@@ -202,10 +251,25 @@
         {
           "__type": "Sandbox.SkinnedModelRenderer",
           "__guid": "a45fccd1-3edc-4957-9539-565982793cf5",
-          "AnimationGraph": "animgraphs/giant.vanmgrph",
+          "AnimationGraph": "animgraphs/normal.vanmgrph",
           "BodyGroups": 18446744073709551615,
+          "CreateAttachments": false,
           "CreateBoneObjects": false,
           "Model": "models/enemies/normal.vmdl",
+          "Morphs": {},
+          "Parameters": {
+            "bools": {},
+            "ints": {},
+            "floats": {},
+            "vectors": {},
+            "rotations": {}
+          },
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
           "RenderType": "On",
           "Tint": "1,1,1,1",
           "UseAnimGraph": true
@@ -218,9 +282,13 @@
     "MaxFixedUpdates": 5,
     "NetworkFrequency": 30,
     "NetworkInterpolation": true,
+    "PhysicsSubSteps": 1,
     "ThreadedAnimation": true,
     "TimeScale": 1,
     "UseFixedUpdate": true,
+    "Metadata": {
+      "Title": "main_menu"
+    },
     "NavMesh": {
       "Enabled": false,
       "IncludeStaticBodies": true,
@@ -234,9 +302,9 @@
       "IncludedBodies": ""
     }
   },
+  "ResourceVersion": 2,
   "Title": "main_menu",
-  "Description": "",
-  "ResourceVersion": 1,
+  "Description": null,
   "__references": [],
-  "__version": 1
+  "__version": 2
 }

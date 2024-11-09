@@ -19,7 +19,7 @@ public class SkinnedRTSObject : SelectableObject, IScalable, IDamageable, ISelec
 	bool selected { get; set; }
 	public bool isAlive = true;
 
-	[Sync] public int currentHealthPoints { get; private set; }
+	[Sync] public int currentHealthPoints { get; protected set; }
 
 	// Constants
 	private const float CLICK_HITBOX_RADIUS_MULTIPLIER = 1f;

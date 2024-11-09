@@ -33,23 +33,8 @@
 						parent_bone = ""
 						import_filter = 
 						{
-							exclude_by_default = true
-							exception_list = 
-							[
-								"Circle_006",
-								"Circle_009",
-								"Circle_010",
-								"Circle_011",
-								"Circle_012",
-								"Circle_013",
-								"Circle_014",
-								"Circle_007",
-								"Circle_018",
-								"Circle_019",
-								"Circle_020",
-								"Circle_021",
-								"Circle_022",
-							]
+							exclude_by_default = false
+							exception_list = [  ]
 						}
 					},
 				]

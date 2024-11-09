@@ -17,6 +17,10 @@
 								from = "baked pistol.vmat"
 								to = "fps/weapons/pistol/textures/pistol.vmat"
 							},
+							{
+								from = "baked.002.vmat"
+								to = "fps/weapons/hands/hands.vmat"
+							},
 						]
 						use_global_default = false
 						global_default_material = ""
@@ -39,11 +43,10 @@
 						parent_bone = ""
 						import_filter = 
 						{
-							exclude_by_default = true
+							exclude_by_default = false
 							exception_list = 
 							[
-								"Plane_004",
-								"Plane_003",
+								"Q_Tip",
 							]
 						}
 					},

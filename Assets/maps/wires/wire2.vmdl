@@ -37,6 +37,7 @@
 							exception_list = 
 							[
 								"B__zierCurve_001",
+								"wire2",
 							]
 						}
 					},

@@ -37,6 +37,7 @@
 							exception_list = 
 							[
 								"Plane_013",
+								"floor3",
 							]
 						}
 					},

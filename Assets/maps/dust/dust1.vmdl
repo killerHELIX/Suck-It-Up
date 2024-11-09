@@ -37,6 +37,7 @@
 							exception_list = 
 							[
 								"Icosphere_001",
+								"dustball1",
 							]
 						}
 					},

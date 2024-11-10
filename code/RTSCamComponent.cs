@@ -2,7 +2,8 @@
 public class RTSCamComponent : Component
 {
 	[Property] public CameraComponent CamView { get; set; }
-	[Property] public float CamMoveSpeed {  get; set; }
+	[Property] public float CamDefaultSpeed {  get; set; }
+	[Property] public float CamFastSpeedMultiplier { get; set; }
 	[Property] public float CamZoomSpeed { get; set; }
 	[Property] public float CamRotateSpeed { get; set; }
 
@@ -41,22 +42,29 @@ public class RTSCamComponent : Component
 		// Move Camera
 		Vector3 movement = 0;
 
+		// Multiply speed if necessary
+		var CamSpeed = CamDefaultSpeed;
+		if (Input.Down("Run"))
+		{
+			CamSpeed = CamDefaultSpeed * CamFastSpeedMultiplier;
+		}
+
 		// Handle WASD Movement
 		if ( Input.Down( "Forward" ) )
 		{
-			movement += Transform.World.Forward.WithZ(0) * CamMoveSpeed;
+			movement += Transform.World.Forward.WithZ(0) * CamSpeed;
 		}
 		if ( Input.Down( "Backward" ) )
 		{
-			movement += Transform.World.Backward.WithZ(0) * CamMoveSpeed;
+			movement += Transform.World.Backward.WithZ(0) * CamSpeed;
 		}
 		if ( Input.Down( "Left" ) )
 		{
-			movement += Transform.World.Left.WithZ(0) * CamMoveSpeed;
+			movement += Transform.World.Left.WithZ(0) * CamSpeed;
 		}
 		if ( Input.Down( "Right" ) )
 		{
-			movement += Transform.World.Right.WithZ(0) * CamMoveSpeed;
+			movement += Transform.World.Right.WithZ(0) * CamSpeed;
 		}
 		// Handle Zoom Level
 		if ( Input.MouseWheel.x < 0 || Input.MouseWheel.y < 0 )

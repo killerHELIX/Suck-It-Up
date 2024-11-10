@@ -70,7 +70,8 @@
       {
         "__type": "RTSCamComponent",
         "__guid": "4587917f-8749-473b-896d-d4f735f0583e",
-        "CamMoveSpeed": 80,
+        "CamDefaultSpeed": 40,
+        "CamFastSpeedMultiplier": 2,
         "CamRotateSpeed": 600,
         "CamView": {
           "_type": "component",
@@ -143,6 +144,7 @@
             "AutoScreenScale": false,
             "Opacity": 1,
             "Scale": 1,
+            "ScaleStrategy": "ConsistentHeight",
             "ZIndex": 100
           }
         ]
@@ -160,6 +162,7 @@
             "AutoScreenScale": true,
             "Opacity": 1,
             "Scale": 1,
+            "ScaleStrategy": "ConsistentHeight",
             "ZIndex": 100
           }
         ],
@@ -168,7 +171,6 @@
             "__guid": "c3475e63-68b1-427d-a41e-4e90e8d0068b",
             "Flags": 0,
             "Name": "HUD",
-            "Position": "0,0,0",
             "Enabled": true,
             "Components": [
               {
@@ -255,11 +257,35 @@
         ]
       }
     ],
-    "__variables": []
+    "__variables": [],
+    "__properties": {
+      "FixedUpdateFrequency": 50,
+      "MaxFixedUpdates": 5,
+      "NetworkFrequency": 30,
+      "NetworkInterpolation": true,
+      "PhysicsSubSteps": 1,
+      "ThreadedAnimation": true,
+      "TimeScale": 1,
+      "UseFixedUpdate": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    }
   },
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1

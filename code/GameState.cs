@@ -61,12 +61,12 @@ public class GameState : Component
 			Network.TakeOwnership();
 			//pullCurrentGameStateFromHost();
 			// DEBUG
-			//survivorPlayerList.Add("balls");
+			survivorPlayerList.Add("balls");
 			//rtsPlayerList.Add("Grundle");
 			// DEBUG
 			//Log.Info(Network.OwnerConnection);
 			//Log.Info(Network.OwnerConnection.DisplayName);
-			spectatorPlayerList.Add(Network.OwnerConnection.DisplayName);
+			//spectatorPlayerList.Add(Network.OwnerConnection.DisplayName);
 			//survivorPlayerList.Add(Network.OwnerConnection.DisplayName);
 			//GameObject.NetworkSpawn(Network.OwnerConnection);
 		}

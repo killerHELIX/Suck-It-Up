@@ -67,6 +67,7 @@ public class GameState : Component
 			//Log.Info(Network.OwnerConnection);
 			//Log.Info(Network.OwnerConnection.DisplayName);
 			spectatorPlayerList.Add(Network.OwnerConnection.DisplayName);
+			//survivorPlayerList.Add(Network.OwnerConnection.DisplayName);
 			//GameObject.NetworkSpawn(Network.OwnerConnection);
 		}
 		else 

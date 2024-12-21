@@ -248,6 +248,26 @@
 		this.Panel.Style.Dirty();
 	}
 
+	public void camTypeButtonClicked()
+	{
+		this.printy();
+	}
+
+	public void camFocusTypeButtonClicked()
+	{
+		this.printy();
+	}
+
+	public void nextUnitButtonClicked()
+	{
+		this.printy();
+	}
+
+	public void prevUnitButtonClicked()
+	{
+		this.printy();
+	}
+
 	public void setShowPanel(bool setShow)
 	{
 		showPanel = setShow;
@@ -263,6 +283,16 @@
 			<div class="resourceItem">
 				<div style="background-image: url(materials/capacity_icon.png);" class="resourceIcon"></div>
 				<div class="resourceText">@(RTSPlayer.Local.capacityPoints) / @(RTSPlayer.Local.CapacityCap)</div>
+			</div>
+		</div>
+		<div class="cameraControls">
+			<div class="camTypeControls">
+				<div @onclick="@(() => camTypeButtonClicked())" style="background-image: url(materials/camerabutton.png);" class="camTypeButton"></div>
+				<div @onclick="@(() => camFocusTypeButtonClicked())" style="background-image: url(materials/unitcamfocusbutton.png);" class="focusTypeButton"></div>
+			</div>
+			<div class="camFocusControls">
+				<div @onclick="@(() => prevUnitButtonClicked())" style="background-image: url(materials/arrowbutton.png);" class="prevUnitButton"></div>
+				<div @onclick="@(() => nextUnitButtonClicked())" style="background-image: url(materials/arrowbuttonleft.png);" class="nextUnitButton"></div>
 			</div>
 		</div>
 	</div>

@@ -92,15 +92,15 @@ public sealed class SIUNetworkHelper : Component, Component.INetworkListener
 		{
 			case GameState.PlayerType.RTS:
 				Log.Info($"Player '{channel.DisplayName}' has joined the game, spawning as a " + RTSPlayerPrefab);
-				player = RTSPlayerPrefab.Clone(startLocation, name: $"Player - {channel.DisplayName}");
+				player = RTSPlayerPrefab.Clone(startLocation, name: $"{channel.DisplayName}");
 				break;
 			case GameState.PlayerType.SURVIVOR:
 				Log.Info($"Player '{channel.DisplayName}' has joined the game, spawning as a " + SurvivorPlayerPrefab);
-				player = SurvivorPlayerPrefab.Clone(startLocation, name: $"Player - {channel.DisplayName}");
+				player = SurvivorPlayerPrefab.Clone(startLocation, name: $"{channel.DisplayName}");
 				break;
 			case GameState.PlayerType.SPECTATOR:
 				Log.Info($"Player '{channel.DisplayName}' has joined the game, spawning as a " + SpectatorPlayerPrefab);
-				player = SpectatorPlayerPrefab.Clone(startLocation, name: $"Player - {channel.DisplayName}");
+				player = SpectatorPlayerPrefab.Clone(startLocation, name: $"{channel.DisplayName}");
 				break;
 		}
 		player.NetworkSpawn(channel);

@@ -116,9 +116,9 @@
 	}
 
 	//BS TEST FUNCTION
-	public void printy()
+	public void printy(string input)
 	{
-		Log.Info("Button Clicked!");
+		Log.Info("Button Clicked! " + input);
 	}
 
 	private string getFocusedUnitPortraitImage()
@@ -264,19 +264,28 @@
 
 	public void camFocusTypeButtonClicked()
 	{
-		this.printy();
+		RTSPlayer.Local.UnitControl.RTSCam.switchCameraFocusType();
+		if (RTSPlayer.Local.UnitControl.RTSCam.camFocus == RTSCamComponent.CameraFocus.Units)
+		{
+			currentCamFocusButtonImage = "materials/unitcamfocusbutton.png";
+		}
+		else
+		{
+			currentCamFocusButtonImage = "materials/playercamfocusbutton.png";
+		}
+		this.printy("focus type");
 	}
 
 	public void nextUnitButtonClicked()
 	{
 		RTSPlayer.Local.UnitControl.RTSCam.nextCameraTarget();
-		this.printy();
+		this.printy("next unit");
 	}
 
 	public void prevUnitButtonClicked()
 	{
 		RTSPlayer.Local.UnitControl.RTSCam.prevCameraTarget();
-		this.printy();
+		this.printy("prev unit");
 	}
 
 	public void setShowPanel(bool setShow)

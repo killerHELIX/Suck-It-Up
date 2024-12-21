@@ -15,6 +15,7 @@ public class RTSCamComponent : Component
 	float camYaw;
 	float camPitch;
 	public CameraMode camMode = CameraMode.Ortho;
+	public CameraFocus camFocus = CameraFocus.Units;
 	public int camIndex = 0;
 	public GameObject trackTarget;
 
@@ -22,6 +23,12 @@ public class RTSCamComponent : Component
 	{
 		Ortho,
 		Tracking
+	}
+
+	public enum CameraFocus
+	{
+		Units,
+		Players
 	}
 
 	protected override void OnStart()
@@ -193,7 +200,15 @@ public class RTSCamComponent : Component
 	{
 		if (camMode == CameraMode.Ortho)
 		{
-			trackTarget = RTSPlayer.Local.myUnits[camIndex];//.First<SelectableObject>().GameObject;
+			camIndex = 0;
+			if(camFocus == CameraFocus.Units)
+			{
+				trackTarget = RTSPlayer.Local.myUnits[camIndex];
+			}
+			else
+			{
+				trackTarget = Game.ActiveScene.Directory.FindByName(GameState.Local.survivorPlayerList[camIndex]).First<GameObject>();
+			}
 			camMode = CameraMode.Tracking;
 			Log.Info("Cam mode is now Tracking");
 		}
@@ -204,29 +219,79 @@ public class RTSCamComponent : Component
 		}
 	}
 
-	public void nextCameraTarget()
+	public void switchCameraFocusType()
 	{
-		if(camIndex == RTSPlayer.Local.myUnits.Count - 1)
+		camIndex = 0;
+		if(camFocus == CameraFocus.Units)
 		{
-			camIndex = 0;
+			camFocus = CameraFocus.Players;
+			trackTarget = Game.ActiveScene.Directory.FindByName(GameState.Local.survivorPlayerList[camIndex]).First<GameObject>();
+			Log.Info("Cam focus is now Players");
 		}
 		else
 		{
-			camIndex++;
+			camFocus= CameraFocus.Units;
+			trackTarget = RTSPlayer.Local.myUnits[camIndex];
+			Log.Info("Cam focus is now Units");
 		}
-		trackTarget = RTSPlayer.Local.myUnits[camIndex];
+	}
+
+	public void nextCameraTarget()
+	{
+		if(camFocus == CameraFocus.Units)
+		{
+			if (camIndex >= RTSPlayer.Local.myUnits.Count - 1)
+			{
+				camIndex = 0;
+			}
+			else
+			{
+				camIndex++;
+			}
+			trackTarget = RTSPlayer.Local.myUnits[camIndex];
+		}
+		else
+		{
+			if (camIndex >= GameState.Local.survivorPlayerList.Count - 1)
+			{
+				camIndex = 0;
+			}
+			else
+			{
+				camIndex++;
+			}
+			trackTarget = Game.ActiveScene.Directory.FindByName(GameState.Local.survivorPlayerList[camIndex]).First<GameObject>();
+		}
+		Log.Info("NEXT index is: " + camIndex);
 	}
 
 	public void prevCameraTarget()
 	{
-		if (camIndex == 0)
+		if (camFocus == CameraFocus.Units)
 		{
-			camIndex = RTSPlayer.Local.myUnits.Count - 1;
+			if (camIndex == 0)
+			{
+				camIndex = RTSPlayer.Local.myUnits.Count - 1;
+			}
+			else
+			{
+				camIndex--;
+			}
+			trackTarget = RTSPlayer.Local.myUnits[camIndex];
 		}
-		else
-		{
-			camIndex--;
+        else
+        {
+			if (camIndex == 0)
+			{
+				camIndex = GameState.Local.survivorPlayerList.Count - 1;
+			}
+			else
+			{
+				camIndex--;
+			}
+			trackTarget = Game.ActiveScene.Directory.FindByName(GameState.Local.survivorPlayerList[camIndex]).First<GameObject>();
 		}
-		trackTarget = RTSPlayer.Local.myUnits[camIndex];
+
+        Log.Info("PREV index is: " + camIndex);
 	}
 }

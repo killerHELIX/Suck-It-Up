@@ -155,7 +155,7 @@ class SIUUnit : Unit
 			}
 		}
 		// Basic Auto tracking for seen players. Only do this when idle
-		if (UnitAutoMeleeCollider != null && isInAttackMode && commandGiven==UnitModelUtils.CommandType.None)
+		if (UnitAutoMeleeCollider != null && currentStance == ((int)Stance.Attack) && commandGiven == UnitModelUtils.CommandType.None)
 		{
 			var validPlayerFound = false;
 			//Log.Info("In auto melee collider");

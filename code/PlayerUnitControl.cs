@@ -22,15 +22,15 @@ public class PlayerUnitControl : Component
 		{
 			if(SelectedObjects.Count > 2)
 			{
-				RTSPlayer.Local.LocalGame.GameHud.setSelectionVars(true, false, false);
+				RTSPlayer.Local.LocalGame.GameHud.setSelectionVars(true, false, 0);
 			}
 			else if(SelectedObjects.Count == 2)
 			{
-				RTSPlayer.Local.LocalGame.GameHud.setSelectionVars(true, true, false);
+				RTSPlayer.Local.LocalGame.GameHud.setSelectionVars(true, true, 0);
 			}
 			else
 			{
-				RTSPlayer.Local.LocalGame.GameHud.setSelectionVars(false, false, false);
+				RTSPlayer.Local.LocalGame.GameHud.setSelectionVars(false, false, 0);
 			}
 			SelectedObjects.Remove(deadUnit);
 		}
@@ -135,20 +135,20 @@ public class PlayerUnitControl : Component
 					// TODO: Make the stance stuff less cheesy
 					if ( SelectedObjects.Count() == 1 )
 					{
-						RTSPlayer.Local.LocalGame.GameHud.setSelectionVars( true, true, ((Unit)SelectedObjects.First()).isInAttackMode );
+						RTSPlayer.Local.LocalGame.GameHud.setSelectionVars( true, true, ((Unit)SelectedObjects.First()).currentStance );
 					}
 					else if ( SelectedObjects.Count() == 0 )
 					{
-						RTSPlayer.Local.LocalGame.GameHud.setSelectionVars( false, false, false );
+						RTSPlayer.Local.LocalGame.GameHud.setSelectionVars( false, false, 0 );
 					}
 					else
 					{
-						RTSPlayer.Local.LocalGame.GameHud.setSelectionVars( true, false, ((Unit)SelectedObjects.First()).isInAttackMode );
+						RTSPlayer.Local.LocalGame.GameHud.setSelectionVars( true, false, ((Unit)SelectedObjects.First()).currentStance );
 					}
 				}
 				else
 				{
-					RTSPlayer.Local.LocalGame.GameHud.setSelectionVars( false, false, false );
+					RTSPlayer.Local.LocalGame.GameHud.setSelectionVars( false, false, 0 );
 				}
 				stopDrawSelectionRect();
 			}
@@ -184,7 +184,7 @@ public class PlayerUnitControl : Component
 								// Select Unit
 								SelectedObjects.Add(selectedUnit);
 								selectedUnit.select();
-								RTSPlayer.Local.LocalGame.GameHud.setSelectionVars(true, true, selectedUnit.isInAttackMode);
+								RTSPlayer.Local.LocalGame.GameHud.setSelectionVars(true, true, selectedUnit.currentStance);
 								hitSomethingValid = true;
 							}
 						}
@@ -197,17 +197,17 @@ public class PlayerUnitControl : Component
 							// Select Orb
 							SelectedObjects.Add(selectedOrb);
 							selectedOrb.select();
-							RTSPlayer.Local.LocalGame.GameHud.setSelectionVars(true, true, false);
+							RTSPlayer.Local.LocalGame.GameHud.setSelectionVars(true, true, 0);
 							hitSomethingValid = true;
 						}
 						if (!hitSomethingValid)
 						{
-							RTSPlayer.Local.LocalGame.GameHud.setSelectionVars(false, false, false);
+							RTSPlayer.Local.LocalGame.GameHud.setSelectionVars(false, false, 0);
 						}
 					}
 					else
 					{
-						RTSPlayer.Local.LocalGame.GameHud.setSelectionVars(false, false, false);
+						RTSPlayer.Local.LocalGame.GameHud.setSelectionVars(false, false, 0);
 					}
 				}
 			}

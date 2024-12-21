@@ -42,15 +42,22 @@ public class Unit : SkinnedRTSObject
 	public GameObject targetObject { get; set; }
 	public GameObject tempTargetObject { get; set; }
 
+	public enum Stance
+	{
+		Attack,
+		Defend,
+		Horde
+	}
+
 	// This will be a factor of the unit size I imagine
 	private float maxChaseDistanceFromHome = 600f;
 	private float lastMeleeTime = Time.Now;
 	private float lastMoveOrderTime = Time.Now;
-	public bool isInAttackMode = true;
+	public int currentStance = 0;
 	protected bool hasReachedMoveTarget = true;
 	protected bool isNewCommand = false;
 
-	private DynamicToggleButton unitStanceButton;
+	private DynamicMultiStateButton unitStanceButton;
 	private DynamicButton recycleUnitButton;
 
 	// Unit Constants
@@ -62,18 +69,36 @@ public class Unit : SkinnedRTSObject
 	private const float CLICK_HITBOX_RADIUS_MULTIPLIER = .5f;
 	private const float GLOBAL_UNIT_SCALE = .1f;
 
+	// Stance Image References
 	private const string AttackStanceImagePath = "materials/attack_stance.png";
 	private const string DefendStanceImagePath = "materials/defend_stance.png";
+	private const string HordeStanceImagePath = "materials/attack_closest.png";
 	private const string RecycleImagepath = "materials/recycle_icon.png";
+
+	public Dictionary<Stance, string> stanceMap = new Dictionary<Stance, string>();
 
 	protected override void OnStart()
 	{
 		objectTypeTag = UNIT_TAG;
 		base.OnStart();
 
+		// Initialize stances
+		stanceMap.Add(Stance.Attack, AttackStanceImagePath);
+		stanceMap.Add(Stance.Defend, DefendStanceImagePath);
+		stanceMap.Add(Stance.Horde, HordeStanceImagePath);
+		var stanceList = new List<string>();
+		foreach (var stance in Enum.GetValues<Stance>())
+		{
+			Log.Info((int)stance + " stance is path " + stanceMap[stance]);
+			stanceList.Add(stanceMap[stance]);
+		}
+			
+		// Init AI
 		commandGiven = UnitModelUtils.CommandType.None;
 		homeTargetLocation = Transform.Position;
-		unitStanceButton = new DynamicToggleButton('x', AttackStanceImagePath, DefendStanceImagePath, stanceButtonClicked);
+
+		// Initialize UI elements
+		unitStanceButton = new DynamicMultiStateButton('x', stanceList, stanceButtonClicked);
 		recycleUnitButton = new DynamicButton('.', RecycleImagepath, recycleUnit);
 		buttons.Add(unitStanceButton);
 		buttons.Add(recycleUnitButton);
@@ -172,7 +197,7 @@ public class Unit : SkinnedRTSObject
 			}
 		}
 		// Auto Melee
-		if(UnitAutoMeleeCollider != null && isInAttackMode)
+		if(UnitAutoMeleeCollider != null && currentStance == ((int)Stance.Attack))
 		{
 			var validUnitFound = false;
 			if ( tempTargetObject == null )
@@ -226,13 +251,16 @@ public class Unit : SkinnedRTSObject
 		}
 	}
 
-	public void setIsInAttackMode(bool isNowInAttackMode)
+	public void setStance(int newStance)
 	{
 		if (!Network.IsOwner) { return; }
-		isInAttackMode = isNowInAttackMode;
-		if ( !isNowInAttackMode )
+		if(newStance >= 0 && newStance < Enum.GetValues<Stance>().Count())
 		{
-			tempTargetObject = null;
+			currentStance = newStance;
+		}	
+		else
+		{
+			Log.Error("Invalid Stance!");
 		}
 	}
 
@@ -353,15 +381,23 @@ public class Unit : SkinnedRTSObject
 
 	public void stanceButtonClicked()
 	{
-		if (unitStanceButton.activeBackgroundImage == AttackStanceImagePath)
+		var newStance = currentStance + 1;
+		if (newStance == Enum.GetValues<Stance>().Count())
 		{
-			setIsInAttackMode(false);
+			newStance = 0;
 		}
-		else
+		setStance( newStance );
+		unitStanceButton.setButtonState( newStance );
+
+		/*switch(currentStance)
 		{
-			setIsInAttackMode(true);
-		}
-		unitStanceButton.toggleButtonState();
+			case Stance.Attack:
+
+				break;
+			
+		}*/
+		//setIsInAttackMode(false);
+		
 	}
 
 	public void recycleUnit()
@@ -373,15 +409,15 @@ public class Unit : SkinnedRTSObject
 		var selectedObjList = RTSPlayer.Local.UnitControl.SelectedObjects;
 		if (selectedObjList.Count == 0)
 		{
-			RTSPlayer.Local.LocalGame.GameHud.setSelectionVars(false, false, false);
+			RTSPlayer.Local.LocalGame.GameHud.setSelectionVars(false, false, 0);
 		}
 		else if (selectedObjList.Count == 1)
 		{
-			RTSPlayer.Local.LocalGame.GameHud.setSelectionVars(true, true, ((Unit)(selectedObjList[0])).isInAttackMode);
+			RTSPlayer.Local.LocalGame.GameHud.setSelectionVars(true, true, ((Unit)(selectedObjList[0])).currentStance);
 		}
 		else
 		{
-			RTSPlayer.Local.LocalGame.GameHud.setSelectionVars(true, false, ((Unit)(selectedObjList[0])).isInAttackMode);
+			RTSPlayer.Local.LocalGame.GameHud.setSelectionVars(true, false, ((Unit)(selectedObjList[0])).currentStance);
 			//focusedUnit = ((Unit)(selectedObjList[0]));
 		}
 

@@ -138,20 +138,20 @@
 		var selectedObjList = RTSPlayer.Local.UnitControl.SelectedObjects;
 		if(selectedObjList.Count == 0)
 		{
-			setSelectionVars(false, false, false);
+			setSelectionVars(false, false, 0);
 		}
 		else if (selectedObjList.Count == 1)
 		{
-			setSelectionVars(true, true, ((Unit)(selectedObjList[0])).isInAttackMode);
+			setSelectionVars(true, true, ((Unit)(selectedObjList[0])).currentStance);
 		}
 		else
 		{
-			setSelectionVars(true, false, ((Unit)(selectedObjList[0])).isInAttackMode);
+			setSelectionVars(true, false, ((Unit)(selectedObjList[0])).currentStance);
 			focusedUnit = ((Unit)(selectedObjList[0]));
 		}
 	}
 
-	public void setSelectionVars(bool isSelect, bool isSingleUnitSelected, bool isUnitInAttackStance)
+	public void setSelectionVars(bool isSelect, bool isSingleUnitSelected, int unitStance)
 	{
 		//Log.Info("setSelectionVars(isSelect=" + isSelect + ", isSingleUnitSelected=" + isSingleUnitSelected + ", isUnitInAttackStance=" + isUnitInAttackStance);
 		focusedUnit = null;
@@ -186,15 +186,6 @@
 							focusedUnitHealth = "";
 						}
 					}
-
-					/*if (isUnitInAttackStance)
-						{
-						unitStanceButton.setButtonState(AttackStanceImagePath);
-					}
-					else
-						{
-						unitStanceButton.setButtonState(DefendStanceImagePath);
-					}*/
 				}
 				else
 				{
@@ -209,7 +200,6 @@
 					//focusedUnit = firstUnit;
 					unitListItemClicked(firstUnit);
 					setButtons(firstUnit.getDynamicButtons());
-					//unitStanceButton.buttonState = !(((Unit)focusedUnit).isInAttackMode);
 				}
 
 				focusedUnitPortraitImage = "";

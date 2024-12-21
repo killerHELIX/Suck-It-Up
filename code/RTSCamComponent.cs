@@ -52,7 +52,10 @@ public class RTSCamComponent : Component
 			return; 
 		}
 
-		if(Input.Released("Change Camera Mode"))
+		var mDeltaX = Input.MouseDelta.x;
+		var mDeltaY = Input.MouseDelta.y;
+
+		if (Input.Released("Change Camera Mode"))
 		{
 			if(camMode == CameraMode.Ortho)
 			{
@@ -154,6 +157,23 @@ public class RTSCamComponent : Component
 			{
 				camPitch -= Time.Delta * CamRotateSpeed;
 			}
+
+			// Handle Free Rotation
+			if(Input.Down("Free Rotate"))
+			{
+				RTSPlayer.Local.LocalGame.ThisScreen.Enabled = false;
+				RTSPlayer.Local.LocalGame.GameHud.Enabled = false;
+				RTSPlayer.Local.UnitControl.Enabled = false;
+				camYaw -= mDeltaX * .5f;
+				camPitch += mDeltaY * .5f;
+			}
+			else
+			{
+				RTSPlayer.Local.LocalGame.ThisScreen.Enabled = true;
+				RTSPlayer.Local.LocalGame.GameHud.Enabled = true;
+				RTSPlayer.Local.UnitControl.Enabled = true;
+			}
+
 			camPitch = camPitch.Clamp(0, 89.9f);
 
 			// Create Quat Rotation

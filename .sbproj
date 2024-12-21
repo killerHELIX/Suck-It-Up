@@ -26,6 +26,10 @@
     "MapStartupScene": "scenes/main_menu.scene",
     "LaunchMode": "Normal",
     "ParentPackage": "",
-    "ControlModes": {}
+    "ControlModes": {
+      "Keyboard": false,
+      "VR": false,
+      "Gamepad": false
+    }
   }
 }

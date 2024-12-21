@@ -239,6 +239,14 @@ class SIUUnit : Unit
 			//	tempTargetObject = null;
 			//}
 		}
+		// Run towards the nearest player no matter what in this stance
+		else if (currentStance == ((int)Stance.Horde) && commandGiven == UnitModelUtils.CommandType.None)
+		{
+			var players = Game.ActiveScene.GetAllComponents<FPSHealthController>();
+			var minPlayerDistance = players.Min(x => x.Transform.Position.Distance(Transform.Position));//Vector3.Distance(x.Transform.Position, Transform.Position));
+			var closestPlayer = players.Where(x => x.Transform.Position.Distance(Transform.Position) == minPlayerDistance);
+			tempTargetObject = closestPlayer.First().GameObject;
+		}
 
 		// Handle Animations
 		if (PhysicalModelRenderer != null && UnitNavAgent != null)

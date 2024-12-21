@@ -14,7 +14,8 @@ public class RTSCamComponent : Component
 
 	float camYaw;
 	float camPitch;
-	CameraMode camMode = CameraMode.Ortho;
+	public CameraMode camMode = CameraMode.Ortho;
+	public int camIndex = 0;
 	public GameObject trackTarget;
 
 	public enum CameraMode
@@ -186,5 +187,46 @@ public class RTSCamComponent : Component
 			//Log.Info("track rotation angles: " + newrot.Pitch() + ", " + newrot.Yaw() + ", " + newrot.Roll());
 			Transform.LerpTo(new Transform(newPos, newrot, 1), 0.25f);
 		}
+	}
+
+	public void switchCameraMode()
+	{
+		if (camMode == CameraMode.Ortho)
+		{
+			trackTarget = RTSPlayer.Local.myUnits[camIndex];//.First<SelectableObject>().GameObject;
+			camMode = CameraMode.Tracking;
+			Log.Info("Cam mode is now Tracking");
+		}
+		else
+		{
+			camMode = CameraMode.Ortho;
+			Log.Info("Cam mode is now Ortho");
+		}
+	}
+
+	public void nextCameraTarget()
+	{
+		if(camIndex == RTSPlayer.Local.myUnits.Count - 1)
+		{
+			camIndex = 0;
+		}
+		else
+		{
+			camIndex++;
+		}
+		trackTarget = RTSPlayer.Local.myUnits[camIndex];
+	}
+
+	public void prevCameraTarget()
+	{
+		if (camIndex == 0)
+		{
+			camIndex = RTSPlayer.Local.myUnits.Count - 1;
+		}
+		else
+		{
+			camIndex--;
+		}
+		trackTarget = RTSPlayer.Local.myUnits[camIndex];
 	}
 }

@@ -33,7 +33,8 @@
 	private bool isSingleUnitSelected;
 	private bool selectionPresent;
 
-	//private string displayButton
+	private string currentCamButtonImage = "materials/camerabutton.png";
+	private string currentCamFocusButtonImage = "materials/unitcamfocusbutton.png";
 
 	public List<DynamicButton> currentButtonList { get; set; }
 
@@ -250,7 +251,15 @@
 
 	public void camTypeButtonClicked()
 	{
-		this.printy();
+		RTSPlayer.Local.UnitControl.RTSCam.switchCameraMode();
+		if (RTSPlayer.Local.UnitControl.RTSCam.camMode == RTSCamComponent.CameraMode.Ortho)
+		{
+			currentCamButtonImage = "materials/camerabutton.png";
+		}
+		else
+		{
+			currentCamButtonImage = "materials/eyebutton.png";
+		}
 	}
 
 	public void camFocusTypeButtonClicked()
@@ -260,11 +269,13 @@
 
 	public void nextUnitButtonClicked()
 	{
+		RTSPlayer.Local.UnitControl.RTSCam.nextCameraTarget();
 		this.printy();
 	}
 
 	public void prevUnitButtonClicked()
 	{
+		RTSPlayer.Local.UnitControl.RTSCam.prevCameraTarget();
 		this.printy();
 	}
 
@@ -273,6 +284,12 @@
 		showPanel = setShow;
 	}
 }
+
+
+
+
+
+
 <root>
 	<div class="topPanel">
 		<div class="resourceDisplay">
@@ -287,8 +304,8 @@
 		</div>
 		<div class="cameraControls">
 			<div class="camTypeControls">
-				<div @onclick="@(() => camTypeButtonClicked())" style="background-image: url(materials/camerabutton.png);" class="camTypeButton"></div>
-				<div @onclick="@(() => camFocusTypeButtonClicked())" style="background-image: url(materials/unitcamfocusbutton.png);" class="focusTypeButton"></div>
+				<div @onclick="@(() => camTypeButtonClicked())" style="background-image: url(@currentCamButtonImage);" class="camTypeButton"></div>
+				<div @onclick="@(() => camFocusTypeButtonClicked())" style="background-image: url(@currentCamFocusButtonImage);" class="focusTypeButton"></div>
 			</div>
 			<div class="camFocusControls">
 				<div @onclick="@(() => prevUnitButtonClicked())" style="background-image: url(materials/arrowbutton.png);" class="prevUnitButton"></div>

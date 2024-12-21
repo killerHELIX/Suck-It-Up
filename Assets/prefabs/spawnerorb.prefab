@@ -3,6 +3,7 @@
     "__guid": "d0f4beb4-098e-47db-b02f-43ab206eb349",
     "Flags": 0,
     "Name": "spawnerorb",
+    "Tags": "control_orb",
     "Enabled": true,
     "NetworkMode": 1,
     "NetworkOrphaned": 3,
@@ -117,7 +118,8 @@
         "Center": "0,0,0",
         "IsTrigger": false,
         "Scale": "1,1,1",
-        "Static": false
+        "Static": true,
+        "SurfaceVelocity": "0,0,0"
       },
       {
         "__type": "UnitModelBasic",
@@ -140,8 +142,26 @@
         "__type": "Sandbox.SkinnedModelRenderer",
         "__guid": "b3754e14-d06a-4872-a03e-4dc980a6654e",
         "BodyGroups": 18446744073709551615,
+        "CreateAttachments": false,
         "CreateBoneObjects": false,
+        "Morphs": {},
+        "Parameters": {
+          "bools": {},
+          "ints": {},
+          "floats": {},
+          "vectors": {},
+          "rotations": {}
+        },
+        "RenderOptions": {
+          "GameLayer": true,
+          "OverlayLayer": false,
+          "BloomLayer": false,
+          "AfterUILayer": false
+        },
         "RenderType": "Off",
+        "Sequence": {
+          "Name": null
+        },
         "Tint": "1,1,1,1",
         "UseAnimGraph": false
       },
@@ -160,6 +180,9 @@
       {
         "Id": "PhaseOrbUnlocked",
         "Title": "PhaseOrbUnlocked",
+        "Description": null,
+        "Group": null,
+        "Order": 0,
         "Targets": [
           {
             "Id": "0d82a996-ee31-4b97-9b10-f1348d58030a",
@@ -167,11 +190,35 @@
           }
         ]
       }
-    ]
+    ],
+    "__properties": {
+      "FixedUpdateFrequency": 50,
+      "MaxFixedUpdates": 5,
+      "NetworkFrequency": 30,
+      "NetworkInterpolation": true,
+      "PhysicsSubSteps": 1,
+      "ThreadedAnimation": true,
+      "TimeScale": 1,
+      "UseFixedUpdate": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    }
   },
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1

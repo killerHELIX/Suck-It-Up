@@ -2,6 +2,21 @@
   "__guid": "107a540e-b6fc-434a-abbe-6c5c5ae7f6d0",
   "GameObjects": [
     {
+      "__guid": "f0f40267-0d3f-47d5-bca4-feda0809ca9f",
+      "Flags": 0,
+      "Name": "Scene Information",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SceneInformation",
+          "__guid": "d221b171-cacc-4c6b-ae37-5ed4cc80feed",
+          "Description": "",
+          "SceneTags": "",
+          "Title": "rts_scene"
+        }
+      ]
+    },
+    {
       "__guid": "9fe8a9d1-d2b6-40dd-98ff-f7f8984aab67",
       "Flags": 0,
       "Name": "Map",
@@ -16,6 +31,8 @@
           "EnableCollision": true,
           "MapName": "maps/debug.vmap",
           "NoOrigin": true,
+          "OnMapLoaded": null,
+          "OnMapUnloaded": null,
           "UseMapFromLaunch": true
         }
       ],
@@ -148,8 +165,26 @@
           "__type": "Sandbox.SkinnedModelRenderer",
           "__guid": "b288c956-aa35-4973-abe6-90113d4e88d2",
           "BodyGroups": 18446744073709551615,
+          "CreateAttachments": false,
           "CreateBoneObjects": false,
+          "Morphs": {},
+          "Parameters": {
+            "bools": {},
+            "ints": {},
+            "floats": {},
+            "vectors": {},
+            "rotations": {}
+          },
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
           "RenderType": "On",
+          "Sequence": {
+            "Name": null
+          },
           "Tint": "1,1,1,1",
           "UseAnimGraph": true
         },
@@ -168,7 +203,8 @@
           "Center": "0,0,0",
           "IsTrigger": false,
           "Scale": "50,50,50",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         }
       ]
     },
@@ -176,7 +212,8 @@
       "__guid": "d0f4beb4-098e-47db-b02f-43ab206eb349",
       "Flags": 0,
       "Name": "Spawner Orb",
-      "Position": "244.691,1883.238,150.9806",
+      "Position": "244.691,1883.238,167.9321",
+      "Tags": "control_orb",
       "Enabled": true,
       "NetworkMode": 1,
       "NetworkOrphaned": 3,
@@ -191,6 +228,7 @@
       "Flags": 0,
       "Name": "Spawner Orb (1)",
       "Position": "-61.43091,2147.156,150.9806",
+      "Tags": "control_orb,orb",
       "Enabled": true,
       "NetworkMode": 1,
       "NetworkOrphaned": 3,
@@ -205,6 +243,7 @@
       "Flags": 0,
       "Name": "Spawner Orb (2)",
       "Position": "-258.8374,2147.156,150.9806",
+      "Tags": "control_orb,orb",
       "Enabled": true,
       "NetworkMode": 1,
       "NetworkOrphaned": 3,
@@ -219,6 +258,7 @@
       "Flags": 0,
       "Name": "Spawner Orb (3)",
       "Position": "-468.7603,2147.156,150.9806",
+      "Tags": "control_orb,orb",
       "Enabled": true,
       "NetworkMode": 1,
       "NetworkOrphaned": 3,
@@ -233,6 +273,7 @@
       "Flags": 0,
       "Name": "Spawner Orb (4)",
       "Position": "-672.4806,2147.156,150.9806",
+      "Tags": "control_orb,orb",
       "Enabled": true,
       "NetworkMode": 1,
       "NetworkOrphaned": 3,
@@ -336,7 +377,8 @@
           "IsTrigger": true,
           "Radius": 100,
           "Start": "0,0,0",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         },
         {
           "__type": "Sandbox.SphereCollider",
@@ -344,7 +386,8 @@
           "Center": "0,0,0",
           "IsTrigger": true,
           "Radius": 600,
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         },
         {
           "__type": "UnitTriggerListener",
@@ -356,7 +399,8 @@
           "Center": "0,0,100",
           "IsTrigger": false,
           "Scale": "110,110,200",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         }
       ],
       "Children": [
@@ -364,7 +408,6 @@
           "__guid": "7651c85b-4c47-4f63-9351-fab9da5d70b0",
           "Flags": 0,
           "Name": "UnitModel",
-          "Position": "0,0,0",
           "Enabled": true,
           "NetworkOrphaned": 1,
           "OwnerTransfer": 2,
@@ -397,8 +440,26 @@
               "__guid": "90a286c6-ba70-4531-bbf6-1143d9aa036f",
               "AnimationGraph": "animgraphs/sk_light_infantry_a.vanmgrph",
               "BodyGroups": 18446744073709551615,
+              "CreateAttachments": false,
               "CreateBoneObjects": true,
+              "Morphs": {},
+              "Parameters": {
+                "bools": {},
+                "ints": {},
+                "floats": {},
+                "vectors": {},
+                "rotations": {}
+              },
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
               "RenderType": "On",
+              "Sequence": {
+                "Name": null
+              },
               "Tint": "1,1,1,1",
               "UseAnimGraph": true
             },
@@ -442,6 +503,12 @@
                   "CutoffAngleSoftness": 5,
                   "Material": "materials/circle.vmat",
                   "Mod2XBlending": false,
+                  "RenderOptions": {
+                    "GameLayer": true,
+                    "OverlayLayer": false,
+                    "BloomLayer": false,
+                    "AfterUILayer": false
+                  },
                   "Size": "1,1,1",
                   "TintColor": "0,1,0,0.50196",
                   "TriPlanar": false
@@ -729,6 +796,12 @@
               "InteractionRange": 0,
               "LookAtCamera": true,
               "PanelSize": "5000,200",
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
               "RenderScale": 1,
               "VerticalAlign": "Center"
             },
@@ -805,12 +878,20 @@
           "Center": "0,0,0",
           "IsTrigger": false,
           "Scale": "50,50,50",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         },
         {
           "__type": "Sandbox.ModelRenderer",
           "__guid": "97802228-15e1-4623-81e7-5450e3c12ce6",
           "BodyGroups": 18446744073709551615,
+          "CreateAttachments": false,
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
           "RenderType": "On",
           "Tint": "1,1,1,1"
         }
@@ -895,7 +976,8 @@
           "Center": "0,0,36.10001",
           "IsTrigger": false,
           "Scale": "15.59997,51.89999,72.9",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         },
         {
           "__type": "FPSWeaponController",
@@ -945,7 +1027,6 @@
           "__guid": "954c2613-8e83-464d-9381-c27119c975bc",
           "Flags": 0,
           "Name": "Player Body",
-          "Position": "0,0,0",
           "Tags": "playerbody",
           "Enabled": true,
           "OwnerTransfer": 0,
@@ -954,9 +1035,27 @@
               "__type": "Sandbox.SkinnedModelRenderer",
               "__guid": "5ec265da-bdb6-4d18-baca-337401b20df3",
               "BodyGroups": 341,
+              "CreateAttachments": false,
               "CreateBoneObjects": false,
               "Model": "models/citizen/citizen.vmdl",
+              "Morphs": {},
+              "Parameters": {
+                "bools": {},
+                "ints": {},
+                "floats": {},
+                "vectors": {},
+                "rotations": {}
+              },
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
               "RenderType": "On",
+              "Sequence": {
+                "Name": null
+              },
               "Tint": "1,1,1,1",
               "UseAnimGraph": true
             }
@@ -966,7 +1065,6 @@
           "__guid": "581be763-1576-4af3-8b6b-6c10729f95d3",
           "Flags": 0,
           "Name": "Player HUD",
-          "Position": "0,0,0",
           "Components": [
             {
               "__type": "Sandbox.ScreenPanel",
@@ -993,7 +1091,6 @@
           "__guid": "5de435c3-eb10-4120-8934-b2c1d215a272",
           "Flags": 0,
           "Name": "Camera",
-          "Position": "0,0,0",
           "Tags": "maincamera",
           "Components": [
             {
@@ -1030,10 +1127,28 @@
           "__guid": "94c0d2a8-b4ac-4084-9f15-ce5a4f2406a6",
           "AnimationGraph": "animgraphs/giant.vanmgrph",
           "BodyGroups": 18446744073709551615,
+          "CreateAttachments": false,
           "CreateBoneObjects": false,
           "MaterialOverride": "materials/enemies/giant_pixel.vmat",
           "Model": "models/enemies/giant.vmdl",
+          "Morphs": {},
+          "Parameters": {
+            "bools": {},
+            "ints": {},
+            "floats": {},
+            "vectors": {},
+            "rotations": {}
+          },
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
           "RenderType": "On",
+          "Sequence": {
+            "Name": null
+          },
           "Tint": "1,1,1,1",
           "UseAnimGraph": true
         },
@@ -1404,12 +1519,20 @@
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "50,50,50",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         },
         {
           "__type": "Sandbox.ModelRenderer",
           "__guid": "9f490a17-21a4-4dfd-b34e-153455b6204d",
           "BodyGroups": 18446744073709551615,
+          "CreateAttachments": false,
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
           "RenderType": "On",
           "Tint": "0,1,1,0.50196"
         }
@@ -1440,12 +1563,20 @@
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "50,50,50",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         },
         {
           "__type": "Sandbox.ModelRenderer",
           "__guid": "03fbd961-6878-444b-a629-6c5116457358",
           "BodyGroups": 18446744073709551615,
+          "CreateAttachments": false,
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
           "RenderType": "On",
           "Tint": "1,0,1,0.50196"
         }
@@ -1476,12 +1607,20 @@
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "50,50,50",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         },
         {
           "__type": "Sandbox.ModelRenderer",
           "__guid": "d326f819-93ef-4187-bb3d-1d7bafe9bdeb",
           "BodyGroups": 18446744073709551615,
+          "CreateAttachments": false,
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
           "RenderType": "On",
           "Tint": "0,1,0,0.50196"
         }
@@ -1512,12 +1651,20 @@
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "50,50,50",
-          "Static": true
+          "Static": true,
+          "SurfaceVelocity": "0,0,0"
         },
         {
           "__type": "Sandbox.ModelRenderer",
           "__guid": "37b508e3-f796-4b39-b1e6-27fe9473522d",
           "BodyGroups": 18446744073709551615,
+          "CreateAttachments": false,
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
           "RenderType": "On",
           "Tint": "1,0,0,0.50196"
         }
@@ -1548,12 +1695,20 @@
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "50,50,50",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         },
         {
           "__type": "Sandbox.ModelRenderer",
           "__guid": "38f3c65a-9e7a-4e3e-a900-44b012ddf21b",
           "BodyGroups": 18446744073709551615,
+          "CreateAttachments": false,
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
           "RenderType": "On",
           "Tint": "1,1,0,0.50196"
         }
@@ -1584,7 +1739,8 @@
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "100,100,100",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         }
       ]
     }
@@ -1594,9 +1750,13 @@
     "MaxFixedUpdates": 5,
     "NetworkFrequency": 30,
     "NetworkInterpolation": true,
+    "PhysicsSubSteps": 1,
     "ThreadedAnimation": true,
     "TimeScale": 1,
     "UseFixedUpdate": true,
+    "Metadata": {
+      "Title": "rts_scene"
+    },
     "NavMesh": {
       "Enabled": true,
       "IncludeStaticBodies": true,
@@ -1606,13 +1766,13 @@
       "AgentRadius": 5,
       "AgentStepSize": 20,
       "AgentMaxSlope": 70,
-      "ExcludedBodies": "water,trigger,unit",
+      "ExcludedBodies": "water,trigger,unit,control_orb",
       "IncludedBodies": ""
     }
   },
+  "ResourceVersion": 2,
   "Title": "rts_scene",
-  "Description": "",
-  "ResourceVersion": 1,
+  "Description": null,
   "__references": [],
-  "__version": 1
+  "__version": 2
 }

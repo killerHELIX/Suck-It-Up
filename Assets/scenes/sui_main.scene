@@ -2,6 +2,21 @@
   "__guid": "fcf446b4-2b9a-4c42-9b8e-9bb3b8d03c72",
   "GameObjects": [
     {
+      "__guid": "5f63f9f2-237d-4c5e-840a-3b1db92cc365",
+      "Flags": 0,
+      "Name": "Scene Information",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SceneInformation",
+          "__guid": "b2d85313-e12d-412e-a144-122ef9a9cf4c",
+          "Description": "",
+          "SceneTags": "",
+          "Title": "sui_main"
+        }
+      ]
+    },
+    {
       "__guid": "b9fe8bd6-8aaa-4199-95e4-8b078fabec26",
       "Flags": 0,
       "Name": "Map",
@@ -16,6 +31,8 @@
           "EnableCollision": true,
           "MapName": "maps/map_final.vmap",
           "NoOrigin": false,
+          "OnMapLoaded": null,
+          "OnMapUnloaded": null,
           "UseMapFromLaunch": false
         }
       ],
@@ -25,8 +42,8 @@
       "__guid": "0a0c0087-7f20-47fa-8840-617b14b82e91",
       "Flags": 0,
       "Name": "RTSSpawn",
-      "Position": "-1068.313,-762.5475,595.8965",
-      "Rotation": "0,0,-1,0.0000001947072",
+      "Position": "1070.934,292.296,1715.27",
+      "Rotation": "0.285454,0.09455141,-0.9053445,0.2998787",
       "Tags": "particles,skybox",
       "Enabled": true
     },
@@ -106,7 +123,7 @@
       "__guid": "323bd1de-4589-4fff-8a55-e55ca64a3bca",
       "Flags": 0,
       "Name": "Spawner Orb",
-      "Position": "118.8326,-1930.036,410.8468",
+      "Position": "118.8326,-1930.036,422.3854",
       "Enabled": true,
       "NetworkOrphaned": 3,
       "OwnerTransfer": 2,
@@ -725,7 +742,8 @@
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "600,800,300",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         }
       ]
     },
@@ -754,7 +772,8 @@
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "600,800,300",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         }
       ]
     },
@@ -783,7 +802,8 @@
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "600,800,300",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         }
       ]
     },
@@ -812,7 +832,8 @@
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "600,800,300",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         }
       ]
     },
@@ -841,7 +862,8 @@
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "4200,800,300",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         }
       ]
     },
@@ -2108,9 +2130,13 @@
     "MaxFixedUpdates": 5,
     "NetworkFrequency": 30,
     "NetworkInterpolation": true,
+    "PhysicsSubSteps": 1,
     "ThreadedAnimation": true,
     "TimeScale": 1,
     "UseFixedUpdate": true,
+    "Metadata": {
+      "Title": "sui_main"
+    },
     "NavMesh": {
       "Enabled": true,
       "IncludeStaticBodies": true,
@@ -2124,9 +2150,9 @@
       "IncludedBodies": "map_geom"
     }
   },
+  "ResourceVersion": 2,
   "Title": "sui_main",
-  "Description": "",
-  "ResourceVersion": 1,
+  "Description": null,
   "__references": [],
-  "__version": 1
+  "__version": 2
 }

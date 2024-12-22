@@ -10,6 +10,7 @@
         {
           "__type": "Sandbox.SceneInformation",
           "__guid": "8661b1d0-44a0-41ed-b787-4fbc4b4ecbbf",
+          "Changes": "",
           "Description": "",
           "SceneTags": "",
           "Title": "main_menu"
@@ -199,6 +200,9 @@
             "AfterUILayer": false
           },
           "RenderType": "On",
+          "Sequence": {
+            "Name": null
+          },
           "Tint": "1,1,1,1",
           "UseAnimGraph": true
         }
@@ -235,6 +239,9 @@
             "AfterUILayer": false
           },
           "RenderType": "On",
+          "Sequence": {
+            "Name": null
+          },
           "Tint": "1,1,1,1",
           "UseAnimGraph": true
         }
@@ -271,6 +278,9 @@
             "AfterUILayer": false
           },
           "RenderType": "On",
+          "Sequence": {
+            "Name": null
+          },
           "Tint": "1,1,1,1",
           "UseAnimGraph": true
         }

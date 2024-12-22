@@ -2,8 +2,7 @@
   "RootObject": {
     "__guid": "36ef4334-e091-43de-b302-4812907671e6",
     "Flags": 0,
-    "Name": "Main Menu",
-    "Position": "-414.3859,-2111.661,1010.93",
+    "Name": "mainmenu",
     "Enabled": true,
     "NetworkMode": 1,
     "NetworkInterpolation": false,
@@ -11,6 +10,12 @@
       {
         "__type": "MainMenuComponent",
         "__guid": "cad408db-f59a-491f-bd48-f76b95a120eb",
+        "HelpPanel": {
+          "_type": "component",
+          "component_id": "1a0cecb3-c8b3-4c02-93be-f4d985b4bbb8",
+          "go": "36ef4334-e091-43de-b302-4812907671e6",
+          "component_type": "SIUHelpPanel"
+        },
         "JoinedLobbyPanel": {
           "_type": "component",
           "component_id": "ef1aee4e-70a7-4ed8-b988-454f87c246de",
@@ -35,12 +40,14 @@
           "go": "36ef4334-e091-43de-b302-4812907671e6",
           "component_type": "ScreenPanel"
         },
+        "MyServID": 0,
         "SettingsPanel": {
           "_type": "component",
           "component_id": "3d0288e7-70b0-4b63-9166-281e7af59226",
           "go": "36ef4334-e091-43de-b302-4812907671e6",
           "component_type": "SIUSettingsPanel"
-        }
+        },
+        "startServer": false
       },
       {
         "__type": "Sandbox.ScreenPanel",
@@ -48,6 +55,7 @@
         "AutoScreenScale": true,
         "Opacity": 1,
         "Scale": 1,
+        "ScaleStrategy": "ConsistentHeight",
         "ZIndex": 100
       },
       {
@@ -65,12 +73,42 @@
       {
         "__type": "SIUSettingsPanel",
         "__guid": "3d0288e7-70b0-4b63-9166-281e7af59226"
+      },
+      {
+        "__type": "SIUHelpPanel",
+        "__guid": "1a0cecb3-c8b3-4c02-93be-f4d985b4bbb8"
       }
-    ]
+    ],
+    "Children": [],
+    "__variables": [],
+    "__properties": {
+      "FixedUpdateFrequency": 50,
+      "MaxFixedUpdates": 5,
+      "NetworkFrequency": 30,
+      "NetworkInterpolation": false,
+      "PhysicsSubSteps": 1,
+      "ThreadedAnimation": true,
+      "TimeScale": 1,
+      "UseFixedUpdate": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    }
   },
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1

@@ -9,6 +9,7 @@ public class MainMenuComponent : Component, Component.INetworkListener
 		JOINEDLOBBY,
 		LOBBYLIST,
 		SETTINGS,
+		HELP,
 		NULL
 	}
 
@@ -16,6 +17,7 @@ public class MainMenuComponent : Component, Component.INetworkListener
 	[Property] public SIUJoinedLobbyPanel JoinedLobbyPanel { get; set; }
 	[Property] public SIULobbyListPanel LobbyListPanel { get; set; }
 	[Property] public SIUSettingsPanel SettingsPanel { get; set; }
+	[Property] public SIUHelpPanel HelpPanel { get; set; }
 	[Property] ScreenPanel myScreenPanel { get; set; }
 
 	[Property] public ulong MyServID { get; set; } = 0;
@@ -40,6 +42,8 @@ public class MainMenuComponent : Component, Component.INetworkListener
 			{
 				var localFirstTry = Game.ActiveScene.Directory.FindByName("Menu").First().Components.Get<MainMenuComponent>();
 				var localSecondTry = Game.ActiveScene.GetAllComponents<MainMenuComponent>().FirstOrDefault(x => x.Network.IsOwner);
+
+				var glyphTexture = Input.GetGlyph("Forward", InputGlyphSize.Medium, true);
 
 				if (localFirstTry != null)
 				{
@@ -176,6 +180,7 @@ public class MainMenuComponent : Component, Component.INetworkListener
 		JoinedLobbyPanel.Enabled = false;
 		LobbyListPanel.Enabled = false;
 		SettingsPanel.Enabled = false;
+		HelpPanel.Enabled = false;
 
 		if (getPanelFromEnum(panel) != null)
 		{
@@ -194,6 +199,8 @@ public class MainMenuComponent : Component, Component.INetworkListener
 				return JoinedLobbyPanel;
 			case MenuPanelType.LOBBYLIST:
 				return LobbyListPanel;
+			case MenuPanelType.HELP:
+				return HelpPanel;
 			case MenuPanelType.SETTINGS:
 				return SettingsPanel;
 			default:

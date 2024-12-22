@@ -1,0 +1,75 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+@attribute [StyleSheet]
+
+@code
+
+{
+	private Dictionary<string, MainMenu.MenuPanelData> menuItems = new Dictionary<string, MainMenu.MenuPanelData>();
+
+	protected override void OnStart()
+	{
+		menuItems.Add("Back", new MainMenu.MenuPanelData("white", MainMenuComponent.MenuPanelType.MAIN));
+		menuItems.Add("FPS Controls", new MainMenu.MenuPanelData("white", MainMenuComponent.MenuPanelType.HELP));
+	}
+
+	void isHoveredColor(string hoveredItem)
+	{
+
+		Log.Info("Mouse Enter");
+		menuItems[hoveredItem].textColor = "darkorange";
+	}
+
+	void isNotHoveredColor(string hoveredItem)
+	{
+		Log.Info("Mouse Exit");
+		menuItems[hoveredItem].textColor = "white";
+	}
+
+	void itemClicked(string clickedItem)
+	{
+		if (GameState.Local.EndGamePanel.Enabled == true)
+		{
+			GameState.Local.EndGamePanel.Enabled = false;
+		}
+		Log.Info("You have clicked " + clickedItem);
+		foreach (string itemName in menuItems.Keys)
+		{
+			menuItems[itemName].textColor = "white";
+		}
+		MainMenuComponent.Local.setActivePanel(menuItems[clickedItem].panelType);
+		return;
+	}
+
+	void itemPressed(string clickedItem)
+	{
+		menuItems[clickedItem].textColor = "yellow";
+	}
+
+	void itemPressReleased(string clickedItem)
+	{
+		menuItems[clickedItem].textColor = "darkorange";
+	}
+	}
+
+}
+
+<root>
+	<div style="background-image: url(materials/help_screen.png);" class="panelBackground">
+		<div class="navButtonPanel">
+			@foreach (string itemName in menuItems.Keys)
+				{
+				<button @onmouseover="@(() => isHoveredColor(itemName))" @onmouseout="@(() => isNotHoveredColor(itemName))" @onclick="@(() => itemClicked(itemName))" @onmousedown="@(()=> itemPressed(itemName))" @onmouseup="@(() => itemPressReleased(itemName))" style="color: @(menuItems[itemName].textColor)" class="navButton">@(itemName)</button>
+				}
+		</div>
+		<div class="movementGlyphs">
+			<Image Texture="@Input.GetGlyph("Forward", InputGlyphSize.Medium, true)" class="forwardButtonGlyph"/>
+			<div class="botMoveGlyphPanel">
+				<Image Texture="@Input.GetGlyph("Left", InputGlyphSize.Medium, true)" class="botMoveGlyph"/>
+				<Image Texture="@Input.GetGlyph("Backward", InputGlyphSize.Medium, true)" class="botMoveGlyph"/>
+				<Image Texture="@Input.GetGlyph("Right", InputGlyphSize.Medium, true)" class="botMoveGlyph"/>
+			</div>
+		</div>
+	</div>
+</root>

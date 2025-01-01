@@ -6,7 +6,17 @@
 @code
 
 {
+	private enum HelpType
+	{
+		RTS,
+		FPS
+	};
+
 	private Dictionary<string, MainMenu.MenuPanelData> menuItems = new Dictionary<string, MainMenu.MenuPanelData>();
+
+	private HelpType currHelpType = HelpType.RTS;
+
+	//private string helpBG = materials / help_screen.png;
 
 	protected override void OnStart()
 	{
@@ -29,16 +39,30 @@
 
 	void itemClicked(string clickedItem)
 	{
+		foreach (string itemName in menuItems.Keys)
+		{
+			menuItems[itemName].textColor = "white";
+		}
 		if (GameState.Local.EndGamePanel.Enabled == true)
 		{
 			GameState.Local.EndGamePanel.Enabled = false;
 		}
 		Log.Info("You have clicked " + clickedItem);
-		foreach (string itemName in menuItems.Keys)
+		if (clickedItem == "FPS Controls")
 		{
-			menuItems[itemName].textColor = "white";
+			if(currHelpType == HelpType.RTS)
+			{
+				currHelpType = HelpType.FPS;
+			}
+			else
+			{
+				currHelpType = HelpType.RTS;
+			}
 		}
-		MainMenuComponent.Local.setActivePanel(menuItems[clickedItem].panelType);
+		else
+		{
+			MainMenuComponent.Local.setActivePanel(menuItems[clickedItem].panelType);
+		}
 		return;
 	}
 
@@ -51,25 +75,100 @@
 	{
 		menuItems[clickedItem].textColor = "darkorange";
 	}
+
+	string getDisabledStyle(HelpType myHelpType)
+	{
+		if (myHelpType == currHelpType)
+		{
+			return "false";
+		}
+		else
+		{
+			return "true";
+		}
 	}
 
 }
 
 <root>
-	<div style="background-image: url(materials/help_screen.png);" class="panelBackground">
-		<div class="navButtonPanel">
-			@foreach (string itemName in menuItems.Keys)
-				{
-				<button @onmouseover="@(() => isHoveredColor(itemName))" @onmouseout="@(() => isNotHoveredColor(itemName))" @onclick="@(() => itemClicked(itemName))" @onmousedown="@(()=> itemPressed(itemName))" @onmouseup="@(() => itemPressReleased(itemName))" style="color: @(menuItems[itemName].textColor)" class="navButton">@(itemName)</button>
-				}
-		</div>
-		<div class="movementGlyphs">
-			<Image Texture="@Input.GetGlyph("Forward", InputGlyphSize.Medium, true)" class="forwardButtonGlyph"/>
-			<div class="botMoveGlyphPanel">
-				<Image Texture="@Input.GetGlyph("Left", InputGlyphSize.Medium, true)" class="botMoveGlyph"/>
-				<Image Texture="@Input.GetGlyph("Backward", InputGlyphSize.Medium, true)" class="botMoveGlyph"/>
-				<Image Texture="@Input.GetGlyph("Right", InputGlyphSize.Medium, true)" class="botMoveGlyph"/>
+		@if(HelpType.RTS == currHelpType)
+		{
+			<div style="background-image: url(materials/help_screen.png);" class="panelBackground">
+				<div class="navButtonPanel">
+					@foreach (string itemName in menuItems.Keys)
+						{
+						<button @onmouseover="@(() => isHoveredColor(itemName))" @onmouseout="@(() => isNotHoveredColor(itemName))" @onclick="@(() => itemClicked(itemName))" @onmousedown="@(()=> itemPressed(itemName))" @onmouseup="@(() => itemPressReleased(itemName))" style="color: @(menuItems[itemName].textColor)" class="navButton">@(itemName)</button>
+						}
+				</div>
+				<div class="movementGlyphs">
+					<div class="glyphsLabel">Movement</div>
+					<Image Texture="@Input.GetGlyph("Forward", InputGlyphSize.Medium, true)" class="forwardButtonGlyph"/>
+					<div class="botMoveGlyphPanel">
+						<Image Texture="@Input.GetGlyph("Left", InputGlyphSize.Medium, true)" class="botMoveGlyph"/>
+						<Image Texture="@Input.GetGlyph("Backward", InputGlyphSize.Medium, true)" class="botMoveGlyph"/>
+						<Image Texture="@Input.GetGlyph("Right", InputGlyphSize.Medium, true)" class="botMoveGlyph"/>
+					</div>
+				</div>
+				<div class="rotGlyphPanel">
+					<div class="glyphsLabel">Rotate Camera</div>
+					<div class="twoGlyphs">
+						<Image Texture="@Input.GetGlyph("Rotate Left", InputGlyphSize.Medium, true)" class="halfGlyph"/>
+						<Image Texture="@Input.GetGlyph("Rotate Right", InputGlyphSize.Medium, true)" class="halfGlyph"/>
+					</div>
+				</div>
+				<div class="pitchGlyphPanel">
+					<div class="glyphsLabel">Pitch Camera</div>
+					<div class="twoGlyphs">
+						<Image Texture="@Input.GetGlyph("Pitch Up", InputGlyphSize.Medium, true)" class="halfGlyph"/>
+						<Image Texture="@Input.GetGlyph("Pitch Down", InputGlyphSize.Medium, true)" class="halfGlyph"/>
+					</div>
+				</div>
+				<div class="pitchGlyphPanel">
+					<div class="glyphsLabel">Pitch Camera</div>
+					<div class="twoGlyphs">
+						<Image Texture="@Input.GetGlyph("Pitch Up", InputGlyphSize.Medium, true)" class="halfGlyph"/>
+						<Image Texture="@Input.GetGlyph("Pitch Down", InputGlyphSize.Medium, true)" class="halfGlyph"/>
+					</div>
+				</div>
+				<div class="selectGlyphPanel">
+					<div class="glyphsLabel">Select</div>
+					<Image Texture="@Input.GetGlyph("Select", InputGlyphSize.Medium, true)" class="oneGlyph"/>
+				</div>
+				<div class="commandGlyphPanel">
+					<div class="glyphsLabel">Command</div>
+					<Image Texture="@Input.GetGlyph("Command", InputGlyphSize.Medium, true)" class="oneGlyph"/>
+				</div>
+			</div>
+		}
+	@if(HelpType.FPS == currHelpType)
+	{
+		<div style="background-image: url(materials/helpscreen_fps.png);" class="panelBackground">
+			<div class="navButtonPanel">
+				@foreach (string itemName in menuItems.Keys)
+					{
+					<button @onmouseover="@(() => isHoveredColor(itemName))" @onmouseout="@(() => isNotHoveredColor(itemName))" @onclick="@(() => itemClicked(itemName))" @onmousedown="@(()=> itemPressed(itemName))" @onmouseup="@(() => itemPressReleased(itemName))" style="color: @(menuItems[itemName].textColor)" class="navButton">@(itemName)</button>
+					}
+			</div>
+			<div class="movementGlyphs">
+				<div class="glyphsLabel">Movement</div>
+				<Image Texture="@Input.GetGlyph("Forward", InputGlyphSize.Medium, true)" class="forwardButtonGlyph"/>
+				<div class="botMoveGlyphPanel">
+					<Image Texture="@Input.GetGlyph("Left", InputGlyphSize.Medium, true)" class="botMoveGlyph"/>
+					<Image Texture="@Input.GetGlyph("Backward", InputGlyphSize.Medium, true)" class="botMoveGlyph"/>
+					<Image Texture="@Input.GetGlyph("Right", InputGlyphSize.Medium, true)" class="botMoveGlyph"/>
+				</div>
+			</div>
+			<div class="weaponGlyphPanel">
+				<div class="glyphsLabel">Weapon Select</div>
+				<div class="twoGlyphs">
+					<Image Texture="@Input.GetGlyph("Slot1", InputGlyphSize.Medium, true)" class="halfGlyph"/>
+					<Image Texture="@Input.GetGlyph("Slot2", InputGlyphSize.Medium, true)" class="halfGlyph"/>
+				</div>
+			</div>
+			<div class="reloadGlyphPanel">
+				<div class="glyphsLabel">Reload</div>
+				<Image Texture="@Input.GetGlyph("Reload", InputGlyphSize.Medium, true)" class="oneGlyph"/>
 			</div>
 		</div>
-	</div>
+	}
 </root>

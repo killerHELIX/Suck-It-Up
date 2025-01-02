@@ -60,6 +60,12 @@
           "go": "5429ad17-03d0-4628-bbaf-a3ec48401308",
           "component_type": "RTSGameOptionsComponent"
         },
+        "ThisHoverPanel": {
+          "_type": "component",
+          "component_id": "003a4150-6d0d-414e-bcfd-f4618a9ac387",
+          "go": "b9fc2d6f-43a6-446f-8729-5cccc3fd217d",
+          "component_type": "HoverInfoPanel"
+        },
         "ThisScreen": {
           "_type": "component",
           "component_id": "c272d49a-2a87-40a7-b9e1-f2a6b84def0c",
@@ -253,6 +259,27 @@
             "__type": "RTSGameOptionsComponent",
             "__guid": "0d8a3edc-95fb-49e0-bd47-e8aaab4c82d7",
             "GlobalUnitScale": 1
+          }
+        ]
+      },
+      {
+        "__guid": "b9fc2d6f-43a6-446f-8729-5cccc3fd217d",
+        "Flags": 0,
+        "Name": "HoverPanel",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ScreenPanel",
+            "__guid": "c8cd93be-b90e-4d76-a164-889982806793",
+            "AutoScreenScale": false,
+            "Opacity": 1,
+            "Scale": 1,
+            "ScaleStrategy": "ConsistentHeight",
+            "ZIndex": 1000
+          },
+          {
+            "__type": "HoverInfoPanel",
+            "__guid": "003a4150-6d0d-414e-bcfd-f4618a9ac387"
           }
         ]
       }

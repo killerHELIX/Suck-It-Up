@@ -61,8 +61,8 @@ public class GameState : Component
 			Network.TakeOwnership();
 			//pullCurrentGameStateFromHost();
 			// DEBUG
-			survivorPlayerList.Add("testfpsplayer");
-			//rtsPlayerList.Add("Grundle");
+			//survivorPlayerList.Add("testfpsplayer");
+			rtsPlayerList.Add("Grundle");
 			// DEBUG
 			//Log.Info(Network.OwnerConnection);
 			//Log.Info(Network.OwnerConnection.DisplayName);

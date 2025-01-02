@@ -7,6 +7,7 @@ public class RTSGameComponent : Component
 
 	[Property] public RTSGameOptionsComponent GameOptions { get; set; }
 	[Property] public ScreenPanel ThisScreen { get; set; }
+	[Property] public HoverInfoPanel ThisHoverPanel { get; set; }
 
 	protected override void OnStart()
 	{
@@ -18,6 +19,7 @@ public class RTSGameComponent : Component
 			GameHud.Enabled = false;
 			GameOptions.Enabled = false;
 			ThisScreen.Enabled = false;
+			ThisHoverPanel.Enabled = false;
 			return;
 		}
 		base.OnStart();

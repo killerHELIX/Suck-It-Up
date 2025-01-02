@@ -1,0 +1,13 @@
+HoverInfoPanel {
+    height: 3%;
+    width: 5%;
+    position: absolute;
+    background-color: dimgray;
+    pointer-events: none;
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif, Arial;
+}

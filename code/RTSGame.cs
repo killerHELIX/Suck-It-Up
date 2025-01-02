@@ -6,4 +6,5 @@
 	public CorpseList GameCorpseList { get; set; }
 	public CommandIndicatorBase GameCommandIndicator { get; set; }
 	public RTSHud GameHUD { get; set; }
+	public HoverInfoPanel GameHoverPanel { get; set; }
 }

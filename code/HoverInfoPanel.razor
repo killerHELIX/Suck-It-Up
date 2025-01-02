@@ -1,0 +1,49 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using System.Linq;
+@using System;
+@inherits PanelComponent
+@attribute [StyleSheet]
+
+@code
+{
+    private string currentHoverText = "sfd";
+    private Length? currentXCoord;
+    private Length? currentYCoord;
+
+    public void setText (string newText)
+    {
+        currentHoverText = newText;
+    }
+
+    public void setShowPanel (bool showPanel)
+    {
+        if (showPanel)
+        {
+            Enabled = true;
+        }
+        else
+        {
+            Enabled = false;
+        }
+    }
+
+    protected override void OnUpdate()
+    {
+        Log.Info("POS: " + Mouse.Position);
+        Log.Info("POS Len X: " + Length.Pixels(Mouse.Position.x));
+        Log.Info("POS Len Y: " + Length.Pixels(Mouse.Position.y));
+        Log.Info(Screen.Resolution);
+        //currentXCoord = Mouse.Position.x * (Screen.Height / Screen.Width);
+        //currentYCoord = Mouse.Position.y * (Screen.Width / Screen.Height);
+        currentXCoord = Length.Pixels(Mouse.Position.x);
+        currentYCoord = Length.Pixels(Mouse.Position.y);
+        //currentXCoord = Length.Pixels(Mouse.Position.x * (Screen.Height / Screen.Width));
+        //currentYCoord = Length.Pixels(Mouse.Position.y * (Screen.Width / Screen.Height));
+        this.StateHasChanged();
+        this.Panel.Style.Dirty();
+    }
+
+}
+
+<root style="left:@(currentXCoord)px; top:@(currentYCoord)px;" class="HoverInfoPanel"/>

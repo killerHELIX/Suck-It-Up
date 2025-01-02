@@ -59,7 +59,7 @@ public class RTSCamComponent : Component
 		{
 			if(camMode == CameraMode.Ortho)
 			{
-				trackTarget = RTSPlayer.Local.UnitControl.SelectedObjects.First<SelectableObject>().GameObject;//GameState.Local.
+				trackTarget = RTSPlayer.Local.UnitControl.SelectedObjects.First<SelectableObject>().GameObject;
 				camMode = CameraMode.Tracking;
 				Log.Info("Cam mode is now Tracking");
 			}

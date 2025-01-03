@@ -292,11 +292,11 @@
 <root>
 	<div class="topPanel">
 		<div class="resourceDisplay">
-			<div class="resourceItem">
+			<div onmouseout="@(() => RTSPlayer.Local.LocalGame.ThisHoverPanel.setPanelState("Available Resources", false))" onmouseover="@(() => RTSPlayer.Local.LocalGame.ThisHoverPanel.setPanelState("Available Resources", true))" class="resourceItem">
 				<div style="background-image: url(materials/resource_icon.png);" class="resourceIcon"></div>
 				<div class="resourceText">@(RTSPlayer.Local.resourcePoints) / @(RTSPlayer.Local.ResourceCap)</div>
 			</div>
-			<div class="resourceItem">
+			<div onmouseout="@(() => RTSPlayer.Local.LocalGame.ThisHoverPanel.setPanelState("Unit Capacity", false))" onmouseover="@(() => RTSPlayer.Local.LocalGame.ThisHoverPanel.setPanelState("Unit Capacity", true))" class="resourceItem">
 				<div style="background-image: url(materials/capacity_icon.png);" class="resourceIcon"></div>
 				<div class="resourceText">@(RTSPlayer.Local.capacityPoints) / @(RTSPlayer.Local.CapacityCap)</div>
 			</div>
@@ -323,7 +323,7 @@
 				{
 					foreach (SelectableObject selectedUnit in RTSPlayer.Local.UnitControl.SelectedObjects)
 					{
-						<div @onclick="@(() => unitListItemClicked(selectedUnit))" class=@(focusedUnit == selectedUnit ? "portraitStatusPanelListItemFocused" : "portraitStatusPanelListItem")>
+						<div @onclick="@(() => unitListItemClicked(selectedUnit))" onmouseout="@(() => RTSPlayer.Local.LocalGame.ThisHoverPanel.setPanelState("Selected Unit", false))" onmouseover="@(() => RTSPlayer.Local.LocalGame.ThisHoverPanel.setPanelState("Selected Unit", true))" class=@(focusedUnit == selectedUnit ? "portraitStatusPanelListItemFocused" : "portraitStatusPanelListItem")>
 							<div style="background-image: url(@(selectedUnit.PortraitImage));" class="portraitImage"></div>
 							<div class="portraitStatusList">@(getUnitHealthString(selectedUnit))</div>
 						</button>
@@ -341,7 +341,7 @@
 		<div class="dynamicButtonSubPanel">
 			@foreach (var button in currentButtonList)
 			{
-				<button style="background-image: url(@(button.activeBackgroundImage)); pointer-events: @(button.getPointerEventsStyle());" @onclick="@( () => button.OnClick())" class="dynamicButtonSlot">
+					<button style="background-image: url(@(button.activeBackgroundImage)); pointer-events: @(button.getPointerEventsStyle());" onmouseout="@(() => RTSPlayer.Local.LocalGame.ThisHoverPanel.setPanelState("Dynamic Button", false))" onmouseover="@(() => RTSPlayer.Local.LocalGame.ThisHoverPanel.setPanelState("Dynamic Button", true))" @onclick="@( () => button.OnClick())" class="dynamicButtonSlot">
 					<div style="color: @(button.getIsDisabledStyleHint());" class="buttonHintText">@(button.hotkeyChar)</div>
 					<div style="display: @(button.getIsDisabledStyle());" class="buttonDisabledOverlay"></div>
 				</button>

@@ -303,12 +303,12 @@
 		</div>
 		<div class="cameraControls">
 			<div class="camTypeControls">
-				<div @onclick="@(() => camTypeButtonClicked())" style="background-image: url(@currentCamButtonImage);" class="camTypeButton"></div>
-				<div @onclick="@(() => camFocusTypeButtonClicked())" style="background-image: url(@currentCamFocusButtonImage);" class="focusTypeButton"></div>
+				<div @onclick="@(() => camTypeButtonClicked())" style="background-image: url(@currentCamButtonImage);" onmouseout="@(() => RTSPlayer.Local.LocalGame.ThisHoverPanel.setPanelState("Camera Mode", false))" onmouseover="@(() => RTSPlayer.Local.LocalGame.ThisHoverPanel.setPanelState("Camera Mode", true))" class="camTypeButton"></div>
+				<div @onclick="@(() => camFocusTypeButtonClicked())" style="background-image: url(@currentCamFocusButtonImage);" onmouseout="@(() => RTSPlayer.Local.LocalGame.ThisHoverPanel.setPanelState("Focus Type", false))" onmouseover="@(() => RTSPlayer.Local.LocalGame.ThisHoverPanel.setPanelState("Focus Type", true))" class="focusTypeButton"></div>
 			</div>
 			<div class="camFocusControls">
-				<div @onclick="@(() => prevUnitButtonClicked())" style="background-image: url(materials/arrowbutton.png);" class="prevUnitButton"></div>
-				<div @onclick="@(() => nextUnitButtonClicked())" style="background-image: url(materials/arrowbuttonleft.png);" class="nextUnitButton"></div>
+				<div @onclick="@(() => prevUnitButtonClicked())" style="background-image: url(materials/arrowbutton.png);" onmouseout="@(() => RTSPlayer.Local.LocalGame.ThisHoverPanel.setPanelState("Previous Unit", false))" onmouseover="@(() => RTSPlayer.Local.LocalGame.ThisHoverPanel.setPanelState("Previous Unit", true))" class="prevUnitButton"></div>
+				<div @onclick="@(() => nextUnitButtonClicked())" style="background-image: url(materials/arrowbuttonleft.png);" onmouseout="@(() => RTSPlayer.Local.LocalGame.ThisHoverPanel.setPanelState("Next Unit", false))" onmouseover="@(() => RTSPlayer.Local.LocalGame.ThisHoverPanel.setPanelState("Next Unit", true))" class="nextUnitButton"></div>
 			</div>
 		</div>
 	</div>
@@ -349,5 +349,3 @@
 		</div>
 	</div>
 </root>
-
-<!--/*unitListItemClicked(selectedUnit)*/ -->

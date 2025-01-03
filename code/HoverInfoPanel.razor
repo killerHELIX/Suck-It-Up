@@ -7,9 +7,36 @@
 
 @code
 {
-    private string currentHoverText = "sfd";
+    private const float MOUSE_X_OFFSET = 15f;
+    private const float MOUSE_Y_OFFSET = 15f;
+    private const float MAX_X_STANDOFF = 80f;
+    private const float MAX_Y_STANDOFF = 40f;
+
+    private const float ENABLED_OPACITY = .5f;
+    private const float DISABLED_OPACITY = 0f;
+
+    private string currentHoverText = "AAAAAAA";
     private Length? currentXCoord;
     private Length? currentYCoord;
+    private float currentOpacity = .5f;
+    private string latchedID = "";
+
+    public void setPanelState(string newText, bool showPanel)
+    {
+        Log.Info("setPanelState: " + newText + ", " + showPanel);
+        if(showPanel == false && newText != latchedID)
+        {
+            return;
+        }
+        
+        if(showPanel == true)
+        {
+            latchedID = newText;
+        }
+
+        setText(newText);
+        setShowPanel(showPanel);
+    }
 
     public void setText (string newText)
     {
@@ -18,32 +45,56 @@
 
     public void setShowPanel (bool showPanel)
     {
+        Log.Info("Hello?");
         if (showPanel)
         {
-            Enabled = true;
+            //Enabled = true;
+            currentOpacity = ENABLED_OPACITY;
         }
         else
         {
-            Enabled = false;
+            //Enabled = false;
+            currentOpacity = DISABLED_OPACITY;
         }
+    }
+
+    protected override void OnStart()
+    {
+        setShowPanel(false);
     }
 
     protected override void OnUpdate()
     {
-        Log.Info("POS: " + Mouse.Position);
-        Log.Info("POS Len X: " + Length.Pixels(Mouse.Position.x));
-        Log.Info("POS Len Y: " + Length.Pixels(Mouse.Position.y));
-        Log.Info(Screen.Resolution);
-        //currentXCoord = Mouse.Position.x * (Screen.Height / Screen.Width);
-        //currentYCoord = Mouse.Position.y * (Screen.Width / Screen.Height);
-        currentXCoord = Length.Pixels(Mouse.Position.x);
-        currentYCoord = Length.Pixels(Mouse.Position.y);
-        //currentXCoord = Length.Pixels(Mouse.Position.x * (Screen.Height / Screen.Width));
-        //currentYCoord = Length.Pixels(Mouse.Position.y * (Screen.Width / Screen.Height));
+        currentXCoord = Length.Pixels(Mouse.Position.x + MOUSE_X_OFFSET);
+        currentYCoord = Length.Pixels(Mouse.Position.y + MOUSE_Y_OFFSET);
+        if (Mouse.Position.x + MOUSE_X_OFFSET >= Screen.Width - MAX_X_STANDOFF)
+        {
+            currentXCoord = Length.Pixels(Screen.Width - MAX_X_STANDOFF);
+        }
+        if (Mouse.Position.y + MOUSE_Y_OFFSET >= Screen.Height - MAX_Y_STANDOFF)
+        {
+            currentYCoord = Length.Pixels(Screen.Height - MAX_Y_STANDOFF);
+        }
+        /*if (Nullable.Compare(currentXCoord, Length.Pixels(Screen.Width - 40)) > 0)
+        {
+            currentXCoord = Length.Pixels(Screen.Width - 40);
+        }
+        if (Nullable.Compare(currentYCoord, Length.Pixels(Screen.Height - 40)) > 0)
+        {
+            currentYCoord = Length.Pixels(Screen.Height - 40);
+        }*/
+        //if (currentXCoord.Value >= Length.Pixels(Screen.Width - 40).Value)
+        //{
+        //    currentXCoord = Length.Pixels(Screen.Width - 40);
+        //}
+        //if (currentYCoord.Value >= Length.Pixels(Screen.Height - 40).Value)
+        //{
+        //    currentYCoord = Length.Pixels(Screen.Height - 40);
+        //}
         this.StateHasChanged();
         this.Panel.Style.Dirty();
     }
 
 }
 
-<root style="left:@(currentXCoord)px; top:@(currentYCoord)px;" class="HoverInfoPanel"/>
+<root style="left:@(currentXCoord)px; top:@(currentYCoord)px; opacity:@(currentOpacity)" class="HoverInfoPanel">@(currentHoverText)</root>

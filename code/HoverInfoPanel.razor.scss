@@ -2,7 +2,8 @@ HoverInfoPanel {
     height: 3%;
     width: 5%;
     position: absolute;
-    background-color: dimgray;
+    background-color: #000000FF;
+    opacity: .5;
     pointer-events: none;
     color: white;
     font-size: 10px;
@@ -10,4 +11,5 @@ HoverInfoPanel {
     align-items: center;
     justify-content: center;
     font-family: sans-serif, Arial;
+    transition: opacity 1s linear;
 }

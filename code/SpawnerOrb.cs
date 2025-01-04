@@ -24,7 +24,7 @@ public class SpawnerOrb : ControlOrb
 		{
 			if(unitType.PhaseUnlocked <= GameState.Local.matchPhase)
 			{
-				buttons.Add(new ConstructUnitButton('.', unitType.UnitPortraitImage, unitType.UnitPrefab, groundPosition, unitType.UnitResourceCost, unitType.UnitCapacityCost));
+				buttons.Add(new ConstructUnitButton('.', unitType.UnitPortraitImage, unitType.UnitPrefab, groundPosition, unitType.UnitResourceCost, unitType.UnitCapacityCost, unitType.UnitName));
 			}
 		}
 	}
@@ -47,7 +47,7 @@ public class SpawnerOrb : ControlOrb
 			{
 				if (unitType.PhaseUnlocked <= GameState.Local.matchPhase)
 				{
-					buttons.Add(new ConstructUnitButton('.', unitType.UnitPortraitImage, unitType.UnitPrefab, Transform.Position, unitType.UnitResourceCost, unitType.UnitCapacityCost));
+					buttons.Add(new ConstructUnitButton('.', unitType.UnitPortraitImage, unitType.UnitPrefab, Transform.Position, unitType.UnitResourceCost, unitType.UnitCapacityCost, unitType.UnitName));
 				}
 			}
 		}

@@ -10,7 +10,7 @@ public class ConstructUnitButton : DynamicButton
 
 	private int capacityCost = 0;
 
-	public ConstructUnitButton(char hotkey, string bg1, GameObject unitPrefab, Vector3 spawnerPosition, int cost, int capacity) : base()
+	public ConstructUnitButton(char hotkey, string bg1, GameObject unitPrefab, Vector3 spawnerPosition, int cost, int capacity, string thisHoverHint) : base()
 	{
 		hotkeyChar = hotkey;
 		activeBackgroundImage = bg1;
@@ -19,6 +19,7 @@ public class ConstructUnitButton : DynamicButton
 		thisSpawnerPosition = spawnerPosition;
 		constructionCost = cost;
 		capacityCost = capacity;
+		hoverText = thisHoverHint;
 	}
 
 	public void constructUnit(GameObject unitPrefab)

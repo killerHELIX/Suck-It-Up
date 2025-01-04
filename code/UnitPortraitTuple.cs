@@ -5,6 +5,8 @@ public class UnitPortraitTuple : Component
 {
 	[Property] public GameObject UnitPrefab { get; set; }
 
+	[Property] public string UnitName {  get; set; }
+
 	[Property] public string UnitPortraitImage { get; set; }
 
 	[Property] public int UnitResourceCost { get; set; }

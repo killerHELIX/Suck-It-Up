@@ -27,7 +27,7 @@
     "LaunchMode": "Normal",
     "ParentPackage": "",
     "ControlModes": {
-      "Keyboard": false,
+      "Keyboard": true,
       "VR": false,
       "Gamepad": false
     }

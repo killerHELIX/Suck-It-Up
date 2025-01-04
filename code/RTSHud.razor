@@ -76,6 +76,27 @@
 	{
 		base.OnUpdate();
 		this.StateHasChanged();
+
+		if(Input.Pressed("Camera Mode"))
+		{
+			camTypeButtonClicked();
+		}
+		if (Input.Pressed("Follow Previous Target"))
+		{
+			prevUnitButtonClicked();
+		}
+		if (Input.Pressed("Follow Next Target"))
+		{
+			nextUnitButtonClicked();
+		}
+		if (Input.Pressed("Next Follow Type"))
+		{
+			camFocusTypeButtonClicked();
+		}
+		if (Input.Pressed("Previous Follow Type"))
+		{
+			camFocusTypeButtonClicked();
+		}
 	}
 
 	public string getFocusedUnitHealthString()

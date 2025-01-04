@@ -5,7 +5,7 @@ public class DynamicMultiStateButton : DynamicButton
 	public int buttonState { get; set; }
 	public List<string> stateList {get; set; } = new List<string>();
 
-	public DynamicMultiStateButton(char hotkey, List<string>bgStateList, Action clickAction) : base(hotkey, bgStateList[0], clickAction)
+	public DynamicMultiStateButton(char hotkey, List<string>bgStateList, Action clickAction, string thisHoverHint) : base(hotkey, bgStateList[0], clickAction, thisHoverHint)
 	{
 		buttonState = 0;
 		stateList = bgStateList;

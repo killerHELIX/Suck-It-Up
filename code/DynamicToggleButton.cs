@@ -5,7 +5,7 @@ public class DynamicToggleButton : DynamicButton
 
 	public bool buttonState { get; set; }
 
-	public DynamicToggleButton( char hotkey, string bg1, string bg2, Action clickAction ) : base(hotkey, bg1, clickAction)
+	public DynamicToggleButton( char hotkey, string bg1, string bg2, Action clickAction, string thisHoverHint ) : base(hotkey, bg1, clickAction, thisHoverHint)
 	{
 		inactiveBackgroundImage = bg2;
 	}

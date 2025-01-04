@@ -14,17 +14,20 @@ public class DynamicButton
 	public Action thisButtonAction { get; set; }
 	public bool isEnabled { get; set; }
 
+	public string hoverText { get; set; }
+
 	protected string isEnabledStyleString = BUTTON_ENABLED_STYLE;
 	protected string buttonPointerEventsString = BUTTON_EVENTS_ENABLED_STYLE;
 	protected string isEnabledStyleHintString = BUTTON_ENABLED_HINT_STYLE;
 
 	public DynamicButton() { }
 
-	public DynamicButton(char hotkey, string bgFile, Action clickAction)
+	public DynamicButton(char hotkey, string bgFile, Action clickAction, string hoverTextIn)
 	{
 		hotkeyChar = hotkey;
 		activeBackgroundImage = bgFile;
 		thisButtonAction = clickAction;
+		hoverText = hoverTextIn;
 	}
 
 	public virtual void OnClick()

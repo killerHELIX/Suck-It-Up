@@ -98,8 +98,8 @@ public class Unit : SkinnedRTSObject
 		homeTargetLocation = Transform.Position;
 
 		// Initialize UI elements
-		unitStanceButton = new DynamicMultiStateButton('x', stanceList, stanceButtonClicked);
-		recycleUnitButton = new DynamicButton('.', RecycleImagepath, recycleUnit);
+		unitStanceButton = new DynamicMultiStateButton('x', stanceList, stanceButtonClicked, "Unit Stance");
+		recycleUnitButton = new DynamicButton('.', RecycleImagepath, recycleUnit, "Recycle Unit");
 		buttons.Add(unitStanceButton);
 		buttons.Add(recycleUnitButton);
 		UnitNavAgent.MaxSpeed = UnitSpeed;

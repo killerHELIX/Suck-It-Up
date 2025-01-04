@@ -341,7 +341,7 @@
 		<div class="dynamicButtonSubPanel">
 			@foreach (var button in currentButtonList)
 			{
-					<button style="background-image: url(@(button.activeBackgroundImage)); pointer-events: @(button.getPointerEventsStyle());" onmouseout="@(() => RTSPlayer.Local.LocalGame.ThisHoverPanel.setPanelState("Dynamic Button", false))" onmouseover="@(() => RTSPlayer.Local.LocalGame.ThisHoverPanel.setPanelState("Dynamic Button", true))" @onclick="@( () => button.OnClick())" class="dynamicButtonSlot">
+					<button style="background-image: url(@(button.activeBackgroundImage)); pointer-events: @(button.getPointerEventsStyle());" onmouseout="@(() => RTSPlayer.Local.LocalGame.ThisHoverPanel.setPanelState(button.hoverText, false))" onmouseover="@(() => RTSPlayer.Local.LocalGame.ThisHoverPanel.setPanelState(button.hoverText, true))" @onclick="@( () => button.OnClick())" class="dynamicButtonSlot">
 					<div style="color: @(button.getIsDisabledStyleHint());" class="buttonHintText">@(button.hotkeyChar)</div>
 					<div style="display: @(button.getIsDisabledStyle());" class="buttonDisabledOverlay"></div>
 				</button>

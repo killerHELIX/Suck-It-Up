@@ -138,7 +138,16 @@
 					<div class="glyphsLabel">Command</div>
 					<Image Texture="@Input.GetGlyph("Command", InputGlyphSize.Medium, true)" class="oneGlyph"/>
 				</div>
+				<div class="freeRotateGlyphPanel">
+						<div class="glyphsLabel">Free Rotate</div>
+						<Image Texture="@Input.GetGlyph("Free Rotate", InputGlyphSize.Medium, true)" class="oneGlyph"/>
+				</div>
+				<div class="fastMoveGlyphPanel">
+						<div class="glyphsLabel">Fast Move</div>
+						<Image Texture="@Input.GetGlyph("Run", InputGlyphSize.Medium, true)" class="oneGlyph"/>
+				</div>
 			</div>
+
 		}
 	@if(HelpType.FPS == currHelpType)
 	{
@@ -168,6 +177,10 @@
 			<div class="reloadGlyphPanel">
 				<div class="glyphsLabel">Reload</div>
 				<Image Texture="@Input.GetGlyph("Reload", InputGlyphSize.Medium, true)" class="oneGlyph"/>
+			</div>
+			<div class="fastMoveGlyphPanel">
+				<div class="glyphsLabel">Run</div>
+				<Image Texture="@Input.GetGlyph("Run", InputGlyphSize.Medium, true)" class="oneGlyph"/>
 			</div>
 		</div>
 	}

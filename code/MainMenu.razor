@@ -10,10 +10,12 @@
 	public class MenuPanelData
 	{
 		public string textColor = "white";
+		public string itemText = "";
 		public MainMenuComponent.MenuPanelType panelType = MainMenuComponent.MenuPanelType.NULL;
 
-		public MenuPanelData(string newColor, MainMenuComponent.MenuPanelType newPanelType)
+		public MenuPanelData(string text, string newColor, MainMenuComponent.MenuPanelType newPanelType)
 		{
+			itemText = text;
 			textColor = newColor;
 			panelType = newPanelType;
 		}
@@ -23,11 +25,11 @@
 
 	protected override void OnStart()
 	{
-		menuItems.Add("Quit", new MenuPanelData("white", MainMenuComponent.MenuPanelType.NULL));
-		menuItems.Add("Help", new MenuPanelData("white", MainMenuComponent.MenuPanelType.HELP));
+		menuItems.Add("Quit", new MenuPanelData("Quit", "white", MainMenuComponent.MenuPanelType.NULL));
+		menuItems.Add("Help", new MenuPanelData("Help", "white", MainMenuComponent.MenuPanelType.HELP));
 		//menuItems.Add("Settings", new MenuPanelData("white", MainMenuComponent.MenuPanelType.SETTINGS));
-		menuItems.Add("Join", new MenuPanelData("white", MainMenuComponent.MenuPanelType.LOBBYLIST));
-		menuItems.Add("Host", new MenuPanelData("white", MainMenuComponent.MenuPanelType.JOINEDLOBBY));
+		menuItems.Add("Join", new MenuPanelData("Join", "white", MainMenuComponent.MenuPanelType.LOBBYLIST));
+		menuItems.Add("Host", new MenuPanelData("Host", "white", MainMenuComponent.MenuPanelType.JOINEDLOBBY));
 	}
 	//Game.ActiveScene.LoadFromFile( "scenes/tests/menu.scene" );
 	//
@@ -91,9 +93,9 @@
 
 <root>
 	<div class="OptionsPanel">
-		@foreach (string itemName in menuItems.Keys)
+		@foreach (MenuPanelData item in menuItems.Values)
 			{
-			<button @onmouseover="@(() => isHoveredColor(itemName))" @onmouseout="@(() => isNotHoveredColor(itemName))" @onclick="@(() => itemClicked(itemName))" @onmousedown="@(()=> itemPressed(itemName))" @onmouseup="@(() => itemPressReleased(itemName))" style="color: @(menuItems[itemName].textColor)" class="MenuOption">@(itemName)</button>
+			<button @onmouseover="@(() => isHoveredColor(item.itemText))" @onmouseout="@(() => isNotHoveredColor(item.itemText))" @onclick="@(() => itemClicked(item.itemText))" @onmousedown="@(()=> itemPressed(item.itemText))" @onmouseup="@(() => itemPressReleased(item.itemText))" style="color: @(menuItems[item.itemText].textColor)" class="MenuOption">@(item.itemText)</button>
 			}
 	</div>
 </root>

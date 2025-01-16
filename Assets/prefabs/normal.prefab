@@ -31,6 +31,12 @@
           "component_type": "ModelHitboxes"
         },
         "name": "Normal",
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
         "PhysicalModelRenderer": {
           "_type": "component",
           "component_id": "cfbac751-5a16-4f87-90a3-648a5d36ffff",
@@ -79,6 +85,7 @@
           "go": "4c329369-56bd-4399-9ac2-ba6900b6425d",
           "component_type": "NavMeshAgent"
         },
+        "UnitRangedAttackCollider": null,
         "UnitSpeed": 100
       },
       {
@@ -87,6 +94,12 @@
         "Acceleration": 600,
         "Height": 20,
         "MaxSpeed": 60,
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
         "Radius": 5,
         "Separation": 0,
         "UpdatePosition": true,
@@ -96,34 +109,85 @@
         "__type": "Sandbox.CapsuleCollider",
         "__guid": "52ecb285-bffb-4e5b-ac91-59bb728edc2a",
         "End": "0,0,180",
+        "Friction": null,
         "IsTrigger": true,
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
+        "OnObjectTriggerEnter": null,
+        "OnObjectTriggerExit": null,
+        "OnTriggerEnter": null,
+        "OnTriggerExit": null,
         "Radius": 100,
         "Start": "0,0,0",
-        "Static": false
+        "Static": false,
+        "Surface": null,
+        "SurfaceVelocity": "0,0,0"
       },
       {
         "__type": "Sandbox.SphereCollider",
         "__guid": "8e25d2ad-7ca1-46ac-aba5-4b3064f264fc",
         "Center": "0,0,0",
+        "Friction": null,
         "IsTrigger": true,
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
+        "OnObjectTriggerEnter": null,
+        "OnObjectTriggerExit": null,
+        "OnTriggerEnter": null,
+        "OnTriggerExit": null,
         "Radius": 600,
-        "Static": false
+        "Static": false,
+        "Surface": null,
+        "SurfaceVelocity": "0,0,0"
       },
       {
         "__type": "UnitTriggerListener",
-        "__guid": "cb32be21-fb53-48bc-9226-15e73708d657"
+        "__guid": "cb32be21-fb53-48bc-9226-15e73708d657",
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null
       },
       {
         "__type": "Sandbox.BoxCollider",
         "__guid": "63247f32-5937-4920-8a39-fd9336133dd3",
         "Center": "0,0,100",
+        "Friction": null,
         "IsTrigger": false,
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
+        "OnObjectTriggerEnter": null,
+        "OnObjectTriggerExit": null,
+        "OnTriggerEnter": null,
+        "OnTriggerExit": null,
         "Scale": "110,110,200",
-        "Static": false
+        "Static": false,
+        "Surface": null,
+        "SurfaceVelocity": "0,0,0"
       },
       {
         "__type": "Sandbox.ModelHitboxes",
         "__guid": "4778bbc7-7d87-4ad7-b07a-e029c5e264eb",
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
         "Renderer": {
           "_type": "component",
           "component_id": "2b32d11e-673b-4780-b1e9-cb63176d594c",
@@ -156,6 +220,12 @@
               "go": "1e46fd27-181c-497e-be9f-28c89ee7f201",
               "component_type": "DecalBaseStand"
             },
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
             "outline": {
               "_type": "component",
               "component_id": "c92d705e-2522-43d4-83a2-29eb1143354f",
@@ -174,9 +244,36 @@
             "__guid": "2b32d11e-673b-4780-b1e9-cb63176d594c",
             "AnimationGraph": "animgraphs/normal.vanmgrph",
             "BodyGroups": 18446744073709551615,
+            "BoneMergeTarget": null,
+            "CreateAttachments": false,
             "CreateBoneObjects": true,
+            "MaterialGroup": null,
+            "MaterialOverride": null,
             "Model": "models/enemies/normal.vmdl",
+            "Morphs": {},
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
+            "Parameters": {
+              "bools": {},
+              "ints": {},
+              "floats": {},
+              "vectors": {},
+              "rotations": {}
+            },
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
             "RenderType": "On",
+            "Sequence": {
+              "Name": null
+            },
             "Tint": "1,1,1,1",
             "UseAnimGraph": true
           },
@@ -186,7 +283,14 @@
             "Color": "0,0,0,0",
             "InsideColor": "0,0,0,0",
             "InsideObscuredColor": "0,0,0,0",
+            "Material": null,
             "ObscuredColor": "0,1,0,0.50196",
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
             "Width": 0.25
           }
         ],
@@ -211,7 +315,13 @@
                   "component_id": "dd8ebd15-8ec9-4de5-98c0-17a631436745",
                   "go": "1e46fd27-181c-497e-be9f-28c89ee7f201",
                   "component_type": "DecalRenderer"
-                }
+                },
+                "OnComponentDestroy": null,
+                "OnComponentDisabled": null,
+                "OnComponentEnabled": null,
+                "OnComponentFixedUpdate": null,
+                "OnComponentStart": null,
+                "OnComponentUpdate": null
               },
               {
                 "__type": "Sandbox.DecalRenderer",
@@ -220,6 +330,18 @@
                 "CutoffAngleSoftness": 5,
                 "Material": "materials/circle.vmat",
                 "Mod2XBlending": false,
+                "OnComponentDestroy": null,
+                "OnComponentDisabled": null,
+                "OnComponentEnabled": null,
+                "OnComponentFixedUpdate": null,
+                "OnComponentStart": null,
+                "OnComponentUpdate": null,
+                "RenderOptions": {
+                  "GameLayer": true,
+                  "OverlayLayer": false,
+                  "BloomLayer": false,
+                  "AfterUILayer": false
+                },
                 "Size": "1,1,1",
                 "TintColor": "0,1,0,0.50196",
                 "TriPlanar": false
@@ -588,7 +710,13 @@
               "component_id": "2c9dbb0c-216f-49a0-9c49-894fc0af034d",
               "go": "764052c6-eb5e-4e4b-9b2b-59f064d2c994",
               "component_type": "WorldPanel"
-            }
+            },
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null
           },
           {
             "__type": "Sandbox.WorldPanel",
@@ -596,22 +724,64 @@
             "HorizontalAlign": "Center",
             "InteractionRange": 0,
             "LookAtCamera": true,
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
             "PanelSize": "5000,200",
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": true,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
             "RenderScale": 1,
             "VerticalAlign": "Center"
           },
           {
             "__type": "HealthBarUI",
-            "__guid": "40d1190e-8ae9-46c8-81d0-0ee057e9c4c2"
+            "__guid": "40d1190e-8ae9-46c8-81d0-0ee057e9c4c2",
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null
           }
         ]
       }
     ],
-    "__variables": []
+    "__variables": [],
+    "__properties": {
+      "FixedUpdateFrequency": 50,
+      "MaxFixedUpdates": 5,
+      "NetworkFrequency": 30,
+      "NetworkInterpolation": true,
+      "PhysicsSubSteps": 1,
+      "ThreadedAnimation": true,
+      "TimeScale": 1,
+      "UseFixedUpdate": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    }
   },
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1

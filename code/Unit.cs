@@ -53,7 +53,7 @@ public class Unit : SkinnedRTSObject
 	private float maxChaseDistanceFromHome = 600f;
 	private float lastMeleeTime = Time.Now;
 	private float lastMoveOrderTime = Time.Now;
-	public int currentStance = 0;
+	public int currentStance = ((int)Stance.Horde);
 	protected bool hasReachedMoveTarget = true;
 	protected bool isNewCommand = false;
 
@@ -99,6 +99,7 @@ public class Unit : SkinnedRTSObject
 
 		// Initialize UI elements
 		unitStanceButton = new DynamicMultiStateButton('x', stanceList, stanceButtonClicked, "Unit Stance");
+		unitStanceButton.setButtonState(currentStance);
 		recycleUnitButton = new DynamicButton('.', RecycleImagepath, recycleUnit, "Recycle Unit");
 		buttons.Add(unitStanceButton);
 		buttons.Add(recycleUnitButton);
